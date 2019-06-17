@@ -1,0 +1,74 @@
+// Task list pattern
+
+.app-task-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include mq($from: tablet) {
+    min-width: 550px;
+  }
+}
+
+.app-task-list__section {
+  display: table;
+}
+
+.app-task-list__section-number {
+  display: table-cell;
+
+  @include mq($from: tablet) {
+    min-width: nhsuk-spacing(6);
+    padding-right: 0;
+  }
+
+}
+
+.app-task-list__items {
+  @include nhsuk-font(19);
+  @include nhsuk-responsive-margin(9, 'bottom');
+  list-style: none;
+  padding-left: 0;
+  @include mq($from: tablet) {
+    padding-left: nhsuk-spacing(6);
+  }
+}
+
+.app-task-list__items--no-padding {
+  @include mq($from: tablet) {
+    padding-left: 0;
+  }
+}
+
+.app-task-list__item {
+  border-bottom: 1px solid $nhsuk-border-color;
+  margin-bottom: 0 !important;
+  padding-top: nhsuk-spacing(2);
+  padding-bottom: nhsuk-spacing(2);
+  @include clearfix();
+}
+
+.app-task-list__item:first-child {
+  border-top: 1px solid $nhsuk-border-color;
+}
+
+.app-task-list__task-name {
+  display: block;
+  @include mq($from: tablet) {
+    float: left;
+    width: 75%;
+  }
+}
+
+.app-task-list__task-completed {
+  margin-top: nhsuk-spacing(2);
+  margin-bottom: nhsuk-spacing(1);
+
+  @include mq($from: tablet) {
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+}
