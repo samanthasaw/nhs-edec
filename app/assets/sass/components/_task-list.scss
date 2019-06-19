@@ -74,8 +74,30 @@
 }
 
 .tag-completed {
-  padding: 4px 8px;
+  padding: 2px 8px;
   border: 2px solid;
   float: right;
   outline-offset: -2px;
+  font-size: 16px;
+}
+
+.tag-completed_blue {
+  padding: 2px 8px;
+  border: 2px solid;
+  border-color: #005eb8;
+  float: right;
+  outline-offset: -2px;
+  font-size: 16px;
+  color: #ffffff
+  background-color: #005eb8;
+}
+
+.tag-completed_black {
+  padding: 2px 8px;
+  border: 2px solid;
+  float: right;
+  outline-offset: -2px;
+  font-size: 16px;
+  color: #ffffff
+  background-color: #212b32;
 }
