@@ -1,5 +1,7 @@
 <!-- Use this page as the index for your project -->
-
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Your GP practice details" %}
+{% set title = contentTitle + " - " + serviceName %}
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
@@ -12,7 +14,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  {{ title }}
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -27,49 +29,32 @@
 
       <!-- Change the page title here -->
       <h1>
-        NHS.UK prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
+        Your practice details
       </h1>
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <p class="nhsuk-body-l">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
-
-      <hr>
-
-      <h2>
-        About this page
-      </h2>
-
-      <p>
-        Use this page as the index for your project.
-      </p>
-
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
-
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
-
-      <hr>
-
-      <h2>
-        Documentation
-      </h2>
-
       <ul>
-        <li>
-          Get started with <a href="/docs">how to guides and page templates</a>
-        </li>
-        <li>
-          Copy and paste styles and components from the <a href="https://beta.nhs.uk/service-manual/styles-components-patterns">NHS digital service manual</a>
-        </li>
+        <li><a href="/submit-your-edec/sections/practice-details/organisation-code">Enter your organisation code (ODS code)</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/practice-name">Enter your GP practice name</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">What is your GP practice contract type?</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Enter your GP practice contract type</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">What is your organisation type?</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Has your GP practice changed configuration or structure since you submitted your last eDeclaration?</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Enter your GP practice contract start date</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Enter your GP practice contract end date</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Enter your GP practice phone number for patients</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Do you have another phone number for people who are not patients to contact you on?</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Enter the phone number people who are not patients can contact you on</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Does your GP practice have any branches?</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Enter the number of brances your GP practice has</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Check your answers</a></li>
+        <li><a href="/submit-your-edec/sections/practice-details/">Section complete confirmation</a></li>
       </ul>
+
+
+
 
       <!-- End of content -->
 

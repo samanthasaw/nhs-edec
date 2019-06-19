@@ -1,7 +1,7 @@
 {% set PROTOTYPEURL = "examples" %}
 {% set serviceName = "Submit your eDeclaration" %}
 {% set title = question + " - " + serviceName %}
-{% set question = "Enter your GP practice organisation code (ODS code)" %}
+{% set question = "What is your GP practice contract type?" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -31,25 +31,42 @@
 
       <form action="#" method="get">
 
-        {{ input({
-          "label": {
-            "text": question,
-            "isPageHeading": true,
-            "classes": "nhsuk-label--xl app-label-xl"
+        {{ radios({
+          "idPrefix": "example-divider",
+          "name": "example",
+          "fieldset": {
+            "legend": {
+              "text": question,
+              "classes": "nhsuk-label--xl app-label-xl"
+            }
           },
-          "hint": {
-            "text": "Practice organisation code (ODS code)"
-          },
-          "id": "inputodscode",
-          "name": "odscode",
-          "classes": "nhsuk-input--width-30"
+          "items": [
+            {
+              "value": "gms",
+              "text": "General medical services (GMS)"
+            },
+            {
+              "value": "pms",
+              "text": "Personal medical services (PMS)"
+            },
+            {
+              "value": "apms",
+              "text": "Alternative provider medical services (APMS)"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "other",
+              "text": "Other type of contract"
+            }
+          ]
         }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
-
 
     </div>
   </div>

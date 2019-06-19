@@ -1,7 +1,6 @@
 {% set PROTOTYPEURL = "examples" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = question + " - " + serviceName %}
-{% set question = "Enter your GP practice organisation code (ODS code)" %}
+{% set title = serviceName %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -31,25 +30,38 @@
 
       <form action="#" method="get">
 
-        {{ input({
-          "label": {
-            "text": question,
-            "isPageHeading": true,
+      {{ dateInput({
+        "id": "dob",
+        "namePrefix": "dob",
+        "fieldset": {
+          "legend": {
+            "text": "Enter the last day of your GP practice contract",
             "classes": "nhsuk-label--xl app-label-xl"
+          }
+        },
+        "hint": {
+          "text": "For example, 14 12 2020"
+        },
+        "items": [
+          {
+            "name": "day",
+            "classes": "nhsuk-input--width-2"
           },
-          "hint": {
-            "text": "Practice organisation code (ODS code)"
+          {
+            "name": "month",
+            "classes": "nhsuk-input--width-2"
           },
-          "id": "inputodscode",
-          "name": "odscode",
-          "classes": "nhsuk-input--width-30"
-        }) }}
+          {
+            "name": "year",
+            "classes": "nhsuk-input--width-4"
+          }
+        ]
+      }) }}
 
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
+      <input type="submit" class="nhsuk-button" value="Continue">
+      </input>
 
-      </form>
-
+    </form>
 
     </div>
   </div>

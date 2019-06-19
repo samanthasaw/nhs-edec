@@ -1,7 +1,7 @@
 {% set PROTOTYPEURL = "examples" %}
 {% set serviceName = "Submit your eDeclaration" %}
 {% set title = question + " - " + serviceName %}
-{% set question = "Enter your GP practice organisation code (ODS code)" %}
+{% set question = "Enter your GP practice name" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -25,6 +25,8 @@
 
 {% endblock %}
 
+
+
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
@@ -38,10 +40,10 @@
             "classes": "nhsuk-label--xl app-label-xl"
           },
           "hint": {
-            "text": "Practice organisation code (ODS code)"
+            "text": "Practice name"
           },
-          "id": "inputodscode",
-          "name": "odscode",
+          "id": "inputpracticename",
+          "name": "practicename",
           "classes": "nhsuk-input--width-30"
         }) }}
 
