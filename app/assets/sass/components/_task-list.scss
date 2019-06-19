@@ -79,6 +79,8 @@
   float: right;
   outline-offset: -2px;
   font-size: 16px;
+  min-width: 112px;
+  text-align: center;
 }
 
 .tag-completed_blue {
@@ -88,8 +90,10 @@
   float: right;
   outline-offset: -2px;
   font-size: 16px;
-  color: #ffffff
+  color: #ffffff;
   background-color: #005eb8;
+  min-width: 112px;
+  text-align: center;
 }
 
 .tag-completed_black {
@@ -98,6 +102,28 @@
   float: right;
   outline-offset: -2px;
   font-size: 16px;
-  color: #ffffff
+  color: #ffffff;
   background-color: #212b32;
+  min-width: 112px;
+  text-align: center;
+}
+
+.tag-not-started {
+  padding: 2px 8px;
+  border: 2px solid;
+  float: right;
+  outline-offset: -2px;
+  font-size: 16px;
+  min-width: 112px;
+  text-align: center;
+}
+
+.tag-started {
+  padding: 2px 8px;
+  border: 2px solid;
+  float: right;
+  outline-offset: -2px;
+  font-size: 16px;
+  min-width: 112px;
+  text-align: center;
 }

@@ -1,7 +1,6 @@
 {% set PROTOTYPEURL = "examples" %}
 {% set serviceName = "Submit your eDeclaration" %}
 {% set title = question + " - " + serviceName %}
-{% set question = "What is your organisation type?" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -31,35 +30,28 @@
 
       <form action="#" method="get">
 
-      {{ radios({
-        "idPrefix": "example-divider",
-        "name": "example",
-        "fieldset": {
-          "legend": {
-            "text": question,
-            "classes": "nhsuk-label--xl app-heading-xl"
-          }
-        },
-        "items": [
-          {
-            "value": "nhsbody",
-            "text": "NHS body"
-          },
-          {
-            "value": "nonnhsbody",
-            "text": "Non NHS body"
-          },
-          {
-            "value": "enterprise",
-            "text": "Social enterprise"
-          }
-        ]
-      }) }}
 
-      <input type="submit" class="nhsuk-button" value="Continue">
-      </input>
+        {{ input({
+          "label": {
+            "text": "What telephone number can your patients use to call you?",
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl app-label-xl"
+          },
+          "hint": {
+            "text": "Telephone number"
+          },
+          "id": "inputpatientphone",
+          "name": "patientphoner",
+          "classes": "nhsuk-input--width-10"
+        }) }}
 
-    </form>
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
 
     </div>
   </div>
