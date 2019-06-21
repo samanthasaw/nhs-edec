@@ -1,0 +1,56 @@
+{% set PROTOTYPEURL = "examples" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set title = question + " - " + serviceName %}
+{% set question = "How many branches does your GP practice have?" %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Your GP practice details</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="#" method="get">
+
+        {{ input({
+          "label": {
+            "text": question,
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl app-label-xl"
+          },
+          "hint": {
+            "text": "Practice organisation code (ODS code)"
+          },
+          "id": "inputodscode",
+          "name": "odscode",
+          "classes": "nhsuk-input--width-30"
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
