@@ -13,6 +13,7 @@
 
 .app-task-list__section {
   display: table;
+  padding-top: 24px;
 }
 
 .app-task-list__section-number {
@@ -47,6 +48,7 @@
   padding-top: nhsuk-spacing(2);
   padding-bottom: nhsuk-spacing(2);
   @include clearfix();
+  list-style-type: none;
 }
 
 .app-task-list__item:first-child {
@@ -124,6 +126,8 @@
   float: right;
   outline-offset: -2px;
   font-size: 16px;
+  color: #212b32;
+  background-color: #FFFFFF;
   min-width: 112px;
   text-align: center;
 }
