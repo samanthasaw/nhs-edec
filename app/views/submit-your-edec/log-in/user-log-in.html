@@ -1,5 +1,12 @@
 <!-- Use this page as the index for your project -->
 
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Enter your login details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
@@ -12,7 +19,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Submit your eDeclaration
+  {{ title }}
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -26,8 +33,9 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
-      <h1>
-        Enter your login details
+
+      <h1 class="nhsuk-label--xl app-heading-xl">
+        {{ contentTitle }}
       </h1>
 
       <!-- Add your content here -->
@@ -65,6 +73,8 @@
         </input>
 
       </form>
+
+      <p><a href="">I've forgotten my username or password</a></p>
 
       <!-- End of content -->
 
