@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Check the opening hours you submitted last year" %}
+{% set contentTitle = "Check the special and holiday hours you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -146,24 +146,24 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/check-last-year" method="post">
+      <form action="#" method="get">
         {{ radios({
-          "idPrefix": "sections",
-          "name": "openinghours",
+          "idPrefix": "gov",
+          "name": "gov",
           "fieldset": {
             "legend": {
-              "text": "Are these opening hours correct?",
+              "text": "Have your special and holiday hours changed?",
               "classes": "nhsuk-fieldset__legend--m"
             }
           },
           "items": [
             {
               "value": "yes",
-              "text": "Yes, they're correct"
+              "text": "Yes, I need to change them"
             },
             {
               "value": "no",
-              "text": "No, I need to change them"
+              "text": "No, they're the same"
             }
           ]
         }) }}

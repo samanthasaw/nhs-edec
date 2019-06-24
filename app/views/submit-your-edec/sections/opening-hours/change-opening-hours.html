@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Check the opening hours you submitted last year" %}
+{% set contentTitle = "Change your opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -29,6 +29,8 @@
 
       <h1>{{ contentTitle }}</h1>
 
+      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/check-special-opening-hours" method="get">
+
       {{ summaryList({
         rows: [
           {
@@ -42,6 +44,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -58,6 +61,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -74,6 +78,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -90,6 +95,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -106,6 +112,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -122,6 +129,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -138,6 +146,7 @@
               items: [
                 {
                   href: "#",
+                  text: "Change",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -146,32 +155,17 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/check-last-year" method="post">
-        {{ radios({
-          "idPrefix": "sections",
-          "name": "openinghours",
-          "fieldset": {
-            "legend": {
-              "text": "Are these opening hours correct?",
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes, they're correct"
-            },
-            {
-              "value": "no",
-              "text": "No, I need to change them"
-            }
-          ]
-        }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
+
+
+      {{ backLink({
+        "href": "../opening-hours/check-last-year",
+        "text": "Back"
+      }) }}
 
 
     </div>
