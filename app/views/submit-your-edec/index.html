@@ -1,5 +1,12 @@
 <!-- Use this page as the index for your project -->
 
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Prototype" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
@@ -12,7 +19,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  {{ title }}
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -28,7 +35,7 @@
       <!-- Change the page title here -->
 
       <h1>
-        Prototype
+        {{ contentTitle }}
         <span class="nhsuk-caption-xl nhsuk-caption--bottom">Submit your eDeclaration</span>
       </h1>
       <p>
@@ -42,22 +49,35 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
+      <h2>Start page</h2>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/start-page/service-start-page">Start page</a>
+      </ul>
+
       <h2>Log in</h2>
 
       <ul>
-        <li><a href="/submit-your-edec/log-in/user-log-in">Log in</a>
+        <li><a href="/{{ PROTOTYPEURL }}/log-in/user-log-in">Log in</a>
       </ul>
+
+      <h2>Select a GP surgery</h2>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/select-surgery/select-a-surgery">Select a GP surgery</a>
+      </ul>
+
 
       <h2>Task list</h2>
 
       <ul>
-        <li><a href="/submit-your-edec/task-list/index">Task list</a>
+        <li><a href="/{{ PROTOTYPEURL }}/task-list/index">Task list</a>
       </ul>
 
       <h2>Sections</h2>
 
       <ul>
-        <li><a href="/submit-your-edec/sections/practice-details/index">Practice details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/index">Practice details</a></li>
         <li><a href="">Staff details</a></li>
         <li><a href="">Location details</a></li>
         <li><a href="">Services details</a></li>
@@ -67,7 +87,7 @@
         <li><a href="">Catchment area</a></li>
         <li><a href="">Supporting information</a></li>
         <li><a href="">Opening hours</a></li>
-        <li><a href="/submit-your-edec/submit/index">Submit your eDeclaration</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/submit/index">Submit your eDeclaration</a></li>
       </ul>
 
       <h2>System structure</h2>
