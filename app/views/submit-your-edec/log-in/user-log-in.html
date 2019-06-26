@@ -41,6 +41,7 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
+      <form action="/{{ PROTOTYPEURL }}/select-surgery/select-a-surgery" method="get">
 
           {{ input({
             "label": {
@@ -66,8 +67,6 @@
             "name": "password",
             "classes": "nhsuk-input--width-20"
           }) }}
-
-        </fieldset>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

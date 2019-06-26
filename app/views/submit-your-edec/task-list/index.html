@@ -4,7 +4,7 @@
 
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Task List"}
+{% set contentTitle = "Task List" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -19,7 +19,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Submit your eDeclaration
+  {{ title }}
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
