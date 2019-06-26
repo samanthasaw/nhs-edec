@@ -1,6 +1,7 @@
-{% set PROTOTYPEURL = "examples" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = question + " - " + serviceName %}
+{% set contentTitle = "Do you have another phone number for people who are not patients to contact you on?"}
+{% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -35,7 +36,7 @@
           "name": "example",
           "fieldset": {
             "legend": {
-              "text": "Do you have another phone number for people who are not patients to contact you on?",
+              "text": contentTitle,
               "classes": "nhsuk-label--xl app-heading-xl"
             }
           },

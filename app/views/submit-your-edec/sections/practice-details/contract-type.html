@@ -1,7 +1,7 @@
-{% set PROTOTYPEURL = "examples" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = question + " - " + serviceName %}
-{% set question = "What is your GP practice contract type?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "What is your GP practice contract type?" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -37,7 +37,7 @@
         "name": "example",
         "fieldset": {
           "legend": {
-            "text": question,
+            "text": contentTitle,
             "classes": "nhsuk-label--xl app-label-xl"
           }
         },
@@ -63,7 +63,7 @@
           }
         ]
       }) }}
-      
+
       <input type="submit" class="nhsuk-button" value="Continue">
       </input>
 

@@ -1,4 +1,10 @@
 <!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Submit" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
@@ -28,7 +34,7 @@
       <!-- Change the page title here -->
 
       <h1>
-        Submit
+        {{ contentTitle }}
       </h1>
 
 

@@ -1,6 +1,7 @@
 {% set PROTOTYPEURL = "examples" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = question + " - " + serviceName %}
+{% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "What telephone number can people who are not patients use to call you?"}
 {% block pageScripts %}
 {% endblock %}
 
@@ -33,7 +34,7 @@
 
         {{ input({
           "label": {
-            "text": "What telephone number can people who are not patients use to call you?",
+            "text": contentTitle,
             "isPageHeading": true,
             "classes": "nhsuk-label--xl app-label-xl"
           },

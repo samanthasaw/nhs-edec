@@ -1,7 +1,10 @@
 <!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
 {% set contentTitle = "Your GP practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
@@ -28,9 +31,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
-      <h1>
-        Your practice details
-      </h1>
+      <h1>{{ contentTitle }}</h1>
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->

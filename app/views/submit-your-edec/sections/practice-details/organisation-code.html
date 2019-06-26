@@ -1,10 +1,9 @@
-{% set PROTOTYPEURL = "examples" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = question + " - " + serviceName %}
-{% set question = "Enter your GP practice organisation code (ODS code)" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "Enter your GP practice organisation code (ODS code)" %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -33,7 +32,7 @@
 
         {{ input({
           "label": {
-            "text": question,
+            "text": contentTitle,
             "isPageHeading": true,
             "classes": "nhsuk-label--xl app-label-xl"
           },

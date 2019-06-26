@@ -1,9 +1,9 @@
-{% set PROTOTYPEURL = "examples" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = serviceName %}
+{% set contentTitle = "Enter the last day of your GP practice contract" %}
+{% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -35,7 +35,7 @@
         "namePrefix": "dob",
         "fieldset": {
           "legend": {
-            "text": "Enter the last day of your GP practice contract",
+            "text": contentTitle,
             "classes": "nhsuk-label--xl app-label-xl"
           }
         },

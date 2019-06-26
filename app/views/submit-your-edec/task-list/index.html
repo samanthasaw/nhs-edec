@@ -2,6 +2,13 @@
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Task List"}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
 <!--
@@ -28,7 +35,7 @@
       <!-- Change the page title here -->
 
       <h1>
-        Task List
+        {{ contentTitle }}
       </h1>
 
       <ul>

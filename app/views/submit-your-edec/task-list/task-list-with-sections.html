@@ -1,5 +1,6 @@
-{% set PROTOTYPEURL = "examples" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Submit your eDeclaration"}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -26,7 +27,7 @@
 
 {% block content %}
 
-<h1 class="nhsuk-label--xl app-heading-xl">Submit your eDeclaration</h1>
+<h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
 <p>Confirm your GP practice details are correct to submit your eDeclaration.</p>
   <div class="nhsuk-grid-row">

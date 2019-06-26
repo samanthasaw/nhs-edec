@@ -1,9 +1,9 @@
-{% set PROTOTYPEURL = "examples" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set title = question + " - " + serviceName %}
+{% set contentTitle = "Does your GP practice have any branches?" %}
+{% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -35,7 +35,7 @@
           "name": "example",
           "fieldset": {
             "legend": {
-              "text": "Does your GP practice have any branches?",
+              "text": contentTitle,
               "classes": "nhsuk-label--xl app-heading-xl"
             }
           },

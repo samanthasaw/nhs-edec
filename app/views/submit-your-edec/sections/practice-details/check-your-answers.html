@@ -1,10 +1,9 @@
-{% set PROTOTYPEURL = "examples" %}
-{% set serviceName = "Contact preferences" %}
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
 {% set contentTitle = "Check your practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -29,7 +28,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
       {{ summaryList({
         rows: [
