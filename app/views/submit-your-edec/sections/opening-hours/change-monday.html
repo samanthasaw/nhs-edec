@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Monday" %}
+{% set contentTitle = "Change your Monday opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -29,56 +29,33 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-        {{ dateInput({
-          "id": "dob",
-          "namePrefix": "dob",
-          "fieldset": {
-            "legend": {
-              "text": "Open",
-              "isPageHeading": true,
-              "classes": "nhsuk-label--xl"
-            }
+      <form action="#" method="get">
+
+      {{ radios({
+        "idPrefix": "example",
+        "classes": "nhsuk-radios--inline",
+        "name": "example",
+        "fieldset": {
+          "legend": {
+          }
+        },
+        "items": [
+          {
+            "value": "open",
+            "text": "Open"
           },
-          "items": [
-            {
-              "name": "day",
-              "classes": "nhsuk-input--width-2"
-            },
-            {
-              "name": "month",
-              "classes": "nhsuk-input--width-2"
-            }
-          ]
-        }) }}
+          {
+            "value": "closed",
+            "text": "Closed"
+          }
+        ]
+      }) }}
 
-        {{ dateInput({
-          "id": "dob",
-          "namePrefix": "dob",
-          "fieldset": {
-            "legend": {
-              "text": "Close",
-              "isPageHeading": true,
-              "classes": "nhsuk-label--xl"
-            }
-          },
-          "items": [
-            {
-              "name": "day",
-              "classes": "nhsuk-input--width-2"
-            },
-            {
-              "name": "month",
-              "classes": "nhsuk-input--width-2"
-            }
-          ]
-        }) }}
+      <input type="submit" class="nhsuk-button" value="Continue">
+      </input>
 
+    </form>
 
-
-    {{ button({
-      "text": "Save",
-      "href": "/submit-your-edec/sections/opening-hours/check-last-year"
-    }) }}
 
     </div>
   </div>
