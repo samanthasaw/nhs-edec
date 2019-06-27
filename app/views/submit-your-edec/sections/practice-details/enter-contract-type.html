@@ -1,7 +1,7 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
 {% set title = contentTitle + " - " + serviceName %}
-{% set contentTitle = "Enter your GP practice contract type" %}
+{% set contentTitle = "Tell us what other type of GP contract you have" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -41,9 +41,10 @@
             "text": "Contract type"
           },
           "id": "inputcontracttype",
-          "name": "contracttype,
+          "name": "contracttype",
           "classes": "nhsuk-input--width-30"
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
