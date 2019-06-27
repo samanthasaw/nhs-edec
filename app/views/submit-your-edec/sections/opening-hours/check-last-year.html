@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Check the opening hours you submitted last year" %}
+{% set contentTitle = "Check the opening hours you submitted last year for {{ surgery }}" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -153,7 +153,7 @@
           "fieldset": {
             "legend": {
               "text": "Are these opening hours correct?",
-              "classes": "nhsuk-fieldset__legend--m"
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
           "items": [

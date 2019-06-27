@@ -13,7 +13,7 @@ router.post('/submit-your-edec/sections/opening-hours/check-last-year', function
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/opening-hours/change-opening-hours') }
+    res.redirect('/submit-your-edec/sections/opening-hours/which-days') }
 
   else {
     // res.redirect('error')
