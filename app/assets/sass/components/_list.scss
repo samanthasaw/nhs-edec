@@ -37,6 +37,7 @@
 
   list-style-type: none;
   padding-left: 0;
+  padding: 0;
 }
 
 
@@ -50,4 +51,21 @@
   @include mq($from: tablet) {
     width: 70%;
   }
+}
+
+.app-list-inline {
+
+  li {
+
+    display: inline-block;
+    margin-left: .5em;
+    margin-bottom: 0;
+  }
+
+}
+
+.app-list-inline--right {
+
+  float: right;
+
 }

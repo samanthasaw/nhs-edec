@@ -48,6 +48,28 @@
 {% endblock %}
 
 {% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-half">
+        <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Your GP practice opening hours</p>
+      </div>
+      <div class="nhsuk-grid-column-one-half">
+        <nav>
+          <ul class="app-list--unstyled app-list-inline app-list-inline--right nhsuk-u-margin-bottom-0">
+            <li>
+                <a class="nhsuk-body-m nhsuk-u-margin-bottom-0" href="#">
+                Return to task list
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -62,4 +84,27 @@
 
     </div>
   </div>
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "#",
+        "label": "Home"
+      },
+      {
+        "URL": "#",
+        "label": "Your GP practices"
+      },
+      {
+        "URL": "#",
+        "label": "Your account"
+      },
+      {
+        "URL": "#",
+        "label": "Sign out"
+      }
+    ]
+  })}}
 {% endblock %}
