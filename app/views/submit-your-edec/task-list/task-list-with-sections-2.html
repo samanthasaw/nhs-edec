@@ -1,10 +1,15 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Submit your eDeclaration" %}
+{% set contentTitle = "Submit your eDeclaration for " + surgery %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
 
+{% if data['surgery'] %}
+    {% set surgery = data['surgery'] %}
+  {% else %}
+    {% set surgery = "One Medicare LLP-The Light" %}
+{% endif %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -19,7 +24,7 @@
 
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Home</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
   </div>
 </div>
 
@@ -31,7 +36,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }} {{ surgery }}</h1>
 
       <p>Confirm your GP practice details are correct to submit your eDeclaration.</p>
 
@@ -130,11 +135,8 @@
             <span class="app-task-list__section-number">5. </span> Submit
           </h2>
           <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
-                Submit your eDeclaration
-              </a>
-              <strong class="tag-not-started" id="company-information-completed">Not submitted</strong>
+            <li>
+              <p>You must complete all the sections before you can submit your eDeclaration.</p>
             </li>
           </ul>
         </li>
