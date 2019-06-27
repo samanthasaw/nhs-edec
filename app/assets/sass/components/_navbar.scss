@@ -1,0 +1,59 @@
+//
+// Top bar navigation
+//
+
+.app-header {
+
+
+}
+
+.app-header__navbar {
+
+  float: right;
+  display: block;
+  padding: 21px nhsuk-spacing(3) 0 0;
+
+  @include mq($until: tablet) {
+    clear: both;
+    float: left;
+    padding: 0 0 8px 8px;
+  }
+
+}
+
+.app-header__list {
+
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+
+}
+
+.app-header__list-item {
+
+  display: inline-block;
+  margin-bottom: 0;
+  margin-left: 8px;
+
+}
+
+.app-header__list-link {
+
+  color: $color_nhsuk-white;
+
+  &:visited {
+
+    color: $color_nhsuk-white;
+  }
+
+  &:hover {
+
+    color: $color_nhsuk-black;
+    text-decoration: underline;
+  }
+
+  &:focus {
+
+    color: $color_nhsuk-black;
+  }
+}

@@ -1,0 +1,35 @@
+{% set PROTOTYPEURL = "discovery" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "New patterns and components" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+{% extends 'layout.html' %}
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="">
+        <span class="nhsuk-caption-xl nhsuk-caption--top">{{ serviceName }}</span>
+        {{ contentTitle }}
+      </h1>
+
+      <h2>Navbars and breadcrumbs</h2>
+      <ul>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/navbar/with-links">With account, sign out link</a>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+{% endblock %}
