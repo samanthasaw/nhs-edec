@@ -21,14 +21,14 @@
 <!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
 {% block header %}
   {{ header({
-    "service": {
-        "name": "Submit your eDeclaration",
-        "href": "/"
-      },
-      "showNav": "false",
-      "showSearch": "false"
-    })
-  }}
+  "transactionalService": {
+      "name": "Submit your eDeclaration",
+      "href": "/"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+  })
+}}
 {% endblock %}
 
 <!-- Footer goes inside the footer block -->
