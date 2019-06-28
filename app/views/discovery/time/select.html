@@ -1,10 +1,9 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Update your Monday opening hours" %}
+{% set contentTitle = "Enter your Monday opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
-<script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
-<script src="/js/autocomplete-time.js" type="text/javascript"></script>
+<script src="/js/select.js" type="text/javascript"></script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -28,47 +27,22 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
-
       <form action="#" method="get">
-        {{ radios({
-          "idPrefix": "gov",
-          "name": "gov",
-          "classes": "nhsuk-radios--inline",
-          "fieldset": {
-            "legend": {
-              "text": "Is your practice open on Monday?",
-              "isPageHeading": false,
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "open",
-              "text": "Yes",
-              "checked": "True"
-            },
-            {
-              "value": "closed",
-              "text": "No"
-            }
-          ]
-        }) }}
 
         {% call fieldset({
           "legend": {
-            "text": "Your opening hours",
-            "classes": "nhsuk-label--l",
-            "isPageHeading": false
+            "text": contentTitle,
+            "classes": "nhsuk-label--xl app-heading-xl",
+            "isPageHeading": true
           }
         }) %}
 
         {{ hint({
-          "text": "For example, 9:30am or 5:00pm"
+          "text": "For example, 8:30am to 1:00pm and 2:00pm to 6:00pm"
         }) }}
 
         <div class="nhsuk-grid-row">
-          <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-grid-column-one-third">
 
             {{ label({
               "text": "From",
@@ -78,7 +52,7 @@
               "id": "ODS2"
             }) }}
 
-            <select name="ODS2" id="ODS2">
+            <select class="nhsuk-select app-select--full-width" name="ODS2" id="ODS2">
               <option value="">Select a time</option>
               <option id='0:01am'>0:01am</option>
               <option id='0:15am'>0:15am</option>
@@ -180,7 +154,7 @@
             </select>
           </div>
 
-          <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-grid-column-one-third">
             {{ label({
               "text": "To",
               "isPageHeading": false,
@@ -189,7 +163,7 @@
               "id": "ODS"
             }) }}
 
-            <select name="ODS" id="ODS">
+            <select class="nhsuk-select app-select--full-width" name="ODS" id="ODS">
               <option value="">Select a time</option>
               <option id='0:01am'>0:01am</option>
               <option id='0:15am'>0:15am</option>
@@ -293,7 +267,7 @@
         </div>
 
         <div style="display:none;" class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
-          <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-grid-column-one-third">
 
             {{ label({
               "text": "From",
@@ -303,7 +277,7 @@
               "id": "ODS3"
             }) }}
 
-            <select name="ODS3" id="ODS3">
+            <select class="nhsuk-select app-select--full-width" name="ODS3" id="ODS3">
               <option value="">Select a time</option>
               <option id='0:01am'>0:01am</option>
               <option id='0:15am'>0:15am</option>
@@ -405,7 +379,7 @@
             </select>
           </div>
 
-          <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-grid-column-one-third">
             {{ label({
               "text": "To",
               "isPageHeading": false,
@@ -414,7 +388,7 @@
               "id": "ODS4"
             }) }}
 
-            <select class="nhsuk-select" name="ODS4" id="ODS4">
+            <select class="nhsuk-select app-select--full-width" name="ODS4" id="ODS4">
               <option value="">Select a time</option>
               <option id='0:01am'>0:01am</option>
               <option id='0:15am'>0:15am</option>
@@ -524,7 +498,7 @@
         </div>
 
         <div style="display:none;" class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
-          <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-grid-column-one-third">
 
             {{ label({
               "text": "From",
@@ -534,7 +508,7 @@
               "id": "ODS5"
             }) }}
 
-            <select class="nhsuk-select" name="ODS5" id="ODS5">
+            <select class="nhsuk-select app-select--full-width" name="ODS5" id="ODS5">
               <option value="">Select a time</option>
               <option id='0:01am'>0:01am</option>
               <option id='0:15am'>0:15am</option>
@@ -636,7 +610,7 @@
             </select>
           </div>
 
-          <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-grid-column-one-third">
             {{ label({
               "text": "To",
               "isPageHeading": false,
@@ -645,7 +619,7 @@
               "id": "ODS6"
             }) }}
 
-            <select class="nhsuk-select" name="ODS6" id="ODS6">
+            <select class="nhsuk-select app-select--full-width" name="ODS6" id="ODS6">
               <option value="">Select a time</option>
               <option id='0:01am'>0:01am</option>
               <option id='0:15am'>0:15am</option>

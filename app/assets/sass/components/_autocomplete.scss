@@ -144,3 +144,25 @@
     display: none;
   }
 }
+
+.app-select--full-width {
+
+  width: 100%;
+}
+
+.app-select__autocomplete {
+
+  float: left;
+  max-width: 5em;
+}
+
+.app-select__ampm {
+
+  float: left;
+  margin-left: .5em;
+
+  .nhsuk-select {
+
+    min-width: 5em;
+  }
+}
