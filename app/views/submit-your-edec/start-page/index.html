@@ -1,8 +1,7 @@
 <!-- Use this page as the index for your project -->
-
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Enter your login details" %}
+{% set contentTitle = "Start page" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -19,7 +18,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  {{ title }}
+  Submit your eDeclaration
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -34,46 +33,24 @@
 
       <!-- Change the page title here -->
 
-      <h1 class="nhsuk-label--xl app-heading-xl">
+      <h1>
         {{ contentTitle }}
       </h1>
+
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <form action="/{{ PROTOTYPEURL }}/gp-surgeries/your-gp-surgeries" method="get">
+      <ul>
+        <li><a href="/submit-your-edec/start-page/service-start-page">Service start page</a></li>
+        <li><a href="/submit-your-edec/start-page/no-username-or-password">User does not have their login details</a></li>
+      </ul>
 
-          {{ input({
-            "label": {
-              "text": "Username"
-            },
-            "attributes": {
-              "autocomplete": "off"
-            },
-            "id": "inputusername",
-            "name": "username",
-            "classes": "nhsuk-input--width-20"
-          }) }}
 
-          {{ input({
-            "type": "password",
-            "label": {
-              "text": "Password"
-            },
-            "attributes": {
-              "autocomplete": "off"
-            },
-            "id": "inputpassword",
-            "name": "password",
-            "classes": "nhsuk-input--width-20"
-          }) }}
-
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
-
-      </form>
-
-      <p><a href="/{{ PROTOTYPEURL }}/log-in/forgot-username-password">I've forgotten my username or password</a></p>
+            {{ backLink({
+              "href": "/submit-your-edec/index",
+              "text": "Back"
+            }) }}
 
       <!-- End of content -->
 
