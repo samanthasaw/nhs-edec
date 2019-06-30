@@ -31,7 +31,7 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <form action="#" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/check-special-opening-hours" method="post">
 
         {{ radios({
           "idPrefix": "gov",
@@ -47,12 +47,12 @@
           "items": [
             {
               "value": "open",
-              "text": "Yes",
-              "checked": "True"
+              "text": "Yes"
             },
             {
               "value": "closed",
-              "text": "No"
+              "text": "No",
+              "checked": "True"
             }
           ]
         }) }}
@@ -659,11 +659,8 @@
           <a id="add" href="#" onclick="add(2);">Add more Sunday opening hours</a>
         </p>
 
-
-
-
         <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
+
 
       </form>
 
