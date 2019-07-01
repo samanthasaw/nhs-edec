@@ -67,3 +67,9 @@ li ul {
     font-size: .9em;
   }
 }
+
+
+.nhsuk-grid-row {
+  // create one-half tablet viewpoint
+  @include govuk-grid-column(one-half, $at: tablet, $class: "app-grid-column-tablet")
+}
