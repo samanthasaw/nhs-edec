@@ -36,9 +36,7 @@
 }
 
 .app-task-list__items--no-padding {
-  @include mq($from: tablet) {
-    padding-left: 0;
-  }
+  padding-left: 0;
 }
 
 .app-task-list__item {
@@ -55,9 +53,11 @@
 }
 
 .app-task-list__task-name {
-  display: block;
+  max-width: 50%;
+  display: inline-block;
   @include mq($from: tablet) {
     float: left;
+    max-width: unset;
     width: 75%;
   }
 }
