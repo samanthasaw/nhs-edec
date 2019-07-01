@@ -4,7 +4,11 @@ function gpSelect(gp, url){
 
   // grab the variable called gp
   // set gp to session storage called "surgery"
-  // redirect window to /submit-your-edec/task-list/task-list-with-sections-2
+  // save that by calling to a post route
+  // grab the variable called url
+  // check if it is set
+  // if it is redirect the page to it
+  // if not, redirect window to /submit-your-edec/task-list/redirect
 
   sessionStorage.setItem("surgery", gp);
   // console.log(sessionStorage.getItem("data"));
