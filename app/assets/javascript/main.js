@@ -7,5 +7,12 @@ function gpSelect(gp, url){
   // redirect window to /submit-your-edec/task-list/task-list-with-sections-2
 
   sessionStorage.setItem("surgery", gp);
-  window.location.href = "/submit-your-edec/task-list/redirect";
+  // console.log(sessionStorage.getItem("data"));
+  $.post( "/submit-your-edec/task-list/redirect", { surgery: gp } );
+  if (url) {
+    window.location.href = url
+  } else {
+    window.location.href = "/submit-your-edec/task-list/redirect"
+  }
+
 }
