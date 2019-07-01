@@ -1,6 +1,11 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Check the practice details you submitted last year for {{ surgery }}" %}
+{% if data['surgery'] %}
+    {% set surgery = data['surgery'] %}
+  {% else %}
+    {% set surgery = "One Medicare LLP-The Light" %}
+{% endif %}
+{% set contentTitle = "Check the practice details you submitted last year for " + surgery %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
