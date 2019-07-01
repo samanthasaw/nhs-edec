@@ -1,15 +1,16 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Submit your eDeclaration for " + surgery %}
-{% set title = contentTitle + " - " + serviceName %}
-{% block pageScripts %}
-{% endblock %}
-
 {% if data['surgery'] %}
     {% set surgery = data['surgery'] %}
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
+{% set contentTitle = "Submit your eDeclaration for " + surgery %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -36,7 +37,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }} {{ surgery }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
       <p>Confirm your GP practice details are correct to submit your eDeclaration.</p>
 
