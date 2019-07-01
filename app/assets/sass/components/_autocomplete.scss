@@ -166,3 +166,13 @@
     min-width: 5em;
   }
 }
+
+.app-select_remove-row {
+
+  padding-top: nhsuk-spacing(2);
+
+  @include mq($from: tablet) {
+    margin: 0;
+    padding-top: nhsuk-spacing(6);
+  }
+}

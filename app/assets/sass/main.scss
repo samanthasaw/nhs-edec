@@ -72,4 +72,19 @@ li ul {
 .nhsuk-grid-row {
   // create one-half tablet viewpoint
   @include govuk-grid-column(one-half, $at: tablet, $class: "app-grid-column-tablet")
+
+  // create one-third tablet viewpoint
+  @include govuk-grid-column(one-third, $at: tablet, $class: "app-grid-column-tablet")
+}
+
+.app-u-visually-hidden--show-mobile {
+
+  @include mq($from: tablet) {
+    @include visually-hidden()
+  }
+}
+
+.app-u-no-padding--mobile {
+
+  padding: 0 !important;
 }
