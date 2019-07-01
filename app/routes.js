@@ -21,6 +21,22 @@ router.post('/submit-your-edec/sections/opening-hours/check-last-year', function
   }
 });
 
+router.post('/submit-your-edec/sections/practice-details/check-last-year', function (req, res) {
+  let answer = req.body.practicedetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/practice-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/change-practice-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
 
 // opening-hours checkboxes
 
