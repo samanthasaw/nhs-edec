@@ -7,6 +7,33 @@ module.exports = function (env) {
    */
   var filters = {}
 
+
+  // Filter to change a number, like 1 "12" or 04, to a month in words
+  //
+  // Usage in your templates:
+  //
+  // With number with filer        {{ 1 | monthToWord }}
+  // With data from previous input {{ data['dob-month'] | monthToWord }}
+
+  filters.monthToWord = function(month) {
+    var months = {
+      "1":'January',
+      "2":'February',
+      "3":'March',
+      "4":'April',
+      "5":'May',
+      "6":'June',
+      "7":'July',
+      "8":'August',
+      "9":'September',
+      "10":'October',
+      "11":'November',
+      "12":'December'
+    }
+    month.toString().replace(/^0+(?=\d)/, '')
+    return months[month]
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
