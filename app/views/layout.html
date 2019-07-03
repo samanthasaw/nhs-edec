@@ -35,14 +35,23 @@
 <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
 {% block footer %}
   {{ footer({
+    "classes": "nhsuk-footer--vertical",
     "links": [
       {
-        "URL": "/",
-        "label": "Home"
+        "URL": "#",
+        "label": "Accessibility"
       },
       {
-        "URL": "/page-example",
-        "label": "Example page"
+        "URL": "#",
+        "label": "Privacy notice"
+      },
+      {
+        "URL": "#",
+        "label": "Terms and conditions"
+      },
+      {
+        "URL": "#",
+        "label": "Cookie policy"
       }
     ]
   })}}

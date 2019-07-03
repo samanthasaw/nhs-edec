@@ -88,3 +88,10 @@ li ul {
 
   padding: 0 !important;
 }
+
+.nhsuk-footer--vertical {
+
+  .nhsuk-footer__list-item {
+    float: none;
+  }
+}
