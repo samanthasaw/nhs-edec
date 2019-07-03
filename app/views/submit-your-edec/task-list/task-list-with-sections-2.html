@@ -37,6 +37,11 @@
     <div class="nhsuk-grid-column-two-thirds">
 
 
+            {{ backLink({
+              "href": "/submit-your-edec/gp-surgeries/your-gp-surgeries",
+              "text": "Back to your GP surgeries"
+            }) }}
+
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
       <p>Confirm your GP practice details are correct to submit your eDeclaration.</p>
@@ -52,25 +57,25 @@
               <a href="/{{ PROTOTYPEURL }}/sections/practice-details/check-last-year" class="app-task-list__task-name" href="#" aria-describedby="eligibility-completed">
                 Practice details
               </a>
-              <strong class="tag-completed_blue" id="eligibility-completed">Completed</strong>
+              <strong class="tag-not-started" id="eligibility-completed">Not started</strong>
             </li>
             <li class="app-task-list__item">
               <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
                 Location details
               </a>
-              <strong class="tag-started" id="read-declaration-completed">Started</strong>
+              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
             </li>
             <li class="app-task-list__item">
               <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
                 Staff details
               </a>
-              <strong class="tag-started" id="read-declaration-completed">Started</strong>
+              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
             </li>
             <li class="app-task-list__item">
               <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
                 Catchment area
               </a>
-              <strong class="tag-started" id="read-declaration-completed">Started</strong>
+              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
             </li>
           </ul>
         </li>
