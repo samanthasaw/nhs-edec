@@ -11,14 +11,15 @@ module.exports = function (env) {
   // Filter to change a number, like 1 "12" or 04, to a month in words
   //
   // Accepts numbers, strings, data[] and variables
-  // If empty prints nothing
+  // If empty prints nothing unless you give it a placeholder which it will print out
   //
   // Usage in your templates:
   //
   // With number with filer        {{ 1 | monthToWord }}
   // With data from previous input {{ data['dob-month'] | monthToWord }}
+  // With data that's empty with alternative placeholder {{ data['dob-month'] | monthToWord('January') }}
 
-  filters.monthToWord = function(month) {
+  filters.monthToWord = function(month,placeholder) {
     var months = {
       "1":'January',
       "2":'February',
@@ -39,10 +40,16 @@ module.exports = function (env) {
       month.toString().replace(/^0+(?=\d)/, '')
       return months[month]
 
+    } else if (placeholder) {
+      return placeholder
     } else {
       return
     }
 
+  }
+
+  filters.sayHi = function(name,tone) {
+    return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
   }
 
   /* ------------------------------------------------------------------
