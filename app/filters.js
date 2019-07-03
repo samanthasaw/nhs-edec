@@ -10,6 +10,9 @@ module.exports = function (env) {
 
   // Filter to change a number, like 1 "12" or 04, to a month in words
   //
+  // Accepts numbers, strings, data[] and variables
+  // If empty prints nothing
+  //
   // Usage in your templates:
   //
   // With number with filer        {{ 1 | monthToWord }}
@@ -30,8 +33,16 @@ module.exports = function (env) {
       "11":'November',
       "12":'December'
     }
-    month.toString().replace(/^0+(?=\d)/, '')
-    return months[month]
+
+    if (month) {
+
+      month.toString().replace(/^0+(?=\d)/, '')
+      return months[month]
+
+    } else {
+      return
+    }
+
   }
 
   /* ------------------------------------------------------------------
