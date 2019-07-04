@@ -70,6 +70,7 @@ function add(id) {
     x.style.display = "block";
     var y = id + 1
     document.getElementById( "add" ).setAttribute( "onClick", "javascript: add(" + y + ");" );
+    $( "#" + id + " input" ).focus();
   } else {
     return
   }
