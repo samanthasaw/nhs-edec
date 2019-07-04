@@ -57,22 +57,25 @@
           ]
         }) }}
 
+        <div class="app-opening-time__container">
+
         {% call fieldset({
           "legend": {
             "text": "Your opening hours",
-            "classes": "nhsuk-label--l",
-            "isPageHeading": true
+            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
+            "isPageHeading": false
           }
         }) %}
 
         {{ hint({
-          "text": "For example, 8:30am to 5:00pm",
+          "text": "For example, 8:30am to 1:00pm and 2:00pm to 6:00pm",
           "classes": "nhsuk-body-l nhsuk-u-margin-bottom-4"
         }) }}
 
         <div class="nhsuk-grid-row">
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
               "legend": {
                 "text": "From",
                 "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1",
@@ -163,8 +166,9 @@
 
           </div>
 
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
               "legend": {
                 "text": "To",
                 "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1",
@@ -261,11 +265,12 @@
 
 
         <div style="display:none;" class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
               "legend": {
                 "text": "From",
-                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 nhsuk-u-visually-hidden",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
                 "isPageHeading": false
               }
             }) %}
@@ -353,11 +358,12 @@
 
           </div>
 
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
               "legend": {
                 "text": "To",
-                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 nhsuk-u-visually-hidden",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
                 "isPageHeading": false
               }
             }) %}
@@ -445,9 +451,9 @@
 
           </div>
 
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             <div class="">
-              <p class="nhsuk-u-padding-top-6 nhsuk-u-margin-bottom-0">
+              <p class="app-select_remove-row">
                 <a href="#" onclick="toggle(2);">Remove row</a>
               </p>
             </div>
@@ -456,16 +462,16 @@
 
         <div style="display:none;" class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
 
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
               "legend": {
                 "text": "From",
-                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 nhsuk-u-visually-hidden",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
                 "isPageHeading": false
               }
             }) %}
             <div class="app-select__autocomplete">
-
 
               {{ label({
                 "text": "Time",
@@ -547,16 +553,16 @@
             {% endcall %}
 
           </div>
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
               "legend": {
                 "text": "To",
-                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 nhsuk-u-visually-hidden",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
                 "isPageHeading": false
               }
             }) %}
             <div class="app-select__autocomplete">
-
 
               {{ label({
                 "text": "Time",
@@ -639,10 +645,9 @@
 
           </div>
 
-
-          <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             <div class="">
-              <p class="nhsuk-u-padding-top-6 nhsuk-u-margin-bottom-0">
+              <p class="app-select_remove-row">
                 <a href="#" onclick="toggle(3);">Remove row</a>
               </p>
             </div>
@@ -651,17 +656,20 @@
 
         {% endcall %}
 
-
-        <div class="auto nhsuk-u-margin-bottom-4">
+        <div class="auto nhsuk-u-margin-bottom-2">
         </div>
 
         <p>
-          <a id="add" href="#" onclick="add(2);">Add more Monday opening hours</a>
+          <a id="add" href="#" onclick="add(2);">Add another opening time</a>
         </p>
 
+        </div>
+
         <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
 
       </form>
+
 
 
     </div>

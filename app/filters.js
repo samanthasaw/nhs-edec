@@ -15,9 +15,12 @@ module.exports = function (env) {
   //
   // Usage in your templates:
   //
-  // With number with filer        {{ 1 | monthToWord }}
-  // With data from previous input {{ data['dob-month'] | monthToWord }}
-  // With data that's empty with alternative placeholder {{ data['dob-month'] | monthToWord('January') }}
+  // With number with filer
+  //                    {{ 1 | monthToWord }}
+  // With data from previous input
+  //                    {{ data['dob-month'] | monthToWord }}
+  // With data that's empty with alternative placeholder
+  //                    {{ data['dob-month'] | monthToWord('January') }}
 
   filters.monthToWord = function(month,placeholder) {
     var months = {
@@ -48,8 +51,24 @@ module.exports = function (env) {
 
   }
 
-  filters.sayHi = function(name,tone) {
-    return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
+  // Filter to print placeholder data if data doesn't exist.
+  // Useful for prototypes that may also be used as documentation
+  //
+  // Accepts numbers, strings, data[] and variables
+  // If empty prints nothing unless you give it a placeholder which it will print out
+  //
+  // Usage in your templates:
+  //
+  // {{ data['role'] | placeholder('Captain of the ship') }}
+
+  filters.placeholder = function(data,placeholder) {
+    if (data) {
+      return data
+    } else if (placeholder) {
+      return placeholder
+    } else {
+      return
+    }
   }
 
   /* ------------------------------------------------------------------
