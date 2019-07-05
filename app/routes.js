@@ -26,7 +26,7 @@ router.post('/submit-your-edec/sections/practice-details/check-last-year', funct
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/practice-details-complete')
+    res.redirect('/submit-your-edec/sections/practice-details/practice-details-complete-2')
 
   } else if (answer === 'no') {
 

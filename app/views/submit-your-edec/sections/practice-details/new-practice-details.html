@@ -1,5 +1,10 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
+{% if data['surgery'] %}
+    {% set surgery = data['surgery'] %}
+  {% else %}
+    {% set surgery = "One Medicare LLP-The Light" %}
+{% endif %}
 {% set contentTitle = "Tell us your new practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
@@ -18,7 +23,7 @@
 
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Your GP practice details</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
   </div>
 </div>
 
@@ -45,7 +50,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/practice-name",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -62,7 +67,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/organisation-code",
                   text: "Change",
                   visuallyHiddenText: "organisation code (ODS code)"
                 }
@@ -105,7 +110,7 @@
           },
           {
             key: {
-              text: "Configuration or structure"
+              text: "Have you changed configuration or structure"
             },
             value: {
               text: ""

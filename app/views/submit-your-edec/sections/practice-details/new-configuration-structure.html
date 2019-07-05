@@ -5,10 +5,11 @@
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
-{% set contentTitle = "What is your GP practice contract type?" %}
 {% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "What is your new configuration or structure?" %}
 {% block pageScripts %}
 {% endblock %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -35,42 +36,29 @@
 
       <form action="#" method="get">
 
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "example",
-          "fieldset": {
-            "legend": {
-              "text": contentTitle,
-              "classes": "nhsuk-label--xl app-label-xl"
-            }
+
+        {{ input({
+          "label": {
+            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Your GP practice details
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl app-label-xl"
           },
-          "items": [
-            {
-              "value": "gms",
-              "text": "General medical services (GMS)"
-            },
-            {
-              "value": "pms",
-              "text": "Personal medical services (PMS)"
-            },
-            {
-              "value": "apms",
-              "text": "Alternative provider medical services (APMS)"
-            },
-            {
-              "divider": "or"
-            },
-            {
-              "value": "other",
-              "text": "Other type of contract"
-            }
-          ]
+          "hint": {
+            "text": "For example you may have changed from a GP partnership to a company limited by shares"
+          },
+          "id": "configstructure",
+          "name": "inputconfigstructure",
+          "classes": "nhsuk-input--width-10"
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
+
+
 
     </div>
   </div>
