@@ -5,7 +5,7 @@
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
-{% set contentTitle = "Check the practice details you submitted last year for " + surgery %}
+{% set contentTitle = "Check the practice details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -21,13 +21,19 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>{{ contentTitle }}</h1>
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Your GP practice details</span>{{ contentTitle }}</h1>
+
 
       {{ summaryList({
         rows: [
@@ -36,7 +42,7 @@
               text: "Name"
             },
             value: {
-              text: ""
+              text: "One Medicare LLP-The Light"
             }
           },
           {
@@ -44,7 +50,7 @@
               text: "Organisation code (ODS code)"
             },
             value: {
-              text: ""
+              text: "Y00001"
             }
           },
           {
@@ -52,7 +58,7 @@
               text: "Contract type"
             },
             value: {
-              text: ""
+              text: "General medical services (GMS)"
              }
            },
            {
@@ -60,15 +66,15 @@
                text: "Organisation type"
              },
              value: {
-               text: ""
+               text: "NHS body"
              }
            },
            {
              key: {
-               text: "Configuration or structure"
+               text: "Have you changed configuration or structure"
              },
              value: {
-               text: ""
+               text: "No"
              }
             },
             {
@@ -76,7 +82,7 @@
                 text: "Contract start date"
               },
               value: {
-                text: ""
+                text: "14 February 2010"
               }
             },
             {
@@ -84,7 +90,7 @@
                 text: "Contract end date"
               },
               value: {
-                text: ""
+                text: "26 March 2021"
               }
             },
             {
@@ -92,7 +98,15 @@
                 text: "Telephone number for patients"
               },
               value: {
-                text: ""
+                text: "0113 496 0728"
+              }
+            },
+            {
+              key: {
+                text: "Do you have a telephone number for non-patients"
+              },
+              value: {
+                text: "Yes"
               }
             },
             {
@@ -100,7 +114,15 @@
                 text: "Telephone number for non-patients"
               },
               value: {
-                text: ""
+                text: "0113 496 0848"
+              }
+            },
+            {
+              key: {
+                text: "Do you have any branches"
+              },
+              value: {
+                text: "Yes"
               }
             },
             {
@@ -108,7 +130,7 @@
                 text: "Number of branches"
               },
               value: {
-                text: ""
+                text: "3"
               }
             }
         ]
@@ -140,11 +162,6 @@
         </input>
 
       </form>
-
-      {{ backLink({
-        "href": "/submit-your-edec/task-list/task-list-with-sections-2",
-        "text": "Back to your task list"
-      }) }}
 
     </div>
   </div>

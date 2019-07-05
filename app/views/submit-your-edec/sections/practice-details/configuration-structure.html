@@ -5,10 +5,11 @@
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
-{% set contentTitle = "What is your GP practice contract type?" %}
+{% set contentTitle = "Has your GP practice changed configuration or structure?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -40,29 +41,22 @@
           "name": "example",
           "fieldset": {
             "legend": {
-              "text": contentTitle,
-              "classes": "nhsuk-label--xl app-label-xl"
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Your GP practice details
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
+          },
+          "hint": {
+            "text": "For example you may have changed from a GP partnership to a company limited by shares"
           },
           "items": [
             {
-              "value": "gms",
-              "text": "General medical services (GMS)"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "pms",
-              "text": "Personal medical services (PMS)"
-            },
-            {
-              "value": "apms",
-              "text": "Alternative provider medical services (APMS)"
-            },
-            {
-              "divider": "or"
-            },
-            {
-              "value": "other",
-              "text": "Other type of contract"
+              "value": "no",
+              "text": "No"
             }
           ]
         }) }}
@@ -71,6 +65,8 @@
         </input>
 
       </form>
+
+
 
     </div>
   </div>
