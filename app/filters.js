@@ -7,7 +7,6 @@ module.exports = function (env) {
    */
   var filters = {}
 
-
   // Filter to change a number, like 1 "12" or 04, to a month in words
   //
   // Accepts numbers, strings, data[] and variables
@@ -15,9 +14,12 @@ module.exports = function (env) {
   //
   // Usage in your templates:
   //
-  // With number with filer        {{ 1 | monthToWord }}
-  // With data from previous input {{ data['dob-month'] | monthToWord }}
-  // With data that's empty with alternative placeholder {{ data['dob-month'] | monthToWord('January') }}
+  // With number with filer
+  //                    {{ 1 | monthToWord }}
+  // With data from previous input
+  //                    {{ data['dob-month'] | monthToWord }}
+  // With data that's empty with alternative placeholder
+  //                    {{ data['dob-month'] | monthToWord('January') }}
 
   filters.monthToWord = function(month,placeholder) {
     var months = {
@@ -48,39 +50,45 @@ module.exports = function (env) {
 
   }
 
-  filters.sayHi = function(name,tone) {
-    return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
+  // Filter to print placeholder data if data doesn't exist.
+  // Useful for prototypes that may also be used as documentation
+  //
+  // Accepts numbers, strings, data[] and variables
+  // If empty prints nothing unless you give it a placeholder which it will print out
+  //
+  // Usage in your templates:
+  //
+  // {{ data['role'] | placeholder('Captain of the ship') }}
+
+  filters.placeholder = function(data,placeholder) {
+    if (data) {
+      return data
+    } else if (placeholder) {
+      return placeholder
+    } else {
+      return
+    }
   }
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
-
     filters.sayHi = function(name) {
         return 'Hi ' + name + '!'
     }
-
     Which in your templates would be used as:
-
     {{ 'Paul' | sayHi }} => 'Hi Paul'
-
     Notice the first argument of your filters method is whatever
     gets 'piped' via '|' to the filter.
-
     Filters can take additional arguments, for example:
-
     filters.sayHi = function(name,tone) {
       return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
     }
-
     Which would be used like this:
-
     {{ 'Joel' | sayHi('formal') }} => 'Greetings Joel!'
     {{ 'Gemma' | sayHi }} => 'Hi Gemma!'
-
     For more on filters and how to write them see the Nunjucks
     documentation.
-
   ------------------------------------------------------------------ */
 
   /* ------------------------------------------------------------------
