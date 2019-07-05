@@ -1,0 +1,65 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Your GP surgeries" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Home</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+
+      <p>You have 2 practices you need to submit an eDeclaration for.</p>
+
+      <div class="app-task-list nhsuk-u-margin-bottom-6">
+          <ul class="app-task-list__items--no-padding">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name surgeryname" href="#" aria-describedby="eligibility-completed">
+                One Medicare Llp-The Light
+              </a>
+              <strong class="tag-started" id="eligibility-completed">Started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name surgeryname" href="#" aria-describedby="read-declaration-completed">
+                The Whitfield Practice
+              </a>
+              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name surgeryname" href="#" aria-describedby="read-declaration-completed">
+                Church Street Surgery
+              </a>
+              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
+            </li>
+          </ul>
+      </div>
+
+      <p><a href="">See your previously submitted eDeclarations</a></p>
+
+    </div>
+  </div>
+{% endblock %}
