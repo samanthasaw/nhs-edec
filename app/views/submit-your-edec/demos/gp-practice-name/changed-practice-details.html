@@ -33,6 +33,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {{ backLink({
+        "href": "/submit-your-edec/demos/gp-practice-name/task-list-practice-details-started",
+        "text": "Back to your task list"
+      }) }}
+
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
       <p>Check your practice details and change any incorrect practice details.</p>
@@ -45,12 +50,12 @@
               text: "Name"
             },
             value: {
-              text: "One Medicare LLP-The Light"
+              text: practicename
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/practice-name",
+                  href: "/submit-your-edec/demos/gp-practice-name/practice-name",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -67,7 +72,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/organisation-code",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "organisation code (ODS code)"
                 }
@@ -84,7 +89,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/contract-type",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "contract type"
                 }
@@ -101,7 +106,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/organisation-type",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "organisation type"
                 }
@@ -118,7 +123,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/configuration-structure",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "configuration or structure"
                 }
@@ -135,7 +140,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/contract-start-date",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "contract start date"
                 }
@@ -152,7 +157,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/contract-end-date",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "contract end date"
                 }
@@ -169,7 +174,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/patients-phone-number",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "telephone number for patients"
                 }
@@ -186,7 +191,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/other-phone-number",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "if you have a telephone number for non-patients"
                 }
@@ -203,7 +208,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/what-is-other-phone-number",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "telephone number for non-patients"
                 }
@@ -220,7 +225,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/how-many-branches",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "number of branches"
                 }
@@ -230,7 +235,7 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete-2" method="get">
+      <form action="/{{ PROTOTYPEURL }}/demos/gp-practice-name/task-list-practice-details-completed" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
         </form>
