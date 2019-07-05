@@ -255,6 +255,10 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    req.session.data.mondayTimeFrom1 = req.body.ODS2;
+    req.session.data.mondayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.mondayTimeTo1 = req.body.ODS;
+    req.session.data.mondayTimeToAMPM1 = req.body.ampm1;
 
     // two
     let time3 = req.body.ODS3;
@@ -262,6 +266,10 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
     let time4 = req.body.ODS4;
     let ampm4 = req.body.ampm4;
     let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.mondayTimeFrom2 = req.body.ODS3;
+    req.session.data.mondayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.mondayTimeTo2 = req.body.ODS4;
+    req.session.data.mondayTimeToAMPM2 = req.body.ampm4;
 
     // three
     let time5 = req.body.ODS5;
@@ -269,6 +277,10 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
     let time6 = req.body.ODS6;
     let ampm6 = req.body.ampm6;
     let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.mondayTimeFrom3 = req.body.ODS5;
+    req.session.data.mondayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.mondayTimeTo3 = req.body.ODS6;
+    req.session.data.mondayTimeToAMPM4 = req.body.ampm6;
 
     if (rowOne && req.body.ODS3 && req.body.ODS5) {
       req.session.data.mondayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
