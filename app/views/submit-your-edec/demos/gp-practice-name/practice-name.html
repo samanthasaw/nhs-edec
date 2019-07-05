@@ -5,10 +5,11 @@
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
-{% set contentTitle = "Does your GP practice have any branches?" %}
 {% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "Enter your GP practice name" %}
 {% block pageScripts %}
 {% endblock %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -29,39 +30,35 @@
 
 {% endblock %}
 
+
+
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}sections/practice-details/changed-practice-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/demos/gp-practice-name/changed-practice-details" method="get">
 
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "example",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Your GP practice details
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
+        {{ input({
+          "label": {
+            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Your GP practice details
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl app-label-xl"
           },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
+          "hint": {
+            "text": "Practice name"
+          },
+          "id": "inputpracticename",
+          "name": "practicename",
+          "value": data['practicename'] | placeholder('One Medicare LLP-The Light'),
+          "classes": "nhsuk-input--width-30"
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
-
 
 
     </div>
