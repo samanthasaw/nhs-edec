@@ -219,4 +219,58 @@ router.get('/submit-your-edec/task-list/redirect', function (req, res) {
 
 
 
+
+//
+// v2 change opening times
+//
+
+// Monday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.mondayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.mondayOpeningHours = rowOne + "<br />" + rowTwo
+    } else {
+      req.session.data.mondayOpeningHours = rowOne
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.mondayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
+
+
 module.exports = router;

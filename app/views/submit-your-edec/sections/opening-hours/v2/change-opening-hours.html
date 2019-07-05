@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Tell us your new opening hours" %}
+{% set contentTitle = "Change your opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -29,9 +29,7 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Check your opening hours and change any incorrect opening hours.</p>
-
-      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/check-special-opening-hours" method="get">
 
       {{ summaryList({
         rows: [
@@ -40,12 +38,12 @@
               text: "Monday"
             },
             value: {
-              html: data['mondayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-monday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -57,12 +55,12 @@
               text: "Tuesday"
             },
             value: {
-              html: data['tuesdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-tuesday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -74,12 +72,12 @@
               text: "Wednesday"
             },
             value: {
-              html: data['wednesdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-wednesday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -91,12 +89,12 @@
               text: "Thursday"
             },
             value: {
-              html: data['thursdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-thursday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -108,12 +106,12 @@
               text: "Friday"
             },
             value: {
-              html: data['fridayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-friday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -125,12 +123,12 @@
               text: "Saturday"
             },
             value: {
-              text: data['tuesdayOpeningHours'] | placeholder('Closed')
+              text: "Closed"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-saturday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -142,12 +140,12 @@
               text: "Sunday"
             },
             value: {
-              text: data['tuesdayOpeningHours'] | placeholder('Closed')
+              text: "Closed"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-sunday",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -162,6 +160,12 @@
         </input>
 
       </form>
+
+
+      {{ backLink({
+        "href": "../opening-hours/check-last-year",
+        "text": "Back"
+      }) }}
 
 
     </div>
