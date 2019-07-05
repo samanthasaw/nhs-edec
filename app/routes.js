@@ -55,6 +55,23 @@ router.post('/submit-your-edec/demos/gp-practice-name/check-last-year', function
   }
 });
 
+router.post('/submit-your-edec/demos/organisation-type/check-last-year', function (req, res) {
+  let answer = req.body.practicedetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('#')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/demos/organisation-type/new-practice-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('#')
+  }
+});
+
 // opening-hours checkboxes
 
 router.post('/submit-your-edec/sections/opening-hours/which-days', function (req, res) {

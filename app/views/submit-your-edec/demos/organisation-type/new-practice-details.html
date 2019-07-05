@@ -1,0 +1,248 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% if data['surgery'] %}
+    {% set surgery = data['surgery'] %}
+  {% else %}
+    {% set surgery = "One Medicare LLP-The Light" %}
+{% endif %}
+{% set contentTitle = "Tell us your new practice details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+            {{ backLink({
+              "href": "/submit-your-edec/demos/organisation-type/task-list-with-sections-2",
+              "text": "Back to your task list"
+            }) }}
+
+
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+
+      <p>Check your practice details and change any incorrect practice details.</p>
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "One Medicare LLP-The Light"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Organisation code (ODS code)"
+            },
+            value: {
+              text: "Y00001"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "organisation code (ODS code)"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract type"
+            },
+            value: {
+              text: "General medical services (GMS)"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contract type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Organisation type"
+            },
+            value: {
+              text: "NHS body"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/demos/organisation-type/change-organisation-type",
+                  text: "Change",
+                  visuallyHiddenText: "organisation type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Have you changed configuration or structure"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "configuration or structure"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract start date"
+            },
+            value: {
+              text: "14 February 2010"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contract start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract end date"
+            },
+            value: {
+              text: "26 March 2021"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contract end date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Telephone number for patients"
+            },
+            value: {
+              text: "0113 496 0728"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "telephone number for patients"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you have a telephone number for non-patients"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "if you have a telephone number for non-patients"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Telephone number for non-patients"
+            },
+            value: {
+              text: "0113 496 0848"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "telephone number for non-patients"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Number of branches"
+            },
+            value: {
+              text: "3"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "number of branches"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="#" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}
