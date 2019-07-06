@@ -374,7 +374,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.mondayTimeFrom1 = req.body.ODS2;
     req.session.data.mondayTimeFromAMPM1 = req.body.ampm;
     req.session.data.mondayTimeTo1 = req.body.ODS;
@@ -415,7 +414,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
       req.session.data.mondayRow1 = "true"
       req.session.data.mondayRow2 = "true"
       req.session.data.mondayRow3 = ""
-      console.log(req.session.data.mondayRow2);
 
     } else {
       req.session.data.mondayOpeningHours = rowOne
@@ -450,7 +448,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', functi
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.tuesdayTimeFrom1 = req.body.ODS2;
     req.session.data.tuesdayTimeFromAMPM1 = req.body.ampm;
     req.session.data.tuesdayTimeTo1 = req.body.ODS;
@@ -491,7 +488,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', functi
       req.session.data.tuesdayRow1 = "true"
       req.session.data.tuesdayRow2 = "true"
       req.session.data.tuesdayRow3 = ""
-      console.log(req.session.data.tuesdayRow2);
 
     } else {
       req.session.data.tuesdayOpeningHours = rowOne
@@ -526,7 +522,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', func
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.wednesdayTimeFrom1 = req.body.ODS2;
     req.session.data.wednesdayTimeFromAMPM1 = req.body.ampm;
     req.session.data.wednesdayTimeTo1 = req.body.ODS;
@@ -567,7 +562,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', func
       req.session.data.wednesdayRow1 = "true"
       req.session.data.wednesdayRow2 = "true"
       req.session.data.wednesdayRow3 = ""
-      console.log(req.session.data.wednesdayRow2);
 
     } else {
       req.session.data.wednesdayOpeningHours = rowOne
@@ -602,7 +596,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', funct
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.thursdayTimeFrom1 = req.body.ODS2;
     req.session.data.thursdayTimeFromAMPM1 = req.body.ampm;
     req.session.data.thursdayTimeTo1 = req.body.ODS;
@@ -643,7 +636,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', funct
       req.session.data.thursdayRow1 = "true"
       req.session.data.thursdayRow2 = "true"
       req.session.data.thursdayRow3 = ""
-      console.log(req.session.data.thursdayRow2);
 
     } else {
       req.session.data.thursdayOpeningHours = rowOne
@@ -678,7 +670,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', functio
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.fridayTimeFrom1 = req.body.ODS2;
     req.session.data.fridayTimeFromAMPM1 = req.body.ampm;
     req.session.data.fridayTimeTo1 = req.body.ODS;
@@ -719,7 +710,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', functio
       req.session.data.fridayRow1 = "true"
       req.session.data.fridayRow2 = "true"
       req.session.data.fridayRow3 = ""
-      console.log(req.session.data.fridayRow2);
 
     } else {
       req.session.data.fridayOpeningHours = rowOne
@@ -754,7 +744,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', funct
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.saturdayTimeFrom1 = req.body.ODS2;
     req.session.data.saturdayTimeFromAMPM1 = req.body.ampm;
     req.session.data.saturdayTimeTo1 = req.body.ODS;
@@ -795,7 +784,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', funct
       req.session.data.saturdayRow1 = "true"
       req.session.data.saturdayRow2 = "true"
       req.session.data.saturdayRow3 = ""
-      console.log(req.session.data.saturdayRow2);
 
     } else {
       req.session.data.saturdayOpeningHours = rowOne
@@ -830,7 +818,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', functio
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
-    console.log(req.body.ampm);
     req.session.data.sundayTimeFrom1 = req.body.ODS2;
     req.session.data.sundayTimeFromAMPM1 = req.body.ampm;
     req.session.data.sundayTimeTo1 = req.body.ODS;
@@ -871,7 +858,6 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', functio
       req.session.data.sundayRow1 = "true"
       req.session.data.sundayRow2 = "true"
       req.session.data.sundayRow3 = ""
-      console.log(req.session.data.sundayRow2);
 
     } else {
       req.session.data.sundayOpeningHours = rowOne
