@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Tell us your new opening hours" %}
+{% set contentTitle = "Confirm or update your opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -29,7 +29,7 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Check your opening hours and change any incorrect opening hours.</p>
+      <p>Check your opening hours and change any times that need updating.</p>
 
       <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/v2/" method="get">
 
@@ -47,7 +47,7 @@
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-monday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Monday opening hours"
                 }
               ]
             }
@@ -64,7 +64,7 @@
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-tuesday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Tuesday opening hours"
                 }
               ]
             }
@@ -81,7 +81,7 @@
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-wednesday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Wednesday opening hours"
                 }
               ]
             }
@@ -98,7 +98,7 @@
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-thursday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Thursday opening hours"
                 }
               ]
             }
@@ -115,7 +115,7 @@
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-friday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Friday opening hours"
                 }
               ]
             }
@@ -125,14 +125,14 @@
               text: "Saturday"
             },
             value: {
-              text: data['tuesdayOpeningHours'] | placeholder('Closed')
+              html: data['saturdayOpeningHours'] | placeholder('Closed')
             },
             actions: {
               items: [
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-saturday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Saturday opening hours"
                 }
               ]
             }
@@ -142,14 +142,14 @@
               text: "Sunday"
             },
             value: {
-              text: data['tuesdayOpeningHours'] | placeholder('Closed')
+              html: data['sundayOpeningHours'] | placeholder('Closed')
             },
             actions: {
               items: [
                 {
                   href: "/submit-your-edec/sections/opening-hours/v2/change-sunday",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "your Sunday opening hours"
                 }
               ]
             }
@@ -157,7 +157,7 @@
         ]
       }) }}
 
-
+      <h2 class="nhsuk-heading-m">Continue if your opening times are now correct</h2>
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 

@@ -157,9 +157,11 @@
               }) }}
 
               <select class="nhsuk-select" name="ampm" id="ampm">
-                <option id='11:59pm'>am</option>
-                <option id='11:59pm'>pm</option>
+                <option {% if mondayTimeFromAMPM1 %}selected{% endif %} id='11:59pm'>am</option>
+                <option {% if mondayTimeToAMPM2 %}selected{% endif %} id='11:59pm'>pm</option>
               </select>
+
+              {{ mondayTimeFromAMPM1 }}
             </div>
 
             {% endcall %}
@@ -261,10 +263,7 @@
 
         </div>
 
-
-
-
-        <div style="display:none;" class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
+        <div class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
               "classes": "nhsuk-u-margin-bottom-2",

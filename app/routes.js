@@ -258,6 +258,108 @@ router.get('/submit-your-edec/task-list/redirect', function (req, res) {
 // v2 change opening times
 //
 
+// Set defaults for prototype
+router.post('/submit-your-edec/sections/opening-hours/v2/', function (req, res) {
+
+  // Set several default times for the practice
+  //
+  // Monday
+  req.session.data.mondayTimeFrom1 = "9:00";
+  req.session.data.mondayTimeFromAMPM1 = "am";
+  req.session.data.mondayTimeTo1 = "12:00";
+  req.session.data.mondayTimeToAMPM1 = "pm";
+
+  req.session.data.mondayTimeFrom2 = "2:00";
+  req.session.data.mondayTimeFromAMPM2 = "pm";
+  req.session.data.mondayTimeTo2 = "6:00";
+  req.session.data.mondayTimeToAMPM2 = "pm";
+
+  req.session.data.mondayRow1 = "true"
+  req.session.data.mondayRow2 = "true"
+  req.session.data.mondayRow3 = ""
+
+  req.session.data.mondayOpeningHours = "9:00am to 12:00pm" + "<br />" + "2:00pm to 6:00pm" + "<br />"
+
+  // Tuesday
+  req.session.data.tuesdayTimeFrom1 = "9:00";
+  req.session.data.tuesdayTimeFromAMPM1 = "am";
+  req.session.data.tuesdayTimeTo1 = "12:00";
+  req.session.data.tuesdayTimeToAMPM1 = "pm";
+
+  req.session.data.tuesdayTimeFrom2 = "2:00";
+  req.session.data.tuesdayTimeFromAMPM2 = "pm";
+  req.session.data.tuesdayTimeTo2 = "6:00";
+  req.session.data.tuesdayTimeToAMPM2 = "pm";
+
+  req.session.data.tuesdayRow1 = "true"
+  req.session.data.tuesdayRow2 = "true"
+  req.session.data.tuesdayRow3 = ""
+
+  req.session.data.tuesdayOpeningHours = "9:00am to 12:00pm" + "<br />" + "2:00pm to 6:00pm" + "<br />"
+
+  // Wednesday
+  req.session.data.wednesdayTimeFrom1 = "9:00";
+  req.session.data.wednesdayTimeFromAMPM1 = "am";
+  req.session.data.wednesdayTimeTo1 = "12:00";
+  req.session.data.wednesdayTimeToAMPM1 = "pm";
+
+  req.session.data.wednesdayTimeFrom2 = "2:00";
+  req.session.data.wednesdayTimeFromAMPM2 = "pm";
+  req.session.data.wednesdayTimeTo2 = "6:00";
+  req.session.data.wednesdayTimeToAMPM2 = "pm";
+
+  req.session.data.wednesdayRow1 = "true"
+  req.session.data.wednesdayRow2 = "true"
+  req.session.data.wednesdayRow3 = ""
+
+  req.session.data.wednesdayOpeningHours = "9:00am to 12:00pm" + "<br />" + "2:00pm to 6:00pm" + "<br />"
+
+  // Thursday
+  req.session.data.thursdayTimeFrom1 = "9:00";
+  req.session.data.thursdayTimeFromAMPM1 = "am";
+  req.session.data.thursdayTimeTo1 = "12:00";
+  req.session.data.thursdayTimeToAMPM1 = "pm";
+
+  req.session.data.thursdayTimeFrom2 = "2:00";
+  req.session.data.thursdayTimeFromAMPM2 = "pm";
+  req.session.data.thursdayTimeTo2 = "6:00";
+  req.session.data.thursdayTimeToAMPM2 = "pm";
+
+  req.session.data.thursdayRow1 = "true"
+  req.session.data.thursdayRow2 = "true"
+  req.session.data.thursdayRow3 = ""
+
+  req.session.data.thursdayOpeningHours = "9:00am to 12:00pm" + "<br />" + "2:00pm to 6:00pm" + "<br />"
+
+  // friday
+  req.session.data.fridayTimeFrom1 = "9:00";
+  req.session.data.fridayTimeFromAMPM1 = "am";
+  req.session.data.fridayTimeTo1 = "12:00";
+  req.session.data.fridayTimeToAMPM1 = "pm";
+
+  req.session.data.fridayTimeFrom2 = "2:00";
+  req.session.data.fridayTimeFromAMPM2 = "pm";
+  req.session.data.fridayTimeTo2 = "6:00";
+  req.session.data.fridayTimeToAMPM2 = "pm";
+
+  req.session.data.fridayRow1 = "true"
+  req.session.data.fridayRow2 = "true"
+  req.session.data.fridayRow3 = ""
+
+  req.session.data.fridayOpeningHours = "9:00am to 12:00pm" + "<br />" + "2:00pm to 6:00pm" + "<br />"
+
+  // Saturday
+  req.session.data.saturdayOpeningHours = "Closed";
+  // Saturday
+  req.session.data.sundayOpeningHours = "Closed";
+
+
+
+  // Now redirect to check page
+  res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+});
+
 // Monday
 router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', function (req, res) {
   let answer = req.body.gov;
@@ -272,6 +374,7 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
     let time2 = req.body.ODS;
     let ampm2 = req.body.ampm1;
     let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
     req.session.data.mondayTimeFrom1 = req.body.ODS2;
     req.session.data.mondayTimeFromAMPM1 = req.body.ampm;
     req.session.data.mondayTimeTo1 = req.body.ODS;
@@ -297,14 +400,29 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
     req.session.data.mondayTimeFrom3 = req.body.ODS5;
     req.session.data.mondayTimeFromAMPM3 = req.body.ampm5;
     req.session.data.mondayTimeTo3 = req.body.ODS6;
-    req.session.data.mondayTimeToAMPM4 = req.body.ampm6;
+    req.session.data.mondayTimeToAMPM3 = req.body.ampm6;
 
     if (rowOne && req.body.ODS3 && req.body.ODS5) {
       req.session.data.mondayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.mondayRow1 = "true"
+      req.session.data.mondayRow2 = "true"
+      req.session.data.mondayRow3 = "true"
+
     } else if (rowOne && req.body.ODS3) {
       req.session.data.mondayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.mondayRow1 = "true"
+      req.session.data.mondayRow2 = "true"
+      req.session.data.mondayRow3 = ""
+      console.log(req.session.data.mondayRow2);
+
     } else {
       req.session.data.mondayOpeningHours = rowOne
+
+      req.session.data.mondayRow1 = "true"
+      req.session.data.mondayRow2 = ""
+      req.session.data.mondayRow3 = ""
     }
 
     res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
@@ -318,5 +436,460 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
 
 });
 
+// Tuesday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
+    req.session.data.tuesdayTimeFrom1 = req.body.ODS2;
+    req.session.data.tuesdayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.tuesdayTimeTo1 = req.body.ODS;
+    req.session.data.tuesdayTimeToAMPM1 = req.body.ampm1;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.tuesdayTimeFrom2 = req.body.ODS3;
+    req.session.data.tuesdayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.tuesdayTimeTo2 = req.body.ODS4;
+    req.session.data.tuesdayTimeToAMPM2 = req.body.ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.tuesdayTimeFrom3 = req.body.ODS5;
+    req.session.data.tuesdayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.tuesdayTimeTo3 = req.body.ODS6;
+    req.session.data.tuesdayTimeToAMPM3 = req.body.ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.tuesdayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.tuesdayRow1 = "true"
+      req.session.data.tuesdayRow2 = "true"
+      req.session.data.tuesdayRow3 = "true"
+
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.tuesdayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.tuesdayRow1 = "true"
+      req.session.data.tuesdayRow2 = "true"
+      req.session.data.tuesdayRow3 = ""
+      console.log(req.session.data.tuesdayRow2);
+
+    } else {
+      req.session.data.tuesdayOpeningHours = rowOne
+
+      req.session.data.tuesdayRow1 = "true"
+      req.session.data.tuesdayRow2 = ""
+      req.session.data.tuesdayRow3 = ""
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.tuesdayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
+
+// Wednesday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
+    req.session.data.wednesdayTimeFrom1 = req.body.ODS2;
+    req.session.data.wednesdayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.wednesdayTimeTo1 = req.body.ODS;
+    req.session.data.wednesdayTimeToAMPM1 = req.body.ampm1;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.wednesdayTimeFrom2 = req.body.ODS3;
+    req.session.data.wednesdayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.wednesdayTimeTo2 = req.body.ODS4;
+    req.session.data.wednesdayTimeToAMPM2 = req.body.ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.wednesdayTimeFrom3 = req.body.ODS5;
+    req.session.data.wednesdayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.wednesdayTimeTo3 = req.body.ODS6;
+    req.session.data.wednesdayTimeToAMPM3 = req.body.ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.wednesdayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.wednesdayRow1 = "true"
+      req.session.data.wednesdayRow2 = "true"
+      req.session.data.wednesdayRow3 = "true"
+
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.wednesdayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.wednesdayRow1 = "true"
+      req.session.data.wednesdayRow2 = "true"
+      req.session.data.wednesdayRow3 = ""
+      console.log(req.session.data.wednesdayRow2);
+
+    } else {
+      req.session.data.wednesdayOpeningHours = rowOne
+
+      req.session.data.wednesdayRow1 = "true"
+      req.session.data.wednesdayRow2 = ""
+      req.session.data.wednesdayRow3 = ""
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.wednesdayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
+
+// Thursday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
+    req.session.data.thursdayTimeFrom1 = req.body.ODS2;
+    req.session.data.thursdayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.thursdayTimeTo1 = req.body.ODS;
+    req.session.data.thursdayTimeToAMPM1 = req.body.ampm1;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.thursdayTimeFrom2 = req.body.ODS3;
+    req.session.data.thursdayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.thursdayTimeTo2 = req.body.ODS4;
+    req.session.data.thursdayTimeToAMPM2 = req.body.ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.thursdayTimeFrom3 = req.body.ODS5;
+    req.session.data.thursdayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.thursdayTimeTo3 = req.body.ODS6;
+    req.session.data.thursdayTimeToAMPM3 = req.body.ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.thursdayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.thursdayRow1 = "true"
+      req.session.data.thursdayRow2 = "true"
+      req.session.data.thursdayRow3 = "true"
+
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.thursdayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.thursdayRow1 = "true"
+      req.session.data.thursdayRow2 = "true"
+      req.session.data.thursdayRow3 = ""
+      console.log(req.session.data.thursdayRow2);
+
+    } else {
+      req.session.data.thursdayOpeningHours = rowOne
+
+      req.session.data.thursdayRow1 = "true"
+      req.session.data.thursdayRow2 = ""
+      req.session.data.thursdayRow3 = ""
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.thursdayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
+
+// Friday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
+    req.session.data.fridayTimeFrom1 = req.body.ODS2;
+    req.session.data.fridayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.fridayTimeTo1 = req.body.ODS;
+    req.session.data.fridayTimeToAMPM1 = req.body.ampm1;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.fridayTimeFrom2 = req.body.ODS3;
+    req.session.data.fridayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.fridayTimeTo2 = req.body.ODS4;
+    req.session.data.fridayTimeToAMPM2 = req.body.ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.fridayTimeFrom3 = req.body.ODS5;
+    req.session.data.fridayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.fridayTimeTo3 = req.body.ODS6;
+    req.session.data.fridayTimeToAMPM3 = req.body.ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.fridayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.fridayRow1 = "true"
+      req.session.data.fridayRow2 = "true"
+      req.session.data.fridayRow3 = "true"
+
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.fridayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.fridayRow1 = "true"
+      req.session.data.fridayRow2 = "true"
+      req.session.data.fridayRow3 = ""
+      console.log(req.session.data.fridayRow2);
+
+    } else {
+      req.session.data.fridayOpeningHours = rowOne
+
+      req.session.data.fridayRow1 = "true"
+      req.session.data.fridayRow2 = ""
+      req.session.data.fridayRow3 = ""
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.fridayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
+
+// Saturday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
+    req.session.data.saturdayTimeFrom1 = req.body.ODS2;
+    req.session.data.saturdayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.saturdayTimeTo1 = req.body.ODS;
+    req.session.data.saturdayTimeToAMPM1 = req.body.ampm1;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.saturdayTimeFrom2 = req.body.ODS3;
+    req.session.data.saturdayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.saturdayTimeTo2 = req.body.ODS4;
+    req.session.data.saturdayTimeToAMPM2 = req.body.ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.saturdayTimeFrom3 = req.body.ODS5;
+    req.session.data.saturdayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.saturdayTimeTo3 = req.body.ODS6;
+    req.session.data.saturdayTimeToAMPM3 = req.body.ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.saturdayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.saturdayRow1 = "true"
+      req.session.data.saturdayRow2 = "true"
+      req.session.data.saturdayRow3 = "true"
+
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.saturdayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.saturdayRow1 = "true"
+      req.session.data.saturdayRow2 = "true"
+      req.session.data.saturdayRow3 = ""
+      console.log(req.session.data.saturdayRow2);
+
+    } else {
+      req.session.data.saturdayOpeningHours = rowOne
+
+      req.session.data.saturdayRow1 = "true"
+      req.session.data.saturdayRow2 = ""
+      req.session.data.saturdayRow3 = ""
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.saturdayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
+
+// Sunday
+router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', function (req, res) {
+  let answer = req.body.gov;
+
+  if (answer == "open") {
+    // grab all data
+    // keep adding to string if ODS3 etc. is true?
+
+    // one
+    let time1 = req.body.ODS2;
+    let ampm1 = req.body.ampm;
+    let time2 = req.body.ODS;
+    let ampm2 = req.body.ampm1;
+    let rowOne = time1 + ampm1 + " to " + time2 + ampm2;
+    console.log(req.body.ampm);
+    req.session.data.sundayTimeFrom1 = req.body.ODS2;
+    req.session.data.sundayTimeFromAMPM1 = req.body.ampm;
+    req.session.data.sundayTimeTo1 = req.body.ODS;
+    req.session.data.sundayTimeToAMPM1 = req.body.ampm1;
+
+    // two
+    let time3 = req.body.ODS3;
+    let ampm3 = req.body.ampm3;
+    let time4 = req.body.ODS4;
+    let ampm4 = req.body.ampm4;
+    let rowTwo = time3 + ampm3 + " to " + time4 + ampm4;
+    req.session.data.sundayTimeFrom2 = req.body.ODS3;
+    req.session.data.sundayTimeFromAMPM2 = req.body.ampm3;
+    req.session.data.sundayTimeTo2 = req.body.ODS4;
+    req.session.data.sundayTimeToAMPM2 = req.body.ampm4;
+
+    // three
+    let time5 = req.body.ODS5;
+    let ampm5 = req.body.ampm5;
+    let time6 = req.body.ODS6;
+    let ampm6 = req.body.ampm6;
+    let rowThree = time5 + ampm5 + " to " + time6 + ampm6;
+    req.session.data.sundayTimeFrom3 = req.body.ODS5;
+    req.session.data.sundayTimeFromAMPM3 = req.body.ampm5;
+    req.session.data.sundayTimeTo3 = req.body.ODS6;
+    req.session.data.sundayTimeToAMPM3 = req.body.ampm6;
+
+    if (rowOne && req.body.ODS3 && req.body.ODS5) {
+      req.session.data.sundayOpeningHours = rowOne + "<br />" + rowTwo + "<br />" + rowThree
+
+      req.session.data.sundayRow1 = "true"
+      req.session.data.sundayRow2 = "true"
+      req.session.data.sundayRow3 = "true"
+
+    } else if (rowOne && req.body.ODS3) {
+      req.session.data.sundayOpeningHours = rowOne + "<br />" + rowTwo
+
+      req.session.data.sundayRow1 = "true"
+      req.session.data.sundayRow2 = "true"
+      req.session.data.sundayRow3 = ""
+      console.log(req.session.data.sundayRow2);
+
+    } else {
+      req.session.data.sundayOpeningHours = rowOne
+
+      req.session.data.sundayRow1 = "true"
+      req.session.data.sundayRow2 = ""
+      req.session.data.sundayRow3 = ""
+    }
+
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+
+  } else {
+    // set data to Closed
+    // redirect to v2 check
+    req.session.data.sundayOpeningHours = "Closed";
+    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  }
+
+});
 
 module.exports = router;
