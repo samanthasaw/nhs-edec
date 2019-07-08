@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Confirm your opening hours" %}
+{% set contentTitle = "Check your opening hours and change any times that need updating" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -33,10 +33,7 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Check your opening hours and change any times that need updating.</p>
-
-      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/v2/" method="get">
-
+      <h2 class="nhsuk-heading-m">Your opening hours</h2>
       {{ summaryList({
         rows: [
           {
@@ -161,10 +158,9 @@
         ]
       }) }}
 
-      <h2 class="nhsuk-heading-m">Confirm your opening times are correct</h2>
-        <input type="submit" class="nhsuk-button" value="Continue">
+      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/v2/" method="get">
+        <input type="submit" class="nhsuk-button" value="Save and continue">
         </input>
-
       </form>
 
 
