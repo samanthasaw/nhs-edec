@@ -10,6 +10,37 @@
 {% block pageScripts %}
 {% endblock %}
 
+{% set contractType %}
+  {% if data['contractType'] == 'gms' %}
+    General medical services (GMS)
+  {% elseif data['contractType'] == 'pms' %}
+    Personal medical services (PMS)
+  {% elseif data['contractType'] == 'apms' %}
+  Alternative provider medical services (APMS)
+  {% else %}
+    Other type of contract
+  {% endif %}
+{% endset %}
+
+{% set orgType %}
+  {% if data['orgType'] == 'nhsbody' %}
+    NHS body
+  {% elseif data['orgType'] == 'nonnhsbody' %}
+    Non NHS body
+  {% else %}
+    Social enterprise
+  {% endif %}
+{% endset %}
+
+{% set configStructure %}
+  {% if data['configStructure'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -45,7 +76,7 @@
               text: "Name"
             },
             value: {
-              text: "One Medicare LLP-The Light"
+              text: data['practicename'] | placeholder('One Medicare LLP-The Light')
             },
             actions: {
               items: [
@@ -62,7 +93,7 @@
               text: "Organisation code (ODS code)"
             },
             value: {
-              text: "Y00001"
+              text: data['odscode'] | placeholder('Y00001')
             },
             actions: {
               items: [
@@ -79,7 +110,7 @@
               text: "Contract type"
             },
             value: {
-              text: "General medical services (GMS)"
+              text: contractType | placeholder('General medical services (GMS)')
             },
             actions: {
               items: [
@@ -96,7 +127,7 @@
               text: "Organisation type"
             },
             value: {
-              text: "NHS body"
+              text: orgType | placeholder('NHS body')
             },
             actions: {
               items: [
@@ -113,7 +144,7 @@
               text: "Have you changed configuration or structure"
             },
             value: {
-              text: "No"
+              text: configStructure | placeholder('No')
             },
             actions: {
               items: [

@@ -32,7 +32,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/practice-name" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-practice-details" method="get">
 
         {{ input({
           "label": {
@@ -46,8 +46,10 @@
           },
           "id": "inputodscode",
           "name": "odscode",
+          "value": data['odscode'] | placeholder('Y00001'),
           "classes": "nhsuk-input--width-30"
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

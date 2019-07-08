@@ -37,12 +37,12 @@
               text: "Name"
             },
             value: {
-              text: ""
+              text: data['practicename'] | placeholder('One Medicare LLP-The Light')
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/practice-name",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -54,12 +54,12 @@
               text: "Organisation code (ODS code)"
             },
             value: {
-              text: ""
+              text: data['odscode'] | placeholder('Y00001')
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/organisation-code",
                   text: "Change",
                   visuallyHiddenText: "organisation code (ODS code)"
                 }
@@ -71,12 +71,12 @@
               text: "Contract type"
             },
             value: {
-              text: ""
+              text: contractType | placeholder('General medical services (GMS)')
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/contract-type",
                   text: "Change",
                   visuallyHiddenText: "contract type"
                 }
@@ -88,12 +88,12 @@
               text: "Organisation type"
             },
             value: {
-              text: ""
+              text: "NHS body"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/organisation-type",
                   text: "Change",
                   visuallyHiddenText: "organisation type"
                 }
@@ -102,15 +102,15 @@
           },
           {
             key: {
-              text: "Configuration or structure"
+              text: "Have you changed configuration or structure"
             },
             value: {
-              text: ""
+              text: "No"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/configuration-structure",
                   text: "Change",
                   visuallyHiddenText: "configuration or structure"
                 }
@@ -122,12 +122,12 @@
               text: "Contract start date"
             },
             value: {
-              text: ""
+              text: "14 February 2010"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/contract-start-date",
                   text: "Change",
                   visuallyHiddenText: "contract start date"
                 }
@@ -139,12 +139,12 @@
               text: "Contract end date"
             },
             value: {
-              text: ""
+              text: "26 March 2021"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/contract-end-date",
                   text: "Change",
                   visuallyHiddenText: "contract end date"
                 }
@@ -156,14 +156,31 @@
               text: "Telephone number for patients"
             },
             value: {
-              text: ""
+              text: "0113 496 0728"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/patients-phone-number",
                   text: "Change",
                   visuallyHiddenText: "telephone number for patients"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you have a telephone number for non-patients"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/other-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "if you have a telephone number for non-patients"
                 }
               ]
             }
@@ -173,12 +190,12 @@
               text: "Telephone number for non-patients"
             },
             value: {
-              text: ""
+              text: "0113 496 0848"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/what-is-other-phone-number",
                   text: "Change",
                   visuallyHiddenText: "telephone number for non-patients"
                 }
@@ -190,12 +207,12 @@
               text: "Number of branches"
             },
             value: {
-              text: ""
+              text: "3"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/submit-your-edec/sections/practice-details/how-many-branches",
                   text: "Change",
                   visuallyHiddenText: "number of branches"
                 }
@@ -205,7 +222,7 @@
         ]
       }) }}
 
-      <form action="" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete-2" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
         </form>

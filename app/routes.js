@@ -72,6 +72,21 @@ router.post('/submit-your-edec/demos/organisation-type/check-last-year', functio
   }
 });
 
+router.post('/submit-your-edec/sections/practice-details/contract-type', function (req, res) {
+  let answer = req.body.contractType;
+
+  if (answer === 'other') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/enter-contract-type')
+
+  } else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/sections/practice-details/new-practice-details')
+  }
+});
+
+
+
 // opening-hours checkboxes
 
 router.post('/submit-your-edec/sections/opening-hours/which-days', function (req, res) {
