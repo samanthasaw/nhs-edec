@@ -1,0 +1,67 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your eDeclaration" %}
+{% set contentTitle = "Practice staff" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/needs-analysis">Needs analysis</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/risk-assessment">Risk assessment</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/professional-body">Professional body</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/check-professional-body">Check professional body</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/revalidation">Revalidation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/annual-appraisal">Annual appraisals</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/any-dbs-check">DBS check 1</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/are-they-dbs-checked">DBS check 2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/performers-list">Performers list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/locum-session">Locum session</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/how-many-locum-session">How many locum session</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/personal-development-plan">Personal development plan</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/plan-revalidation">Personal development plan revalidation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/statutory-minimum">Statutory minimum</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/equal-opportunities">Equal opportunities</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/safeguarding">Safeguarding</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/prevent-strategy">Prevent strategy</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/staff-details/prevent-training">Prevent training</a></li>
+</ul>
+
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
