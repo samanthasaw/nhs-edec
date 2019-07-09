@@ -5,8 +5,8 @@
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
-{% set title = contentTitle + " - " + serviceName %}
 {% set contentTitle = "What is your new configuration or structure?" %}
+{% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -34,12 +34,12 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="#" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-practice-details" method="get">
 
 
         {{ input({
           "label": {
-            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Your GP practice details
+            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
             </span>' + contentTitle + '</h1>',
             "isPageHeading": true,
             "classes": "nhsuk-label--xl app-label-xl"
@@ -48,8 +48,8 @@
             "text": "For example you may have changed from a GP partnership to a company limited by shares"
           },
           "id": "configstructure",
-          "name": "inputconfigstructure",
-          "classes": "nhsuk-input--width-10"
+          "name": "inputConfigStructure",
+          "classes": "nhsuk-input--width-20"
         }) }}
 
 

@@ -18,7 +18,7 @@
   {% elseif data['contractType'] == 'apms' %}
   Alternative provider medical services (APMS)
   {% else %}
-    Other type of contract
+    {{ data['inputContractType'] | placeholder('Other') }}
   {% endif %}
 {% endset %}
 
@@ -35,10 +35,45 @@
 {% set configStructure %}
   {% if data['configStructure'] == 'yes' %}
     Yes
+  {% elseif data['configStructure'] == 'no' %}
+    No
+  {% else %}
+    {{ data['inputConfigStructure'] | placeholder('Other') }}
+  {% endif %}
+{% endset %}
+
+{% set otherNumber %}
+  {% if data['otherNumber'] == 'yes' %}
+    Yes
   {% else %}
     No
   {% endif %}
 {% endset %}
+
+{% set branches %}
+  {% if data['branches'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set startDate %}
+  {% if (data['start-day']) and (data['start-month']) and (data['start-year'])  %}
+    {{ data['start-day'] + " " + data['start-month'] | monthToWord + " " + data['start-year'] }}
+  {% else %}
+    14 February 2010
+  {% endif %}
+{% endset %}
+
+{% set endDate %}
+  {% if (data['end-day']) and (data['end-month']) and (data['end-year'])  %}
+    {{ data['end-day'] + " " + data['end-month'] | monthToWord + " " + data['end-year'] }}
+  {% else %}
+    26 March 2021
+  {% endif %}
+{% endset %}
+
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -64,7 +99,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
 
       <p>Check your practice details and change any incorrect practice details.</p>
 
@@ -161,7 +196,7 @@
               text: "Contract start date"
             },
             value: {
-              text: "14 February 2010"
+              text: startDate
             },
             actions: {
               items: [
@@ -178,7 +213,7 @@
               text: "Contract end date"
             },
             value: {
-              text: "26 March 2021"
+              text: endDate
             },
             actions: {
               items: [
@@ -195,7 +230,8 @@
               text: "Telephone number for patients"
             },
             value: {
-              text: "0113 496 0728"
+              text: data['patientphone'] | placeholder('0113 496 0728')
+
             },
             actions: {
               items: [
@@ -212,7 +248,7 @@
               text: "Do you have a telephone number for non-patients"
             },
             value: {
-              text: "Yes"
+              text: otherNumber | placeholder('Yes')
             },
             actions: {
               items: [
@@ -229,7 +265,8 @@
               text: "Telephone number for non-patients"
             },
             value: {
-              text: "0113 496 0848"
+              text: data['inputOtherPhone'] | placeholder('0113 496 0848')
+
             },
             actions: {
               items: [
@@ -243,10 +280,29 @@
           },
           {
             key: {
+              text: "Does your GP practice have any branches"
+            },
+            value: {
+              text: branches | placeholder('Yes')
+
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/branches",
+                  text: "Change",
+                  visuallyHiddenText: "if your GP practice has any branches"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Number of branches"
             },
             value: {
-              text: "3"
+              text: data['inputBranches'] | placeholder('3')
+
             },
             actions: {
               items: [

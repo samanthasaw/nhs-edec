@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Your GP practice details" %}
+{% set contentTitle = "Practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,15 +37,13 @@
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
 
-      <h2>V2</h2>
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete-2">Section complete confirmation</a></li>
-      </ul>
+      <h2>Return user</h2>
 
-      <h2>V1</h2>
+      <h3>Latest</h3>
 
       <ul>
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/check-last-year">Check the answers you submitted last year</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-practice-details">Tell us your new practice details</a></li>
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/organisation-code">Enter your organisation code (ODS code)</a></li>
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/practice-name">Enter your GP practice name</a></li>
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/contract-type">What is your GP practice contract type?</a></li>
@@ -60,12 +58,19 @@
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/what-is-other-phone-number">Enter the phone number people who are not patients can contact you on</a></li>
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/branches">Does your GP practice have any branches?</a></li>
         <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/how-many-branches">Enter the number of brances your GP practice has</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/check-your-answers">Check your answers</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete">Section complete confirmation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete-2">Section complete confirmation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/change-practice-details">Change your practice details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/task-list-practice-details-completed">Task list with practice details complete</a></li>
       </ul>
 
+      <h3>Previous</h3>
 
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete">Section complete confirmation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/check-your-answers">Check your answers</a></li>
+      </ul>
 
+      <h2>First time user</h2>
 
       <!-- End of content -->
 

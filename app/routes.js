@@ -85,6 +85,20 @@ router.post('/submit-your-edec/sections/practice-details/contract-type', functio
   }
 });
 
+router.post('/submit-your-edec/sections/practice-details/configuration-structure', function (req, res) {
+  let answer = req.body.configStructure;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-configuration-structure')
+
+  } else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/sections/practice-details/new-practice-details')
+  }
+});
+
+
 
 
 // opening-hours checkboxes
