@@ -85,6 +85,8 @@ router.post('/submit-your-edec/sections/practice-details/contract-type', functio
   }
 });
 
+
+
 router.post('/submit-your-edec/sections/practice-details/configuration-structure', function (req, res) {
   let answer = req.body.configStructure;
 

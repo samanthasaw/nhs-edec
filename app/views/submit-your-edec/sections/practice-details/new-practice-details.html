@@ -16,9 +16,11 @@
   {% elseif data['contractType'] == 'pms' %}
     Personal medical services (PMS)
   {% elseif data['contractType'] == 'apms' %}
-  Alternative provider medical services (APMS)
+    Alternative provider medical services (APMS)
+  {% elseif data['inputContractType'] == 'other' %}
+    Other type of contract
   {% else %}
-    {{ data['inputContractType'] | placeholder('Other') }}
+    {{ data['contractTypeInput'] }}
   {% endif %}
 {% endset %}
 
@@ -116,7 +118,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/changed-practice-details",
+                  href: "/submit-your-edec/sections/practice-details/practice-name",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }

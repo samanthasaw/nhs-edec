@@ -33,90 +33,66 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="#" method="get">
+      <form action="/submit-your-edec/sections/practice-details/new-practice-details" method="get">
 
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "example",
-          "fieldset": {
-            "legend": {
-              "text": contentTitle,
-              "classes": "nhsuk-label--xl app-label-xl"
-            }
-          },
-          "items": [
-            {
-              "value": "gms",
-              "text": "General medical services (GMS)"
-            },
-            {
-              "value": "pms",
-              "text": "Personal medical services (PMS)"
-            },
-            {
-              "value": "apms",
-              "text": "Alternative provider medical services (APMS)"
-            },
-            {
-              "divider": "or"
-            },
-            {
-              "value": "other",
-              "text": "Other type of contract"
-            }
-          ]
-        }) }}
+        <div class="nhsuk-radios nhsuk-radios--conditional" data-module="radios">
+          <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-label--xl app-heading-xl">
+            <h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>What is your GP practice contract type?</h1>
+          </legend>
 
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
-
-      </form>
+          <div class="nhsuk-radios nhsuk-form-group">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-divider-1" name="contractType" type="radio" value="gms">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-divider-1">
+                General medical services (GMS)
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-divider-2" name="contractType" type="radio" value="pms">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-divider-2">
+                Personal medical services (PMS)
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-divider-3" name="contractType" type="radio" value="apms">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-divider-3">
+                Alternative provider medical services (APMS)
+              </label>
+            </div>
 
 
-      <div class="nhsuk-radios nhsuk-radios--conditional" data-module="radios">
-  <div class="nhsuk-radios__item">
-    <input class="nhsuk-radios__input" id="how-contacted-conditional-1" name="how-contacted" type="radio" value="email" aria-controls="conditional-how-contacted-conditional-1" aria-expanded="false">
-    <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-1">
-      Email
-    </label>
-  </div>
-  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-1">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="contact-by-email">
-        Email address
-      </label>
-      <input class="nhsuk-input nhsuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false">
-    </div>
-  </div>
-  <div class="nhsuk-radios__item">
-    <input class="nhsuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="phone" aria-controls="conditional-how-contacted-conditional-2" aria-expanded="true">
-    <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-2">
-      Phone
-    </label>
-  </div>
-  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="contact-by-phone">
-        Phone number
-      </label>
-      <input class="nhsuk-input nhsuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel">
-    </div>
-  </div>
-  <div class="nhsuk-radios__item">
-    <input class="nhsuk-radios__input" id="how-contacted-conditional-3" name="how-contacted" type="radio" value="text" aria-controls="conditional-how-contacted-conditional-3" aria-expanded="false">
-    <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-3">
-      Text message
-    </label>
-  </div>
-  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-3">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="contact-by-text">
-        Mobile phone number
-      </label>
-      <input class="nhsuk-input nhsuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel">
-    </div>
-  </div>
-</div>
+            <div class="nhsuk-radios__divider">or</div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="how-contacted-conditional-2" name="contractType" type="radio" value="other" aria-controls="conditional-how-contacted-conditional-2">
+              <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-2">
+                Other type of contract
+              </label>
+            </div>
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="contractTypeInput">
+                  Contract type
+                </label>
+                <input class="nhsuk-input nhsuk-!-width-one-third" id="contractTypeInput" name="contractTypeInput" type="tel">
+              </div>
+            </div>
+
+
+          </div>
+          </fieldset>
+
+        </div>
+
+
+              <input type="submit" class="nhsuk-button" value="Continue">
+
+
+    </form>
+
+
 
     </div>
   </div>
