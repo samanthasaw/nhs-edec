@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Submit" %}
+{% set contentTitle = "Select a GP practice" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -41,13 +41,19 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
+      <h2>Latest</h2>
 
-      <h2>Exploration</h2>
       <ul>
-        <li><a href="/submit-your-edec/submit/confirm-submit">Confirm your submission</a></li>
-        <li><a href="/submit-your-edec/submit/submission-confirmation">We've submitted your eDeclaration</a></li>
+        <li><a href="/submit-your-edec/select-practice/select-a-practice">Select a GP practice</a></li>
       </ul>
 
+      <h2>Previous</h2>
+
+      <ul>
+        <li><a href="/submit-your-edec/branch-practice/select-a-branch-practice">Select a practice branch</a></li>
+        <li><a href="/submit-your-edec/gp-surgeries/your-gp-surgeries">Your GP surgeries</a></li>
+        <li><a href="/submit-your-edec/select-surgery/select-a-surgery">Select a GP surgery</a></li>
+      </ul>
 
             {{ backLink({
               "href": "/submit-your-edec/index",
