@@ -31,11 +31,15 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {{ backLink({
+        "href": "/submit-your-edec/select-practice/select-a-practice",
+        "text": "Back"
+      }) }}
+
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Confirm your details are correct to submit your eDeclaration.</p>
-
+      <p>Confirm your details are correct to submit your eDeclaration for practice name.</p>
 
       <ul class="app-task-list">
         <li>
@@ -44,7 +48,7 @@
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-              <a href="/{{ PROTOTYPEURL }}/sections/practice-details/check-last-year" class="app-task-list__task-name" href="#" aria-describedby="eligibility-completed">
+              <a href="#" class="app-task-list__task-name" href="#" aria-describedby="eligibility-completed">
                 Practice details
               </a>
               <strong class="tag-not-started" id="eligibility-completed">Not started</strong>
@@ -128,7 +132,6 @@
               <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
                 Submit your eDeclaration
               </a>
-              <strong class="tag-not-started" id="company-information-completed">Not started</strong>
             </li>
           </ul>
         </li>
