@@ -72,6 +72,52 @@
 
       </form>
 
+
+      <div class="nhsuk-radios nhsuk-radios--conditional" data-module="radios">
+  <div class="nhsuk-radios__item">
+    <input class="nhsuk-radios__input" id="how-contacted-conditional-1" name="how-contacted" type="radio" value="email" aria-controls="conditional-how-contacted-conditional-1" aria-expanded="false">
+    <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-1">
+      Email
+    </label>
+  </div>
+  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-1">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="contact-by-email">
+        Email address
+      </label>
+      <input class="nhsuk-input nhsuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false">
+    </div>
+  </div>
+  <div class="nhsuk-radios__item">
+    <input class="nhsuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="phone" aria-controls="conditional-how-contacted-conditional-2" aria-expanded="true">
+    <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-2">
+      Phone
+    </label>
+  </div>
+  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="contact-by-phone">
+        Phone number
+      </label>
+      <input class="nhsuk-input nhsuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel">
+    </div>
+  </div>
+  <div class="nhsuk-radios__item">
+    <input class="nhsuk-radios__input" id="how-contacted-conditional-3" name="how-contacted" type="radio" value="text" aria-controls="conditional-how-contacted-conditional-3" aria-expanded="false">
+    <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-3">
+      Text message
+    </label>
+  </div>
+  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-3">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="contact-by-text">
+        Mobile phone number
+      </label>
+      <input class="nhsuk-input nhsuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel">
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 {% endblock %}
