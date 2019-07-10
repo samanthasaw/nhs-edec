@@ -278,7 +278,7 @@ router.post('/submit-your-edec/sections/opening-hours/change-saturday', function
 // which task list
 router.get('/submit-your-edec/task-list/redirect', function (req, res) {
 
-  res.redirect('/submit-your-edec/task-list/task-list-with-sections-2')
+  res.redirect('/submit-your-edec/task-list/task-list-with-sections-3')
 
 });
 

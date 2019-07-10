@@ -10,9 +10,9 @@ function gpSelect(gp, url){
   // if it is redirect the page to it
   // if not, redirect window to /submit-your-edec/task-list/redirect
 
-  sessionStorage.setItem("surgery", gp);
+  sessionStorage.setItem("practice", gp);
   // console.log(sessionStorage.getItem("data"));
-  $.post( "/submit-your-edec/task-list/redirect", { surgery: gp } );
+  $.post( "/submit-your-edec/task-list/redirect", { practice: gp } );
   if (url) {
     window.location.href = url
   } else {
