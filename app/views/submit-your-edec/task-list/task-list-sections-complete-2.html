@@ -1,11 +1,11 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
-{% if data['surgery'] %}
-    {% set surgery = data['surgery'] %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
   {% else %}
-    {% set surgery = "One Medicare LLP-The Light" %}
+    {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Submit your eDeclaration for practice name" %}
+{% set contentTitle = "Submit your electronic declaration for " + practice %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -24,7 +24,7 @@
 
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Practice name</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
 
@@ -42,13 +42,13 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Confirm your details are correct to submit your eDeclaration for practice name.</p>
+      <p>Confirm your details are correct to submit your electronic declaration for {{ practice }}.</p>
 
 
         <ul class="app-task-list">
           <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">1. </span> Section 1
+              <span class="app-task-list__section-number">1. </span> About your practice
             </h2>
             <ul class="app-task-list__items">
               <li class="app-task-list__item">
@@ -85,7 +85,7 @@
           </li>
           <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">2. </span> Section 2
+              <span class="app-task-list__section-number">2. </span> Practice regulations and procedures
             </h2>
             <ul class="app-task-list__items">
               <li class="app-task-list__item">
@@ -116,7 +116,7 @@
           </li>
           <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">3. </span> Section 3
+              <span class="app-task-list__section-number">3. </span> Supporting information
             </h2>
             <ul class="app-task-list__items">
               <li class="app-task-list__item">
@@ -129,12 +129,12 @@
           </li>
           <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">4. </span> Submit (section 4)
+              <span class="app-task-list__section-number">4. </span> Submit
             </h2>
             <ul class="app-task-list__items">
               <li class="app-task-list__item">
                 <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
-                  Submit your eDeclaration
+                  Submit your electronic declaration
                 </a>
               </li>
             </ul>
