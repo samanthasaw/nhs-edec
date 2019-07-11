@@ -1,6 +1,11 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Tell us your new opening hours" %}
+{% if data['surgery'] %}
+    {% set surgery = data['surgery'] %}
+  {% else %}
+    {% set surgery = "One Medicare LLP-The Light" %}
+{% endif %}
+{% set contentTitle = "Check the opening hours you submitted last year for " + surgery %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -29,10 +34,6 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Check your opening hours and change any incorrect opening hours.</p>
-
-      <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/" method="get">
-
       {{ summaryList({
         rows: [
           {
@@ -40,13 +41,12 @@
               text: "Monday"
             },
             value: {
-              html: data['mondayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-monday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -57,13 +57,12 @@
               text: "Tuesday"
             },
             value: {
-              html: data['tuesdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-tuesday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -74,13 +73,12 @@
               text: "Wednesday"
             },
             value: {
-              html: data['wednesdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-wednesday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -91,13 +89,12 @@
               text: "Thursday"
             },
             value: {
-              html: data['thursdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-thursday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -108,13 +105,12 @@
               text: "Friday"
             },
             value: {
-              html: data['fridayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: "9am to 12pm<br>2pm to 6pm"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-friday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -125,13 +121,12 @@
               text: "Saturday"
             },
             value: {
-              text: data['tuesdayOpeningHours'] | placeholder('Closed')
+              text: "Closed"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-saturday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -142,13 +137,12 @@
               text: "Sunday"
             },
             value: {
-              text: data['tuesdayOpeningHours'] | placeholder('Closed')
+              text: "Closed"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/opening-hours/change-sunday",
-                  text: "Change",
+                  href: "#",
                   visuallyHiddenText: "name"
                 }
               ]
@@ -157,6 +151,27 @@
         ]
       }) }}
 
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/check-last-year" method="post">
+        {{ radios({
+          "idPrefix": "sections",
+          "name": "openinghours",
+          "fieldset": {
+            "legend": {
+              "text": "Are these opening hours correct?",
+              "classes": "nhsuk-label--xl app-heading-xl"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes, they're correct"
+            },
+            {
+              "value": "no",
+              "text": "No, I need to change them"
+            }
+          ]
+        }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

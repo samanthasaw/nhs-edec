@@ -1,6 +1,6 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Change your Wednesday opening hours" %}
+{% set contentTitle = "Change your Friday opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -32,7 +32,7 @@
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
 
-            <form action="/{{ PROTOTYPEURL }}/sections/opening-hours/new-opening-hours" method="post">
+            <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-opening-hours" method="post">
 
               {{ radios({
                 "idPrefix": "gov",
@@ -40,7 +40,7 @@
                 "classes": "nhsuk-radios--inline",
                 "fieldset": {
                   "legend": {
-                    "text": "Is your practice open on Wednesday?",
+                    "text": "Is your practice open on Friday?",
                     "isPageHeading": false,
                     "classes": ""
                   }
@@ -664,10 +664,10 @@
                 <a id="add" href="#" onclick="add(2);">Add another opening time</a>
               </p>
 
-            </div>
+              </div>
 
-            <input type="submit" class="nhsuk-button" value="Continue">
-            </input>
+              <input type="submit" class="nhsuk-button" value="Continue">
+              </input>
 
             </form>
 
