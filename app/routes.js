@@ -4,6 +4,9 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
+// practice details
+
+
 router.post('/submit-your-edec/sections/opening-hours/check-last-year', function (req, res) {
   let answer = req.body.openinghours;
 
@@ -100,6 +103,26 @@ router.post('/submit-your-edec/sections/practice-details/configuration-structure
   }
 });
 
+
+// staff details
+
+
+router.post('/submit-your-edec/sections/practice-staff/check-last-year', function (req, res) {
+  let answer = req.body.staffDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-staff/staff-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/practice-staff/new-staff-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
 
 
 

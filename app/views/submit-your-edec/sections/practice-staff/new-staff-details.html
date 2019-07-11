@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your new practice details" %}
+{% set contentTitle = "Tell us your new staff details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -16,9 +16,11 @@
   {% elseif data['contractType'] == 'pms' %}
     Personal medical services (PMS)
   {% elseif data['contractType'] == 'apms' %}
-  Alternative provider medical services (APMS)
+    Alternative provider medical services (APMS)
+  {% elseif data['inputContractType'] == 'other' %}
+    Other type of contract
   {% else %}
-    {{ data['inputContractType'] | placeholder('Other') }}
+    {{ data['contractTypeInput'] }}
   {% endif %}
 {% endset %}
 
@@ -89,7 +91,7 @@
 
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
 
@@ -101,7 +103,7 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff</span>{{ contentTitle }}</h1>
 
-      <p>Check your practice staff details and change any incorrect practice staff details.</p>
+      <p>Check your staff details and change any incorrect staff details.</p>
 
 
       {{ summaryList({
@@ -111,12 +113,12 @@
               text: "Name"
             },
             value: {
-              text: data['practicename'] | placeholder('One Medicare LLP-The Light')
+              text: data['practicename'] | placeholder('The Nye Practice')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/changed-practice-details",
+                  href: "/submit-your-edec/sections/practice-details/practice-name",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }

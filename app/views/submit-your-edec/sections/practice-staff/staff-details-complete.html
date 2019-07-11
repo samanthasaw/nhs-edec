@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Do you have a needs analysis for making sure you have enough staff members at your GP practice?" %}
+{% set contentTitle = "You've confirmed your staff details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,36 +33,16 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="#" method="get">
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff</span>{{ contentTitle }}</h1>
 
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "example",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
+      <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
 
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-staff/change-staff-details">change your staff details</a> at any time before submitting your electronic declaration.</p>
 
-      </form>
-
-
+      {{ button({
+        "text": "Continue",
+        "href": "#"
+      }) }}
 
     </div>
   </div>
