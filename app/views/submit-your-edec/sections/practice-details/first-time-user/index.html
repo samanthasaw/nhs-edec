@@ -1,10 +1,5 @@
 <!-- Use this page as the index for your project -->
-{% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Supporting information" %}
-{% set title = contentTitle + " - " + serviceName %}
-{% block pageScripts %}
-{% endblock %}
+
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
@@ -17,7 +12,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  {{ title }}
+  NHS.UK prototype kit
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -31,17 +26,50 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
-      <h1>{{ contentTitle }}</h1>
+      <h1>
+        Submit your electronic declaration
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
+      </h1>
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
+      <p class="nhsuk-body-l">
+        This kit lets you rapidly create HTML prototypes of NHS services.
+      </p>
+
+      <hr>
+
+      <h2>
+        About this page
+      </h2>
+
+      <p>
+        Use this page as the index for your project.
+      </p>
+
+      <p>
+        You'll find the code for this page at <strong>/app/views/index.html</strong>.
+      </p>
+
+      <p>
+        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
+      </p>
+
+      <hr>
+
+      <h2>
+        Documentation
+      </h2>
+
       <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/organisation-code">Enter your organisation code (ODS code)</a></li>
+        <li>
+          Get started with <a href="/docs">how to guides and page templates</a>
+        </li>
+        <li>
+          Copy and paste styles and components from the <a href="https://beta.nhs.uk/service-manual/styles-components-patterns">NHS digital service manual</a>
+        </li>
       </ul>
-
-
-
 
       <!-- End of content -->
 
