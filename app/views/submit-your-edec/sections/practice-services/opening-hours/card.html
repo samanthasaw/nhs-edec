@@ -1,5 +1,10 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
 {% set contentTitle = "Your opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}

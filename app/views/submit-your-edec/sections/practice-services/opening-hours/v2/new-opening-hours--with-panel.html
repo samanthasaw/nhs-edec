@@ -1,5 +1,10 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
 {% set contentTitle = "Check your opening hours and change any times that need updating" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
@@ -22,7 +27,7 @@
 {% block beforeContent %}
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Your GP practice opening hours</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
 {% endblock %}
