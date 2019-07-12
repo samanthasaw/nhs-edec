@@ -24,16 +24,16 @@ router.post('/submit-your-edec/sections/opening-hours/check-last-year', function
   }
 });
 
-router.post('/submit-your-edec/sections/practice-details/check-last-year', function (req, res) {
+router.post('/submit-your-edec/sections/practice-details/return-user/check-last-year', function (req, res) {
   let answer = req.body.practicedetails;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/practice-details-complete-2')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-2')
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/new-practice-details') }
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details') }
 
   else {
     // res.redirect('error')
@@ -75,33 +75,50 @@ router.post('/submit-your-edec/demos/organisation-type/check-last-year', functio
   }
 });
 
-router.post('/submit-your-edec/sections/practice-details/contract-type', function (req, res) {
+router.post('/submit-your-edec/sections/practice-details/return-user/contract-type', function (req, res) {
   let answer = req.body.contractType;
 
   if (answer === 'apms') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/apms-contract-start')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/apms-contract-dates')
 
   } else {
     // res.redirect('error')
-    res.redirect('/submit-your-edec/sections/practice-details/new-practice-details')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details')
   }
 });
 
 
 
-router.post('/submit-your-edec/sections/practice-details/configuration-structure', function (req, res) {
+router.post('/submit-your-edec/sections/practice-details/return-user/configuration-structure', function (req, res) {
   let answer = req.body.configStructure;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/contract-start-date')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/contract-start-date')
 
   } else {
     // res.redirect('error')
-    res.redirect('/submit-your-edec/sections/practice-details/check-last-year-config-same')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/check-last-year-config-same')
   }
 });
+
+
+router.post('/submit-your-edec/sections/practice-details/return-user/apms-contract-dates', function (req, res) {
+  let answer = req.body.apmscontract;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details-apms')
+
+  } else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/contract-start-date-apms')
+  }
+});
+
+
+
 
 
 // staff details
@@ -302,6 +319,13 @@ router.post('/submit-your-edec/sections/opening-hours/change-saturday', function
 router.get('/submit-your-edec/task-list/redirect', function (req, res) {
 
   res.redirect('/submit-your-edec/task-list/task-list-with-sections-3')
+
+});
+
+// which branch
+router.get('/submit-your-edec/sections/practice-details/return-user/redirect', function (req, res) {
+
+  res.redirect('/submit-your-edec/sections/practice-details/return-user/branch-names')
 
 });
 
