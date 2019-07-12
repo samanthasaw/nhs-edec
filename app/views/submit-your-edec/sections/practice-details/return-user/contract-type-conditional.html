@@ -1,0 +1,99 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "What is your GP practice contract type?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/submit-your-edec/sections/practice-details/return-user/new-practice-details" method="get">
+
+        <div class="nhsuk-radios nhsuk-radios--conditional" data-module="radios">
+          <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-label--xl app-heading-xl">
+            <h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>What is your GP practice contract type?</h1>
+          </legend>
+
+          <div class="nhsuk-radios nhsuk-form-group">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-divider-1" name="contractType" type="radio" value="gms">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-divider-1">
+                General medical services (GMS)
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-divider-2" name="contractType" type="radio" value="pms">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-divider-2">
+                Personal medical services (PMS)
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-divider-3" name="contractType" type="radio" value="apms">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-divider-3">
+                Alternative provider medical services (APMS)
+              </label>
+            </div>
+
+
+            <div class="nhsuk-radios__divider">or</div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="how-contacted-conditional-2" name="contractType" type="radio" value="other" aria-controls="conditional-how-contacted-conditional-2">
+              <label class="nhsuk-label nhsuk-radios__label" for="how-contacted-conditional-2">
+                Other type of contract
+              </label>
+            </div>
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="contractTypeInput">
+                  Contract type
+                </label>
+                <input class="nhsuk-input nhsuk-!-width-one-third" id="contractTypeInput" name="contractTypeInput" type="tel">
+              </div>
+            </div>
+
+
+          </div>
+          </fieldset>
+
+        </div>
+
+
+              <input type="submit" class="nhsuk-button" value="Continue">
+
+
+    </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

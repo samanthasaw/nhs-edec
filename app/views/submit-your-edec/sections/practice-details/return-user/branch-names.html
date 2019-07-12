@@ -1,0 +1,123 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% if data['branch'] %}
+    {% set branch = data['branch'] %}
+  {% else %}
+    {% set branch = "Branch 1" %}
+{% endif %}
+{% set contentTitle = "What are the names of your branches?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
+<script src="/js/autocomplete-time.js" type="text/javascript"></script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="get">
+
+        {% call fieldset({
+          "legend": {
+            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-label--xl app-heading-xl nhsuk-u-margin-bottom-0",
+            "isPageHeading": true
+          }
+        }) %}
+
+        {{ hint({
+          "text": "Search by branch name or organisation (ODS) code",
+          "classes": "nhsuk-body-l nhsuk-u-margin-bottom-4"
+        }) }}
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "Branch name",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+
+
+              <select name="ODS2" id="ODS2">
+                <option value=""></option>
+
+              </select>
+            </div>
+
+
+
+            {% endcall %}
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+            {% endcall %}
+
+          </div>
+
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            <div class="">
+              <p class="app-select_remove-row">
+                <a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/remove-branch" onclick="toggle(2);">Remove branch</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="auto nhsuk-u-margin-bottom-2">
+        </div>
+
+        <p>
+          <a id="add" href="#" onclick="add(2);">Add a new branch</a>
+        </p>
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

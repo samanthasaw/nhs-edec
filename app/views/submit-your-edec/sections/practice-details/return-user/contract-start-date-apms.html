@@ -1,0 +1,102 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "What is the first day of your practice contract?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+{% set contractType %}
+  {% if data['contractType'] == 'gms' %}
+    General medical services (GMS)
+  {% elseif data['contractType'] == 'pms' %}
+    Personal medical services (PMS)
+  {% elseif data['contractType'] == 'apms' %}
+    Alternative provider medical services (APMS)
+  {% else %}
+    Other
+  {% endif %}
+{% endset %}
+
+{% set startDate %}
+  {% if (data['start-day']) and (data['start-month']) and (data['start-year']) %}
+    {{ data['start-day'] + " " + data['start-month'] | monthToWord + " " + data['start-year'] }}
+  {% else %}
+    14 February 2010
+  {% endif %}
+{% endset %}
+
+{% set endDate %}
+  {% if (data['end-day']) and (data['end-month']) and (data['end-year'])  %}
+    {{ data['end-day'] + " " + data['end-month'] | monthToWord + " " + data['end-year'] }}
+  {% else %}
+    26 March 2021
+  {% endif %}
+{% endset %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-end-date-apms" method="get">
+
+      {{ dateInput({
+        "id": "dob",
+        "namePrefix": "start",
+        "fieldset": {
+          "legend": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-label--xl app-heading-xl"
+          }
+        },
+        "hint": {
+          "text": "For example, 12 11 2007"
+        },
+        "items": [
+          {
+            "name": "day",
+            "classes": "nhsuk-input--width-2"
+          },
+          {
+            "name": "month",
+            "classes": "nhsuk-input--width-2"
+          },
+          {
+            "name": "year",
+            "classes": "nhsuk-input--width-4"
+          }
+        ]
+      }) }}
+
+      <input type="submit" class="nhsuk-button" value="Continue">
+      </input>
+
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Practice details flow for a return user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "/submit-your-edec/sections/practice-details/return-user/index",
+        "text": "Back"
+      }) }}
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/task-list-with-sections-3">Task list - not started</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/configuration-structure">Has your GP practice changed configuration or structure?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/check-last-year">Check the answers you submitted last year</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/check-last-year-config-same">Check the answers you submitted last year (no change to configuration)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details">Tell us your new practice details</a></li>
+      </ul>
+
+      <h3>Changing details</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/organisation-code">What is your practice organisation code (ODS code)?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-name">What is the name of your practice?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-type">What type of contract does your practice have?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/organisation-type">What type of organisation is your practice?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-start-date">What is the first day of your practice contract?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-end-date">What is the last day of your practice contract?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/patients-phone-number">What is your practice telephone number for patients?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/other-phone-number">Does your practice have another telephone number?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branches">Does your practice have any branches?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/how-many-branches">How many branches does your practice have?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branch-names">What are the names of your branches?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/remove-branch">Are you sure you want to remove branch?</a></li>
+      </ul>
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete-2">Section complete confirmation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/change-practice-details">Change your practice details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/task-list-practice-details-completed">Task list with practice details complete</a></li>
+      </ul>
+
+      <h3>APMS contract pages</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/apms-contract-dates">Check your contract dates</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-start-date-apms">What is the first day of your practice contract? (APMS contract)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-end-date-apms">What is the last day of your practice contract? (APMS contract)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-apms">Tell us your new practice details (APMS)</a></li>
+      </ul>
+
+      <h2>Previous</h2>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete">Section complete confirmation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/check-your-answers">Check your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/enter-contract-type">Enter your GP practice contract type</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/other-phone-number">Do you have another phone number for people who are not patients to contact you on?</a></li>
+      </ul>
+
+      <h2>Exploration</h2>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-type-conditional">What is your GP practice contract type? (conditionally revealing)</a></li>
+      </ul>
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
