@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Do you have another phone number for people who are not patients to contact you on?" %}
+{% set contentTitle = "Change your other practice telephone number" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,29 +34,61 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-practice-details" method="get">
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
+
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-practice-details" method="post">
+
+        {% if data['other'] === "no" %}
+          {% set noTrue = "True" %}
+        {% else %}
+          {% set yesTrue = "True" %}
+        {% endif %}
+
+
 
         {{ radios({
-          "idPrefix": "example-divider",
-          "name": "otherNumber",
+          "idPrefix": "gov",
+          "name": "other",
+          "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "text": "Do you have another practice telephone number?",
+              "isPageHeading": false,
+              "classes": ""
             }
           },
           "items": [
             {
               "value": "yes",
-              "text": "Yes"
+              "text": "Yes",
+              "checked": yesTrue
             },
             {
               "value": "no",
-              "text": "No"
+              "text": "No",
+              "checked": noTrue
             }
           ]
         }) }}
+
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+          {{ input({
+            "label": {
+              "text": "What is your other practice telephone number?",
+              "isPageHeading": true,
+              "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4"
+            },
+            "id": "inputOtherNumber",
+            "name": "otherNumber",
+            "classes": "nhsuk-input--width-20"
+          }) }}
+
+
+        </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

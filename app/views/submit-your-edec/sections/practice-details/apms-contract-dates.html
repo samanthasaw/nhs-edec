@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your practice details" %}
+{% set contentTitle = "You've changed to an Alternative provider " %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -50,41 +50,10 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
 
+      <h2>You must check your contract dates.</h2>
 
       {{ summaryList({
         rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: practice
-            }
-          },
-          {
-            key: {
-              text: "Organisation code (ODS code)"
-            },
-            value: {
-              text: "Y00001"
-            }
-          },
-          {
-            key: {
-              text: "Contract type"
-            },
-            value: {
-              text: "General medical services (GMS)"
-             }
-           },
-           {
-             key: {
-               text: "Organisation type"
-             },
-             value: {
-               text: "NHS body"
-             }
-           },
             {
               key: {
                 text: "Contract start date"
@@ -99,46 +68,6 @@
               },
               value: {
                 text: endDate
-              }
-            },
-            {
-              key: {
-                text: "Practice telephone number (for patients)"
-              },
-              value: {
-                text: "0113 496 0728"
-              }
-            },
-            {
-              key: {
-                text: "Do you have another practice telephone number"
-              },
-              value: {
-                html: "Yes<br>0113 496 0848"
-              }
-            },
-            {
-              key: {
-                text: "Do you have any branches"
-              },
-              value: {
-                text: "Yes"
-              }
-            },
-            {
-              key: {
-                text: "Number of branches"
-              },
-              value: {
-                text: "3"
-              }
-            },
-            {
-              key: {
-                text: "Branch names"
-              },
-              value: {
-                html: "Branch 1<br>Branch 2<br>Branch 3"
               }
             }
         ]
