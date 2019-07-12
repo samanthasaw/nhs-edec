@@ -1,9 +1,9 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
-{% if data['surgery'] %}
-    {% set surgery = data['surgery'] %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
   {% else %}
-    {% set surgery = "One Medicare LLP-The Light" %}
+    {% set practice = "The Nye Practice" %}
 {% endif %}
 {% set contentTitle = "Tell us your new practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
@@ -99,9 +99,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff</span>{{ contentTitle }}</h1>
 
-      <p>Check your practice details and change any incorrect practice details.</p>
+      <p>Check your practice staff details and change any incorrect practice staff details.</p>
 
 
       {{ summaryList({

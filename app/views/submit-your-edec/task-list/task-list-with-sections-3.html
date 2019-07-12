@@ -1,11 +1,11 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
+{% set serviceName = "Submit your electronic declaration" %}
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Submit your eDeclaration for " + practice %}
+{% set contentTitle = "Submit your electronic declaration for " + practice %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -44,22 +44,22 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Confirm your details are correct to submit your eDeclaration for {{ practice }}.</p>
+      <p>Confirm your details are correct to submit your electronic declaration for {{ practice }}.</p>
 
       <ul class="app-task-list">
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span> Section 1
+            <span class="app-task-list__section-number">1. </span> About your practice
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-              <a href="#" class="app-task-list__task-name" href="#" aria-describedby="eligibility-completed">
+              <a href="/{{ PROTOTYPEURL }}/sections/practice-details/check-last-year" class="app-task-list__task-name" aria-describedby="eligibility-completed">
                 Practice details
               </a>
               <strong class="tag-not-started" id="eligibility-completed">Not started</strong>
             </li>
             <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+              <a href="/{{ PROTOTYPEURL }}/sections/practice-staff/check-last-year" class="app-task-list__task-name" aria-describedby="read-declaration-completed">
                 Practice staff
               </a>
               <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
@@ -86,7 +86,7 @@
         </li>
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Section 2
+            <span class="app-task-list__section-number">2. </span> Practice regulations and procedures
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -117,7 +117,7 @@
         </li>
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span> Section 3
+            <span class="app-task-list__section-number">3. </span> Supporting information
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -130,12 +130,12 @@
         </li>
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. </span> Submit (section 4)
+            <span class="app-task-list__section-number">4. </span> Submit
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
-                Submit your eDeclaration
+                Submit your electronic declaration
               </a>
             </li>
           </ul>

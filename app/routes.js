@@ -4,6 +4,9 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
+// practice details
+
+
 router.post('/submit-your-edec/sections/opening-hours/check-last-year', function (req, res) {
   let answer = req.body.openinghours;
 
@@ -75,9 +78,9 @@ router.post('/submit-your-edec/demos/organisation-type/check-last-year', functio
 router.post('/submit-your-edec/sections/practice-details/contract-type', function (req, res) {
   let answer = req.body.contractType;
 
-  if (answer === 'other') {
+  if (answer === 'apms') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/enter-contract-type')
+    res.redirect('/submit-your-edec/sections/practice-details/apms-contract-start')
 
   } else {
     // res.redirect('error')
@@ -92,14 +95,34 @@ router.post('/submit-your-edec/sections/practice-details/configuration-structure
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/new-configuration-structure')
+    res.redirect('/submit-your-edec/sections/practice-details/contract-start-date')
 
   } else {
     // res.redirect('error')
-    res.redirect('/submit-your-edec/sections/practice-details/new-practice-details')
+    res.redirect('/submit-your-edec/sections/practice-details/check-last-year-config-same')
   }
 });
 
+
+// staff details
+
+
+router.post('/submit-your-edec/sections/practice-staff/check-last-year', function (req, res) {
+  let answer = req.body.staffDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-staff/staff-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/practice-staff/new-staff-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
 
 
 

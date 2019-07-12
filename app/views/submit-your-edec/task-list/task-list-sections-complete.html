@@ -1,11 +1,11 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
+{% set serviceName = "Submit your electronic declaration" %}
 {% if data['surgery'] %}
     {% set surgery = data['surgery'] %}
   {% else %}
     {% set surgery = "One Medicare LLP-The Light" %}
 {% endif %}
-{% set contentTitle = "Submit your eDeclaration for " + surgery %}
+{% set contentTitle = "Submit your electronic declaration for " + surgery %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,7 +42,7 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Confirm your GP practice branch details are correct to submit your eDeclaration.</p>
+      <p>Confirm your GP practice branch details are correct to submit your electronic declaration.</p>
 
 
       <ul class="app-task-list">
@@ -141,7 +141,7 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <a class="app-task-list__task-name" href="/{{ PROTOTYPEURL }}/submit/confirm-submit" aria-describedby="company-information-completed">
-                Submit your eDeclaration
+                Submit your electronic declaration
               </a>
             </li>
           </ul>

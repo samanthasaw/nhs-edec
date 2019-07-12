@@ -1,5 +1,5 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
+{% set serviceName = "Submit your electronic declaration" %}
 {% set contentTitle = "Your GP practices" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
@@ -33,24 +33,24 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>You have 3 GP practices you need to submit an eDeclaration for.</p>
+      <p>You have 3 GP practices you need to submit an electronic declaration for.</p>
 
       <div class="app-task-list nhsuk-u-margin-bottom-6">
           <ul class="app-task-list__items--no-padding">
             <li class="app-task-list__item">
-              <a onclick="gpSelect('The Nye Practice')" class="app-task-list__task-name practicename" href="#" aria-describedby="eligibility-completed">
+              <a onclick="gpSelect('The Nye Practice')" class="app-task-list__task-name practicename" href="/{{ PROTOTYPEURL }}/task-list/task-list-with-sections-3" aria-describedby="eligibility-completed">
                 The Nye Practice
               </a>
               <strong class="tag-started" id="eligibility-completed">Started</strong>
             </li>
             <li class="app-task-list__item">
-              <a onclick="gpSelect('The Whitfield Practice')" class="app-task-list__task-name practicename" href="#" aria-describedby="read-declaration-completed">
+              <a onclick="gpSelect('Fake practice 2')" class="app-task-list__task-name practicename" href="/{{ PROTOTYPEURL }}/task-list/task-list-with-sections-3" aria-describedby="read-declaration-completed">
                 Fake practice 2
               </a>
               <strong class="tag-started" id="read-declaration-completed">Started</strong>
             </li>
             <li class="app-task-list__item">
-              <a onclick="gpSelect('The Whitfield Practice')" class="app-task-list__task-name practicename" href="#" aria-describedby="read-declaration-completed">
+              <a onclick="gpSelect('Fake practice 3')" class="app-task-list__task-name practicename" href="/{{ PROTOTYPEURL }}/task-list/task-list-with-sections-3" aria-describedby="read-declaration-completed">
                 Fake practice 3
               </a>
               <strong class="tag-started" id="read-declaration-completed">Started</strong>
@@ -58,7 +58,7 @@
           </ul>
       </div>
 
-      <p><a href="">See your previously submitted eDeclarations</a></p>
+      <p><a href="">See your previously submitted electronic declarations</a></p>
 
     </div>
   </div>

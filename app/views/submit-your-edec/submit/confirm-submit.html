@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
-{% set contentTitle = "Submit your eDeclaration for " + surgery %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Submit your electronic declaration for " + surgery %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -18,7 +18,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Submit your eDeclaration
+  Submit your electronic declaration
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -39,10 +39,10 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <p>By submitting your GP practice’s eDeclaration you are confirming that the answers you’ve given are correct.</p>
+      <p>By submitting your GP practice’s electronic declaration you are confirming that the answers you’ve given are correct.</p>
 
       <form action="/submit-your-edec/submit/submission-confirmation" method="get">
-        <input type="submit" class="nhsuk-button" value="Submit your eDeclaration">
+        <input type="submit" class="nhsuk-button" value="Submit your electronic declaration">
         </input>
 
       </form>

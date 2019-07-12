@@ -1,5 +1,10 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
 {% set contentTitle = "Have those staff members passed their Disclosure and Barring Service (DBS) check?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
@@ -18,7 +23,7 @@
 
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Your staff details</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
 
@@ -35,7 +40,8 @@
           "name": "example",
           "fieldset": {
             "legend": {
-              "text": contentTitle,
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
+              </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
           },

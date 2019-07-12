@@ -1,13 +1,28 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
-{% if data['surgery'] %}
-    {% set surgery = data['surgery'] %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
   {% else %}
-    {% set surgery = "One Medicare LLP-The Light" %}
+    {% set practice = "The Nye Practice" %}
 {% endif %}
 {% set contentTitle = "Tell us your new practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='other']" ).on( "click", function() {
+  if ( $( "input[name='other']:checked" ).val() === "yes") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 {% set contractType %}
@@ -17,10 +32,8 @@
     Personal medical services (PMS)
   {% elseif data['contractType'] == 'apms' %}
     Alternative provider medical services (APMS)
-  {% elseif data['inputContractType'] == 'other' %}
-    Other type of contract
   {% else %}
-    {{ data['contractTypeInput'] }}
+    Other
   {% endif %}
 {% endset %}
 
@@ -61,7 +74,7 @@
 {% endset %}
 
 {% set startDate %}
-  {% if (data['start-day']) and (data['start-month']) and (data['start-year'])  %}
+  {% if (data['start-day']) and (data['start-month']) and (data['start-year']) %}
     {{ data['start-day'] + " " + data['start-month'] | monthToWord + " " + data['start-year'] }}
   {% else %}
     14 February 2010
@@ -91,7 +104,7 @@
 
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
 
@@ -113,7 +126,7 @@
               text: "Name"
             },
             value: {
-              text: data['practicename'] | placeholder('One Medicare LLP-The Light')
+              text: data['practicename'] | placeholder('The Nye Practice')
             },
             actions: {
               items: [
@@ -178,58 +191,7 @@
           },
           {
             key: {
-              text: "Have you changed configuration or structure"
-            },
-            value: {
-              text: configStructure | placeholder('No')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/configuration-structure",
-                  text: "Change",
-                  visuallyHiddenText: "configuration or structure"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Contract start date"
-            },
-            value: {
-              text: startDate
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/contract-start-date",
-                  text: "Change",
-                  visuallyHiddenText: "contract start date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Contract end date"
-            },
-            value: {
-              text: endDate
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/contract-end-date",
-                  text: "Change",
-                  visuallyHiddenText: "contract end date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Telephone number for patients"
+              text: "Practice telephone number for patients"
             },
             value: {
               text: data['patientphone'] | placeholder('0113 496 0728')
@@ -247,10 +209,10 @@
           },
           {
             key: {
-              text: "Do you have a telephone number for non-patients"
+              text: "Do you have another practice telephone number"
             },
             value: {
-              text: otherNumber | placeholder('Yes')
+              html: other | placeholder('Yes') + “<br>” + data['inputOtherPhone'] | placeholder('0113 496 0848')
             },
             actions: {
               items: [
@@ -264,25 +226,7 @@
           },
           {
             key: {
-              text: "Telephone number for non-patients"
-            },
-            value: {
-              text: data['inputOtherPhone'] | placeholder('0113 496 0848')
-
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/what-is-other-phone-number",
-                  text: "Change",
-                  visuallyHiddenText: "telephone number for non-patients"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Does your GP practice have any branches"
+              text: "Do you have any branches"
             },
             value: {
               text: branches | placeholder('Yes')
@@ -315,9 +259,67 @@
                 }
               ]
             }
+          },
+          {
+            key: {
+              text: "Branch names"
+            },
+            value: {
+              html: "Branch 1<br>Branch 2<br>Branch 3"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/how-many-branches",
+                  text: "Change",
+                  visuallyHiddenText: "number of branches"
+                }
+              ]
+            }
           }
         ]
       }) }}
+
+      <h2>Optional information</h2>
+
+      {{ summaryList({
+        rows: [
+      {
+        key: {
+          text: "Contract start date"
+        },
+        value: {
+          text: startDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/contract-start-date",
+              text: "Change",
+              visuallyHiddenText: "contract start date"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Contract end date"
+        },
+        value: {
+          text: endDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/contract-end-date",
+              text: "Change",
+              visuallyHiddenText: "contract end date"
+            }
+          ]
+        }
+      }
+      ]
+    }) }}
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/practice-details-complete-2" method="get">
 

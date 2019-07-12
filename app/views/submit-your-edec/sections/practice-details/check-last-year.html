@@ -1,14 +1,30 @@
 {% set PROTOTYPEURL = "submit-your-edec" %}
-{% set serviceName = "Submit your eDeclaration" %}
-{% if data['surgery'] %}
-    {% set surgery = data['surgery'] %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
   {% else %}
-    {% set surgery = "One Medicare LLP-The Light" %}
+    {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check the practice details you submitted last year" %}
+{% set contentTitle = "Check your practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
+
+{% set startDate %}
+  {% if (data['start-day']) and (data['start-month']) and (data['start-year'])  %}
+    {{ data['start-day'] + " " + data['start-month'] | monthToWord + " " + data['start-year'] }}
+  {% else %}
+    14 February 2010
+  {% endif %}
+{% endset %}
+
+{% set endDate %}
+  {% if (data['end-day']) and (data['end-month']) and (data['end-year'])  %}
+    {{ data['end-day'] + " " + data['end-month'] | monthToWord + " " + data['end-year'] }}
+  {% else %}
+    26 March 2021
+  {% endif %}
+{% endset %}
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -23,7 +39,7 @@
 {% block beforeContent %}
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
-    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ surgery }}</p>
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
 {% endblock %}
@@ -42,7 +58,7 @@
               text: "Name"
             },
             value: {
-              text: "One Medicare LLP-The Light"
+              text: practice
             }
           },
           {
@@ -69,20 +85,12 @@
                text: "NHS body"
              }
            },
-           {
-             key: {
-               text: "Have you changed configuration or structure"
-             },
-             value: {
-               text: "No"
-             }
-            },
             {
               key: {
                 text: "Contract start date"
               },
               value: {
-                text: "14 February 2010"
+                text: startDate
               }
             },
             {
@@ -90,12 +98,12 @@
                 text: "Contract end date"
               },
               value: {
-                text: "26 March 2021"
+                text: endDate
               }
             },
             {
               key: {
-                text: "Telephone number for patients"
+                text: "Practice telephone number (for patients)"
               },
               value: {
                 text: "0113 496 0728"
@@ -103,18 +111,10 @@
             },
             {
               key: {
-                text: "Do you have a telephone number for non-patients"
+                text: "Do you have another practice telephone number"
               },
               value: {
-                text: "Yes"
-              }
-            },
-            {
-              key: {
-                text: "Telephone number for non-patients"
-              },
-              value: {
-                text: "0113 496 0848"
+                html: "Yes<br>0113 496 0848"
               }
             },
             {
@@ -131,6 +131,14 @@
               },
               value: {
                 text: "3"
+              }
+            },
+            {
+              key: {
+                text: "Branch names"
+              },
+              value: {
+                html: "Branch 1<br>Branch 2<br>Branch 3"
               }
             }
         ]

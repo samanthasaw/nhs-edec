@@ -1,0 +1,190 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check your practice details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+{% set startDate %}
+  {% if (data['start-day']) and (data['start-month']) and (data['start-year'])  %}
+    {{ data['start-day'] + " " + data['start-month'] | monthToWord + " " + data['start-year'] }}
+  {% else %}
+    14 February 2010
+  {% endif %}
+{% endset %}
+
+{% set endDate %}
+  {% if (data['end-day']) and (data['end-month']) and (data['end-year'])  %}
+    {{ data['end-day'] + " " + data['end-month'] | monthToWord + " " + data['end-year'] }}
+  {% else %}
+    26 March 2021
+  {% endif %}
+{% endset %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "configuration-structure",
+        "text": "Back"
+      }) }}
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: practice
+            }
+          },
+          {
+            key: {
+              text: "Organisation code (ODS code)"
+            },
+            value: {
+              text: "Y00001"
+            }
+          },
+          {
+            key: {
+              text: "Contract type"
+            },
+            value: {
+              text: "General medical services (GMS)"
+             }
+           },
+           {
+             key: {
+               text: "Organisation type"
+             },
+             value: {
+               text: "NHS body"
+             }
+           },
+            {
+              key: {
+                text: "Practice telephone number for patients"
+              },
+              value: {
+                text: "0113 496 0728"
+              }
+            },
+            {
+              key: {
+                text: "Do you have another practice telephone number"
+              },
+              value: {
+                html: "Yes<br>0113 496 0848"
+              }
+            },
+            {
+              key: {
+                text: "Do you have any branches"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "Number of branches"
+              },
+              value: {
+                text: "3"
+              }
+            },
+            {
+              key: {
+                text: "Branch names"
+              },
+              value: {
+                html: "Branch 1<br>Branch 2<br>Branch 3"
+              }
+            }
+        ]
+      }) }}
+
+      <h2>Optional information</h2>
+
+      {{ summaryList({
+        rows: [
+        {
+          key: {
+            text: "Contract start date"
+          },
+          value: {
+            text: startDate
+          }
+        },
+        {
+          key: {
+            text: "Contract end date"
+          },
+          value: {
+            text: endDate
+          }
+        }
+        ]
+      }) }}
+
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/check-last-year" method="post">
+        {{ radios({
+          "idPrefix": "sections",
+          "name": "practicedetails",
+          "fieldset": {
+            "legend": {
+              "text": "Are these practice details correct?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes, they're correct"
+            },
+            {
+              "value": "no",
+              "text": "No, I need to change them"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
