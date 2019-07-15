@@ -1,0 +1,92 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Practice premises and equipment" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      {{ backLink({
+        "href": "/submit-your-edec/sections/premises-equipment/index",
+        "text": "Back"
+      }) }}
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/check-last-year">Check last year</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/new-premises-details">Tell us your new premises and equipment details</a></li>
+      </ul>
+
+
+      <h3>Changing details</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/suitable-premises">Suitable premises</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/nhs-england">NHS England</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/infection-control">Infection control</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/fire-safety">Fire safety</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/wheelchair">Wheelchair</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/wheelchair-arrangements">Wheelchair arrangements</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/wheelchair-other">Wheelchair other</a></li>
+      </ul>
+
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/premises-details-complete">Premises and equipment details complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/change-premises-details">Change premises and equipment details</a></li>
+      </ul>
+
+
+      <h2>Exploration</h2>
+
+
+      <h3>Infection control question</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/infection-control-2">Using hint text to break up the question</a></li>
+      </ul>
+
+
+      <h2>Previous</h2>
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
