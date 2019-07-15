@@ -5,6 +5,11 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
+{% if data['branchOne'] %}
+    {% set branchOne = data['branchOne'] %}
+  {% else %}
+    {% set branchOne = "Park Surgery" %}
+{% endif %}
 {% set contentTitle = "Check your practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
@@ -127,7 +132,7 @@
                 text: "Branch names"
               },
               value: {
-                html: "Branch 1<br>Branch 2<br>Branch 3"
+                html: "Park Surgery<br>Hill Surgery<br>Meadow Branch"
               }
             }
         ]
