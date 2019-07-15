@@ -25,16 +25,16 @@ function gpSelect(gp, url){
 function listSelect (list, url){
 
   // grab the variable called list
-  // set gp to session storage called "branch"
+  // set gp to session storage called "branchOne"
   // save that by calling to a post route
   // grab the variable called url
   // check if it is set
   // if it is redirect the page to it
   // if not, redirect window to /submit-your-edec/sections/practice-details/return-user/redirect
 
-  sessionStorage.setItem("branch", list);
+  sessionStorage.setItem("branchOne", list);
   // console.log(sessionStorage.getItem("data"));
-  $.post( "/submit-your-edec/sections/practice-details/return-user/redirect", { branch: list } );
+  $.post( "/submit-your-edec/sections/practice-details/return-user/redirect", { branchOne: list } );
   if (url) {
     window.location.href = url
   } else {
