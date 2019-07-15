@@ -124,7 +124,7 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
 // staff details
 
 
-router.post('/submit-your-edec/sections/practice-staff/check-last-year', function (req, res) {
+router.post('/submit-your-edec/sections/practice-staff/return-user/check-last-year', function (req, res) {
   let answer = req.body.staffDetails;
 
   if (answer === 'yes') {
@@ -141,6 +141,66 @@ router.post('/submit-your-edec/sections/practice-staff/check-last-year', functio
   }
 });
 
+
+
+// premises and equipment details
+
+router.post('/submit-your-edec/sections/premises-equipment/return-user/check-last-year', function (req, res) {
+  let answer = req.body.premisesDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/premises-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements', function (req, res) {
+  let answer = req.body.wheelchairArrangements;
+
+  if (answer == 'homevisit' && answer == 'other') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-other')
+
+} else if (answer === 'other') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-other')
+
+} else if (answer === 'homevisit') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+// procedures details
+
+router.post('/submit-your-edec/sections/practice-procedures/return-user/check-last-year', function (req, res) {
+  let answer = req.body.proceduresDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-procedures/return-user/procedures-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/practice-procedures/return-user/new-procedures-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
 
 
 // opening-hours checkboxes
@@ -325,7 +385,7 @@ router.get('/submit-your-edec/task-list/redirect', function (req, res) {
 // which branch
 router.get('/submit-your-edec/sections/practice-details/return-user/redirect', function (req, res) {
 
-  res.redirect('/submit-your-edec/sections/practice-details/return-user/branch-names')
+  res.redirect('/submit-your-edec/sections/practice-details/return-user/configuration-structure')
 
 });
 
