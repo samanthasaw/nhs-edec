@@ -129,11 +129,11 @@ router.post('/submit-your-edec/sections/practice-staff/return-user/check-last-ye
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-staff/staff-details-complete')
+    res.redirect('/submit-your-edec/sections/practice-staff/return-user/staff-details-complete')
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/practice-staff/new-staff-details') }
+    res.redirect('/submit-your-edec/sections/practice-staff/return-user/new-staff-details') }
 
   else {
     // res.redirect('error')

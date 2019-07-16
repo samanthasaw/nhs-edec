@@ -5,76 +5,10 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your new staff details" %}
+{% set contentTitle = "Change your staff details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
-{% set needsAnalysis %}
-  {% if data['needsAnalysis'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set confirmChecks %}
-  {% if data['confirmChecks'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set dbsCheck %}
-  {% if data['dbsCheck'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set annualAppraisal %}
-  {% if data['annualAppraisal'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-
-{% set termsEmployment %}
-  {% if data['termsEmployment'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-
-{% set equalOpportunities %}
-  {% if data['equalOpportunities'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set preventStrategy %}
-  {% if data['preventStrategy'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set safeguardingPolicy %}
-  {% if data['safeguardingPolicy'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -100,9 +34,6 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff</span>{{ contentTitle }}</h1>
-
-      <p>Check your staff details and change any incorrect staff details.</p>
-
 
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",
