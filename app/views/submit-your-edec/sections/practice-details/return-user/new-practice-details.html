@@ -65,6 +65,13 @@
   {% endif %}
 {% endset %}
 
+{% set otherPhoneNumber %}
+  {% if data['other'] == 'no' %}
+  {% else %}
+   <br> {{ data['otherNumber'] | placeholder('0113 496 0848') }}
+  {% endif %}
+{% endset %}
+
 
 {% set branches %}
   {% if data['branches'] == 'yes' %}
@@ -213,7 +220,7 @@
               text: "Does your practice have another telephone number?"
             },
             value: {
-              html: "other | placeholder('Yes')" + “<br>” + "data['inputOtherPhone'] | placeholder('0113 496 0848')"
+              html: data['other'] | capitalize | placeholder('Yes') + otherPhoneNumber
             },
             actions: {
               items: [
