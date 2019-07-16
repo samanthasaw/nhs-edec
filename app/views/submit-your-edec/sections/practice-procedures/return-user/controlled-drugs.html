@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "When undertaking call or recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?" %}
+{% set contentTitle = "With regard to dispensing doctors can the practice demonstrate it has clear procedures, that are followed in practice, monitored and reviewed, for controlled drugs, unless they are taken by the person themselves in their own home?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,56 +33,40 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/vaccination-programmes" method="post">
-        {{ checkboxes({
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
+
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "vaccinationProgrammes",
+          "name": "controlledDrugs",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-fieldset__legend--xl",
-              "isPageHeading": true
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
           "hint": {
-          "text": "Select all that apply"
-        },
+            "text": "This includes investigations about adverse events, incidents, errors and near misses; sharing concerns about mishandling."
+            },
           "items": [
             {
-              "value": "posterPatient",
-              "text": "Poster in waiting room"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "notificationWebsite",
-              "text": "Notification on practice website"
+              "value": "no",
+              "text": "No"
             },
             {
-              "value": "letterPatient",
-              "text": "Letter to patient"
+              "divider": "or"
             },
             {
-              "value": "textMessage",
-              "text": "Text message to patient"
-            },
-            {
-              "value": "phoneCall",
-              "text": "Phone call to patient"
-            },
-            {
-              "value": "consultation",
-              "text": "During consultation or appointment"
-            },
-            {
-              "value": "other",
-              "text": "Other electronic technical solution"
-            },
-            {
-              "value": "othernonElectronic",
-              "text": "Other non-electronic technical solution"
+              "value": "notApplicable",
+              "text": "Not applicable"
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
