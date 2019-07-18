@@ -3,7 +3,8 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
 {% if data['branchOne'] %}
     {% set branchOne = data['branchOne'] %}
@@ -69,14 +70,6 @@
             },
             value: {
               text: practice
-            }
-          },
-          {
-            key: {
-              text: "Organisation code (ODS code)"
-            },
-            value: {
-              text: "Y00001"
             }
           },
           {
