@@ -19,9 +19,18 @@
 {% set wheelchairArrangements %}
   {% if data['wheelchairArrangements'] == 'homevisit' %}
     Home visits
+  {% elif data['wheelchairArrangements'] == 'homevisit,other' %}
+   Home visits
+  {% elif data['wheelchairArrangements'] %}
+    {% set inputWheelchairOther %}
+      {% if data['inputWheelchairOther'] %}
+        {{ data['inputWheelchairOther'] }}
+      {% endif %}
+    {% endset %}
   {% else %}
-    {{ data['inputWheelchairOther'] }}
+    Home visits
   {% endif %}
+
 {% endset %}
 
 {% set suitablePremises %}
@@ -187,7 +196,7 @@
               text: "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
             },
             value: {
-              html: data['wheelchairArrangements'] | placeholder('Home visits') + inputWheelchairOther
+              html: wheelchairArrangements | placeholder('Home visits') + inputWheelchairOther
             },
             actions: {
               items: [
