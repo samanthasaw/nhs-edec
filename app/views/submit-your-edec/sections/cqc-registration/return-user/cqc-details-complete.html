@@ -1,0 +1,49 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "You've confirmed your procedures details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
+
+      <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
+
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/change-procedures-details">change your procedures details</a> at any time before submitting your electronic declaration.</p>
+
+      {{ button({
+        "text": "Continue",
+        "href": "#"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
