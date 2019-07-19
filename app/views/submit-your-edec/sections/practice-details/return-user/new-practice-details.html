@@ -3,7 +3,8 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
 {% set contentTitle = "Tell us your new practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
@@ -97,6 +98,13 @@
   {% endif %}
 {% endset %}
 
+{% set configChange %}
+  {% if data['configStructure'] == 'no' %}
+  {% else %}
+   <br> {{ data['otherNumber'] | placeholder('0113 496 0848') }}
+  {% endif %}
+{% endset %}
+
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -142,23 +150,6 @@
                   href: "/submit-your-edec/sections/practice-details/return-user/practice-name",
                   text: "Change",
                   visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Organisation code (ODS code)"
-            },
-            value: {
-              text: data['odscode'] | placeholder('Y00001')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/return-user/organisation-code",
-                  text: "Change",
-                  visuallyHiddenText: "organisation code (ODS code)"
                 }
               ]
             }
@@ -288,6 +279,8 @@
         ]
       }) }}
 
+      {% if data['contractType'] == 'apms' %}
+      {% else %}
       <h2>Optional information</h2>
 
       {{ summaryList({
@@ -328,6 +321,7 @@
       }
       ]
     }) }}
+    {% endif %}
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete-2" method="get">
 

@@ -165,21 +165,13 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/check-las
 router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements', function (req, res) {
   let answer = req.body.wheelchairArrangements;
 
-  if (answer == 'homevisit' && answer == 'other') {
+  if (answer.includes('other')) {
 
     res.redirect('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-other')
 
-} else if (answer === 'other') {
-
-    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-other')
-
-} else if (answer === 'homevisit') {
-
-    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details') }
-
-  else {
+} else {
     // res.redirect('error')
-    res.redirect('/submit-your-edec/errors/generic-error/')
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details')
   }
 });
 

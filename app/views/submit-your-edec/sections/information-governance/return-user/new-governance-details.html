@@ -5,10 +5,66 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Change your procedures details" %}
+{% set contentTitle = "Tell us your new procedures details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
+
+{% set inputWheelchairOther %}
+  {% if data['inputWheelchairOther'] %}
+    <br> {{ data['inputWheelchairOther'] }}
+  {% endif %}
+{% endset %}
+
+{% set wheelchairArrangements %}
+  {% if data['wheelchairArrangements'] == 'homevisit' %}
+    Home visits
+  {% else %}
+    {{ data['inputWheelchairOther'] }}
+  {% endif %}
+{% endset %}
+
+{% set suitablePremises %}
+  {% if data['suitablePremises'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set nhsEngland %}
+  {% if data['nhsEngland'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set infectionControl %}
+  {% if data['infectionControl'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set fireSafety %}
+  {% if data['fireSafety'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set wheelchair %}
+  {% if data['wheelchair'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -35,8 +91,10 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
 
+      <p>Check your procedures details and change any incorrect details.</p>
+
+
       {{ summaryList({
-        "classes": "nhsuk-summary-list--long",
         rows: [
           {
             key: {
@@ -128,7 +186,7 @@
               text: "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
             },
             value: {
-              html: "data['wheelchairArrangements'] | placeholder('Home visits')<br>data['inputWheelchairOther']"
+              html: data['wheelchairArrangements'] | placeholder('Home visits') + inputWheelchairOther
             },
             actions: {
               items: [
