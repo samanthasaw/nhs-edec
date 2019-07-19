@@ -23,6 +23,13 @@
     $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
   }
 });
+
+// This kills any row that is empty
+$('div.nhsuk-summary-list__row').each(function() {
+         if ($(this).text().trim() === "") {
+                   $(this).css('display','none');
+         }
+});
 </script>
 {% endblock %}
 
@@ -171,6 +178,41 @@
               ]
             }
           },
+          {
+            key: {
+              text: "Contract start date"
+            },
+            value: {
+              text: startDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/contract-start-date",
+                  text: "Change",
+                  visuallyHiddenText: "contract start date"
+                }
+              ]
+            }
+          } if data['contractType'] == 'apms',
+          {
+            classes: "fart",
+            key: {
+              text: "Contract end date"
+            },
+            value: {
+              text: endDate
+            },
+            actions: {
+              tems: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/contract-end-date",
+                  text: "Change",
+                  visuallyHiddenText: "contract end date"
+                }
+              ]
+            }
+          } if data['contractType'] == 'apms',
           {
             key: {
               text: "Organisation type"
