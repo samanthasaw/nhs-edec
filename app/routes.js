@@ -109,7 +109,7 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details-apms')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details')
 
   } else {
     // res.redirect('error')
