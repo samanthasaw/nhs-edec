@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check the procedures details you submitted last year" %}
+{% set contentTitle = "Check the CQC registration details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -32,7 +32,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)</span>{{ contentTitle }}</h1>
 
 
       {{ summaryList({
@@ -40,7 +40,7 @@
         rows: [
           {
             key: {
-              text: "Does your practice produce a leaflet that includes all of the requirements set out in its contract?"
+              text: "Does your CQC registration accurately reflect the regulated activities you provide, and is each location where you provide them listed?"
             },
             value: {
               text: "Yes"
@@ -48,54 +48,22 @@
           },
           {
             key: {
-              text: "Is your premises used for the provision of services under the contract subject to a plan that has been formally agreed with NHS England?"
+              text: "Have you notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in receipt of an up to date registration certificate?"
             },
             value: {
               text: "Yes"
             }
-          },
-          {
-            key: {
-              text: "Can your practice demonstrate that it complies with arrangements for infection control and decontamination?"
-            },
-            value: {
-              text: "Yes"
-             }
-           },
-           {
-             key: {
-               text: "Can your practice demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations?"
-             },
-             value: {
-               text: "Yes"
-             }
-           },
-           {
-             key: {
-               text: "Does your practice have at least one consulting room which is accessible to wheel chair users?"
-             },
-             value: {
-               text: "Yes"
-             }
-            },
-            {
-              key: {
-                text: "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
-              },
-              value: {
-                text: "Home visits"
-              }
-            }
+          }
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/check-last-year" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/return-user/check-last-year" method="post">
         {{ radios({
           "idPrefix": "sections",
-          "name": "proceduresDetails",
+          "name": "cqcDetails",
           "fieldset": {
             "legend": {
-              "text": "Are these procedures details correct?",
+              "text": "Are these CQC registration details correct?",
               "classes": "nhsuk-fieldset__legend--m"
             }
           },
