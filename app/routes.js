@@ -194,6 +194,45 @@ router.post('/submit-your-edec/sections/practice-procedures/return-user/check-la
   }
 });
 
+// information governance details
+
+
+router.post('/submit-your-edec/sections/information-governance/return-user/check-last-year', function (req, res) {
+  let answer = req.body.governanceDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/information-governance/return-user/governance-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/information-governance/return-user/new-governance-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+// CQC registration details
+
+
+router.post('/submit-your-edec/sections/cqc-registration/return-user/check-last-year', function (req, res) {
+  let answer = req.body.cqcDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/cqc-registration/return-user/cqc-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/cqc-registration/return-user/new-cqc-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
 
 // opening-hours checkboxes
 
