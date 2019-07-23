@@ -5,11 +5,10 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What other patient sources has your evidence been obtained from?" %}
+{% set contentTitle = "The practice can evidence that it has in place arrangements to monitor its contract with its OOH provider" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -33,34 +32,39 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="#" method="get">
 
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
-        {{ input({
-          "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-            </span>' + contentTitle + '</h1>',            "isPageHeading": true,
-            "classes": "nhsuk-label--xl"
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "monitorOoh",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--xl app-heading-xl"
+            }
           },
-          "id": "inputwebsitelink",
-          "name": "websitelink",
-          "classes": "nhsuk-input--width-20"
+          "hint": {
+            "text": "Including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints."
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
         }) }}
-
-        <p class="nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">
-          <a href="#" onclick="toggle(2);">Remove row</a>
-        </p>
-
-                <p>
-                  <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another patient source</a>
-                </p>
-
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
+
 
 
     </div>

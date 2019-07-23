@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What other patient sources has your evidence been obtained from?" %}
+{% set contentTitle = "What other arrangements are in place?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -46,14 +46,6 @@
           "name": "websitelink",
           "classes": "nhsuk-input--width-20"
         }) }}
-
-        <p class="nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">
-          <a href="#" onclick="toggle(2);">Remove row</a>
-        </p>
-
-                <p>
-                  <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another patient source</a>
-                </p>
 
 
 
