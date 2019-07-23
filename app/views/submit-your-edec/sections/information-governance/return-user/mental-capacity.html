@@ -1,0 +1,72 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Within the last 3 years, has your practice provided for training on mental capacity and the Mental Capacity Act for practice staff health care professionals and/or other staff (where relevant) and got a system for assessing staff competency?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/" method="get">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "informationSharing",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--xl app-heading-xl"
+            }
+          },
+          "hint": {
+            "text": "The House of lords select committee on the Mental Capacity Act 2005 (published 25/2/14) found that statutory services were often failing in their obligations in relation to the MCA. There is patch availability of training resource on the MCA, - but with increasing prevalence of dementia, NHS England wants to ensure that practices have access to appropriate training and support. Assessment of capacity is highlighted in BMA’s guidance ‘Safeguarding vulnerable adults – a tool kit for general practitioners. CQC inspectors will want GPs and other practice staff to demonstrate their competence in safeguarding adults at risk. Whilst not a contractual requirement, NHS England is keen to ensure all practices have access to the required level of support to ensure that practices are aware of good practice in relation to adult safeguarding and the issues regarding the MCA. The outcome will help to inform future training requirements."
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}
