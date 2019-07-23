@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "With regard to dispensing doctors does your practice have systems in place to ensure you comply with the requirements of the Controlled Drugs (Supervision of Management and Use) Regulations 2006, relevant health technical memoranda and professional guidance from the Royal Pharmaceutical Society of Great Britain and other relevant professional bodies and agencies?" %}
+{% set contentTitle = "With regard to dispensing doctors does your practice declare it complies with the terms of service of dispensing doctors?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,13 +37,16 @@
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "controlledDrugs",
+          "name": "minorSurgery",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
+          },
+          "hint": {
+            "text": "Outlined in schedule 6 of The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013."
           },
           "items": [
             {
@@ -63,7 +66,6 @@
             }
           ]
         }) }}
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

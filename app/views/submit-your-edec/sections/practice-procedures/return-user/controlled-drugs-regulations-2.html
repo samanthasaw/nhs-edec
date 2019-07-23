@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "With regard to dispensing doctors does your practice have systems in place to ensure you comply with the requirements of the Controlled Drugs (Supervision of Management and Use) Regulations 2006, relevant health technical memoranda and professional guidance from the Royal Pharmaceutical Society of Great Britain and other relevant professional bodies and agencies?" %}
+{% set contentTitle = "With regard to dispensing doctors does your practice have systems in place to ensure you comply with requirements?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -44,6 +44,11 @@
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
+          },
+          "hint": {
+            "html": '<ul><li>of the Controlled Drugs (Supervision of Management and Use) Regulations 2006</li>
+                     <li>relevant health technical memoranda and professional guidance from the Royal Pharmaceutical Society of Great Britain</li>
+                     <li>other relevant professional bodies and agencies</li></ul>'
           },
           "items": [
             {
