@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
-// practice details
+
 
 
 router.post('/submit-your-edec/sections/opening-hours/check-last-year', function (req, res) {
@@ -24,12 +24,14 @@ router.post('/submit-your-edec/sections/opening-hours/check-last-year', function
   }
 });
 
+// practice details
+
 router.post('/submit-your-edec/sections/practice-details/return-user/check-last-year', function (req, res) {
   let answer = req.body.practicedetails;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-2')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/your-catchment')
 
   } else if (answer === 'no') {
 
