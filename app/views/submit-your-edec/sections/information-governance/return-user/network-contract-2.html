@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Within the last 3 years, has your practice provided for training on mental capacity and the Mental Capacity (Amendment) Act for practice staff health care professionals and/or other staff (where relevant) and got a system for assessing staff competency?" %}
+{% set contentTitle = "Is your practice signed up to the Network Contract Direct Enhanced Service (DES)?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,16 +37,13 @@
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "informationSharing",
+          "name": "dataProtection",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
-          },
-          "hint": {
-            "text": "The House of lords select committee on the Mental Capacity Act 2005 (published 25/2/14) found that statutory services were often failing in their obligations in relation to the MCA. There is patch availability of training resource on the MCA, - but with increasing prevalence of dementia, NHS England wants to ensure that practices have access to appropriate training and support. Assessment of capacity is highlighted in BMA’s guidance ‘Safeguarding vulnerable adults – a tool kit for general practitioners. CQC inspectors will want GPs and other practice staff to demonstrate their competence in safeguarding adults at risk. Whilst not a contractual requirement, NHS England is keen to ensure all practices have access to the required level of support to ensure that practices are aware of good practice in relation to adult safeguarding and the issues regarding the MCA. The outcome will help to inform future training requirements."
           },
           "items": [
             {
