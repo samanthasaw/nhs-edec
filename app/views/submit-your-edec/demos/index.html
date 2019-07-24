@@ -33,6 +33,11 @@
 
       <!-- Change the page title here -->
 
+
+                  {{ backLink({
+                    "href": "/submit-your-edec/index",
+                    "text": "Back"
+                  }) }}
       <h1>
         {{ contentTitle }}
       </h1>
@@ -43,19 +48,15 @@
 
       <h2>Latest</h2>
 
-
-
-      <h2>Previous</h2>
+      <h3>Return user</h3>
 
       <ul>
-        <li><a href="/submit-your-edec/demos/organisation-type/your-gp-surgeries">User needs to update their organisation type for One Medicare LLP-The Light and then confirms their practice details are correct</a></li>
+       <li><a href="/{{ PROTOTYPEURL }}/demos/select-a-practice">Practice premises and equipment flow</a></li>
       </ul>
 
 
-            {{ backLink({
-              "href": "/submit-your-edec/index",
-              "text": "Back"
-            }) }}
+      <h3>New user</h3>
+
 
       <!-- End of content -->
 
