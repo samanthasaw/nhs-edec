@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What other arrangements are in place to meet the reasonable needs of patients who are wheelchair users?" %}
+{% set contentTitle = "You've confirmed your premises and equipment details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,25 +33,16 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/check-your-answers" method="get">
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment</span>{{ contentTitle }}</h1>
 
-        {{ input({
-          "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
-            </span>' + contentTitle + '</h1>',
-            "isPageHeading": true,
-            "classes": "nhsuk-label--xl"
-          },
-          "id": "wheelchairOther",
-          "name": "inputWheelchairOther",
-          "classes": "nhsuk-input--width-30"
-        }) }}
+      <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
 
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/premises-equipment/new-user/change-premises-details">change your premises and equipment details</a> at any time before submitting your electronic declaration.</p>
 
-      </form>
-
+      {{ button({
+        "text": "Continue",
+        "href": "/submit-your-edec/sections/premises-equipment/new-user/task-list-premises-details-completed"
+      }) }}
 
     </div>
   </div>

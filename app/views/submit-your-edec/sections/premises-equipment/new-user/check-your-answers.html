@@ -1,0 +1,239 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check your answers" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='other']" ).on( "click", function() {
+  if ( $( "input[name='other']:checked" ).val() === "yes") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+
+// This kills any row that is empty
+$('div.nhsuk-summary-list__row').each(function() {
+         if ($(this).text().trim() === "") {
+                   $(this).css('display','none');
+         }
+});
+</script>
+{% endblock %}
+
+{% set inputWheelchairOther %}
+  {% if data['inputWheelchairOther'] %}
+    <br> {{ data['inputWheelchairOther'] }}
+  {% endif %}
+{% endset %}
+
+{% set wheelchairArrangements %}
+  {% if data['wheelchairArrangements'] == 'homevisit' %}
+    Home visits
+  {% elif data['wheelchairArrangements'] == 'homevisit,other' %}
+   Home visits
+  {% elif data['wheelchairArrangements'] %}
+    {% set inputWheelchairOther %}
+      {% if data['inputWheelchairOther'] %}
+        {{ data['inputWheelchairOther'] }}
+      {% endif %}
+    {% endset %}
+  {% else %}
+    Home visits
+  {% endif %}
+
+{% endset %}
+
+{% set suitablePremises %}
+  {% if data['suitablePremises'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set nhsEngland %}
+  {% if data['nhsEngland'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set infectionControl %}
+  {% if data['infectionControl'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set fireSafety %}
+  {% if data['fireSafety'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set wheelchair %}
+  {% if data['wheelchair'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment</span>{{ contentTitle }}</h1>
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "Is your premises used for the provision of services under the contract suitable for the delivery of those services and sufficient to meet the reasonable needs of the practice’s patients?"
+            },
+            value: {
+              text: suitablePremises | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/premises-equipment/new-user/change-suitable-premises",
+                  text: "Change",
+                  visuallyHiddenText: "if your premises used for the provision of services under the contract is suitable for the delivery of those services and sufficient to meet the reasonable needs of the practice’s patients"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Is your premises used for the provision of services under the contract subject to a plan that has been formally agreed with NHS England?"
+            },
+            value: {
+              text: nhsEngland | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/premises-equipment/new-user/change-nhs-england",
+                  text: "Change",
+                  visuallyHiddenText: "if your premises used for the provision of services under the contract is subject to a plan that has been formally agreed with NHS England"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Can your practice demonstrate that it complies with arrangements for infection control and decontamination?"
+            },
+            value: {
+              text: infectionControl | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/premises-equipment/new-user/change-infection-control-2",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice can demonstrate that it complies with arrangements for infection control and decontamination"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Can your practice demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations?"
+            },
+            value: {
+              text: fireSafety | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/premises-equipment/new-user/change-fire-safety",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice can demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Does your practice have at least one consulting room which is accessible to wheel chair users?"
+            },
+            value: {
+              text: wheelchair | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice has at least one consulting room which is accessible to wheel chair users"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
+            },
+            value: {
+              html: wheelchairArrangements | placeholder('Home visits') + inputWheelchairOther
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements",
+                  text: "Change",
+                  visuallyHiddenText: "what arrangements are in place to meet the reasonable needs of patients who are wheelchair users"
+                }
+              ]
+            }
+          } if data['wheelchair'] == 'no'
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/new-user/premises-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}
