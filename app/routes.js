@@ -164,6 +164,7 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/check-las
   }
 });
 
+
 router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements', function (req, res) {
   let answer = req.body.wheelchairArrangements;
 
@@ -174,6 +175,67 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchai
 } else {
     // res.redirect('error')
     res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details')
+  }
+});
+
+
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements', function (req, res) {
+  let answer = req.body.wheelchairArrangements;
+
+  if (answer.includes('other')) {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-other')
+
+} else {
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
+  }
+});
+
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements', function (req, res) {
+  let answer = req.body.wheelchairArrangements;
+
+  if (answer.includes('other')) {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-other')
+
+} else {
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
   }
 });
 
