@@ -100,3 +100,22 @@ li ul {
     float: none;
   }
 }
+
+.nhsuk-checkbox--inline {
+  @include mq ($from: tablet) {
+    @include clearfix;
+
+    .nhsuk-checkbox__item {
+      clear: none;
+      float: left;
+      margin-right: nhsuk-spacing(4);
+    }
+  }
+
+  &.nhsuk-checkbox--conditional { /* 1 */
+    .nhsuk-checkbox__item {
+      float: none;
+      margin-right: 0;
+    }
+  }
+}

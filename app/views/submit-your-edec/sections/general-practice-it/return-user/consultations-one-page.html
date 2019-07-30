@@ -1,0 +1,176 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice promotes and offers the facility for patients nursing and residential homes to receive consultations electronically, either by email, video, telephone consultation or other electronic means" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "nursingHomeConsultation",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--xl app-heading-xl"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+        {{ checkboxes({
+          "idPrefix": "nhs",
+          "classes": "nhsuk-checkbox--inline nhsuk-checkbox__item", 
+          "name": "selectPatientConsultations",
+          "fieldset": {
+            "legend": {
+              "text": "For patients",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+            {
+              "value": "email",
+              "text": "Email"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+            }
+          ]
+        }) }}
+
+        {{ checkboxes({
+          "idPrefix": "nhs",
+          "name": "selectPatientConsultations",
+          "fieldset": {
+            "legend": {
+              "text": "For nursing homes",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+            {
+              "value": "email",
+              "text": "Email"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+            }
+          ]
+        }) }}
+
+        {{ checkboxes({
+          "idPrefix": "nhs",
+          "name": "selectPatientConsultations",
+          "fieldset": {
+            "legend": {
+              "text": "For residential homes",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+            {
+              "value": "email",
+              "text": "Email"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}
