@@ -119,6 +119,20 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
   }
 });
 
+router.post('/submit-your-edec/sections/practice-details/return-user/catchment-area/check-your-catchment', function (req, res) {
+  let answer = req.body.checkCatchment;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-3')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/change-your-catchment')
+  }
+});
+
+
 
 
 

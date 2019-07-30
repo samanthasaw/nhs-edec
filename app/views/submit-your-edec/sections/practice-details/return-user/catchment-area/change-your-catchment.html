@@ -6,7 +6,7 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "Check your catchment area" %}
+{% set contentTitle = "Change your catchment area" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -38,12 +38,12 @@
       <h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
       </span>{{contentTitle}}</h1>
 
+      <img src="/images/leeds-map-catchment.png" class="catchment-image" alt="Leeds map">
 
-
-           {{ button({
-             "text": "Confirm",
-             "href": "/submit-your-edec/sections/practice-details/return-user/practice-details-complete-2"
-           }) }}
+      {{ button({
+        "text": "Confirm",
+        "href": "/submit-your-edec/sections/practice-details/return-user/practice-details-complete-3"
+      }) }}
 
     </div>
   </div>
