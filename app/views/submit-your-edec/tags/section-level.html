@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Tags" %}
+{% set contentTitle = "Section level tags" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -32,13 +32,11 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
-
-                  {{ backLink({
-                    "href": "/submit-your-edec/index",
-                    "text": "Back"
-                  }) }}
-
-
+      {{ backLink({
+        "href": "/submit-your-edec/tags",
+        "text": "Back"
+      }) }}
+      
       <h1>
         {{ contentTitle }}
       </h1>
@@ -47,13 +45,30 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
+      <h2>How many section level tags there are</h2>
 
-      <ul>
-        <li><a href="/submit-your-edec/tags/practice-level">Practice level tags</a></li>
-        <li><a href="/submit-your-edec/tags/section-level">Section level tags</a></li>
-      </ul>
+      <p>There are 3 section level tags</p>
+
+            <ul>
+              <li>Not started</li>
+              <li>Started</li>
+              <li>Completed</li>
+            </ul>
+
+        <h2>Where section level tags appear</h2>
+
+        <p>Section level tags appear on the task list to show progress per sections on the task list.</p>
+
+        <p><a href="/{{ PROTOTYPEURL }}/tags/task-list-sections">Task list showing the 3 tags</a></p>
 
 
+        <h2>When section level tags should be used</h2>
+
+        <p><strong>Not started</strong> - should appear if a user has not started the section or saved any answers they've changed/given in the section.</p>
+
+        <p><strong>Started</strong> - should appear if a user has made changes to answers/answered questions within the section and saved them.</p>
+
+        <p><strong>Completed</strong> - should appear if a user has answered/checked all questions within the section and confirmed the section as complete.</p>
 
       <!-- End of content -->
 

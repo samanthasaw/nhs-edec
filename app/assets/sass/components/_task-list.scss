@@ -74,6 +74,18 @@
 
 }
 
+.tag-ready-submit {
+  padding: 2px 8px;
+  border: 2px solid;
+  float: right;
+  outline-offset: -2px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #212b32;
+  min-width: 112px;
+  text-align: center;
+}
+
 .tag-completed {
   padding: 2px 8px;
   border: 2px solid;
@@ -129,6 +141,7 @@
   min-width: 112px;
   text-align: center;
 }
+
 
 
 .surgeryname {

@@ -1,0 +1,71 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Your GP practices" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">Home</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+
+      <p>You have 4 GP practices you need to submit an electronic declaration for.</p>
+
+      <div class="app-task-list nhsuk-u-margin-bottom-6">
+          <ul class="app-task-list__items--no-padding">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name practicename" href="#" aria-describedby="eligibility-completed">
+                The Nye Practice (Y00001)
+              </a>
+              <strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name practicename" href="#" aria-describedby="read-declaration-completed">
+                The Beveridge Practice (Y00032)
+              </a>
+              <strong class="tag-started" id="read-declaration-completed">Started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name practicename" href="#" aria-describedby="read-declaration-completed">
+                The Willink Practice (Y00064)
+              </a>
+              <strong class="tag-ready-submit" id="read-declaration-completed">Ready to submit</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name practicename" href="#" aria-describedby="read-declaration-completed">
+                The Clement Practice (Y00078)
+              </a>
+              <strong class="tag-completed_blue" id="read-declaration-completed">Submitted</strong>
+            </li>
+          </ul>
+      </div>
+
+      <p><a href="">See your previously submitted electronic declarations</a></p>
+
+    </div>
+  </div>
+{% endblock %}

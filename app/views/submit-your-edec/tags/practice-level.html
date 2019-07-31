@@ -1,0 +1,83 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Practice level tags" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  Submit your electronic declaration
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+
+      {{ backLink({
+        "href": "/submit-your-edec/tags",
+        "text": "Back"
+      }) }}
+      
+      <h1>
+        {{ contentTitle }}
+      </h1>
+
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+      <h2>How many practice level tags there are</h2>
+
+      <p>There are 4 practice level tags</p>
+
+            <ul>
+              <li>Not started</li>
+              <li>Started</li>
+              <li>Ready to submit</li>
+              <li>Submitted</li>
+            </ul>
+
+
+        <h2>Where practice level tags appear</h2>
+
+        <p>Practice level tags appear on the welcome page (select a practice) to show progress for a practice declaration submission.</p>
+
+        <p><a href="/{{ PROTOTYPEURL }}/tags/select-a-practice">Welcome page showing the 4 tags</a></p>
+
+
+        <h2>When practice level tags should be used</h2>
+
+        <p><strong>Not started</strong> - should appear if a user has not started any sections or saved any answers they've changed/given in any of the sections.</p>
+
+        <p><strong>Started</strong> - should appear if a user has made changes to answers/answered questions within a least one section for the practice and saved their progress.</p>
+
+        <p><strong>Ready to submit</strong> - should appear if a user has confirmed all sections as complete but has not yet submitted their declaration.</p>
+
+        <p><strong>Submitted</strong> - should appear if a user has submitted their declaration.</p>
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
