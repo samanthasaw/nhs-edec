@@ -134,6 +134,19 @@ router.post('/submit-your-edec/sections/practice-details/return-user/catchment-a
 
 
 
+router.post('/submit-your-edec/sections/practice-details/return-user/catchment-area/check-your-branch-catchment', function (req, res) {
+  let answer = req.body.checkBranchCatchment;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-3')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/change-your-branch-catchment')
+  }
+});
+
 
 
 

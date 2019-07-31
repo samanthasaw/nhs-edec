@@ -6,7 +6,7 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "Check your catchment area for Park Surgery" %}
+{% set contentTitle = "Change your catchment area for Park Surgery" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -40,35 +40,10 @@
 
       <img src="/images/leeds-map-catchment.png" class="catchment-image" alt="Leeds map">
 
-
-
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/catchment-area/check-your-branch-catchment" method="post">
-        {{ radios({
-          "idPrefix": "sections",
-          "name": "checkBranchCatchment",
-          "fieldset": {
-            "legend": {
-              "text": "Is your catchment area for Park Surgery correct?",
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes, it's correct"
-            },
-            {
-              "value": "no",
-              "text": "No, I need to change my catchment area for Park Surgery"
-            }
-          ]
-        }) }}
-
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
-
-      </form>
-
+      {{ button({
+        "text": "Confirm",
+        "href": "/submit-your-edec/sections/practice-details/return-user/practice-details-complete-3"
+      }) }}
 
     </div>
   </div>
