@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "You need to check your catchment area for your branches" %}
+{% set contentTitle = "The electronic declaration requires the practice to submit their inner contract area catchment area boundary" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,9 +37,15 @@
           <div class="app-card__content">
             <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
 
-            <p>Practices who have a branch practice, should include a second catchment area for the branch practice.</p>
+            <p>The aim is to use these catchment areas to allow practices and the public to determine whether services can be provided.</p>
 
-            <form action="/{{PROTOTYPEURL}}/sections/practice-details/return-user/catchment-area/check-your-branch-catchment" method="get">
+            <p>We expect the majority of practices to be able to enter their catchment area using the tool provided.</p>
+
+            <p>Additional functionality has been provided to enable practices to upload a catchment area which has been drawn using an alternative mapping software programme on the proviso the file is in KML point format and successfully uploads.</p>
+
+            <p>Catchment area information could be shared with public facing NHS websites for example NHS.UK.</p>
+
+            <form action="/{{PROTOTYPEURL}}/sections/practice-details/new-user/catchment-area/submit-your-catchment" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>

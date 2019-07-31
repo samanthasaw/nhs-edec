@@ -1,5 +1,10 @@
 <!-- Use this page as the index for your project -->
-
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Practice details flow for a new user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
@@ -26,51 +31,60 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
-      <h1>
-        Submit your electronic declaration
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h1>
+      {{ backLink({
+        "href": "/submit-your-edec/sections/practice-details/index",
+        "text": "Back"
+      }) }}
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <p class="nhsuk-body-l">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
+      <h2>Latest</h2>
 
-      <hr>
-
-      <h2>
-        About this page
-      </h2>
-
-      <p>
-        Use this page as the index for your project.
-      </p>
-
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
-
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
-
-      <hr>
-
-      <h2>
-        Documentation
-      </h2>
+      <h3>Start</h3>
 
       <ul>
-        <li>
-          Get started with <a href="/docs">how to guides and page templates</a>
-        </li>
-        <li>
-          Copy and paste styles and components from the <a href="https://beta.nhs.uk/service-manual/styles-components-patterns">NHS digital service manual</a>
-        </li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/task-list-with-sections-3">Task list - not started</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/practice-intro">Practice section intro</a></li>
       </ul>
 
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-name">What is the name of your practice?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-type">What type of contract does your practice have?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/organisation-type">What type of organisation is your practice?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-start-date">What is the first day of your practice contract?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-end-date">What is the last day of your practice contract?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/patients-phone-number">What is your practice telephone number for patients?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/other-phone-number">Does your practice have another telephone number?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branches">Does your practice have any branches?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/how-many-branches">How many branches does your practice have?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branch-names">What are the names of your branches?</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/remove-branch">Are you sure you want to remove branch?</a></li>
+      </ul>
+
+      <h3>Catchment area</h3>
+
+    <ul>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/catchment-area/catchment-card">Catchment card</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/catchment-area/submit-your-catchment">Check your catchment area</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/catchment-area/branch-catchment-card">Branch catchment card</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/catchment-area/submit-your-branch-catchment">Submit your branch catchment area</a></li>
+    </ul>
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete-2">Section complete confirmation</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/change-practice-details">Change your practice details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/task-list-practice-details-completed">Task list with practice details complete</a></li>
+      </ul>
+
+      <h2>Exploration</h2>
       <!-- End of content -->
 
     </div>

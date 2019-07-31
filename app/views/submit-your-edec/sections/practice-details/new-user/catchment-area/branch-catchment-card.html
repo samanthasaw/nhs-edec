@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "You need to check your catchment area for your branches" %}
+{% set contentTitle = "You need to submit your catchment area for your branches" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -39,7 +39,7 @@
 
             <p>Practices who have a branch practice, should include a second catchment area for the branch practice.</p>
 
-            <form action="/{{PROTOTYPEURL}}/sections/practice-details/return-user/catchment-area/check-your-branch-catchment" method="get">
+            <form action="/{{PROTOTYPEURL}}/sections/practice-details/new-user/catchment-area/submit-your-branch-catchment" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>

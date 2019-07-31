@@ -3,9 +3,10 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
-{% set contentTitle = "You need to check your catchment area for your branches" %}
+{% set contentTitle = "Submit your catchment area" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -21,34 +22,28 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
+
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
     <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
   </div>
 </div>
+
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <div class="app-card">
-        <div class="app-card__wrapper">
-          <div class="app-card__content">
-            <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
+      <h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+      </span>{{contentTitle}}</h1>
 
-            <p>Practices who have a branch practice, should include a second catchment area for the branch practice.</p>
+      <img src="/images/leeds-map-catchment.png" class="catchment-image" alt="Leeds map">
 
-            <form action="/{{PROTOTYPEURL}}/sections/practice-details/return-user/catchment-area/check-your-branch-catchment" method="get">
-
-              <input type="submit" class="nhsuk-button" value="Continue">
-              </input>
-
-            </form>
-          </div>
-        </div>
-      </div>
-
+      {{ button({
+        "text": "Confirm",
+        "href": "/submit-your-edec/sections/practice-details/new-user/catchment-area/branch-catchment-card"
+      }) }}
 
     </div>
   </div>
