@@ -31,11 +31,11 @@ router.post('/submit-your-edec/sections/practice-details/return-user/check-last-
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/your-catchment')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/catchment-card')
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details') }
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details-2') }
 
   else {
     // res.redirect('error')
@@ -111,7 +111,7 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details-2')
 
   } else {
     // res.redirect('error')

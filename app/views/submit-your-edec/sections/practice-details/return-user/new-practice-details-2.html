@@ -121,8 +121,19 @@ $('div.nhsuk-summary-list__row').each(function() {
 {% endset %}
 
 
+
+
 {% set inputBranchesText %}
-  <br/><br/><br/><br/> {{ data['inputBranches']}}
+  <br/><br/><br/><br/> {{ data['inputBranches'] }}
+{% endset %}
+
+
+{% set branchNames %}
+  {% if data['branches'] == 'no' %}
+
+  {% else %}
+    <br/><br/><br/> Park Surgery <br/> Hill Surgery <br/> Meadow Branch
+{% endif %}
 {% endset %}
 
 
@@ -281,7 +292,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               html: branchesText
             },
             value: {
-              html: branches + inputBranchesText | placeholder('Yes')
+              html: branches | placeholder('Yes') + inputBranchesText + branchNames
             },
             actions: {
               items: [
