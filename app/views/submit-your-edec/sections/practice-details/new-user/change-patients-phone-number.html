@@ -6,8 +6,8 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "What is the name of your practice?" %}
 {% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "What is your practice telephone number for patients?" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -31,13 +31,12 @@
 
 {% endblock %}
 
-
-
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="get">
+
 
         {{ input({
           "label": {
@@ -47,12 +46,11 @@
             "classes": "nhsuk-label--xl app-label-xl"
           },
           "hint": {
-            "text": "Practice name"
+            "text": "Telephone number"
           },
-          "id": "inputpracticename",
-          "name": "practicename",
-          "value": data['practicename'] | placeholder('The Nye Practice'),
-          "classes": "nhsuk-input--width-30"
+          "id": "inputpatientphone",
+          "name": "patientphone",
+          "classes": "nhsuk-input--width-10"
         }) }}
 
 
@@ -60,6 +58,7 @@
         </input>
 
       </form>
+
 
 
     </div>
