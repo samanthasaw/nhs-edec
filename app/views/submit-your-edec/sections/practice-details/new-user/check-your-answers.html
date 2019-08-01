@@ -121,8 +121,11 @@ $('div.nhsuk-summary-list__row').each(function() {
 {% endset %}
 
 
+
 {% set inputBranchesText %}
+  {% if data['inputBranches'] %}
   <br/><br/><br/><br/> {{ data['inputBranches'] }}
+  {% endif %}
 {% endset %}
 
 
@@ -133,6 +136,8 @@ $('div.nhsuk-summary-list__row').each(function() {
     <br/><br/><br/> Park Surgery <br/> Hill Surgery <br/> Meadow Branch
 {% endif %}
 {% endset %}
+
+
 
 
 
