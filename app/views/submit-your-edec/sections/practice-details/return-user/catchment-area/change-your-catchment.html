@@ -1,0 +1,50 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
+{% endif %}
+{% set contentTitle = "Change your catchment area" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+      </span>{{contentTitle}}</h1>
+
+      <img src="/images/leeds-map-catchment.png" class="catchment-image" alt="Leeds map">
+
+      {{ button({
+        "text": "Confirm",
+        "href": "/submit-your-edec/sections/practice-details/return-user/catchment-area/branch-catchment-card"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

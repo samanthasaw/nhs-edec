@@ -1,0 +1,364 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
+{% endif %}
+{% set contentTitle = "Tell us your new practice details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='other']" ).on( "click", function() {
+  if ( $( "input[name='other']:checked" ).val() === "yes") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+
+// This kills any row that is empty
+$('div.nhsuk-summary-list__row').each(function() {
+         if ($(this).text().trim() === "") {
+                   $(this).css('display','none');
+         }
+});
+</script>
+{% endblock %}
+
+{% set contractType %}
+  {% if data['contractType'] == 'gms' %}
+    General medical services (GMS)
+  {% elseif data['contractType'] == 'pms' %}
+    Personal medical services (PMS)
+  {% elseif data['contractType'] == 'apms' %}
+    Alternative provider medical services (APMS)
+  {% else %}
+    Other
+  {% endif %}
+{% endset %}
+
+{% set orgType %}
+  {% if data['orgType'] == 'nhsbody' %}
+    NHS body
+  {% elseif data['orgType'] == 'nonnhsbody' %}
+    Non NHS body
+  {% else %}
+    Social enterprise
+  {% endif %}
+{% endset %}
+
+{% set configStructure %}
+  {% if data['configStructure'] == 'yes' %}
+    Yes
+  {% elseif data['configStructure'] == 'no' %}
+    No
+  {% else %}
+    {{ data['inputConfigStructure'] | placeholder('Other') }}
+  {% endif %}
+{% endset %}
+
+{% set other %}
+  {% if data['other'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set otherPhoneNumber %}
+  {% if data['other'] == 'no' %}
+  {% else %}
+   <br> {{ data['otherNumber'] | placeholder('0113 496 0848') }}
+  {% endif %}
+{% endset %}
+
+
+{% set branches %}
+  {% if data['branches'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set startDate %}
+  {% if (data['start-day']) and (data['start-month']) and (data['start-year']) %}
+    {{ data['start-day'] + " " + data['start-month'] | monthToWord + " " + data['start-year'] }}
+  {% else %}
+    14 February 2010
+  {% endif %}
+{% endset %}
+
+{% set endDate %}
+  {% if (data['end-day']) and (data['end-month']) and (data['end-year'])  %}
+    {{ data['end-day'] + " " + data['end-month'] | monthToWord + " " + data['end-year'] }}
+  {% else %}
+    26 March 2021
+  {% endif %}
+{% endset %}
+
+{% set configChange %}
+  {% if data['configStructure'] == 'no' %}
+  {% else %}
+   <br> {{ data['otherNumber'] | placeholder('0113 496 0848') }}
+  {% endif %}
+{% endset %}
+
+{% set branchesText %}
+  {% if data['branches'] == 'no' %}
+    Does the practice have any branches?
+  {% else %}
+    Does the practice have any branches? <br/><br/> Number of branches <br/><br/> Branch names
+{% endif %}
+{% endset %}
+
+
+
+
+{% set inputBranchesText %}
+  {% if data['inputBranches'] %}
+  <br/><br/><br/><br/> {{ data['inputBranches'] }}
+  {% endif %}
+{% endset %}
+
+
+{% set branchNames %}
+  {% if data['branches'] == 'no' %}
+
+  {% else %}
+    <br/><br/><br/> Park Surgery <br/> Hill Surgery <br/> Meadow Branch
+{% endif %}
+{% endset %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
+
+      <p>Check your practice details and change any incorrect practice details.</p>
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['practicename'] | placeholder('The Nye Practice')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/practice-name",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract type"
+            },
+            value: {
+              text: contractType | placeholder('General medical services (GMS)')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/contract-type",
+                  text: "Change",
+                  visuallyHiddenText: "contract type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract start date"
+            },
+            value: {
+              text: startDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/contract-start-date",
+                  text: "Change",
+                  visuallyHiddenText: "contract start date"
+                }
+              ]
+            }
+          } if data['contractType'] == 'apms',
+          {
+            key: {
+              text: "Contract end date"
+            },
+            value: {
+              text: endDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/contract-end-date",
+                  text: "Change",
+                  visuallyHiddenText: "contract end date"
+                }
+              ]
+            }
+          } if data['contractType'] == 'apms',
+          {
+            key: {
+              text: "Organisation type"
+            },
+            value: {
+              text: orgType | placeholder('NHS body')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/organisation-type",
+                  text: "Change",
+                  visuallyHiddenText: "organisation type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Practice telephone number for patients"
+            },
+            value: {
+              text: data['patientphone'] | placeholder('0113 496 0728')
+
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/patients-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "telephone number for patients"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Does your practice have another telephone number?"
+            },
+            value: {
+              html: data['other'] | capitalize | placeholder('Yes') + otherPhoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/other-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "if you have another telephone number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: branchesText
+            },
+            value: {
+              html: branches | placeholder('Yes') + inputBranchesText + branchNames
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-details/return-user/branches-2",
+                  text: "Change",
+                  visuallyHiddenText: "if your GP practice has any branches, how many branches you have and the names of your branches"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      {% if data['contractType'] == 'apms' %}
+      {% else %}
+      <h2>Optional information</h2>
+
+      {{ summaryList({
+        rows: [
+      {
+        key: {
+          text: "Contract start date"
+        },
+        value: {
+          text: startDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/return-user/contract-start-date",
+              text: "Change",
+              visuallyHiddenText: "contract start date"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Contract end date"
+        },
+        value: {
+          text: endDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/return-user/contract-end-date",
+              text: "Change",
+              visuallyHiddenText: "contract end date"
+            }
+          ]
+        }
+      }
+      ]
+    }) }}
+    {% endif %}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/catchment-area/catchment-card" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}

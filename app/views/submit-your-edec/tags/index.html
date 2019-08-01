@@ -33,6 +33,12 @@
 
       <!-- Change the page title here -->
 
+                  {{ backLink({
+                    "href": "/submit-your-edec/index",
+                    "text": "Back"
+                  }) }}
+
+
       <h1>
         {{ contentTitle }}
       </h1>
@@ -41,48 +47,13 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <p>There are 3 tags in the service:</p>
 
       <ul>
-        <li>Not started</li>
-        <li>Started</li>
-        <li>Completed</li>
+        <li><a href="/submit-your-edec/tags/practice-level">Practice level tags</a></li>
+        <li><a href="/submit-your-edec/tags/section-level">Section level tags</a></li>
       </ul>
 
-      <p><a href="/examples/elements/tags">Examples of the 3 tags we use</a></p>
 
-      <h2>Pages the tags appear on</h2>
-
-      <p>Tags appear on two pages in the service to:</p>
-      <ul>
-        <li><a href="/submit-your-edec/select-practice/index">show progress overall for the practice's submission</a></li>
-        <li><a href="/submit-your-edec/task-list/index">show progress per sections on the task list</a></li>
-      </ul>
-
-      <h2>When tags should be used</h2>
-
-      <h3>On the select a practice page</h3>
-
-      <p><strong>Not started</strong> - should appear if a user has not saved any answers they've changed/given in any of the sections or confirmed any of the sections as complete.</p>
-
-      <p><strong>Started</strong> - should appear when a user has made changes to answers/answered questions and saved them or confirmed completion of at least one section.</p>
-
-      <p><strong>Completed</strong> - should appear if a user has confirmed all sections as complete and submitted their electronic declaration.</p>
-
-      <h3>On the task list page</h3>
-
-      <p><strong>Not started</strong> - should appear if a user has not saved any answers they've changed/given in the section or confirmed the section as complete.</p>
-
-      <p><strong>Started</strong> - should appear when a user has made changes to answers/answered questions and saved them.</p>
-
-      <p><strong>Completed</strong> - should appear if a user has confirmed the section as complete.</p>
-
-
-
-            {{ backLink({
-              "href": "/submit-your-edec/index",
-              "text": "Back"
-            }) }}
 
       <!-- End of content -->
 

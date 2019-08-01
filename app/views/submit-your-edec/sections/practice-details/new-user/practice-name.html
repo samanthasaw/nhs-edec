@@ -6,7 +6,7 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "Check your catchment area" %}
+{% set contentTitle = "What is the name of your practice?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,19 +31,36 @@
 
 {% endblock %}
 
+
+
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-      </span>{{contentTitle}}</h1>
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="get">
+
+        {{ input({
+          "label": {
+            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl app-label-xl"
+          },
+          "hint": {
+            "text": "Practice name"
+          },
+          "id": "inputpracticename",
+          "name": "practicename",
+          "value": data['practicename'] | placeholder('The Nye Practice'),
+          "classes": "nhsuk-input--width-30"
+        }) }}
 
 
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
 
-           {{ button({
-             "text": "Confirm",
-             "href": "/submit-your-edec/sections/practice-details/return-user/practice-details-complete-2"
-           }) }}
+      </form>
+
 
     </div>
   </div>

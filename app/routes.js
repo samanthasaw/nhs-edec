@@ -31,11 +31,11 @@ router.post('/submit-your-edec/sections/practice-details/return-user/check-last-
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/your-catchment')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/catchment-card')
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details') }
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details-2') }
 
   else {
     // res.redirect('error')
@@ -111,7 +111,7 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details')
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/new-practice-details-2')
 
   } else {
     // res.redirect('error')
@@ -119,8 +119,48 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
   }
 });
 
+router.post('/submit-your-edec/sections/practice-details/return-user/catchment-area/check-your-catchment', function (req, res) {
+  let answer = req.body.checkCatchment;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-3')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/change-your-catchment')
+  }
+});
 
 
+
+router.post('/submit-your-edec/sections/practice-details/return-user/catchment-area/check-your-branch-catchment', function (req, res) {
+  let answer = req.body.checkBranchCatchment;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-3')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/catchment-area/change-your-branch-catchment')
+  }
+});
+
+
+
+router.post('/submit-your-edec/sections/practice-details/new-user/catchment-area/is-catchment-same', function (req, res) {
+  let answer = req.body.branchSame;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/practice-details-complete-3')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/catchment-area/submit-your-branch-catchment')
+  }
+});
 
 
 // staff details
@@ -164,6 +204,7 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/check-las
   }
 });
 
+
 router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements', function (req, res) {
   let answer = req.body.wheelchairArrangements;
 
@@ -174,6 +215,67 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchai
 } else {
     // res.redirect('error')
     res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details')
+  }
+});
+
+
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements', function (req, res) {
+  let answer = req.body.wheelchairArrangements;
+
+  if (answer.includes('other')) {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-other')
+
+} else {
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
+  }
+});
+
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements', function (req, res) {
+  let answer = req.body.wheelchairArrangements;
+
+  if (answer.includes('other')) {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-other')
+
+} else {
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/check-your-answers')
   }
 });
 
