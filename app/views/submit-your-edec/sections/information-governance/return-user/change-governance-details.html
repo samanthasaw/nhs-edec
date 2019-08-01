@@ -128,7 +128,7 @@
               text: "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
             },
             value: {
-              html: "data['wheelchairArrangements'] | placeholder('Home visits')<br>data['inputWheelchairOther']"
+              html: data['wheelchairArrangements'] | placeholder('Home visits') + "<br>" + data['inputWheelchairOther']
             },
             actions: {
               items: [

@@ -7,12 +7,19 @@ function gpSelect(gp, url){
   // save that by calling to a post route
   // grab the variable called url
   // check if it is set
-  // if it is redirect the page to it
+  // if it is, redirect the page to it
   // if not, redirect window to /submit-your-edec/task-list/redirect
 
-  sessionStorage.setItem("practice", gp);
-  // console.log(sessionStorage.getItem("data"));
-  $.post( "/submit-your-edec/task-list/redirect", { practice: gp } );
+  var ods;
+  if (gp === "The Beveridge Practice") {
+    ods = "(Y00032)"
+  } else if (gp === "The Willink Practice") {
+    ods = "(Y00064)"
+  } else {
+    ods = "(Y00001)"
+  }
+
+  $.post( "/submit-your-edec/task-list/redirect", { practice: gp, gpODSCode: ods } );
   if (url) {
     window.location.href = url
   } else {
@@ -32,8 +39,6 @@ function listSelect (list, url){
   // if it is redirect the page to it
   // if not, redirect window to /submit-your-edec/sections/practice-details/return-user/redirect
 
-  sessionStorage.setItem("branchOne", list);
-  // console.log(sessionStorage.getItem("data"));
   $.post( "/submit-your-edec/sections/practice-details/return-user/redirect", { branchOne: list } );
   if (url) {
     window.location.href = url
