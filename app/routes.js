@@ -149,6 +149,19 @@ router.post('/submit-your-edec/sections/practice-details/return-user/catchment-a
 
 
 
+router.post('/submit-your-edec/sections/practice-details/new-user/catchment-area/is-catchment-same', function (req, res) {
+  let answer = req.body.branchSame;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/practice-details-complete-3')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/catchment-area/submit-your-branch-catchment')
+  }
+});
+
 
 // staff details
 

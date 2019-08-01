@@ -3,10 +3,9 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your new practice details" %}
+{% set contentTitle = "Check your answers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -32,6 +31,7 @@ $('div.nhsuk-summary-list__row').each(function() {
 });
 </script>
 {% endblock %}
+
 
 {% set contractType %}
   {% if data['contractType'] == 'gms' %}
@@ -121,12 +121,8 @@ $('div.nhsuk-summary-list__row').each(function() {
 {% endset %}
 
 
-
-
 {% set inputBranchesText %}
-  {% if data['inputBranches'] %}
   <br/><br/><br/><br/> {{ data['inputBranches'] }}
-  {% endif %}
 {% endset %}
 
 
@@ -137,6 +133,8 @@ $('div.nhsuk-summary-list__row').each(function() {
     <br/><br/><br/> Park Surgery <br/> Hill Surgery <br/> Meadow Branch
 {% endif %}
 {% endset %}
+
+
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -164,7 +162,7 @@ $('div.nhsuk-summary-list__row').each(function() {
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
 
-      <p>Check your practice details and change any incorrect practice details.</p>
+      <p>Check your answers and change any incorrect answers.</p>
 
 
       {{ summaryList({
@@ -353,11 +351,10 @@ $('div.nhsuk-summary-list__row').each(function() {
     }) }}
     {% endif %}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/catchment-area/catchment-card" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/catchment-area/catchment-card" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
         </form>
-
 
     </div>
   </div>
