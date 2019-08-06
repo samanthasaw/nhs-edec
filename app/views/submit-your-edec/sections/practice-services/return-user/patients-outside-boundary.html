@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your practice offer primary medical services (excluding home visits) to new patients who are seeking to register with your practice and reside outside your usual practice boundary area?" %}
+{% set contentTitle = "Does the practice offer primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside their usual practice boundary area?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -44,6 +44,9 @@
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
+          },
+          "hint": {
+            "text": "Provision of out of area registration by practices is optional."
           },
           "items": [
             {
