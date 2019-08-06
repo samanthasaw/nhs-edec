@@ -109,7 +109,7 @@
         rows: [
           {
             key: {
-              text: "Can your practice evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels?"
+              text: "The practice can evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels. Recognising the need to have the right knowledge, experience, qualifications and skills for the purpose of providing services in the practice and demonstrating capacity to respond to unexpected service changes."
             },
             value: {
               text: needsAnalysis | placeholder('Yes')
@@ -126,10 +126,8 @@
           },
           {
             key: {
-              html: "<p>Confirm your staff checks:</p><ul><li>All health care professionals working in the practice are registered with the relevant professional body</li>
-                     <li>This registration is checked on employment (along with satisfactory references) and where applicable annually thereafter</li>
-                     <li>Health care professionals that are required to revalidate do so</li>
-                     <li>For GPs, inclusion on the performer list is checked</li></ul>"            },
+              text: "All health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked"
+            },
             value: {
               text: confirmChecks | placeholder('Yes')
             },
@@ -145,7 +143,7 @@
           },
           {
             key: {
-              text: "Have all relevant staff been subject to the necessary Disclosure and Barring Service (DBS) checks?"
+              text: "All relevant staff have been subject to the necessary Disclosure and Barring Service (DBS) checks"
             },
             value: {
               text: dbsCheck | placeholder('Yes')
@@ -162,7 +160,7 @@
           },
           {
             key: {
-              text: "What is your total number of locum sessions, between 1st of July 2018 through to 30th September 2018, where pay has exceeded the maximum indicative rate of £82.43 per hour?"
+              text: "Total number of locum sessions, between 1st of July 2019 through to 30th September 2019, where pay has exceeded the maximum indicative rate of £77.57 per hour"
             },
             value: {
               text: data['locumsessions'] | placeholder('5')
@@ -179,7 +177,7 @@
           },
           {
             key: {
-              text: "Do all health care professionals employed in your practice have annual appraisals and where applicable personal development plans?"
+              text: "All health care professionals employed in the practice have annual appraisals and where applicable personal development plans and that this is aligned to revalidation for doctors and also for registered nurses and midwives (according to requirements issued by the Nursing and Midwifery Council)"
             },
             value: {
               text: annualAppraisal | placeholder('Yes')
@@ -196,7 +194,7 @@
           },
           {
             key: {
-              text: "Do all practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum?"
+              text: "Practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum"
             },
             value: {
               text: termsEmployment | placeholder('Yes')
@@ -213,7 +211,7 @@
           },
           {
             key: {
-              text: "Can your practice demonstrate that it is compliant with equal opportunities legislation on employment and discrimination?"
+              text: "The practice can demonstrate that it is compliant with Equal Opportunities legislation on employment and discrimination (Equality Act 2010)"
             },
             value: {
               text: equalOpportunities | placeholder('Yes')
@@ -248,7 +246,7 @@
           },
           {
             key: {
-              text: "Does your practice have policies for safeguarding both children and adults?"
+              text: "The practice has policies for safeguarding both children and adults"
             },
             value: {
               text: safeguardingPolicy | placeholder('Yes')
@@ -265,6 +263,7 @@
           }
         ]
       }) }}
+
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/staff-details-complete" method="get">
 

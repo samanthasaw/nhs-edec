@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Do all health care professionals employed in the practice have annual appraisals and where applicable personal development plans?" %}
+{% set contentTitle = "All health care professionals employed in the practice have annual appraisals and where applicable personal development plans and that this is aligned to revalidation for doctors and also for registered nurses and midwives (according to requirements issued by the Nursing and Midwifery Council)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,11 +42,8 @@
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
-          },
-          "hint": {
-            "text": "This must be aligned to revalidation for doctors and also for registered nurses and midwives (according to requirements issued by the Nursing and Midwifery Council)."
           },
           "items": [
             {
