@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice can demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations" %}
+{% set contentTitle = "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,34 +30,51 @@
 {% endblock %}
 
 {% block content %}
+
+{% set wheelchairConditional %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
+  }
+}) }}
+{% endset %}
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/check-your-answers" method="get">
-
-        {{ radios({
+      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/wheelchair-arrangements-conditional" method="post">
+        {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "fireSafety",
+          "name": "wheelchairArrangements",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
           },
           "hint": {
-            "text": "This might include for example evidence of regular review or audit of any policies or procedures adopted by the practice."},
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "homevisit",
+              "text": "Home visits"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: wheelchairConditional
+              }
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

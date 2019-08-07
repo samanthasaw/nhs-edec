@@ -8,6 +8,28 @@
 {% set contentTitle = "Tell us your new premises and equipment details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='wheelchair']" ).on( "click", function() {
+  if ( $( "input[name='wheelchair']:checked" ).val() === "yes") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+
+// This kills any row that is empty
+$('div.nhsuk-summary-list__row').each(function() {
+         if ($(this).text().trim() === "") {
+                   $(this).css('display','none');
+         }
+});
+</script>
 {% endblock %}
 
 {% set inputWheelchairOther %}
@@ -179,7 +201,7 @@
               text: "Does the practice have at least one consulting room which is accessible to wheelchair users?"
             },
             value: {
-              text: wheelchair | placeholder('Yes')
+              text: wheelchair | placeholder('No')
             },
             actions: {
               items: [
@@ -201,13 +223,13 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements",
+                  href: "/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements-conditional",
                   text: "Change",
                   visuallyHiddenText: "what arrangements are in place to meet the reasonable needs of patients who are wheelchair users"
                 }
               ]
             }
-          }
+          } if data['wheelchair'] == 'no'
         ]
       }) }}
 
