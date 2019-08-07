@@ -8,6 +8,25 @@
 {% set contentTitle = "The practice and its registered patients have access to a shared online system" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='onlineSystem']" ).on( "click", function() {
+  if ( $( "input[name='onlineSystem']:checked" ).val() === "no") {
+
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else if ( $( "input[name='onlineSystem']:checked" ).val() === "notApplicable") {
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else {
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -35,14 +54,30 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/shared-online-system" method="post">
 
+
+        {% if data['onlineSystem'] === "no" %}
+          {% set noTrue = "True" %}
+        {% else %}
+          {% set yesTrue = "True" %}
+        {% endif %}
+
+
+        {% call fieldset({
+          "legend": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+
         {{ radios({
           "idPrefix": "nhs",
           "name": "onlineSystem",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": ""
             }
           },
           "items": [
@@ -64,13 +99,18 @@
           ]
         }) }}
 
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+        <h2 class="nhsuk-fieldset__legend--m">How does the shared online system allow patients to engage with their GP?</h2>
+
+
 
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "engageOnlineSystem",
           "fieldset": {
             "legend": {
-              "text": "How does the shared online system allow patients to engage with their GP?",
               "classes": "nhsuk-fieldset__legend--m",
               "isPageHeading": true
             }
@@ -89,6 +129,10 @@
             }
           ]
         }) }}
+
+      </div>
+
+      {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

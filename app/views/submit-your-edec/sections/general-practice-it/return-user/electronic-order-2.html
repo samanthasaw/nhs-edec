@@ -45,6 +45,17 @@
 {% endblock %}
 
 {% block content %}
+
+{% set electronicOrderConditional %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other diagnostics tests does your practice routinely electronically order or receive with your main acute provider?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -121,7 +132,10 @@
             },
             {
               "value": "other",
-              "text": "Other"
+              "text": "Other",
+              "conditional": {
+                html: electronicOrderConditional
+              }
             }
           ]
         }) }}

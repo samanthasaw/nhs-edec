@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Which ways does your practice promote and offer the facility for patients to receive consultations electronically?" %}
+{% set contentTitle = "Where the practice has directly purchased  IT services, infrastructure or systems (connected to the managed GP IT infrastructure), the practice as contract holder, has reviewed these arrangements for compliance with the ten NDG data security standards and applicable legal requirements  and appropriate certification ie ISO/IEC 27001: 2013, Cyber Essentials (CE) and CE+, where appropriate" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,38 +33,33 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
 
-        {{ checkboxes({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "selectPatientConsultations",
+          "name": "reviewArrangements",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-fieldset__legend--xl",
-              "isPageHeading": true
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
-          "hint": {
-          "text": "Select all that apply to patients"
-        },
           "items": [
             {
-              "value": "email",
-              "text": "Email"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "video",
-              "text": "Video"
+              "value": "no",
+              "text": "No"
             },
             {
-              "value": "telephone",
-              "text": "Telephone"
+              "divider": "or"
             },
             {
-              "value": "onlineConsultation",
-              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
             }
           ]
         }) }}
