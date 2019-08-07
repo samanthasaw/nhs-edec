@@ -125,3 +125,14 @@ li ul {
   height: 120%;
   width: 120%;
 }
+
+// this works but makes no sense :)
+
+.js-enabled .nhsuk-checkboxes__conditional--hidden {
+
+  display: block;
+}
+.js-enabled .govuk-checkboxes__conditional--hidden {
+
+  display: none;
+}
