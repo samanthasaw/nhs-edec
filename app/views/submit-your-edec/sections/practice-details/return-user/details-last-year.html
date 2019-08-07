@@ -6,7 +6,7 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "Check your practice details" %}
+{% set contentTitle = "These are the details you submitted when you last completed this declaration" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -115,25 +115,28 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/check-last-year" method="post">
         {{ radios({
-          "idPrefix": "sections",
-          "name": "practicedetails",
-          "fieldset": {
-            "legend": {
-              "text": "Are these practice details correct?",
-              "classes": "nhsuk-fieldset__legend--m"
-            }
+        "idPrefix": "example-divider",
+        "name": "configStructure",
+        "fieldset": {
+          "legend": {
+            "text": "Since your practice last completed this declaration, have you changed configuration or structure?",
+            "classes": "nhsuk-label--l app-heading-l"
+          }
+        },
+        "hint": {
+          "html": "<p>This means that there has been a change in the contractual entity of the practice.</p><p>For example the practice is declaring under the same organisation code as last year's declaration and since this time, the practice has merged or divided from another practice.</p>"
           },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes, they're correct"
-            },
-            {
-              "value": "no",
-              "text": "No, I need to change them"
-            }
-          ]
-        }) }}
+        "items": [
+          {
+            "value": "yes",
+            "text": "Yes"
+          },
+          {
+            "value": "no",
+            "text": "No"
+          }
+        ]
+      }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
