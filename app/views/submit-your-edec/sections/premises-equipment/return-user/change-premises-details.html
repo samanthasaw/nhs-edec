@@ -10,6 +10,70 @@
 {% block pageScripts %}
 {% endblock %}
 
+{% set inputWheelchairOther %}
+  {% if data['inputWheelchairOther'] %}
+    <br> {{ data['inputWheelchairOther'] }}
+  {% endif %}
+{% endset %}
+
+{% set wheelchairArrangements %}
+  {% if data['wheelchairArrangements'] == 'homevisit' %}
+    Home visits
+  {% elif data['wheelchairArrangements'] == 'homevisit,other' %}
+   Home visits
+  {% elif data['wheelchairArrangements'] %}
+    {% set inputWheelchairOther %}
+      {% if data['inputWheelchairOther'] %}
+        {{ data['inputWheelchairOther'] }}
+      {% endif %}
+    {% endset %}
+  {% else %}
+    Home visits
+  {% endif %}
+
+{% endset %}
+
+{% set suitablePremises %}
+  {% if data['suitablePremises'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set nhsEngland %}
+  {% if data['nhsEngland'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set infectionControl %}
+  {% if data['infectionControl'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set fireSafety %}
+  {% if data['fireSafety'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set wheelchair %}
+  {% if data['wheelchair'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 

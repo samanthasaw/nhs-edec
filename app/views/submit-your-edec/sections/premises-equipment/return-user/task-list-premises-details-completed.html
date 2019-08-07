@@ -37,10 +37,10 @@
     <div class="nhsuk-grid-column-two-thirds">
 
 
-            {{ backLink({
-              "href": "/submit-your-edec/demos/select-a-practice",
-              "text": "Back to your GP practices"
-            }) }}
+                  {{ backLink({
+                    "href": "/submit-your-edec/demos/premises-equipment/a-practice-return",
+                    "text": "Back to " + practice
+                  }) }}
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
@@ -85,7 +85,7 @@
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
+              <a class="app-task-list__task-name" href="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/returns-details-complete" aria-describedby="company-information-completed">
                 Practice premises and equipment
               </a>
               <strong class="tag-completed_blue" id="company-information-completed">Completed</strong>
