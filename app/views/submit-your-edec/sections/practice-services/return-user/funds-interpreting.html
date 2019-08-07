@@ -30,6 +30,17 @@
 {% endblock %}
 
 {% block content %}
+
+{% set fundInterpretConditional %}
+{{ input({
+  "id": "nhs",
+  "name": "fundInterpret",
+  "classes": "nhsuk-input--width-30"
+}) }}
+{% endset %}
+
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -66,10 +77,14 @@
             },
             {
               "value": "other",
-              "text": "Other"
+              "text": "Other",
+              "conditional": {
+                html: fundInterpretConditional
+              }
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
