@@ -244,13 +244,15 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair',
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements') }
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements-conditional') }
 
   else {
     // res.redirect('error')
     res.redirect('/submit-your-edec/errors/generic-error/')
   }
 });
+
+
 
 router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair', function (req, res) {
   let answer = req.body.wheelchair;

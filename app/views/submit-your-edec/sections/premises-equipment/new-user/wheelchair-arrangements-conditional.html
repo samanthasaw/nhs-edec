@@ -33,7 +33,7 @@
 
 {% set wheelchairConditional %}
 {{ textarea({
-  "name": "nhsnumber",
+  "name": "inputWheelchairOther",
   "id": "inputnhsnumber",
   "label": {
     "text": "What other arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
@@ -45,7 +45,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/wheelchair-arrangements-conditional" method="post">
+      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/check-your-answers" method="get">
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "wheelchairArrangements",

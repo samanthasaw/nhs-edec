@@ -38,6 +38,16 @@ $('div.nhsuk-summary-list__row').each(function() {
   {% endif %}
 {% endset %}
 
+{% if data['wheelchair'] %}
+    {% if data['wheelchair'] == "no" %}
+      {% set wheelchairRow = "show" %}
+    {% else %}
+      {% set wheelchairRow = "hide" %}
+    {% endif %}
+{% else %}
+    {% set wheelchairRow = "show" %}
+{% endif %}
+
 {% set wheelchairArrangements %}
   {% if data['wheelchairArrangements'] == 'homevisit' %}
     Home visits
@@ -201,7 +211,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               text: "Does the practice have at least one consulting room which is accessible to wheelchair users?"
             },
             value: {
-              text: wheelchair | placeholder('No')
+              text: wheelchair | placeholder('Yes')
             },
             actions: {
               items: [
@@ -229,7 +239,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['wheelchair'] == 'no'
+          } if wheelchairRow == 'show'
         ]
       }) }}
 
