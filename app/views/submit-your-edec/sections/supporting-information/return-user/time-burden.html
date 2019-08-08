@@ -28,19 +28,25 @@
     <div class="nhsuk-grid-column-two-thirds">
       <form action="#" method="get">
 
+
+        <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information
+        </span>{{ contentTitle }}</h1>
+
+        {{ hint({
+          "text": "This is to support an assessment of the time burden to practices on completing this data return."
+        }) }}
+
+
         {{ input({
           "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information
-            </span>' + contentTitle + '</h1>',            "isPageHeading": true,
-            "classes": "nhsuk-label--xl"
-          },
-          "hint": {
-          "text": "This is to support an assessment of the time burden to practices on completing this data return."
+            "text": "Enter time in minutes"
           },
           "id": "inputwebsitelink",
-          "name": "websitelink",
-          "classes": "nhsuk-input--width-10"
+          "name": "timeBurden",
+          "classes": "nhsuk-input--width-2"
         }) }}
+
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
