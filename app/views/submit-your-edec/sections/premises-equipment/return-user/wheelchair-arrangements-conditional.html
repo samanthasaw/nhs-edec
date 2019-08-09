@@ -30,10 +30,22 @@
 {% endblock %}
 
 {% block content %}
+
+{% set wheelchairConditional %}
+{{ textarea({
+  "name": "inputWheelchairOther",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
+  }
+}) }}
+{% endset %}
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/wheelchair-arrangements" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/new-premises-details" method="get">
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "wheelchairArrangements",
@@ -55,7 +67,10 @@
             },
             {
               "value": "other",
-              "text": "Other"
+              "text": "Other",
+              "conditional": {
+                html: wheelchairConditional
+              }
             }
           ]
         }) }}

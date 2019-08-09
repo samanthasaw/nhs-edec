@@ -204,6 +204,19 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/check-las
   }
 });
 
+router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchair', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/new-premises-details')
+
+} else {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements-conditional')
+  }
+});
+
 
 router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements', function (req, res) {
   let answer = req.body.wheelchairArrangements;
@@ -220,6 +233,8 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchai
 
 
 
+
+
 router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair', function (req, res) {
   let answer = req.body.wheelchair;
 
@@ -229,13 +244,15 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/wheelchair',
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements') }
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/wheelchair-arrangements-conditional') }
 
   else {
     // res.redirect('error')
     res.redirect('/submit-your-edec/errors/generic-error/')
   }
 });
+
+
 
 router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair', function (req, res) {
   let answer = req.body.wheelchair;

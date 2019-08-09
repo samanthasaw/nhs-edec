@@ -5,17 +5,17 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Local acute trust discharge letters/summaries received by the practice electronically" %}
+{% set contentTitle = "The practice routinely electronically orders or receives diagnostics tests with their main acute provider" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "input[name='dischargeElectronic']" ).on( "click", function() {
-  if ( $( "input[name='dischargeElectronic']:checked" ).val() === "no") {
+  $( "input[name='diagnostics']" ).on( "click", function() {
+  if ( $( "input[name='diagnostics']:checked" ).val() === "no") {
 
     $( ".app-opening-time__container" ).addClass("app-u-display--none ")
     $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
 
-  } else if ( $( "input[name='dischargeElectronic']:checked" ).val() === "notApplicable") {
+  } else if ( $( "input[name='diagnostics']:checked" ).val() === "notApplicable") {
     $( ".app-opening-time__container" ).addClass("app-u-display--none ")
     $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
 
@@ -28,7 +28,6 @@
 });
 </script>
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -50,37 +49,48 @@
 {% endblock %}
 
 {% block content %}
+
+{% set diagnosticsOther %}
+{{ textarea({
+  "name": "nhs",
+  "id": "more-detail",
+  "label": {
+    "text": "What other diagnostics tests does the practice routinely electronically order or receive with their main acute provider?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
 
 
-        {% if data['dischargeElectronic'] === "no" %}
+        {% if data['diagnostics'] === "no" %}
           {% set noTrue = "True" %}
-        {% elif data['dischargeElectronic'] === "notApplicable" %}
+        {% elif data['diagnostics'] === "notApplicable" %}
           {% set notApplicableTrue = "True" %}
         {% else %}
           {% set yesTrue = "True" %}
         {% endif %}
 
-        {% call fieldset({
-          "legend": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-            </span>' + contentTitle + '</h1>',
-            "classes": "nhsuk-fieldset__legend--xl",
-            "isPageHeading": true
-          }
-        }) %}
-
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "dischargeElectronic",
-          "fieldset": {
+          {% call fieldset({
             "legend": {
-              "classes": ""
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
-          },
+          }) %}
+
+          {{ radios({
+            "idPrefix": "nhs",
+            "name": "diagnostics",
+            "fieldset": {
+              "legend": {
+                "classes": ""
+              }
+            },
           "items": [
             {
               "value": "yes",
@@ -103,71 +113,41 @@
         <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
 
 
-        <h2 class="nhsuk-fieldset__legend--m">The majority of local acute discharge summaries/letters are received electronically</h2>
+        <h2 class="nhsuk-fieldset__legend--m">Which diagnostics tests does the practice routinely electronically order or receive with their main acute provider?</h2>
 
-        {{ radios({
+
+
+        {{ checkboxes({
           "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
-          "name": "outPatients",
+          "name": "diagnosticsTests",
           "fieldset": {
             "legend": {
-              "text": "For out patients",
-              "classes": ""
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "laboratory",
+              "text": "Place orders for common laboratory diagnostic tests"
             },
             {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
-
-        {{ radios({
-          "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
-          "name": "inPatients",
-          "fieldset": {
-            "legend": {
-              "text": "For in patients",
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
+              "value": "orderImaging",
+              "text": "Place orders for common imaging and diagnostic tests"
             },
             {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
-
-
-        {{ radios({
-          "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
-          "name": "aeDischarge",
-          "fieldset": {
-            "legend": {
-              "text": "The majority of local A&E discharge summaries are received electronically",
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
+              "value": "receiveImaging",
+              "text": "Receive diagnostic reports for common imaging and diagnostic tests"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: diagnosticsOther
+              }
             }
           ]
         }) }}

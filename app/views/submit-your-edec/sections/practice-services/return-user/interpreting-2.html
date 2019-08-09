@@ -3,9 +3,10 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
-{% set contentTitle = "Who funds the interpreting service?" %}
+{% set contentTitle = "Does the practice provide access to interpreting?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,57 +32,62 @@
 
 {% block content %}
 
-{% set fundInterpretConditional %}
-{{ input({
-  "id": "nhs",
-  "name": "fundInterpret",
-  "classes": "nhsuk-input--width-30"
+{% set otherInterpret %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other ways does the practice provide access to interpreting?"
+  }
 }) }}
 {% endset %}
-
-
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
-
-
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
 
         {{ checkboxes({
-          "idPrefix": "nhs",
-          "name": "fundInterpret",
+          "idPrefix": "nationality",
+          "name": "selectInterpret",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl",
+              "classes": "nhsuk-fieldset__legend--xl",
               "isPageHeading": true
             }
           },
           "hint": {
-          "text": "Select all that apply"
-        },
+            "html": "<p>Interpreting means: spoken word or British Sign Language.</p><p>Select all that apply</p>"
+          },
           "items": [
-            {
-              "value": "practice",
-              "text": "Practice"
-            },
-            {
-              "value": "ccq",
-              "text": "CCG"
-            },
-            {
-              "value": "nhsEngland",
-              "text": "NHS England"
-            },
-            {
-              "value": "other",
-              "text": "Other",
-              "conditional": {
-                html: fundInterpretConditional
-              }
+          {
+            "value": "telephone",
+            "text": "Telephone"
+          },
+          {
+            "value": "face",
+            "text": "Face to face interpreter (inclusive of British Sign Language)"
+          },
+          {
+            "value": "video",
+            "text": "Video interpreting (inclusive of British Sign Language)"
+          },
+          {
+            "value": "other",
+            "text": "Other",
+            "conditional": {
+              html: otherInterpret
             }
+          },
+          {
+            "divider": "or"
+          },
+          {
+            "value": "noInterpret",
+            "text": "The practice does not provide access to interpreting"
+          }
           ]
         }) }}
 

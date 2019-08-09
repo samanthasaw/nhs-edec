@@ -9,6 +9,25 @@
 {% set contentTitle = "Does the practice provide access to interpreting?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='interpret']" ).on( "click", function() {
+  if ( $( "input[name='interpret']:checked" ).val() === "no") {
+
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else if ( $( "input[name='interpret']:checked" ).val() === "notApplicable") {
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else {
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -31,6 +50,17 @@
 {% endblock %}
 
 {% block content %}
+
+{% set otherInterpret %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other ways does the practice provide access to interpreting?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -42,16 +72,21 @@
           {% set yesTrue = "True" %}
         {% endif %}
 
+        {% call fieldset({
+          "legend": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
 
         {{ radios({
-          "idPrefix": "example-divider",
-          "classes": "nhsuk-radios--inline",
+          "idPrefix": "nhs",
           "name": "interpret",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": ""
             }
           },
           "hint": {
@@ -71,8 +106,10 @@
         }) }}
 
 
-
         <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+        <h2 class="nhsuk-fieldset__legend--m">How does the practice provide access to interpreting?</h2>
 
 
         {{ checkboxes({
@@ -80,8 +117,6 @@
           "name": "selectInterpret",
           "fieldset": {
             "legend": {
-              "text": "How does the practice provide access to interpreting?",
-              "classes": "nhsuk-label--m app-heading-m",
               "isPageHeading": true
             }
           },
@@ -103,15 +138,17 @@
           },
           {
             "value": "other",
-            "text": "Other"
+            "text": "Other",
+            "conditional": {
+              html: otherInterpret
+            }
           }
           ]
         }) }}
 
+      </div>
 
-
-        </div>
-
+      {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

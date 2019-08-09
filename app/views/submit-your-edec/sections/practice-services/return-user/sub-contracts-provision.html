@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice can demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations" %}
+{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,20 +33,18 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/check-your-answers" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "fireSafety",
+          "name": "provision",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
-          "hint": {
-            "text": "This might include for example evidence of regular review or audit of any policies or procedures adopted by the practice."},
           "items": [
             {
               "value": "yes",

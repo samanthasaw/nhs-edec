@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice have a process in place to systematically review all locally developed Templates and Searches to ensure alignment with the transition to SNOMED CT?" %}
+{% set contentTitle = "The practice principle clinical system is accessible outside the practice for the following purposes:" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,29 +33,45 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/shared-online-system" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="post">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "snomed",
+        {{ checkboxes({
+          "idPrefix": "nationality",
+          "name": "clinicalSystemPurposes",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+            </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "routine",
+              "text": "Access at all routine locations for GP service point of care delivery (for example out of surgery locations such as hospitals, nursing homes and community using mobile technologies)"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "remote",
+              "text": "Access remotely for example home for administrative and maintenance purposes"
+            },
+            {
+              "value": "mobile",
+              "text": "Access from patient homes using mobile technologies (subject to local provider network coverage)"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

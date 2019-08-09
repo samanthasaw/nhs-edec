@@ -45,6 +45,17 @@
 {% endblock %}
 
 {% block content %}
+
+{% set legitimateAccessConditional %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other ways does your practice and other local health and social care providers share electronic patient data by view access to records where there is legitimate access and consent?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -124,7 +135,10 @@
             },
             {
               "value": "other",
-              "text": "Other"
+              "text": "Other",
+              "conditional": {
+                html: legitimateAccessConditional
+              }
             }
           ]
         }) }}

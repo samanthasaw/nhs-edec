@@ -5,17 +5,17 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Local acute trust discharge letters/summaries received by the practice electronically" %}
+{% set contentTitle = "The practice promotes and offers the facility for patients to receive consultations electronically" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "input[name='dischargeElectronic']" ).on( "click", function() {
-  if ( $( "input[name='dischargeElectronic']:checked" ).val() === "no") {
+  $( "input[name='patientConsultation']" ).on( "click", function() {
+  if ( $( "input[name='patientConsultation']:checked" ).val() === "no") {
 
     $( ".app-opening-time__container" ).addClass("app-u-display--none ")
     $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
 
-  } else if ( $( "input[name='dischargeElectronic']:checked" ).val() === "notApplicable") {
+  } else if ( $( "input[name='patientConsultation']:checked" ).val() === "notApplicable") {
     $( ".app-opening-time__container" ).addClass("app-u-display--none ")
     $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
 
@@ -28,7 +28,6 @@
 });
 </script>
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -53,16 +52,16 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/patient-consultations" method="post">
 
-
-        {% if data['dischargeElectronic'] === "no" %}
+        {% if data['patientConsultation'] === "no" %}
           {% set noTrue = "True" %}
-        {% elif data['dischargeElectronic'] === "notApplicable" %}
+        {% elif data['patientConsultation'] === "notApplicable" %}
           {% set notApplicableTrue = "True" %}
         {% else %}
           {% set yesTrue = "True" %}
         {% endif %}
+
 
         {% call fieldset({
           "legend": {
@@ -75,16 +74,19 @@
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "dischargeElectronic",
+          "name": "patientConsultation",
           "fieldset": {
             "legend": {
               "classes": ""
             }
           },
+          "hint": {
+            text: "Either by email, video, telephone consultation or other electronic means."
+          },
           "items": [
             {
               "value": "yes",
-              "text": "Yes"
+              "text": "Yes, the practice promotes and offers the facility for patients to receive consultations electronically"
             },
             {
               "value": "no",
@@ -103,78 +105,45 @@
         <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
 
 
-        <h2 class="nhsuk-fieldset__legend--m">The majority of local acute discharge summaries/letters are received electronically</h2>
+        <h2 class="nhsuk-fieldset__legend--m">Which ways does the practice promote and offer the facility for patients to receive consultations electronically?</h2>
 
-        {{ radios({
+
+
+        {{ checkboxes({
           "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
-          "name": "outPatients",
+          "name": "selectPatientConsultations",
           "fieldset": {
             "legend": {
-              "text": "For out patients",
-              "classes": ""
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply to patients"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "email",
+              "text": "Email"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
             }
           ]
         }) }}
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
-          "name": "inPatients",
-          "fieldset": {
-            "legend": {
-              "text": "For in patients",
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
+      </div>
 
-
-        {{ radios({
-          "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
-          "name": "aeDischarge",
-          "fieldset": {
-            "legend": {
-              "text": "The majority of local A&E discharge summaries are received electronically",
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
-
-        </div>
-
-        {% endcall %}
+      {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

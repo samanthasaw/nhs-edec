@@ -8,6 +8,25 @@
 {% set contentTitle = "Does the practice undertake call/recall activities as part of delivering vaccination programmes?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='callRecall']" ).on( "click", function() {
+  if ( $( "input[name='callRecall']:checked" ).val() === "no") {
+
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else if ( $( "input[name='callRecall']:checked" ).val() === "notApplicable") {
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else {
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -30,20 +49,58 @@
 {% endblock %}
 
 {% block content %}
+
+{% set electronicTechSolution %}
+{{ input({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "classes": "nhsuk-input--width-30",
+  "label": {
+    "text": "What other electronic technical solutions are used to contact the practice’s eligible population?"
+  }
+}) }}
+{% endset %}
+
+
+{% set nonElectronicTechSolution %}
+{{ input({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "classes": "nhsuk-input--width-30",
+  "label": {
+    "text": "What other non-electronic technical solutions are used to contact the practice’s eligible population?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
 
+        {% if data['callRecall'] === "no" %}
+          {% set noTrue = "True" %}
+        {% else %}
+          {% set yesTrue = "True" %}
+        {% endif %}
+
+
+        {% call fieldset({
+          "legend": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+
+
         {{ radios({
           "idPrefix": "nhs",
-          "classes": "nhsuk-radios--inline",
           "name": "callRecall",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": ""
             }
           },
           "items": [
@@ -58,6 +115,11 @@
           ]
         }) }}
 
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+        <h2 class="nhsuk-fieldset__legend--m">When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?</h2>
+
 
 
         {{ checkboxes({
@@ -65,7 +127,6 @@
           "name": "contactCallRecall",
           "fieldset": {
             "legend": {
-              "text": "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?",
               "classes": "nhsuk-label--m app-heading-m",
               "isPageHeading": true
             }
@@ -100,14 +161,24 @@
           },
           {
             "value": "other",
-            "text": "Other electronic technical solution"
+            "text": "Other electronic technical solution",
+            "conditional": {
+              html: electronicTechSolution
+            }
           },
           {
             "value": "othernonElectronic",
-            "text": "Other non-electronic technical solution"
+            "text": "Other non-electronic technical solution",
+            "conditional": {
+              html: nonElectronicTechSolution
+            }
           }
           ]
         }) }}
+
+      </div>
+
+      {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

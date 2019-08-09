@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your practice have at least one consulting room which is accessible to wheel chair users?" %}
+{% set contentTitle = "Does the practice have at least one consulting room which is accessible to wheelchair users?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,7 +33,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/new-premises-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/wheelchair" method="post">
 
         {{ radios({
           "idPrefix": "nhs",

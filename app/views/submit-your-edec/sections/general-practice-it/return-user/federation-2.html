@@ -8,6 +8,25 @@
 {% set contentTitle = "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='federation']" ).on( "click", function() {
+  if ( $( "input[name='federation']:checked" ).val() === "no") {
+
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else if ( $( "input[name='federation']:checked" ).val() === "notApplicable") {
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else {
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -35,16 +54,31 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/federation" method="post">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "nursingHomeConsultation",
-          "fieldset": {
+        {% if data['federation'] === "no" %}
+          {% set noTrue = "True" %}
+        {% elif data['federation'] === "notApplicable" %}
+          {% set notApplicableTrue = "True" %}
+        {% else %}
+          {% set yesTrue = "True" %}
+        {% endif %}
+
+          {% call fieldset({
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
-          },
+          }) %}
+
+          {{ radios({
+            "idPrefix": "nhs",
+            "name": "federation",
+            "fieldset": {
+              "legend": {
+                "classes": ""
+              }
+            },
           "items": [
             {
               "value": "yes",
@@ -64,12 +98,17 @@
           ]
         }) }}
 
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+        <h2 class="nhsuk-fieldset__legend--m">Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways:</h2>
+
+
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "sharedWorking",
           "fieldset": {
             "legend": {
-              "text": "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways",
               "isPageHeading": true,
               "classes": "nhsuk-label--m app-heading-m"
             }
@@ -101,6 +140,10 @@
           ]
         }) }}
 
+
+        </div>
+
+        {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

@@ -5,9 +5,28 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice promotes and offers the facility for patients nursing and residential homes to receive consultations electronically, either by email, video, telephone consultation or other electronic means" %}
+{% set contentTitle = "The practice promotes and offers the facility for patients nursing and residential homes to receive consultations electronically" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='consultationsOnePage']" ).on( "click", function() {
+  if ( $( "input[name='consultationsOnePage']:checked" ).val() === "no") {
+
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else if ( $( "input[name='consultationsOnePage']:checked" ).val() === "notApplicable") {
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else {
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -35,15 +54,34 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
 
+        {% if data['consultationsOnePage'] === "no" %}
+          {% set noTrue = "True" %}
+        {% elif data['consultationsOnePage'] === "notApplicable" %}
+          {% set notApplicableTrue = "True" %}
+        {% else %}
+          {% set yesTrue = "True" %}
+        {% endif %}
+
+
+        {% call fieldset({
+          "legend": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-fieldset__legend--xl",
+            "isPageHeading": true
+          }
+        }) %}
+
         {{ radios({
           "idPrefix": "nhs",
-          "name": "nursingHomeConsultation",
+          "name": "consultationsOnePage",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": ""
             }
+          },
+          "hint": {
+            "text": "Either by email, video, telephone consultation or other electronic means."
           },
           "items": [
             {
@@ -63,6 +101,14 @@
             }
           ]
         }) }}
+
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+        <h2 class="nhsuk-fieldset__legend--m">Which ways does the practice promote and offer the facility for nursing homes to receive consultations electronically?</h2>
+
+
+
 
         {{ checkboxes({
           "idPrefix": "nhs",
@@ -93,14 +139,14 @@
             },
             {
               "value": "onlineConsultation",
-              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
             }
           ]
         }) }}
 
         {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "selectPatientConsultations",
+          "name": "selectNursingConsultations",
           "fieldset": {
             "legend": {
               "text": "For nursing homes",
@@ -126,14 +172,14 @@
             },
             {
               "value": "onlineConsultation",
-              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
             }
           ]
         }) }}
 
         {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "selectPatientConsultations",
+          "name": "selectResidentialConsultations",
           "fieldset": {
             "legend": {
               "text": "For residential homes",
@@ -159,10 +205,15 @@
             },
             {
               "value": "onlineConsultation",
-              "text": "Online consultations (for example electronic questionnaires or text messaging systems)"
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
             }
           ]
         }) }}
+
+
+              </div>
+
+              {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

@@ -8,6 +8,25 @@
 {% set contentTitle = "The practice principle clinical system is accessible outside the practice" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='clinicalSystem']" ).on( "click", function() {
+  if ( $( "input[name='clinicalSystem']:checked" ).val() === "no") {
+
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else if ( $( "input[name='clinicalSystem']:checked" ).val() === "notApplicable") {
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+
+  } else {
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -35,17 +54,33 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="post">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "clinicalSystem",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
-          },
-          "items": [
+
+                {% if data['clinicalSystem'] === "no" %}
+                  {% set noTrue = "True" %}
+                {% elif data['clinicalSystem'] === "notApplicable" %}
+                  {% set notApplicableTrue = "True" %}
+                {% else %}
+                  {% set yesTrue = "True" %}
+                {% endif %}
+
+                {% call fieldset({
+                  "legend": {
+                    "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+                    </span>' + contentTitle + '</h1>',
+                    "classes": "nhsuk-fieldset__legend--xl",
+                    "isPageHeading": true
+                  }
+                }) %}
+
+                {{ radios({
+                  "idPrefix": "nhs",
+                  "name": "clinicalSystem",
+                  "fieldset": {
+                    "legend": {
+                      "classes": ""
+                    }
+                  },
+                  "items": [
             {
               "value": "yes",
               "text": "Yes"
@@ -64,12 +99,16 @@
           ]
         }) }}
 
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+        <h2 class="nhsuk-fieldset__legend--m">The practice principle clinical system is accessible outside the practice for the following purposes:</h2>
+
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "clinicalSystemPurposes",
           "fieldset": {
             "legend": {
-              "text": "The practice principle clinical system is accessible outside the practice for the following purposes:",
               "classes": "nhsuk-fieldset__legend--m",
               "isPageHeading": true
             }
@@ -92,6 +131,10 @@
             }
           ]
         }) }}
+
+      </div>
+
+      {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
