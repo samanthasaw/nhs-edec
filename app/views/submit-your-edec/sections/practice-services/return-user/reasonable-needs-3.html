@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "In case of Emergency (during core contract hours). The contract states that “the Contractor must provide the services described in Part 8 (namely essential services) at such times, within core hours, as are appropriate to meet the reasonable needs of its patients, and to have in place arrangements for its patients to access such services throughout the core hours in case of emergency” (2014, NHS England, Standard GMS Contract)"%}
+{% set contentTitle = "How the practice is meeting the reasonable needs of its patient population in case of emergency during core contact hours"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,22 +42,25 @@
 {% endset %}
 
 
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
-        <h1 class="nhsuk-label--m app-heading-m"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
         </span>{{ contentTitle }}</h1>
 
+        <p>The contract states that “the Contractor must provide the services described in Part 8 (namely essential services) at such times, within core hours, as are appropriate to meet the reasonable needs of its patients, and to have in place arrangements for its patients to access such services throughout the core hours in case of emergency” (2014, NHS England, Standard GMS Contract)</p>
 
+        <p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (08:00 – 18:30 Monday to Friday) in case of emergency?</p>
 
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "patientSources",
           "fieldset": {
             "legend": {
-              "html": '<p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (08:00 – 18:30 Monday to Friday) in case of emergency?</p><p>The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:</p>',
+              "text": "The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:",
               "classes": "nhsuk-label--m app-heading-m"
             }
           },
