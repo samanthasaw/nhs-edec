@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider" %}
+{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,16 +37,13 @@
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "monitorOoh",
+          "name": "provision",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
-          },
-          "hint": {
-            "text": "Including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints."
           },
           "items": [
             {

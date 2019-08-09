@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider" %}
+{% set contentTitle = "Please provide the name of the accredited provider" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,30 +35,21 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "monitorOoh",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
+        {{ input({
+          "label": {
+          "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+          </span>' + contentTitle + '</h1>',
+          "isPageHeading": true,
+          "classes": "nhsuk-label--xl"
           },
           "hint": {
-            "text": "Including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints."
+            "text": "Name of Out of Hours provider"
           },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
+          "id": "inputnhsnumber",
+          "name": "providerName",
+          "classes": "nhsuk-input--width-30"
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

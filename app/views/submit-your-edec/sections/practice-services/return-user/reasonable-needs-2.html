@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "If practice services are not available to patients during core contract hours what arrangements are in place?" %}
+{% set contentTitle = "In case of Emergency (during core contract hours). The contract states that “the Contractor must provide the services described in Part 8 (namely essential services) at such times, within core hours, as are appropriate to meet the reasonable needs of its patients, and to have in place arrangements for its patients to access such services throughout the core hours in case of emergency” (2014, NHS England, Standard GMS Contract)"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,27 +31,15 @@
 
 {% block content %}
 
-{% set otherArrangements %}
+{% set patientSourceOther %}
 {{ textarea({
-  "name": "inputOtherArrangements",
+  "name": "inputPatientSourceOther",
   "id": "inputnhsnumber",
   "label": {
-    "text": "What other arrangements are in place?"
+    "text": "What other patient sources has your evidence been obtained from in the preceding 12 months?"
   }
 }) }}
 {% endset %}
-
-{% set subContractProvider %}
-{{ textarea({
-  "name": "inputSubContractProvider",
-  "id": "inputnhsnumber",
-  "label": {
-    "text": "What is the name of your sub contracted provider?"
-  }
-}) }}
-{% endset %}
-
-
 
 
   <div class="nhsuk-grid-row">
@@ -59,17 +47,18 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information
+        </span>{{ contentTitle }}</h1>
+
 
 
         {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "servicesArrangements",
+          "name": "patientSources",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl",
-              "isPageHeading": true
+              "html": '<p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (08:00 – 18:30 Monday to Friday) in case of emergency?</p><p>The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:</p>',
+              "classes": "nhsuk-label--m app-heading-m"
             }
           },
           "hint": {
@@ -77,33 +66,30 @@
         },
           "items": [
             {
-              "value": "OOH",
-              "text": "Same out of hours provider as that commissioned by CCG"
+              "value": "ppg",
+              "text": "Patient Participation Group"
             },
             {
-              "value": "sub",
-              "text": "Sub contracted provider",
-              "conditional": {
-                html: subContractProvider
-              }
+              "value": "patientSurvey",
+              "text": "GP patient survey"
             },
             {
-              "value": "directProvide",
-              "text": "Provided directly by the practice"
+              "value": "localSurvey",
+              "text": "Local survey"
             },
             {
               "value": "other",
               "text": "Other",
               "conditional": {
-                html: otherArrangements
+                html: patientSourceOther
               }
             },
             {
               "divider": "or"
             },
             {
-              "value": "noArrangements",
-              "text": "No arrangements are in place"
+              "value": "cannotConfirm",
+              "text": "The practice is not able to confirm"
             }
           ]
         }) }}
