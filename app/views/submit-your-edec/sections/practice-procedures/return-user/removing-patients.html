@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "When removing patients from its list can your practice demonstrate that it does so in accordance with contractual requirements?" %}
+{% set contentTitle = "When removing patients from its list the practice can demonstrate that it does so in accordance with contractual requirements and provides the required notice, including providing an explanation of the reasons in writing to the patient" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,11 +42,8 @@
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
-          },
-          "hint": {
-            "text": "This includes providing the required notice and an explanation of the reasons in writing to the patient."
           },
           "items": [
             {

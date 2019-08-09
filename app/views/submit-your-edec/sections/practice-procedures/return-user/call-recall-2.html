@@ -5,28 +5,9 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice undertake call/recall activities as part of delivering vaccination programmes?" %}
+{% set contentTitle = "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
-<script type="text/javascript">
-  $( "input[name='callRecall']" ).on( "click", function() {
-  if ( $( "input[name='callRecall']:checked" ).val() === "no") {
-
-    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
-    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
-
-  } else if ( $( "input[name='callRecall']:checked" ).val() === "notApplicable") {
-    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
-    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
-
-  } else {
-    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
-
-    // Find inputs that are now visible and make them disabled.
-    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
-  }
-});
-</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -78,56 +59,15 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
 
-        {% if data['callRecall'] === "no" %}
-          {% set noTrue = "True" %}
-        {% else %}
-          {% set yesTrue = "True" %}
-        {% endif %}
-
-
-        {% call fieldset({
-          "legend": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
-            </span>' + contentTitle + '</h1>',
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
-          }
-        }) %}
-
-
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "callRecall",
-          "fieldset": {
-            "legend": {
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
-
-        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
-
-
-        <h2 class="nhsuk-fieldset__legend--m">When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?</h2>
-
-
 
         {{ checkboxes({
-          "idPrefix": "nhs",
+          "idPrefix": "nationality",
           "name": "contactCallRecall",
           "fieldset": {
             "legend": {
-              "classes": "nhsuk-label--m app-heading-m",
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
               "isPageHeading": true
             }
           },
@@ -172,13 +112,17 @@
             "conditional": {
               html: nonElectronicTechSolution
             }
+          },
+          {
+            "divider": "or"
+          },
+          {
+            "value": "noCallRecall",
+            "text": "The practice does not undertake call/recall"
           }
           ]
         }) }}
 
-      </div>
-
-      {% endcall %}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
