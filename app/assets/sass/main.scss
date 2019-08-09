@@ -136,3 +136,8 @@ li ul {
 
   display: none;
 }
+
+
+.nhsuk-checkboxes__divider {
+  @extend .nhsuk-radios__divider;
+}
