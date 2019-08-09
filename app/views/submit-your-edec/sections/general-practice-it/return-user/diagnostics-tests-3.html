@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure), the practice as contract holder, has reviewed these arrangements for compliance with the ten NDG data security standards and applicable legal requirements  and appropriate certification ie ISO/IEC 27001: 2013, Cyber Essentials (CE) and CE+, where appropriate" %}
+{% set contentTitle = "The practice routinely electronically orders or receives diagnostics tests with their main acute provider (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,29 +30,55 @@
 {% endblock %}
 
 {% block content %}
+
+{% set diagnosticsOther %}
+{{ textarea({
+  "name": "nhs",
+  "id": "more-detail",
+  "label": {
+    "text": "What other diagnostics tests does the practice routinely electronically order or receive with their main acute provider?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
 
-        {{ radios({
+        {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "reviewArrangements",
+          "name": "diagnostics",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "laboratory",
+              "text": "Place orders for common laboratory diagnostic tests"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "orderImaging",
+              "text": "Place orders for common imaging and diagnostic tests"
+            },
+            {
+              "value": "receiveImaging",
+              "text": "Receive diagnostic reports for common imaging and diagnostic tests"
+            },
+            {
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: diagnosticsOther
+              }
             },
             {
               "divider": "or"
@@ -63,6 +89,7 @@
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

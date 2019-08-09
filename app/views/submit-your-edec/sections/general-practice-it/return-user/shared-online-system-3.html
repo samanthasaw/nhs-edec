@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure), the practice as contract holder, has reviewed these arrangements for compliance with the ten NDG data security standards and applicable legal requirements  and appropriate certification ie ISO/IEC 27001: 2013, Cyber Essentials (CE) and CE+, where appropriate" %}
+{% set contentTitle = "The practice and its registered patients have access to a shared online system which allows patients to engage with their GP by: (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,26 +33,31 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/shared-online-system" method="post">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "reviewArrangements",
+
+        {{ checkboxes({
+          "idPrefix": "nationality",
+          "name": "engageOnlineSystem",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "recordData",
+              "text": "Patients can record their personal health data which is accessible online by the GP"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "careOutcomes",
+              "text": "Patients and GPs can online collaboratively set goals and care outcomes and track progress against these"
             },
             {
               "divider": "or"
@@ -63,6 +68,7 @@
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

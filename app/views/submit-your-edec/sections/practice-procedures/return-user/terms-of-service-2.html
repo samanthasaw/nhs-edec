@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure), the practice as contract holder, has reviewed these arrangements for compliance with the ten NDG data security standards and applicable legal requirements  and appropriate certification ie ISO/IEC 27001: 2013, Cyber Essentials (CE) and CE+, where appropriate" %}
+{% set contentTitle = "With regard to dispensing doctors: The practice declares it complies with the terms of service of dispensing doctors outlined in schedule 6 of The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013 and;" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,16 +33,22 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
+
+        <h1 class="nhsuk-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+        </span>{{ contentTitle }}</h1>
+
+        <h2 class="nhsuk-heading-l">The practice can demonstrate that for all patients which it dispenses to it is satisfied that they would have serious difficulty in obtaining any necessary drugs or appliances from an NHS pharmacist by reason of distance or inadequacy of means of communication (colloquially known as the “serious difficulty” test which can apply anywhere in the country); or</h2>
+
+        <h2 class="nhsuk-heading-l">A patient is resident in an area which is rural in character, known as a controlled locality, at a distance of more than one mile1 (1.6 km) from pharmacy premises (excluding any distance selling premises). The pharmacy premises do not have to be in a controlled locality.</h2>
+
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "reviewArrangements",
+          "name": "termsService",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
           "items": [

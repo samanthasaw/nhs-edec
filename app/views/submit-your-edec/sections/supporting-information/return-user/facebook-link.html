@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What is the link to your practice Facebook page?" %}
+{% set contentTitle = "Link to practice Facebook page (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,8 +35,11 @@
             "isPageHeading": true,
             "classes": "nhsuk-label--xl"
           },
-          "id": "inputwebsitelink",
-          "name": "websitelink",
+          "hint": {
+          "text": "For example www.facebook.com/practice"
+          },
+          "id": "inputfacebooklink",
+          "name": "facebooklink",
           "classes": "nhsuk-input--width-30"
         }) }}
 

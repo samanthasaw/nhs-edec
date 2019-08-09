@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure), the practice as contract holder, has reviewed these arrangements for compliance with the ten NDG data security standards and applicable legal requirements  and appropriate certification ie ISO/IEC 27001: 2013, Cyber Essentials (CE) and CE+, where appropriate" %}
+{% set contentTitle = "Where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records in the following ways: (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,29 +30,59 @@
 {% endblock %}
 
 {% block content %}
+
+{% set legitimateAccessConditional %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other ways does your practice and other local health and social care providers share electronic patient data by view access to records where there is legitimate access and consent?"
+  }
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
       <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
 
-        {{ radios({
+        {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "reviewArrangements",
+          "name": "legitimateAccess",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+            </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "laboratory",
+              "text": "Other local health providers can access practice records"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "orderImaging",
+              "text": "Local social care providers can access practice records"
+            },
+            {
+              "value": "receiveImaging",
+              "text": "Practice can access records from other local health providers"
+            },
+            {
+              "value": "other",
+              "text": "Practice can access records from local social care providers"
+            },
+            {
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: legitimateAccessConditional
+              }
             },
             {
               "divider": "or"
@@ -63,6 +93,7 @@
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
