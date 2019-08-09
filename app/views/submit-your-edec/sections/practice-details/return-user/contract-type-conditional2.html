@@ -6,7 +6,7 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "What is your GP practice contract type?" %}
+{% set contentTitle = "Practice contract type" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -40,7 +40,7 @@
           <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-label--xl app-heading-xl">
             <h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-            </span>What is your GP practice contract type?</h1>
+            </span>{{ contentTitle }}</h1>
           </legend>
 
           <div class="nhsuk-radios nhsuk-form-group">
