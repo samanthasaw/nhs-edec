@@ -6,8 +6,8 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
+{% set contentTitle = "Practice telephone number (for patients)" %}
 {% set title = contentTitle + " - " + serviceName %}
-{% set contentTitle = "What is your practice telephone number for patients?" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -44,9 +44,6 @@
             </span>' + contentTitle + '</h1>',
             "isPageHeading": true,
             "classes": "nhsuk-label--xl app-label-xl"
-          },
-          "hint": {
-            "text": "Telephone number"
           },
           "id": "inputpatientphone",
           "name": "patientphone",

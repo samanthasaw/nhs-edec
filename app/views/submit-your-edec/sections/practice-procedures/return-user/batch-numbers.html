@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your practice have a procedure to ensure all batch numbers and expiry dates are recorded for all vaccines administered and that all immunisations, vaccinations and consent to immunisations are recorded in the patient record?" %}
+{% set contentTitle = "The practice has a procedure to ensure all batch numbers and expiry dates are recorded for all vaccines administered and that all immunisations, vaccinations and consent to immunisations are recorded in the patient record" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,7 +42,7 @@
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
           "items": [

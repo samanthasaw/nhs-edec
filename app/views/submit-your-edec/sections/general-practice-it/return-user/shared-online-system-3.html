@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice has either appointed a Data Protection Officer or has plans to do so?" %}
+{% set contentTitle = "The practice and its registered patients have access to a shared online system which allows patients to engage with their GP by: (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,29 +33,42 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/shared-online-system" method="post">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "protectionOfficer",
+
+        {{ checkboxes({
+          "idPrefix": "nationality",
+          "name": "engageOnlineSystem",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "recordData",
+              "text": "Patients can record their personal health data which is accessible online by the GP"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "careOutcomes",
+              "text": "Patients and GPs can online collaboratively set goals and care outcomes and track progress against these"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

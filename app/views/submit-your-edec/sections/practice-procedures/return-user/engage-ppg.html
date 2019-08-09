@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Can your practice evidence that you have engaged with your PPG throughout the year?" %}
+{% set contentTitle = "The practice can evidence that they have engaged with their Patient Participation Group (PPG) throughout the year and make available such feedback to the practice population including actions and reports, including where they have acted on suggestions for improvement" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,11 +42,8 @@
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
-          },
-          "hint": {
-            "text": "This includes making available such feedback to the practice population including actions and reports, including where you have acted on suggestions for improvement."
           },
           "items": [
             {

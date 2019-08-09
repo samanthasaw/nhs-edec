@@ -3,9 +3,10 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
-{% set contentTitle = "The practice has either appointed a Data Protection Officer or has plans to do so?" %}
+{% set contentTitle = "Does your practice have another telephone number?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,25 +31,42 @@
 {% endblock %}
 
 {% block content %}
+
+{% set inputOtherNumber %}
+{{ input({
+  "label": {
+    "text": "Enter your other practice telephone number",
+    "isPageHeading": true
+    },
+  "id": "nhs",
+  "name": "inputOtherNumber",
+  "classes": "nhsuk-input--width-30"
+}) }}
+{% endset %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/" method="get">
 
-        {{ radios({
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="post">
+
+        {{ conditionalRadios({
           "idPrefix": "nhs",
-          "name": "protectionOfficer",
+          "name": "otherNumber",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "text": contentTitle,
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--xl"
             }
           },
           "items": [
             {
               "value": "yes",
-              "text": "Yes"
+              "text": "Yes",
+              "conditional": {
+                html: inputOtherNumber
+              }
             },
             {
               "value": "no",
@@ -56,6 +74,9 @@
             }
           ]
         }) }}
+
+
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

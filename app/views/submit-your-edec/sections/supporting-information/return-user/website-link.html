@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What is the link to your practice website?" %}
+{% set contentTitle = "Link to practice website" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,13 +31,17 @@
         {{ input({
           "label": {
             "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information
-            </span>' + contentTitle + '</h1>',            "isPageHeading": true,
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
             "classes": "nhsuk-label--xl"
           },
+          "hint": {
+          "text": "For example www.practice.co.uk"
+        },
           "id": "inputwebsitelink",
           "name": "websitelink",
           "classes": "nhsuk-input--width-30"
-        }) }}
+          }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

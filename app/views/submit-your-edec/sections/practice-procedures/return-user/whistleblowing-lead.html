@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Has your practice identified someone external who your practice staff can raise concerns with in confidence?" %}
+{% set contentTitle = "Has the practice identified someone external to the practice staff can raise concerns with in confidence?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,11 +42,11 @@
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
           "hint": {
-            "text": "For example a freedom to speak up guardian or a local whistleblowing lead."
+            "text": "For example a freedom to speak up guardian, local whistleblowing lead."
           },
           "items": [
             {

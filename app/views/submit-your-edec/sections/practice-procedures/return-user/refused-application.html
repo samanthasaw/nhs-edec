@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Can your practice demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them?" %}
+{% set contentTitle = "The practice can demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,12 +37,12 @@
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "complaintsPolicy",
+          "name": "refusedApplication",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
           "items": [

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Has your practice updated your whistleblowing policy in light of published guidance?" %}
+{% set contentTitle = "Has the GP practice updated their whistleblowing policy in light of published guidance?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -37,7 +37,7 @@
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "complaintsPolicy",
+          "name": "updateWhistleblowing",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures

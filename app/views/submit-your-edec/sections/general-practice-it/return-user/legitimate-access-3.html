@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "If practice services are not available to patients during core contract hours what arrangements are in place?" %}
+{% set contentTitle = "Where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records in the following ways: (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,44 +31,29 @@
 
 {% block content %}
 
-{% set otherArrangements %}
+{% set legitimateAccessConditional %}
 {{ textarea({
-  "name": "inputOtherArrangements",
+  "name": "nhsnumber",
   "id": "inputnhsnumber",
   "label": {
-    "text": "What other arrangements are in place?"
+    "text": "What other ways does your practice and other local health and social care providers share electronic patient data by view access to records where there is legitimate access and consent?"
   }
 }) }}
 {% endset %}
-
-{% set subContractProvider %}
-{{ textarea({
-  "name": "inputSubContractProvider",
-  "id": "inputnhsnumber",
-  "label": {
-    "text": "What is the name of your sub contracted provider?"
-  }
-}) }}
-{% endset %}
-
-
-
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
-
-
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
 
         {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "servicesArrangements",
+          "name": "legitimateAccess",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l",
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+            </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
               "isPageHeading": true
             }
           },
@@ -77,36 +62,38 @@
         },
           "items": [
             {
-              "value": "OOH",
-              "text": "Same out of hours provider as that commissioned by CCG"
+              "value": "laboratory",
+              "text": "Other local health providers can access practice records"
             },
             {
-              "value": "sub",
-              "text": "Sub contracted provider",
-              "conditional": {
-                html: subContractProvider
-              }
+              "value": "orderImaging",
+              "text": "Local social care providers can access practice records"
             },
             {
-              "value": "directProvide",
-              "text": "Provided directly by the practice"
+              "value": "receiveImaging",
+              "text": "Practice can access records from other local health providers"
+            },
+            {
+              "value": "other",
+              "text": "Practice can access records from local social care providers"
             },
             {
               "value": "other",
               "text": "Other",
               "conditional": {
-                html: otherArrangements
+                html: legitimateAccessConditional
               }
             },
             {
               "divider": "or"
             },
             {
-              "value": "noArrangements",
-              "text": "No arrangements are in place"
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
