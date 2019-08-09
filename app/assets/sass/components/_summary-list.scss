@@ -7,3 +7,11 @@
   }
 
 }
+
+.nhsuk-summary-list__row--no-border {
+
+  .nhsuk-summary-list__key, .nhsuk-summary-list__value, .nhsuk-summary-list__actions {
+
+    border: none;
+  }
+}
