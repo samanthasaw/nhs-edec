@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice has a procedure for electronic transmission of patient data in line with national policy" %}
+{% set contentTitle = "With regard to dispensing doctors: The practice has systems in place to ensure they comply with:" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,20 +33,23 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
+
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+        </span>{{ contentTitle }}</h1>
+
+      <ul>
+        <li>the requirements of the Controlled Drugs (Supervision of Management and Use) Regulations 2006</li>
+        <li>relevant health technical memoranda and professional guidance from the Royal Pharmaceutical Society of Great Britain</li>
+        <li>other relevant professional bodies and agencies</li>
+      </ul>
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "nominatedPerson",
+          "name": "controlledDrugs",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
             }
-          },
-          "hint": {
-            "text": "Including mechanisms to ensure that computerised medical records/data are transferred to a new practice when a patient leaves."
           },
           "items": [
             {
@@ -56,9 +59,17 @@
             {
               "value": "no",
               "text": "No"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
