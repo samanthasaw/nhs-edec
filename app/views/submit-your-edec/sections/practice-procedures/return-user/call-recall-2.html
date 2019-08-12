@@ -8,6 +8,38 @@
 {% set contentTitle = "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#nhs-6" ).on( "click", function() {
+  if ( $( "#nhs-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#nhs-1" ).attr('disabled', true);
+    $( "#nhs-2" ).attr('disabled', true);
+    $( "#nhs-3" ).attr('disabled', true);
+    $( "#nhs-4" ).attr('disabled', true);
+    if ($( "#nhs-2" ).is(":checked")) {
+      $( "#conditional-nhs-2" ).hide();
+    }
+    if ($( "#nhs-4" ).is(":checked")) {
+      $( "#conditional-nhs-4" ).hide();
+    }
+
+
+
+  } else {
+    $( "#nhs-1" ).attr('disabled', false);
+    $( "#nhs-2" ).attr('disabled', false);
+    $( "#nhs-3" ).attr('disabled', false);
+    $( "#nhs-4" ).attr('disabled', false);
+    if ($( "#nhs-2" ).is(":checked")) {
+      $( "#conditional-nhs-2" ).show();
+    }
+    if ($( "#nhs-4" ).is(":checked")) {
+      $( "#conditional-nhs-4" ).show();
+    }
+
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -60,7 +92,7 @@
       <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
 
 
-        {{ checkboxes({
+        {{ checkboxesDivider({
           "idPrefix": "nationality",
           "name": "contactCallRecall",
           "fieldset": {
