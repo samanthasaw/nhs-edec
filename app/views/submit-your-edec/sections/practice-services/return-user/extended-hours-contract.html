@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Have you notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in  in receipt of an up to date registration certificate? " %}
+{% set contentTitle = "Extended Opening Hours – where the practice provides outside of core contract hours"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,36 +30,40 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/return-user/new-cqc-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "notifiedCqc",
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+        </span>{{ contentTitle }}</h1>
+
+
+        {{ dateInput({
+          "id": "dob",
+          "namePrefix": "extendedEnd",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "html": "Contract/agreement end date",
+              "classes": "nhsuk-label--m app-heading-m"
             }
+          },
+          "hint": {
+            "text": "For example, 14 12 2020"
           },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
             },
             {
-              "value": "no",
-              "text": "No"
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
             },
             {
-              "divider": "or"
-            },
-            {
-              "value": "notApplicable",
-              "text": "This does not apply to my practice"
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
             }
           ]
         }) }}

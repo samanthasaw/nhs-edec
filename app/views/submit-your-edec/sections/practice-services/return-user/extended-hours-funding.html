@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Have you notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in  in receipt of an up to date registration certificate? " %}
+{% set contentTitle = "Extended Opening Hours – where the practice provides outside of core contract hours"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,36 +30,57 @@
 {% endblock %}
 
 {% block content %}
+
+{% set fundingOther %}
+{{ input({
+  "label": {
+    "text": "What is your other funding mechanism?"
+  },
+  "id": "nhs",
+  "name": "funding",
+  "classes": "nhsuk-input--width-30"
+}) }}
+{% endset %}
+
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/return-user/new-cqc-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "notifiedCqc",
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+        </span>{{ contentTitle }}</h1>
+
+        {{ conditionalRadios({
+          "idPrefix": "gov",
+          "name": "extendedFunding",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "text": "Funding mechanism",
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--m"
             }
           },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "networkDES",
+              "text": "Network Directed Enhanced Service (DES)"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "incentive",
+              "text": "Incentive Scheme"
             },
             {
-              "divider": "or"
+              "value": "unsure",
+              "text": "Personal Medical Services (PMS) growth"
             },
             {
-              "value": "notApplicable",
-              "text": "This does not apply to my practice"
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: fundingOther
+              }
             }
           ]
         }) }}

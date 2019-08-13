@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Have you notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in  in receipt of an up to date registration certificate? " %}
+{% set contentTitle = "Are there any regular periods during each week that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,14 +33,14 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/return-user/new-cqc-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "notifiedCqc",
+          "name": "regularPeriods",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--l app-heading-l"
             }
@@ -53,13 +53,6 @@
             {
               "value": "no",
               "text": "No"
-            },
-            {
-              "divider": "or"
-            },
-            {
-              "value": "notApplicable",
-              "text": "This does not apply to my practice"
             }
           ]
         }) }}
