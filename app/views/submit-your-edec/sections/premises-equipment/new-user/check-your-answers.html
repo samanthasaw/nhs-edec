@@ -9,8 +9,8 @@
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "input[name='other']" ).on( "click", function() {
-  if ( $( "input[name='other']:checked" ).val() === "yes") {
+  $( "input[name='wheelchair']" ).on( "click", function() {
+  if ( $( "input[name='wheelchair']:checked" ).val() === "yes") {
     console.log( "closed" );
     $( ".app-opening-time__container" ).addClass("app-u-display--none ")
     $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
@@ -37,6 +37,16 @@ $('div.nhsuk-summary-list__row').each(function() {
     <br> {{ data['inputWheelchairOther'] }}
   {% endif %}
 {% endset %}
+
+{% if data['wheelchair'] %}
+    {% if data['wheelchair'] == "no" %}
+      {% set wheelchairRow = "show" %}
+    {% else %}
+      {% set wheelchairRow = "hide" %}
+    {% endif %}
+{% else %}
+    {% set wheelchairRow = "show" %}
+{% endif %}
 
 {% set wheelchairArrangements %}
   {% if data['wheelchairArrangements'] == 'homevisit' %}
@@ -94,6 +104,7 @@ $('div.nhsuk-summary-list__row').each(function() {
     No
   {% endif %}
 {% endset %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -226,7 +237,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['wheelchair'] == 'no'
+          } if wheelchairRow == 'show'
         ]
       }) }}
 

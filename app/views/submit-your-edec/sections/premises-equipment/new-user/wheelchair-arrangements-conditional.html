@@ -31,6 +31,7 @@
 
 {% block content %}
 
+
 {% set wheelchairConditional %}
 {{ textarea({
   "name": "inputWheelchairOther",
@@ -45,7 +46,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/check-your-answers" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/new-user/check-your-answers" method="get">
         {{ checkboxes({
           "idPrefix": "nhs",
           "name": "wheelchairArrangements",
@@ -53,7 +54,7 @@
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-fieldset__legend--xl",
+              "classes": "nhsuk-label--l app-heading-l",
               "isPageHeading": true
             }
           },

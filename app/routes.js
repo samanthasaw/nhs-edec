@@ -232,6 +232,24 @@ router.post('/submit-your-edec/sections/premises-equipment/return-user/wheelchai
 });
 
 
+router.post('/submit-your-edec/sections/premises-equipment/return-user/change-wheelchair', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/change-premises-details')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/return-user/change-wheelchair-arrangements-conditional') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+
 
 
 
@@ -263,7 +281,7 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements') }
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements-conditional') }
 
   else {
     // res.redirect('error')
