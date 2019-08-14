@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What the Supporting information section covers" %}
+{% set contentTitle = "We will ask you for some supporting information details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -21,7 +21,6 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
-
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
     <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] }}</p>
@@ -33,24 +32,13 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      {{ backLink({
-        "href": "/submit-your-edec/sections/supporting-information/return-user/supporting-task-list-start",
-        "text": "Back to your task list"
-      }) }}
-
       <div class="app-card">
         <div class="app-card__wrapper">
           <div class="app-card__content">
             <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
 
 
-            <p>This information will be viewed by the regional local teams when considering the Declaration submission.</p>
-
-            <p>Practices are reminded that no personal information should be included in this section which would identify any patient, member of staff or third parties.</p>
-
-            <p>This section should not be used as a substitute for drawing a catchment area form from the previous section. Practices experiencing any difficulty using the catchment area editor should contact the NHS Digital customer contact centre.</p>
-
-            <form action="/{{PROTOTYPEURL}}/sections/supporting-information/return-user/check-last-year" method="get">
+            <form action="/{{PROTOTYPEURL}}/sections/supporting-information/new-user/website-link" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>
@@ -59,6 +47,7 @@
           </div>
         </div>
       </div>
+
 
     </div>
   </div>

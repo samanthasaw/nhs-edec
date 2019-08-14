@@ -373,6 +373,28 @@ router.post('/submit-your-edec/sections/cqc-registration/return-user/check-last-
   }
 });
 
+
+
+// Supporting information
+
+
+router.post('/submit-your-edec/sections/supporting-information/return-user/check-last-year', function (req, res) {
+  let answer = req.body.supportingDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/supporting-information/return-user/supporting-details-complete')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/supporting-information/return-user/new-supporting-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
 // opening-hours checkboxes
 
 router.post('/submit-your-edec/sections/opening-hours/which-days', function (req, res) {

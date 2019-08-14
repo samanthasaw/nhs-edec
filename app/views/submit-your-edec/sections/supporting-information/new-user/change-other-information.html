@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Link to practice Facebook page (optional)" %}
+{% set contentTitle = "Other supporting information" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -26,22 +26,25 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/return-user/new-supporting-details" method="get">
 
-        {{ input({
-          "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information
-            </span>' + contentTitle + '</h1>',
-            "isPageHeading": true,
-            "classes": "nhsuk-label--xl"
-          },
-          "hint": {
-          "text": "For example www.facebook.com/practice"
-          },
-          "id": "inputfacebooklink",
-          "name": "facebookLink",
-          "classes": "nhsuk-input--width-30"
-        }) }}
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information
+      </span>{{ contentTitle }}</h1>
+
+      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-supporting-details" method="get">
+
+      {{ textarea({
+      "name": "otherSupportingInfo",
+      "id": "more-detail",
+      "rows": "10",
+      "label": {
+        "text": "This section allows you to submit information which may be relevant to your declaration",
+        "isPageHeading": true,
+        "classes": "nhsuk-label--m"
+      },
+      "hint": {
+          "text": "For example other information about your branch practices."
+      }
+      }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

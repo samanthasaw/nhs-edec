@@ -1,0 +1,140 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Tell us your new supporting information details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+
+{% if data['timeBurden'] %}
+    {% set timeBurden = data['timeBurden'] + ' minutes' %}
+{% else %}
+    {% set timeBurden = "" %}
+{% endif %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Supporting information</span>{{ contentTitle }}</h1>
+
+      <p>Check your supporting information details and change any incorrect details.</p>
+
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Link to practice website"
+            },
+            value: {
+              text: data['websitelink'] | placeholder('www.thepractice.co.uk')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/supporting-information/return-user/website-link",
+                  text: "Change",
+                  visuallyHiddenText: "your practice website link"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How long has it taken the practice to complete the declaration?"
+            },
+            value: {
+              text: timeBurden | placeholder('60 minutes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/supporting-information/return-user/time-burden",
+                  text: "Change",
+                  visuallyHiddenText: "how long has it taken the practice to complete the declaration"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+
+      <h2>Optional information</h2>
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Link to practice Facebook page"
+            },
+            value: {
+              text: data['facebookLink']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/supporting-information/return-user/facebook-link",
+                  text: "Change",
+                  visuallyHiddenText: "your practice Facebook page link"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Other supporting information"
+            },
+            value: {
+              text: data['otherSupportingInfo']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/supporting-information/return-user/other-information",
+                  text: "Change",
+                  visuallyHiddenText: "your other supporting information"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/return-user/supporting-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}
