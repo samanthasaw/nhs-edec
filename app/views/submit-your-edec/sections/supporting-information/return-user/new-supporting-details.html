@@ -65,23 +65,6 @@
                 }
               ]
             }
-          },
-          {
-            key: {
-              text: "How long has it taken the practice to complete the declaration?"
-            },
-            value: {
-              text: timeBurden | placeholder('60 minutes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/supporting-information/return-user/time-burden",
-                  text: "Change",
-                  visuallyHiddenText: "how long has it taken the practice to complete the declaration"
-                }
-              ]
-            }
           }
         ]
       }) }}
@@ -129,9 +112,9 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/return-user/supporting-details-complete" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/return-user/time-burden" method="get">
 
-          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and continue">
         </form>
 
 
