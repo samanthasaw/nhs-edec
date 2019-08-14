@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What the Information and clinical governance section covers" %}
+{% set contentTitle = "What the General practice IT section covers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,7 +34,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       {{ backLink({
-        "href": "/submit-your-edec/sections/information-governance/return-user/governance-task-list-start",
+        "href": "/submit-your-edec/sections/general-practice-it/return-user/practice-it-task-list-start",
         "text": "Back to your task list"
       }) }}
 
@@ -42,17 +42,14 @@
         <div class="app-card__wrapper">
           <div class="app-card__content">
             <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
-            <p>
-              This section covers Information and clinical governance, and includes questions about storage of data, transmission of data, allowing patients appropriate access to the data held about them and general practice information technology.
-            </p>
 
-            {{ details({
-              "text": "What regulations this section relates to",
-              "HTML": "
-              <p>This section relates to Regulation 17 of the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014 (as amended).
-              "
-            }) }}
-            <form action="/{{PROTOTYPEURL}}/sections/information-governance/return-user/check-last-year" method="get">
+            <p>The questions asked in this section are based on published guidance or NHS policies (in which case links to relevant documentation is given) or on good practice and known transformational enablers not all of which will be relevant to all general practices and localities.</p>
+
+            <p>Declaring No in this section does not mean the practice is non-compliant with their contract.</p>
+
+            <p>Responses to questions in this section will be shared within other modules of the primary care indicators website GPIT section <a href="https://www.primarycareindicators.nhs.uk">www.primarycareindicators.nhs.uk</a> and will be visible to all other users.</p>
+
+            <form action="/{{PROTOTYPEURL}}/sections/general-practice-it/return-user/check-last-year" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice routinely electronically orders or receives the following diagnostics tests with their main acute provider (optional)" %}
+{% set contentTitle = "Have you notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in  in receipt of an up to date registration certificate? " %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,55 +30,29 @@
 {% endblock %}
 
 {% block content %}
-
-{% set diagnosticsOther %}
-{{ textarea({
-  "name": "nhs",
-  "id": "more-detail",
-  "label": {
-    "text": "What other diagnostics tests does the practice routinely electronically order or receive with their main acute provider?"
-  }
-}) }}
-{% endset %}
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/return-user/change-cqc-registration" method="get">
 
-        {{ checkboxesDivider({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "diagnostics",
+          "name": "notifiedCqc",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-fieldset__legend--l",
-              "isPageHeading": true
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
-          "hint": {
-          "text": "Select all that apply"
-        },
           "items": [
             {
-              "value": "laboratory",
-              "text": "Place orders for common laboratory diagnostic tests"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "orderImaging",
-              "text": "Place orders for common imaging and diagnostic tests"
-            },
-            {
-              "value": "receiveImaging",
-              "text": "Receive diagnostic reports for common imaging and diagnostic tests"
-            },
-            {
-              "value": "other",
-              "text": "Other",
-              "conditional": {
-                html: diagnosticsOther
-              }
+              "value": "no",
+              "text": "No"
             },
             {
               "divider": "or"
@@ -89,7 +63,6 @@
             }
           ]
         }) }}
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

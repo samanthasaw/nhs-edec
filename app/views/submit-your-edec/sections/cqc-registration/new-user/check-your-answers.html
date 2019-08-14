@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your new CQC registration details" %}
+{% set contentTitle = "Check your answers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -56,7 +56,7 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)</span>{{ contentTitle }}</h1>
 
-      <p>Check your CQC registration details and change any incorrect details.</p>
+      <p>Check your answers and change any incorrect answers.</p>
 
 
       {{ summaryList({
@@ -72,7 +72,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/cqc-registration/return-user/regulated-activities",
+                  href: "/submit-your-edec/sections/cqc-registration/new-user/regulated-activities",
                   text: "Change",
                   visuallyHiddenText: "if your CQC registration accurately reflect the regulated activities you provide, and is each location where you provide them listed"
                 }
@@ -89,7 +89,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/cqc-registration/return-user/notified-cqc",
+                  href: "/submit-your-edec/sections/cqc-registration/new-user/notified-cqc",
                   text: "Change",
                   visuallyHiddenText: "if you have notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in receipt of an up to date registration certificate"
                 }
@@ -99,7 +99,7 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/return-user/cqc-details-complete" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/cqc-details-complete" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
         </form>

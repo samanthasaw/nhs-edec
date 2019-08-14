@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What the Information and clinical governance section covers" %}
+{% set contentTitle = "We will ask you some questions about your CQC registration details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -21,7 +21,6 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
-
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
     <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] }}</p>
@@ -33,26 +32,13 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      {{ backLink({
-        "href": "/submit-your-edec/sections/information-governance/return-user/governance-task-list-start",
-        "text": "Back to your task list"
-      }) }}
-
       <div class="app-card">
         <div class="app-card__wrapper">
           <div class="app-card__content">
             <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
-            <p>
-              This section covers Information and clinical governance, and includes questions about storage of data, transmission of data, allowing patients appropriate access to the data held about them and general practice information technology.
-            </p>
 
-            {{ details({
-              "text": "What regulations this section relates to",
-              "HTML": "
-              <p>This section relates to Regulation 17 of the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014 (as amended).
-              "
-            }) }}
-            <form action="/{{PROTOTYPEURL}}/sections/information-governance/return-user/check-last-year" method="get">
+
+            <form action="/{{PROTOTYPEURL}}/sections/cqc-registration/new-user/regulated-activities" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>
@@ -61,6 +47,7 @@
           </div>
         </div>
       </div>
+
 
     </div>
   </div>

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What the Information and clinical governance section covers" %}
+{% set contentTitle = "What the Supporting information section covers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,7 +34,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       {{ backLink({
-        "href": "/submit-your-edec/sections/information-governance/return-user/governance-task-list-start",
+        "href": "/submit-your-edec/sections/supporting-information/return-user/supporting-info-task-list-start",
         "text": "Back to your task list"
       }) }}
 
@@ -42,17 +42,15 @@
         <div class="app-card__wrapper">
           <div class="app-card__content">
             <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
-            <p>
-              This section covers Information and clinical governance, and includes questions about storage of data, transmission of data, allowing patients appropriate access to the data held about them and general practice information technology.
-            </p>
 
-            {{ details({
-              "text": "What regulations this section relates to",
-              "HTML": "
-              <p>This section relates to Regulation 17 of the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014 (as amended).
-              "
-            }) }}
-            <form action="/{{PROTOTYPEURL}}/sections/information-governance/return-user/check-last-year" method="get">
+
+            <p>This information will be viewed by the regional local teams when considering the Declaration submission.</p>
+
+            <p>Practices are reminded that no personal information should be included in this section which would identify any patient, member of staff or third parties.</p>
+
+            <p>This section should not be used as a substitute for drawing a catchment area form from the previous section. Practices experiencing any difficulty using the catchment area editor should contact the NHS Digital customer contact centre.</p>
+
+            <form action="/{{PROTOTYPEURL}}/sections/cqc-registration/return-user/check-last-year" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>
