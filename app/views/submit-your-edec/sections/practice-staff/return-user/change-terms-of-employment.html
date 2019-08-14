@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Total number of locum sessions, between 1st of July 2019 through to 30th September 2019, where pay has exceeded the maximum indicative rate of £77.57 per hour" %}
+{% set contentTitle = "Practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,24 +33,31 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/staff-details-complete" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/change-staff-details" method="get">
 
-        {{ input({
-          "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
-            </span>' + contentTitle + '</h1>',
-            "isPageHeading": true,
-            "classes": "nhsuk-label--l"
+        {{ radios({
+          "idPrefix": "example-divider",
+          "name": "termsEmployment",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--l app-heading-l"
+            }
           },
-          "hint": {
-            "text": "Number of locum sessions"
-          },
-          "id": "inputlocumsessions",
-          "name": "locumsessions",
-          "classes": "nhsuk-input--width-3"
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
         }) }}
 
-        <input type="submit" class="nhsuk-button" value="Save and confirm">
+        <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>

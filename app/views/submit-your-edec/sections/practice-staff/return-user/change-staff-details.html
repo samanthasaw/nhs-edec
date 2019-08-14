@@ -10,6 +10,14 @@
 {% block pageScripts %}
 {% endblock %}
 
+
+{% if data['locumsessions'] %}
+    {% set locumsessions = data['locumsessions'] + ' sessions' %}
+{% else %}
+    {% set locumsessions = "" %}
+{% endif %}
+
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -40,7 +48,7 @@
         rows: [
           {
             key: {
-              text: "Can your practice evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels?"
+              text: "The practice can evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels. Recognising the need to have the right knowledge, experience, qualifications and skills for the purpose of providing services in the practice and demonstrating capacity to respond to unexpected service changes."
             },
             value: {
               text: needsAnalysis | placeholder('Yes')
@@ -48,7 +56,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/needs-analysis",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-needs-analysis",
                   text: "Change",
                   visuallyHiddenText: "if your practice can evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels"
                 }
@@ -57,17 +65,15 @@
           },
           {
             key: {
-              html: "<p>Confirm your staff checks:</p><ul><li>All health care professionals working in the practice are registered with the relevant professional body</li>
-                     <li>This registration is checked on employment (along with satisfactory references) and where applicable annually thereafter</li>
-                     <li>Health care professionals that are required to revalidate do so</li>
-                     <li>For GPs, inclusion on the performer list is checked</li></ul>"            },
+              text: "All health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked"
+            },
             value: {
-              text: confirmChecks | placeholder('Yes')
+              text: professionalCheck | placeholder('Yes')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/confirm-professional-body-check",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-professional-body-check",
                   text: "Change",
                   visuallyHiddenText: "if you confirm your staff checks"
                 }
@@ -76,7 +82,7 @@
           },
           {
             key: {
-              text: "Have all relevant staff been subject to the necessary Disclosure and Barring Service (DBS) checks?"
+              text: "All relevant staff have been subject to the necessary Disclosure and Barring Service (DBS) checks"
             },
             value: {
               text: dbsCheck | placeholder('Yes')
@@ -84,7 +90,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/dbs-check",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-dbs-check",
                   text: "Change",
                   visuallyHiddenText: "if all relevant staff been subject to the necessary Disclosure and Barring Service (DBS) checks"
                 }
@@ -93,24 +99,7 @@
           },
           {
             key: {
-              text: "What is your total number of locum sessions, between 1st of July 2018 through to 30th September 2018, where pay has exceeded the maximum indicative rate of £82.43 per hour?"
-            },
-            value: {
-              text: data['locumsessions'] | placeholder('5')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/locum-sessions",
-                  text: "Change",
-                  visuallyHiddenText: "your total number of locum sessions, between 1st of July 2018 through to 30th September 2018, where pay has exceeded the maximum indicative rate of £82.43 per hour"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Do all health care professionals employed in your practice have annual appraisals and where applicable personal development plans?"
+              text: "All health care professionals employed in the practice have annual appraisals and where applicable personal development plans and that this is aligned to revalidation for doctors and also for registered nurses and midwives (according to requirements issued by the Nursing and Midwifery Council)"
             },
             value: {
               text: annualAppraisal | placeholder('Yes')
@@ -118,7 +107,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/annual-appraisals",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-annual-appraisals",
                   text: "Change",
                   visuallyHiddenText: "if all health care professionals employed in your practice have annual appraisals and where applicable personal development plans"
                 }
@@ -127,7 +116,7 @@
           },
           {
             key: {
-              text: "Do all practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum?"
+              text: "Practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum"
             },
             value: {
               text: termsEmployment | placeholder('Yes')
@@ -135,7 +124,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/terms-of-employment",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-terms-of-employment",
                   text: "Change",
                   visuallyHiddenText: "if all practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum"
                 }
@@ -144,7 +133,7 @@
           },
           {
             key: {
-              text: "Can your practice demonstrate that it is compliant with equal opportunities legislation on employment and discrimination?"
+              text: "The practice can demonstrate that it is compliant with Equal Opportunities legislation on employment and discrimination (Equality Act 2010)"
             },
             value: {
               text: equalOpportunities | placeholder('Yes')
@@ -152,7 +141,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/equal-opportunities-2",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-equal-opportunities-2",
                   text: "Change",
                   visuallyHiddenText: "if your practice can demonstrate that it is compliant with equal opportunities legislation on employment and discrimination"
                 }
@@ -170,7 +159,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/prevent-strategy-2",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-prevent-strategy-2",
                   text: "Change",
                   visuallyHiddenText: "if all healthcare workers employed by the practice are familiar with the Government’s Prevent strategy and if all GPs (partners and salaried) have participated in Prevent training in the past 3 years"
                 }
@@ -179,7 +168,7 @@
           },
           {
             key: {
-              text: "Does your practice have policies for safeguarding both children and adults?"
+              text: "The practice has policies for safeguarding both children and adults"
             },
             value: {
               text: safeguardingPolicy | placeholder('Yes')
@@ -187,9 +176,26 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/safeguarding-2",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-safeguarding-2",
                   text: "Change",
                   visuallyHiddenText: "if your practice has policies for safeguarding both children and adults"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Total number of locum sessions, between 1st of July 2019 through to 30th September 2019, where pay has exceeded the maximum indicative rate of £77.57 per hour"
+            },
+            value: {
+              text: locumsessions | placeholder('5 sessions')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-staff/return-user/change-locum-sessions",
+                  text: "Change",
+                  visuallyHiddenText: "your total number of locum sessions, between 1st of July 2018 through to 30th September 2018, where pay has exceeded the maximum indicative rate of £82.43 per hour"
                 }
               ]
             }
@@ -197,9 +203,10 @@
         ]
       }) }}
 
+
       <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/staff-details-complete" method="get">
 
-          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>
 
 

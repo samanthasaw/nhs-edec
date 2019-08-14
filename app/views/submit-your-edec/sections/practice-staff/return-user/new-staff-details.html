@@ -129,12 +129,12 @@
               text: "All health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked"
             },
             value: {
-              text: confirmChecks | placeholder('Yes')
+              text: professionalCheck | placeholder('Yes')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/confirm-professional-body-check",
+                  href: "/submit-your-edec/sections/practice-staff/return-user/professional-body-check",
                   text: "Change",
                   visuallyHiddenText: "if you confirm your staff checks"
                 }
@@ -154,23 +154,6 @@
                   href: "/submit-your-edec/sections/practice-staff/return-user/dbs-check",
                   text: "Change",
                   visuallyHiddenText: "if all relevant staff been subject to the necessary Disclosure and Barring Service (DBS) checks"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Total number of locum sessions, between 1st of July 2019 through to 30th September 2019, where pay has exceeded the maximum indicative rate of £77.57 per hour"
-            },
-            value: {
-              text: data['locumsessions'] | placeholder('5')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/return-user/locum-sessions",
-                  text: "Change",
-                  visuallyHiddenText: "your total number of locum sessions, between 1st of July 2018 through to 30th September 2018, where pay has exceeded the maximum indicative rate of £82.43 per hour"
                 }
               ]
             }
@@ -265,9 +248,9 @@
       }) }}
 
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/staff-details-complete" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/locum-sessions" method="get">
 
-          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and continue">
         </form>
 
 

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "All health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked" %}
+{% set contentTitle = "The practice has policies for safeguarding both children and adults" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,11 +33,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/new-staff-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/change-staff-details" method="get">
 
         {{ radios({
           "idPrefix": "example-divider",
-          "name": "professionalCheck",
+          "name": "safeguardingPolicy",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
@@ -45,6 +45,12 @@
               "classes": "nhsuk-label--l app-heading-l"
             }
           },
+          "hint": {
+            "html": '<p>This includes policies for:</p><ul><li>domestic violence</li>
+              <li>mental capacity</li>
+              <li>female genital mutilation (FGM)</li>
+              <li>the requirement for mandatory reporting, information sharing and freedom to speak up information</li></ul>
+              <p>This is a legal requirement to have policies and fits with CQC inspection regulations and Children Act 2004</p>'},
           "items": [
             {
               "value": "yes",
