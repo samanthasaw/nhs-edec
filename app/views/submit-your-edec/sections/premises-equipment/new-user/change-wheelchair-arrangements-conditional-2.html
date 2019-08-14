@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your CQC registration accurately reflect the regulated activities you provide, and is each location where you provide them listed" %}
+{% set contentTitle = "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,32 +30,51 @@
 {% endblock %}
 
 {% block content %}
+
+{% set wheelchairConditional %}
+{{ textarea({
+  "name": "inputWheelchairOther",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
+  }
+}) }}
+{% endset %}
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/check-your-answers" method="get">
-
-        {{ radios({
+      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/change-premises-details" method="get">
+        {{ checkboxes({
           "idPrefix": "nhs",
-          "name": "regulatedActivities",
+          "name": "wheelchairArrangements",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "homevisit",
+              "text": "Home visits"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: wheelchairConditional
+              }
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

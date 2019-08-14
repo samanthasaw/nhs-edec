@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your CQC registration accurately reflect the regulated activities you provide, and is each location where you provide them listed" %}
+{% set contentTitle = "Have you notified CQC of any change relating to regulated persons and any of the events listed in the regulations, put in an application if required and are in  in receipt of an up to date registration certificate? " %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,11 +33,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/check-your-answers" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/change-cqc-registration" method="get">
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "regulatedActivities",
+          "name": "notifiedCqc",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
@@ -53,6 +53,13 @@
             {
               "value": "no",
               "text": "No"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
             }
           ]
         }) }}

@@ -314,6 +314,25 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
   }
 });
 
+
+router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-2', function (req, res) {
+  let answer = req.body.wheelchair;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-premises-details')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/premises-equipment/new-user/change-wheelchair-arrangements-conditional-2') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+
 // procedures details
 
 router.post('/submit-your-edec/sections/practice-procedures/return-user/check-last-year', function (req, res) {

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your CQC registration accurately reflect the regulated activities you provide, and is each location where you provide them listed" %}
+{% set contentTitle = "The practice is able to demonstrate that it complies with arrangements for infection control and decontamination" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,18 +33,20 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/check-your-answers" method="get">
+      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/change-premises-details" method="get">
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "regulatedActivities",
+          "name": "infectionControl",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--l app-heading-l"
             }
           },
+          "hint": {
+            "text": "In accordance with the Health and Social Care Act 2008 code of practice on the prevention and control of infections."},
           "items": [
             {
               "value": "yes",

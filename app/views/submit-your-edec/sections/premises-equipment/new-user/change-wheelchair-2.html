@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your CQC registration accurately reflect the regulated activities you provide, and is each location where you provide them listed" %}
+{% set contentTitle = "Does the practice have at least one consulting room which is accessible to wheelchair users" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,16 +33,16 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/check-your-answers" method="get">
+      <form action="/{{PROTOTYPEURL}}/sections/premises-equipment/new-user/change-wheelchair-2" method="post">
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "regulatedActivities",
+          "name": "wheelchair",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Registration with CQC (Care Quality Commission)
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
           "items": [
