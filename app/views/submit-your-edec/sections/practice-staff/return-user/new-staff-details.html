@@ -18,8 +18,8 @@
   {% endif %}
 {% endset %}
 
-{% set confirmChecks %}
-  {% if data['confirmChecks'] == 'yes' %}
+{% set professionalCheck %}
+  {% if data['professionalCheck'] == 'yes' %}
     Yes
   {% else %}
     No
@@ -136,7 +136,7 @@
                 {
                   href: "/submit-your-edec/sections/practice-staff/return-user/professional-body-check",
                   text: "Change",
-                  visuallyHiddenText: "if you confirm your staff checks"
+                  visuallyHiddenText: "if all health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked"
                 }
               ]
             }

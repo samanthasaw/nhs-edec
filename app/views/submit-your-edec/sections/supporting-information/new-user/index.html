@@ -1,0 +1,94 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Supporting information" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+
+
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/supporting-task-list-start">Task list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/supporting-info-intro">Supporting information section intro</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/instructions-card">Instructions card</a></li>
+      </ul>
+
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/website-link">Link to website</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/facebook-link">Link to facebook (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/other-information">Other information (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/time-burden">Time burden</a></li>
+      </ul>
+
+      <h3>Check and change your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/check-your-answers">Check your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-website-link">Change link to website</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-facebook-link">Change link to facebook (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-other-information">Change other information (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-time-burden">Change time burden</a></li>
+      </ul>
+
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/supporting-details-complete">Supporting details complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/task-list-supporting-section-complete">Task list supporting section complete</a></li>
+      </ul>
+
+      <h3>Change answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-supporting-details">Change supporting info details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-website-link">Link to website</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-facebook-link">Link to facebook (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-other-information">Other information (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/change-time-burden">Time burden</a></li>
+      </ul>
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

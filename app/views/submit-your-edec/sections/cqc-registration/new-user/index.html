@@ -1,0 +1,84 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Registration with CQC (Care Quality Commission)" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/cqc-task-list-start">Task list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/cqc-intro">CQC section intro</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/instructions-card">Instructions card</a></li>
+      </ul>
+
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/regulated-activities">Regulated activities</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/notified-cqc">Notified CQC</a></li>
+      </ul>
+
+      <h3>Check your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/check-your-answers">Check your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/change-cqc-registration">Change CQC details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/change-regulated-activities">Change regulated activities</a></li>
+      </ul>
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/cqc-details-complete">Section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/task-list-cqc-section-complete">Task list CQC section complete</a></li>
+      </ul>
+
+      <h3>Change answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/change-notified-cqc">Change notified CQC</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/change-regulated-activities-2">Change regulated activities again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/cqc-registration/new-user/change-notified-cqc-2">Change notified CQC again</a></li>
+      </ul>
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
