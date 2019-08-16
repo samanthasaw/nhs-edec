@@ -65,7 +65,7 @@
 
 {% set electronicTechSolution %}
 {{ input({
-  "name": "nhsnumber",
+  "name": "electronicTechSolution",
   "id": "inputnhsnumber",
   "classes": "nhsuk-input--width-30",
   "label": {
@@ -77,7 +77,7 @@
 
 {% set nonElectronicTechSolution %}
 {{ input({
-  "name": "nhsnumber",
+  "name": "nonElectronicTechSolution",
   "id": "inputnhsnumber",
   "classes": "nhsuk-input--width-30",
   "label": {
@@ -89,12 +89,12 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-communicating-details" method="get">
 
 
         {{ checkboxesDivider({
           "idPrefix": "nationality",
-          "name": "contactCallRecall",
+          "name": "callRecall",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
@@ -149,8 +149,8 @@
             "divider": "or"
           },
           {
-            "value": "noCallRecall",
-            "text": "The practice does not undertake call/recall"
+            "value": "notApplicable",
+            "text": "This does not apply to my practice"
           }
           ]
         }) }}
