@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check the procedures details you submitted last year" %}
+{% set contentTitle = "Check the medication details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -32,7 +32,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
 
 
       {{ summaryList({
@@ -137,13 +137,13 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/check-last-year" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/check-last-year-1" method="post">
         {{ radios({
           "idPrefix": "sections",
-          "name": "proceduresDetails",
+          "name": "medicationDetails",
           "fieldset": {
             "legend": {
-              "text": "Are these procedures details correct?",
+              "text": "Are these medication details correct?",
               "classes": "nhsuk-fieldset__legend--m"
             }
           },

@@ -171,7 +171,7 @@ router.post('/submit-your-edec/sections/practice-staff/return-user/check-last-ye
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-staff/return-user/staff-details-complete')
+    res.redirect('/submit-your-edec/sections/practice-staff/return-user/locum-sessions')
 
   } else if (answer === 'no') {
 
@@ -335,8 +335,25 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
 
 // procedures details
 
-router.post('/submit-your-edec/sections/practice-procedures/return-user/check-last-year', function (req, res) {
-  let answer = req.body.proceduresDetails;
+router.post('/submit-your-edec/sections/practice-procedures/return-user/check-last-year-1', function (req, res) {
+  let answer = req.body.communicatingPatientsDetails;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-procedures/return-user/new-question-card')
+
+  } else if (answer === 'no') {
+
+    res.redirect('/submit-your-edec/sections/practice-procedures/return-user/new-communicating-details') }
+
+  else {
+    // res.redirect('error')
+    res.redirect('/submit-your-edec/errors/generic-error/')
+  }
+});
+
+router.post('/submit-your-edec/sections/practice-procedures/return-user/check-last-year-2', function (req, res) {
+  let answer = req.body.medicationDetails;
 
   if (answer === 'yes') {
 
@@ -344,7 +361,7 @@ router.post('/submit-your-edec/sections/practice-procedures/return-user/check-la
 
   } else if (answer === 'no') {
 
-    res.redirect('/submit-your-edec/sections/practice-procedures/return-user/new-procedures-details') }
+    res.redirect('/submit-your-edec/sections/practice-procedures/return-user/new-medication-details') }
 
   else {
     // res.redirect('error')
