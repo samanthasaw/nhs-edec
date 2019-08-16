@@ -1,0 +1,110 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Information and clinical governance flow for a new user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/governance-task-list-start">Task list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/governance-intro">Governance section intro</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/instructions-card">Instructions card</a></li>
+      </ul>
+
+
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/access-records">Access records</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/nominated-person">Nominated person</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/data-protection">Data protection act</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/electronic-transmission">Electronic transmission</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/data-protection-officer">Data protection officer</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/valid-nhs-number">Valid NHS number</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/network-contract">Network contract DES</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/vulnerable-adults">Vulnerable adults</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/information-sharing">Information sharing</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/training-agreements">Training agreements</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/mental-capacity-3">Mental capacity act V3</a></li>
+      </ul>
+
+      <h3>Check and change your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/check-your-answers">Check your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-access-records">Change access records</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-nominated-person">Change nominated person</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-data-protection">Change data protection act</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-electronic-transmission">Change electronic transmission</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-data-protection-officer">Change data protection officer</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-valid-nhs-number">Change valid NHS number</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-network-contract">Change network contract DES</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-vulnerable-adults">Change vulnerable adults</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-information-sharing">Change information sharing</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-training-agreements">Change training agreements</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-mental-capacity-3">Change mental capacity act V3</a></li>
+      </ul>
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/governance-details-complete">Governance details complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/task-list-governance-section-complete">Task list governance section complete</a></li>
+      </ul>
+
+      <h3>Change answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-governance-details-2">Change governance details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-access-records-2">Change access records again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-nominated-person-2">Change nominated person again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-data-protection-2">Change data protection act again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-electronic-transmission-2">Change electronic transmission again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-data-protection-officer-2">Change data protection officer again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-valid-nhs-number-2">Change valid NHS number again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-network-contract-2">Change network contract DES again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-vulnerable-adults-2">Change vulnerable adults again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-information-sharing-2">Change information sharing again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-training-agreements-2">Change training agreements again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/change-mental-capacity-3-2">Change mental capacity act V3 again</a></li>
+      </ul>
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

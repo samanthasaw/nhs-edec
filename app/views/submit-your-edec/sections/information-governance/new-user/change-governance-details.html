@@ -1,0 +1,336 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Change your information and clinical governance details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+{% set accessRecords %}
+  {% if data['accessRecords'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set nominatedPerson %}
+  {% if data['nominatedPerson'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set dataProtection %}
+  {% if data['dataProtection'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set electronicTransmission %}
+  {% if data['electronicTransmission'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set protectionOfficer %}
+  {% if data['protectionOfficer'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set validNHS %}
+  {% if data['validNHS'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set networkContract %}
+  {% if data['networkContract'] == 'yes' %}
+    Yes
+  {% elseif data['networkContract'] == 'no' %}
+    No
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+{% endset %}
+
+
+
+{% set vulnerableAdult %}
+  {% if data['vulnerableAdult'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set informationSharing %}
+  {% if data['informationSharing'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set trainingAgreements %}
+  {% if data['trainingAgreements'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set mentalCapacity %}
+  {% if data['mentalCapacity'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance</span>{{ contentTitle }}</h1>
+
+
+                  {{ summaryList({
+                    "classes": "nhsuk-summary-list--long",
+                    rows: [
+                      {
+                        key: {
+                          text: "The practice has a protocol to allow patients access to their records on request in accordance with current legislation"
+                        },
+                        value: {
+                          text: accessRecords | placeholder('Yes')
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "/submit-your-edec/sections/information-governance/new-user/change-access-records-2",
+                              text: "Change",
+                              visuallyHiddenText: "if the practice has a protocol to allow patients access to their records on request in accordance with current legislation"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "The practice has a nominated person who has responsibility for ensuring the effective operation of the system of clinical governance"
+                        },
+                        value: {
+                          text: nominatedPerson | placeholder('Yes')
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "/submit-your-edec/sections/information-governance/new-user/change-nominated-person-2",
+                              text: "Change",
+                              visuallyHiddenText: "if the practice has a nominated person who has responsibility for ensuring the effective operation of the system of clinical governance"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "The practice is registered under the Data Protection Act 2018"
+                        },
+                        value: {
+                          text: dataProtection | placeholder('Yes')
+                        },
+                         actions: {
+                           items: [
+                             {
+                               href: "/submit-your-edec/sections/information-governance/new-user/change-data-protection-2",
+                               text: "Change",
+                               visuallyHiddenText: "if the practice is registered under the Data Protection Act 2018"
+                             }
+                           ]
+                         }
+                       },
+                       {
+                         key: {
+                           text: "The practice has a procedure for electronic transmission of patient data in line with national policy. Including mechanisms to ensure that computerised medical records/data are transferred to a new practice when a patient leaves."
+                         },
+                         value: {
+                           text: electronicTransmission | placeholder('Yes')
+                         },
+                         actions: {
+                           items: [
+                             {
+                               href: "/submit-your-edec/sections/information-governance/new-user/change-electronic-transmission-2",
+                               text: "Change",
+                               visuallyHiddenText: "if the practice has a procedure for electronic transmission of patient data in line with national policy. Including mechanisms to ensure that computerised medical records/data are transferred to a new practice when a patient leaves"
+                             }
+                           ]
+                         }
+                       },
+                       {
+                         key: {
+                           text: "The practice has either appointed a Data Protection Officer or has plans to do so?"
+                         },
+                         value: {
+                           text: protectionOfficer | placeholder('Yes')
+                         },
+                         actions: {
+                           items: [
+                             {
+                               href: "/submit-your-edec/sections/information-governance/new-user/change-data-protection-officer-2",
+                               text: "Change",
+                               visuallyHiddenText: "if the practice has either appointed a Data Protection Officer or has plans to do so"
+                             }
+                           ]
+                         }
+                        },
+                        {
+                          key: {
+                            text: "The practice has arrangements in place to ensure a validated NHS number is used in all NHS clinical correspondence. Including referrals, generated by the practice, except in exceptional circumstances where the number cannot be ascertained."
+                          },
+                          value: {
+                            text: validNHS | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/new-user/change-valid-nhs-number-2",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has arrangements in place to ensure a validated NHS number is used in all NHS clinical correspondence. Including referrals, generated by the practice, except in exceptional circumstances where the number cannot be ascertained"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "For practices signed up to the Network Contract Direct Enhanced Service (DES), if applicable does your Primary Care Network (PCN) have in place suitable data sharing and data processing arrangements?"
+                          },
+                          value: {
+                            text: networkContract | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/new-user/change-network-contract-2",
+                                text: "Change",
+                                visuallyHiddenText: "if your Primary Care Network (PCN) has in place suitable data sharing and data processing arrangements"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Does the practice have a lead for vulnerable adults?"
+                          },
+                          value: {
+                            text: vulnerableAdult | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/new-user/change-vulnerable-adults-2",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has a lead for vulnerable adults"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Does the practice have procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children"
+                          },
+                          value: {
+                            text: informationSharing | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/new-user/change-information-sharing-2",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Does the practice have clear training agreements for safeguarding and records of training retained within the practice for audit requirements?"
+                          },
+                          value: {
+                            text: trainingAgreements | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/new-user/change-training-agreements-2",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has clear training agreements for safeguarding and records of training retained within the practice for audit requirements"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Within the last 3 years, has the practice provided for training on mental capacity / Mental Capacity (Amendment) Act for practice staff health care professionals and/or other staff (where relevant) and got a system for assessing staff competency?"
+                          },
+                          value: {
+                            text: mentalCapacity | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/new-user/change-mental-capacity-3-2",
+                                text: "Change",
+                                visuallyHiddenText: "within the last 3 years, the practice has provided for training on mental capacity / Mental Capacity (Amendment) Act for practice staff health care professionals and/or other staff (where relevant) and got a system for assessing staff competency"
+                              }
+                            ]
+                          }
+                        }
+                    ]
+                  }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/new-user/governance-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}

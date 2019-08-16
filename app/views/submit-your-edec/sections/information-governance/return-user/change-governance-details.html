@@ -10,6 +10,102 @@
 {% block pageScripts %}
 {% endblock %}
 
+{% set accessRecords %}
+  {% if data['accessRecords'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set nominatedPerson %}
+  {% if data['nominatedPerson'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set dataProtection %}
+  {% if data['dataProtection'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set electronicTransmission %}
+  {% if data['electronicTransmission'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set protectionOfficer %}
+  {% if data['protectionOfficer'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set validNHS %}
+  {% if data['validNHS'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set networkContract %}
+  {% if data['networkContract'] == 'yes' %}
+    Yes
+  {% elseif data['networkContract'] == 'no' %}
+    No
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+{% endset %}
+
+
+
+{% set vulnerableAdult %}
+  {% if data['vulnerableAdult'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set informationSharing %}
+  {% if data['informationSharing'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set trainingAgreements %}
+  {% if data['trainingAgreements'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set mentalCapacity %}
+  {% if data['mentalCapacity'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -35,117 +131,203 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
 
-      {{ summaryList({
-        "classes": "nhsuk-summary-list--long",
-        rows: [
-          {
-            key: {
-              text: "Is your premises used for the provision of services under the contract suitable for the delivery of those services and sufficient to meet the reasonable needs of the practice’s patients?"
-            },
-            value: {
-              text: suitablePremises | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/suitable-premises",
-                  text: "Change",
-                  visuallyHiddenText: "if your premises used for the provision of services under the contract is suitable for the delivery of those services and sufficient to meet the reasonable needs of the practice’s patients"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Is your premises used for the provision of services under the contract subject to a plan that has been formally agreed with NHS England?"
-            },
-            value: {
-              text: nhsEngland | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/nhs-england",
-                  text: "Change",
-                  visuallyHiddenText: "if your premises used for the provision of services under the contract is subject to a plan that has been formally agreed with NHS England"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Can your practice demonstrate that it complies with arrangements for infection control and decontamination?"
-            },
-            value: {
-              text: infectionControl | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/infection-control-2",
-                  text: "Change",
-                  visuallyHiddenText: "if your practice can demonstrate that it complies with arrangements for infection control and decontamination"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Can your practice demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations?"
-            },
-            value: {
-              text: fireSafety | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/fire-safety",
-                  text: "Change",
-                  visuallyHiddenText: "if your practice can demonstrate that it meets the requirements of the Health and Safety at Work Act 1974 and Fire Safety Regulations"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Does your practice have at least one consulting room which is accessible to wheel chair users?"
-            },
-            value: {
-              text: wheelchair | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/wheelchair",
-                  text: "Change",
-                  visuallyHiddenText: "if your practice has at least one consulting room which is accessible to wheel chair users"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
-            },
-            value: {
-              html: data['wheelchairArrangements'] | placeholder('Home visits') + "<br>" + data['inputWheelchairOther']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/premises-equipment/return-user/wheelchair-arrangements",
-                  text: "Change",
-                  visuallyHiddenText: "what arrangements are in place to meet the reasonable needs of patients who are wheelchair users"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/premises-details-complete" method="get">
+                  {{ summaryList({
+                    "classes": "nhsuk-summary-list--long",
+                    rows: [
+                      {
+                        key: {
+                          text: "The practice has a protocol to allow patients access to their records on request in accordance with current legislation"
+                        },
+                        value: {
+                          text: accessRecords | placeholder('Yes')
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "/submit-your-edec/sections/information-governance/return-user/change-access-records",
+                              text: "Change",
+                              visuallyHiddenText: "if the practice has a protocol to allow patients access to their records on request in accordance with current legislation"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "The practice has a nominated person who has responsibility for ensuring the effective operation of the system of clinical governance"
+                        },
+                        value: {
+                          text: nominatedPerson | placeholder('Yes')
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "/submit-your-edec/sections/information-governance/return-user/change-nominated-person",
+                              text: "Change",
+                              visuallyHiddenText: "if the practice has a nominated person who has responsibility for ensuring the effective operation of the system of clinical governance"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "The practice is registered under the Data Protection Act 2018"
+                        },
+                        value: {
+                          text: dataProtection | placeholder('Yes')
+                        },
+                         actions: {
+                           items: [
+                             {
+                               href: "/submit-your-edec/sections/information-governance/return-user/change-data-protection",
+                               text: "Change",
+                               visuallyHiddenText: "if the practice is registered under the Data Protection Act 2018"
+                             }
+                           ]
+                         }
+                       },
+                       {
+                         key: {
+                           text: "The practice has a procedure for electronic transmission of patient data in line with national policy. Including mechanisms to ensure that computerised medical records/data are transferred to a new practice when a patient leaves."
+                         },
+                         value: {
+                           text: electronicTransmission | placeholder('Yes')
+                         },
+                         actions: {
+                           items: [
+                             {
+                               href: "/submit-your-edec/sections/information-governance/return-user/change-electronic-transmission",
+                               text: "Change",
+                               visuallyHiddenText: "if the practice has a procedure for electronic transmission of patient data in line with national policy. Including mechanisms to ensure that computerised medical records/data are transferred to a new practice when a patient leaves"
+                             }
+                           ]
+                         }
+                       },
+                       {
+                         key: {
+                           text: "The practice has either appointed a Data Protection Officer or has plans to do so?"
+                         },
+                         value: {
+                           text: protectionOfficer | placeholder('Yes')
+                         },
+                         actions: {
+                           items: [
+                             {
+                               href: "/submit-your-edec/sections/information-governance/return-user/change-data-protection-officer",
+                               text: "Change",
+                               visuallyHiddenText: "if the practice has either appointed a Data Protection Officer or has plans to do so"
+                             }
+                           ]
+                         }
+                        },
+                        {
+                          key: {
+                            text: "The practice has arrangements in place to ensure a validated NHS number is used in all NHS clinical correspondence. Including referrals, generated by the practice, except in exceptional circumstances where the number cannot be ascertained."
+                          },
+                          value: {
+                            text: validNHS | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/return-user/change-valid-nhs-number",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has arrangements in place to ensure a validated NHS number is used in all NHS clinical correspondence. Including referrals, generated by the practice, except in exceptional circumstances where the number cannot be ascertained"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Does the practice have a lead for vulnerable adults?"
+                          },
+                          value: {
+                            text: vulnerableAdult | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/return-user/change-vulnerable-adults",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has a lead for vulnerable adults"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Does the practice have procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children"
+                          },
+                          value: {
+                            text: informationSharing | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/return-user/change-information-sharing",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Does the practice have clear training agreements for safeguarding and records of training retained within the practice for audit requirements?"
+                          },
+                          value: {
+                            text: trainingAgreements | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/return-user/change-training-agreements",
+                                text: "Change",
+                                visuallyHiddenText: "if the practice has clear training agreements for safeguarding and records of training retained within the practice for audit requirements"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "Within the last 3 years, has the practice provided for training on mental capacity / Mental Capacity (Amendment) Act for practice staff health care professionals and/or other staff (where relevant) and got a system for assessing staff competency?"
+                          },
+                          value: {
+                            text: mentalCapacity | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/return-user/change-mental-capacity-3",
+                                text: "Change",
+                                visuallyHiddenText: "within the last 3 years, the practice has provided for training on mental capacity / Mental Capacity (Amendment) Act for practice staff health care professionals and/or other staff (where relevant) and got a system for assessing staff competency"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "For practices signed up to the Network Contract Direct Enhanced Service (DES), if applicable does your Primary Care Network (PCN) have in place suitable data sharing and data processing arrangements?"
+                          },
+                          value: {
+                            text: networkContract | placeholder('Yes')
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "/submit-your-edec/sections/information-governance/return-user/change-network-contract",
+                                text: "Change",
+                                visuallyHiddenText: "if your Primary Care Network (PCN) has in place suitable data sharing and data processing arrangements"
+                              }
+                            ]
+                          }
+                        }
+                    ]
+                  }) }}
 
-          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/governance-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>
 
 

@@ -360,7 +360,7 @@ router.post('/submit-your-edec/sections/information-governance/return-user/check
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/information-governance/return-user/governance-details-complete')
+    res.redirect('/submit-your-edec/sections/information-governance/return-user/new-question-card')
 
   } else if (answer === 'no') {
 
