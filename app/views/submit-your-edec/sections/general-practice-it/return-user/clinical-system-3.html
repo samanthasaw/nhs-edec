@@ -9,33 +9,17 @@
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "#nhs-6" ).on( "click", function() {
-  if ( $( "#nhs-6" ).is(':checked') ){
+  $( "#nationality-5" ).on( "click", function() {
+  if ( $( "#nationality-5" ).is(':checked') ){
     console.log( "closed" );
-    $( "#nhs-1" ).attr('disabled', true);
-    $( "#nhs-2" ).attr('disabled', true);
-    $( "#nhs-3" ).attr('disabled', true);
-    $( "#nhs-4" ).attr('disabled', true);
-    if ($( "#nhs-2" ).is(":checked")) {
-      $( "#conditional-nhs-2" ).hide();
-    }
-    if ($( "#nhs-4" ).is(":checked")) {
-      $( "#conditional-nhs-4" ).hide();
-    }
-
-
+    $( "#nationality-1" ).attr('disabled', true);
+    $( "#nationality-2" ).attr('disabled', true);
+    $( "#nationality-3" ).attr('disabled', true);
 
   } else {
-    $( "#nhs-1" ).attr('disabled', false);
-    $( "#nhs-2" ).attr('disabled', false);
-    $( "#nhs-3" ).attr('disabled', false);
-    $( "#nhs-4" ).attr('disabled', false);
-    if ($( "#nhs-2" ).is(":checked")) {
-      $( "#conditional-nhs-2" ).show();
-    }
-    if ($( "#nhs-4" ).is(":checked")) {
-      $( "#conditional-nhs-4" ).show();
-    }
+    $( "#nationality-1" ).attr('disabled', false);
+    $( "#nationality-2" ).attr('disabled', false);
+    $( "#nationality-3" ).attr('disabled', false);
 
   }
 });
