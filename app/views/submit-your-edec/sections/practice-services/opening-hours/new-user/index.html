@@ -1,0 +1,106 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Practice services opening hours flow for new user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/">Reception opening hours TBC</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/">Phone lines opening hours TBC</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods">Regular periods closed</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/">Regular periods where practice is closed TBC</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-periods">Intermittent periods closed</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closure-period">Intermittent closure times TBC</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/closed-each-week">Closed each week</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-per-week">Extended opening hours per week TBC</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-funding">Extended opening hours funding mechanism</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-contract">Extended opening hours contract end date</a></li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/">
+            Tell us your GP practice opening hours (sets data in flow)
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/new-opening-hours">
+            Check your opening hours and change any times that need updating
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-monday">
+            Change your Monday opening hours
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-tuesday">
+            Change your Tuesday opening hours
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-wednesday">
+            Change your Wednesday opening hours
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-thursday">
+            Change your Thursday opening hours
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-friday">
+            Change your Friday opening hours
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-saturday">
+            Change your Saturday opening hours
+          </a>
+        </li>
+        <li>
+          <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/v2/change-sunday">
+            Change your Sunday opening hours
+          </a>
+        </li>
+      </ul>
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
