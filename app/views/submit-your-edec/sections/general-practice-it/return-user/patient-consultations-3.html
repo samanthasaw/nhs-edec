@@ -8,6 +8,61 @@
 {% set contentTitle = "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#patients-6" ).on( "click", function() {
+  if ( $( "#patients-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#patients-1" ).attr('disabled', true);
+    $( "#patients-2" ).attr('disabled', true);
+    $( "#patients-3" ).attr('disabled', true);
+    $( "#patients-4" ).attr('disabled', true);
+
+  } else {
+    $( "#patients-1" ).attr('disabled', false);
+    $( "#patients-2" ).attr('disabled', false);
+    $( "#patients-3" ).attr('disabled', false);
+    $( "#patients-4" ).attr('disabled', false);
+
+
+  }
+});
+
+$( "#nursing-6" ).on( "click", function() {
+if ( $( "#nursing-6" ).is(':checked') ){
+  console.log( "closed" );
+  $( "#nursing-1" ).attr('disabled', true);
+  $( "#nursing-2" ).attr('disabled', true);
+  $( "#nursing-3" ).attr('disabled', true);
+  $( "#nursing-4" ).attr('disabled', true);
+
+} else {
+  $( "#nursing-1" ).attr('disabled', false);
+  $( "#nursing-2" ).attr('disabled', false);
+  $( "#nursing-3" ).attr('disabled', false);
+  $( "#nursing-4" ).attr('disabled', false);
+
+
+}
+});
+
+$( "#residential-6" ).on( "click", function() {
+if ( $( "#residential-6" ).is(':checked') ){
+  console.log( "closed" );
+  $( "#residential-1" ).attr('disabled', true);
+  $( "#residential-2" ).attr('disabled', true);
+  $( "#residential-3" ).attr('disabled', true);
+  $( "#residential-4" ).attr('disabled', true);
+
+} else {
+  $( "#residential-1" ).attr('disabled', false);
+  $( "#residential-2" ).attr('disabled', false);
+  $( "#residential-3" ).attr('disabled', false);
+  $( "#residential-4" ).attr('disabled', false);
+
+
+}
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -42,7 +97,7 @@
 
 
         {{ checkboxesDivider({
-          "idPrefix": "nhs",
+          "idPrefix": "patients",
           "classes": "nhsuk-checkbox--inline nhsuk-checkbox__item",
           "name": "selectPatientConsultations",
           "fieldset": {
@@ -83,7 +138,7 @@
         }) }}
 
         {{ checkboxesDivider({
-          "idPrefix": "nhs",
+          "idPrefix": "nursing",
           "name": "selectNursingConsultations",
           "fieldset": {
             "legend": {
@@ -123,7 +178,7 @@
         }) }}
 
         {{ checkboxesDivider({
-          "idPrefix": "nhs",
+          "idPrefix": "residential",
           "name": "selectResidentialConsultations",
           "fieldset": {
             "legend": {

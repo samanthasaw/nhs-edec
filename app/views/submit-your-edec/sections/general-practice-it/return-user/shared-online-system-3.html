@@ -8,6 +8,22 @@
 {% set contentTitle = "The practice and its registered patients have access to a shared online system which allows patients to engage with their GP by: (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#system-4" ).on( "click", function() {
+  if ( $( "#system-4" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#system-1" ).attr('disabled', true);
+    $( "#system-2" ).attr('disabled', true);
+
+  } else {
+    $( "#system-1" ).attr('disabled', false);
+    $( "#system-2" ).attr('disabled', false);
+
+
+  }
+});
+
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -37,7 +53,7 @@
 
 
         {{ checkboxesDivider({
-          "idPrefix": "nationality",
+          "idPrefix": "system",
           "name": "engageOnlineSystem",
           "fieldset": {
             "legend": {

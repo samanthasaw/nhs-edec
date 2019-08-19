@@ -8,6 +8,24 @@
 {% set contentTitle = "How the practice is meeting the reasonable needs of its patient population in case of emergency during core contact hours"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#reasonable-6" ).on( "click", function() {
+  if ( $( "#reasonable-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#reasonable-1" ).attr('disabled', true);
+    $( "#reasonable-2" ).attr('disabled', true);
+    $( "#reasonable-3" ).attr('disabled', true);
+    $( "#reasonable-4" ).attr('disabled', true);
+
+  } else {
+    $( "#reasonable-1" ).attr('disabled', false);
+    $( "#reasonable-2" ).attr('disabled', false);
+    $( "#reasonable-3" ).attr('disabled', false);
+    $( "#reasonable-4" ).attr('disabled', false);
+
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -56,7 +74,7 @@
         <p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (08:00 – 18:30 Monday to Friday) in case of emergency?</p>
 
         {{ checkboxesDivider({
-          "idPrefix": "nhs",
+          "idPrefix": "reasonable",
           "name": "patientSources",
           "fieldset": {
             "legend": {

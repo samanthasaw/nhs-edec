@@ -8,6 +8,28 @@
 {% set contentTitle = "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#federation-7" ).on( "click", function() {
+  if ( $( "#federation-7" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#federation-1" ).attr('disabled', true);
+    $( "#federation-2" ).attr('disabled', true);
+    $( "#federation-3" ).attr('disabled', true);
+    $( "#federation-4" ).attr('disabled', true);
+    $( "#federation-5" ).attr('disabled', true);
+
+
+  } else {
+    $( "#federation-1" ).attr('disabled', false);
+    $( "#federation-2" ).attr('disabled', false);
+    $( "#federation-3" ).attr('disabled', false);
+    $( "#federation-4" ).attr('disabled', false);
+    $( "#federation-5" ).attr('disabled', false);
+
+  }
+});
+
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -37,7 +59,7 @@
 
 
         {{ checkboxesDivider({
-            "idPrefix": "nhs",
+            "idPrefix": "federation",
             "name": "sharedWorking",
             "fieldset": {
               "legend": {

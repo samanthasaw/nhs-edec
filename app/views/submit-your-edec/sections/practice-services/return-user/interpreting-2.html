@@ -9,6 +9,24 @@
 {% set contentTitle = "Does the practice provide access to interpreting?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#interpret-6" ).on( "click", function() {
+  if ( $( "#interpret-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#interpret-1" ).attr('disabled', true);
+    $( "#interpret-2" ).attr('disabled', true);
+    $( "#interpret-3" ).attr('disabled', true);
+    $( "#interpret-4" ).attr('disabled', true);
+
+  } else {
+    $( "#interpret-1" ).attr('disabled', false);
+    $( "#interpret-2" ).attr('disabled', false);
+    $( "#interpret-3" ).attr('disabled', false);
+    $( "#interpret-4" ).attr('disabled', false);
+
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -48,7 +66,7 @@
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
 
         {{ checkboxesDivider({
-          "idPrefix": "nationality",
+          "idPrefix": "interpret",
           "name": "selectInterpret",
           "fieldset": {
             "legend": {

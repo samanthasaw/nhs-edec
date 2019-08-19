@@ -8,6 +8,24 @@
 {% set contentTitle = "Local acute trust discharge letters/summaries received by the practice electronically" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "#discharge-5" ).on( "click", function() {
+  if ( $( "#discharge-5" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#discharge-1" ).attr('disabled', true);
+    $( "#discharge-2" ).attr('disabled', true);
+    $( "#discharge-3" ).attr('disabled', true);
+
+  } else {
+    $( "#discharge-1" ).attr('disabled', false);
+    $( "#discharge-2" ).attr('disabled', false);
+    $( "#discharge-3" ).attr('disabled', false);
+
+
+  }
+});
+
+</script>
 {% endblock %}
 
 
@@ -38,7 +56,7 @@
 
 
         {{ checkboxesDivider({
-          "idPrefix": "nhs",
+          "idPrefix": "discharge",
           "name": "electronicDischarge",
           "fieldset": {
             "legend": {
