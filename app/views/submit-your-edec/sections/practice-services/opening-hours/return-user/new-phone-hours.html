@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your reception opening hours and change any times that need updating" %}
+{% set contentTitle = "Check your phone opening hours and change any times that need updating" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -41,7 +41,7 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <h2 class="nhsuk-heading-m">Your reception opening hours</h2>
+      <h2 class="nhsuk-heading-m">Your phone opening hours</h2>
       {{ summaryList({
         rows: [
           {
