@@ -80,18 +80,45 @@
   {% if data['callRecall'] == 'posterPatient' %}
     Poster in waiting room
   {% elif data['callRecall'] == 'notificationWebsite' %}
-    <br> Notification on practice website
+    <p> Notification on practice website </p>
   {% elif data['callRecall'] == 'letterPatient' %}
-    <br> Letter to patient
+    <p> Letter to patient </p>
   {% elif data['callRecall'] == 'textMessage' %}
-    <br> Text message to patient
+    <p> Text message to patient </p>
   {% elif data['callRecall'] == 'phoneCall' %}
-    <br> Phone call to patient
+    <p> Phone call to patient </p>
   {% elif data['callRecall'] == 'consultation' %}
-    <br> During consultation or appointment
+    <p> During consultation or appointment </p>
   {% else %}
     This does not apply to my practice
   {% endif %}
+  {% endset %}
+
+  {% if data['callRecall'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set totalRecall %}
+    {% if cheese == 'stringyCheese' %}
+      {{ callRecall | safe }}
+    {% else %}
+      {% for item in data['callRecall'] %}
+      {% if item == 'posterPatient' %}
+        <p>Poster in waiting room</p>
+      {% elif item == 'notificationWebsite' %}
+        <p> Notification on practice website </p>
+      {% elif item == 'letterPatient' %}
+        <p> Letter to patient </p>
+      {% elif item == 'textMessage' %}
+        <p> Text message to patient </p>
+      {% elif item == 'phoneCall' %}
+        <p> Phone call to patient </p>
+      {% elif item == 'consultation' %}
+        <p> During consultation or appointment </p>
+      {% elif item == 'electronicTechSolution' %}
+        <p> {{ data['electronicTechSolution'] }} </p>
+      {% elif item == 'nonElectronicTechSolution' %}
+        <p> data['nonElectronicTechSolution'] </p>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
   {% endset %}
 
 
@@ -152,8 +179,6 @@
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures</span>{{ contentTitle }}</h1>
 
       <p>Check your communicating with patients details and change any incorrect details.</p>
-
-
 
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",
@@ -299,7 +324,7 @@
                 text: "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?"
               },
               value: {
-                html: callRecall | placeholder('Letter to patient') + electronicTechSolution + nonElectronicTechSolution
+                html: totalRecall | placeholder('Letter to patient')
               },
               actions: {
                 items: [

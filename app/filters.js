@@ -70,6 +70,10 @@ module.exports = function (env) {
     }
   }
 
+  filters.stringOrNot = function(obj) {
+    return typeof obj == 'string';
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
