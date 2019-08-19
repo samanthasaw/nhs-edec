@@ -35,18 +35,18 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/new-governance-details" method="get">
 
+        <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
+        </span>{{ contentTitle }}</h1>
+
+        <p>The broad definition of a vulnerable adult referred to in the 1997 consultation ‘who decides’ issued by the lord chancellor department is: ‘A person who is or may be in need of community care services by reason of mental or other disability, age or illness; and who is or may be unable to take care of him or herself, or unable to protect him or herself against significant harm or exploitation’.</p>
+
         {{ radios({
           "idPrefix": "nhs",
           "name": "vulnerableAdult",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
-              </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--xl app-heading-xl"
             }
-          },
-          "hint": {
-            "text": "The broad definition of a vulnerable adult referred to in the 1997 consultation ‘who decides’ issued by the lord chancellor department is: ‘A person who is or may be in need of community care services by reason of mental or other disability, age or illness; and who is or may be unable to take care of him or herself, or unable to protect him or herself against significant harm or exploitation’."
           },
           "items": [
             {
