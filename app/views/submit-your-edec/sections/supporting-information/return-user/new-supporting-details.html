@@ -18,6 +18,23 @@
     {% set timeBurden = "" %}
 {% endif %}
 
+{% set facebookLink %}
+  {% if data['facebookLink'] %}
+     {{ data['facebookLink'] }}
+{% else %}
+    No link to practice Facebook page added
+  {% endif %}
+{% endset %}
+
+
+{% set otherSupportingInfo %}
+  {% if data['otherSupportingInfo'] %}
+     {{ data['otherSupportingInfo'] }}
+{% else %}
+    No link to practice Facebook page added
+  {% endif %}
+{% endset %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -80,7 +97,7 @@
               text: "Link to practice Facebook page"
             },
             value: {
-              text: data['facebookLink']
+              text: data['facebookLink'] | placeholder('No link to practice Facebook page added')
             },
             actions: {
               items: [
@@ -97,7 +114,7 @@
               text: "Other supporting information"
             },
             value: {
-              text: data['otherSupportingInfo']
+              text: data['otherSupportingInfo'] | placeholder('No other supporting information added')
             },
             actions: {
               items: [
