@@ -18,12 +18,19 @@
     $( "#interpret-3" ).attr('disabled', true);
     $( "#interpret-4" ).attr('disabled', true);
 
+    if ($( "#interpret-4" ).is(":checked")) {
+      $( "#conditional-interpret-4" ).hide();
+    }
+
   } else {
     $( "#interpret-1" ).attr('disabled', false);
     $( "#interpret-2" ).attr('disabled', false);
     $( "#interpret-3" ).attr('disabled', false);
     $( "#interpret-4" ).attr('disabled', false);
 
+    if ($( "#interpret-4" ).is(":checked")) {
+      $( "#conditional-interpret-4" ).show();
+    }
   }
 });
 </script>

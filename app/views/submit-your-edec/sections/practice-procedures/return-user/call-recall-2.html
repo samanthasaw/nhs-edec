@@ -9,35 +9,43 @@
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "#nhs-6" ).on( "click", function() {
-  if ( $( "#nhs-6" ).is(':checked') ){
-    console.log( "closed" );
-    $( "#nhs-1" ).attr('disabled', true);
-    $( "#nhs-2" ).attr('disabled', true);
-    $( "#nhs-3" ).attr('disabled', true);
-    $( "#nhs-4" ).attr('disabled', true);
-    if ($( "#nhs-2" ).is(":checked")) {
-      $( "#conditional-nhs-2" ).hide();
-    }
-    if ($( "#nhs-4" ).is(":checked")) {
-      $( "#conditional-nhs-4" ).hide();
-    }
+$( "#nationality-10" ).on( "click", function() {
+if ( $( "#nationality-10" ).is(':checked') ){
+  console.log( "closed" );
+  $( "#nationality-1" ).attr('disabled', true);
+  $( "#nationality-2" ).attr('disabled', true);
+  $( "#nationality-3" ).attr('disabled', true);
+  $( "#nationality-4" ).attr('disabled', true);
+  $( "#nationality-5" ).attr('disabled', true);
+  $( "#nationality-6" ).attr('disabled', true);
+  $( "#nationality-7" ).attr('disabled', true);
+  $( "#nationality-8" ).attr('disabled', true);
 
-
-
-  } else {
-    $( "#nhs-1" ).attr('disabled', false);
-    $( "#nhs-2" ).attr('disabled', false);
-    $( "#nhs-3" ).attr('disabled', false);
-    $( "#nhs-4" ).attr('disabled', false);
-    if ($( "#nhs-2" ).is(":checked")) {
-      $( "#conditional-nhs-2" ).show();
-    }
-    if ($( "#nhs-4" ).is(":checked")) {
-      $( "#conditional-nhs-4" ).show();
-    }
-
+  if ($( "#nationality-7" ).is(":checked")) {
+    $( "#conditional-nationality-7" ).hide();
   }
+  if ($( "#nationality-8" ).is(":checked")) {
+    $( "#conditional-nationality-8" ).hide();
+  }
+
+} else {
+  $( "#nationality-1" ).attr('disabled', false);
+  $( "#nationality-2" ).attr('disabled', false);
+  $( "#nationality-3" ).attr('disabled', false);
+  $( "#nationality-4" ).attr('disabled', false);
+  $( "#nationality-5" ).attr('disabled', false);
+  $( "#nationality-6" ).attr('disabled', false);
+  $( "#nationality-7" ).attr('disabled', false);
+  $( "#nationality-8" ).attr('disabled', false);
+
+  if ($( "#nationality-7" ).is(":checked")) {
+    $( "#conditional-nationality-7" ).show();
+  }
+  if ($( "#nationality-8" ).is(":checked")) {
+    $( "#conditional-nationality-8" ).show();
+  }
+
+}
 });
 </script>
 {% endblock %}

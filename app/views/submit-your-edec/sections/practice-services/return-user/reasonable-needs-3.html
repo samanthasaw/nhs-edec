@@ -17,12 +17,19 @@
     $( "#reasonable-3" ).attr('disabled', true);
     $( "#reasonable-4" ).attr('disabled', true);
 
+    if ($( "#reasonable-4" ).is(":checked")) {
+      $( "#conditional-reasonable-4" ).hide();
+    }
+
   } else {
     $( "#reasonable-1" ).attr('disabled', false);
     $( "#reasonable-2" ).attr('disabled', false);
     $( "#reasonable-3" ).attr('disabled', false);
     $( "#reasonable-4" ).attr('disabled', false);
 
+    if ($( "#reasonable-4" ).is(":checked")) {
+      $( "#conditional-reasonable-4" ).show();
+    }
   }
 });
 </script>

@@ -18,6 +18,10 @@
     $( "#legitimate-4" ).attr('disabled', true);
     $( "#legitimate-5" ).attr('disabled', true);
 
+    if ($( "#legitimate-5" ).is(":checked")) {
+      $( "#conditional-legitimate-5" ).hide();
+    }
+
   } else {
     $( "#legitimate-1" ).attr('disabled', false);
     $( "#legitimate-2" ).attr('disabled', false);
@@ -25,6 +29,9 @@
     $( "#legitimate-4" ).attr('disabled', false);
     $( "#legitimate-5" ).attr('disabled', false);
 
+    if ($( "#legitimate-5" ).is(":checked")) {
+      $( "#conditional-legitimate-5" ).show();
+    }
   }
 });
 

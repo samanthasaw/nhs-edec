@@ -17,15 +17,21 @@
     $( "#diagnostic-3" ).attr('disabled', true);
     $( "#diagnostic-4" ).attr('disabled', true);
 
+    if ($( "#diagnostic-4" ).is(":checked")) {
+      $( "#conditional-diagnostic-4" ).hide();
+    }
+
   } else {
     $( "#diagnostic-1" ).attr('disabled', false);
     $( "#diagnostic-2" ).attr('disabled', false);
     $( "#diagnostic-3" ).attr('disabled', false);
     $( "#diagnostic-4" ).attr('disabled', false);
 
+    if ($( "#diagnostic-4" ).is(":checked")) {
+      $( "#conditional-diagnostic-4" ).show();
+    }
   }
 });
-
 </script>
 {% endblock %}
 
