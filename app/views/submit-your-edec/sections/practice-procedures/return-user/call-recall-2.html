@@ -74,8 +74,9 @@ if ( $( "#nationality-10" ).is(':checked') ){
 {% set electronicTechSolution %}
 {{ input({
   "name": "electronicTechSolution",
-  "id": "inputnhsnumber",
+  "id": "electronicTechSolutionInput",
   "classes": "nhsuk-input--width-30",
+  "value": data['electronicTechSolution'],
   "label": {
     "text": "What other electronic technical solutions are used to contact the practice’s eligible population?"
   }
@@ -86,12 +87,22 @@ if ( $( "#nationality-10" ).is(':checked') ){
 {% set nonElectronicTechSolution %}
 {{ input({
   "name": "nonElectronicTechSolution",
-  "id": "inputnhsnumber",
+  "id": "nonElectronicTechSolutionInput",
   "classes": "nhsuk-input--width-30",
   "label": {
     "text": "What other non-electronic technical solutions are used to contact the practice’s eligible population?"
   }
 }) }}
+{% endset %}
+
+{% set trueORnot %}
+ {% if data['callRecall'] %}
+  {% if 'foo' in data['callRecall'] %}
+    True
+  {% endif %}
+{% else %}
+  False
+{% endif %}
 {% endset %}
 
   <div class="nhsuk-grid-row">
@@ -142,6 +153,7 @@ if ( $( "#nationality-10" ).is(':checked') ){
           {
             "value": "other",
             "text": "Other electronic technical solution",
+            "checked": trueORnot,
             "conditional": {
               html: electronicTechSolution
             }

@@ -89,6 +89,10 @@
     <p> Phone call to patient </p>
   {% elif data['callRecall'] == 'consultation' %}
     <p> During consultation or appointment </p>
+  {% elif data['callRecall'] == 'other' %}
+    <p> Other - {{ data['electronicTechSolution'] }} </p>
+  {% elif data['callRecall'] == 'othernonElectronic' %}
+    <p> Other - {{ data['nonElectronicTechSolution'] }} </p>
   {% else %}
     This does not apply to my practice
   {% endif %}
@@ -112,10 +116,10 @@
         <p> Phone call to patient </p>
       {% elif item == 'consultation' %}
         <p> During consultation or appointment </p>
-      {% elif item == 'electronicTechSolution' %}
-        <p> {{ data['electronicTechSolution'] }} </p>
-      {% elif item == 'nonElectronicTechSolution' %}
-        <p> data['nonElectronicTechSolution'] </p>
+      {% elif item == 'other' %}
+        <p> Other - {{ data['electronicTechSolution'] }} </p>
+      {% elif item == 'othernonElectronic' %}
+        <p> Other - {{ data['nonElectronicTechSolution'] }} </p>
       {% endif %}
       {% endfor %}
     {% endif %}
