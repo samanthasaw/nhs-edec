@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "You've confirmed your premises and equipment details" %}
+{% set contentTitle = "You've completed the premises and equipment section" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,8 +35,6 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment</span>{{ contentTitle }}</h1>
 
-      <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
-
       <p>You can check and change your premises and equipment details at any time before submitting your electronic declaration.</p>
 
       {{ button({
@@ -48,7 +46,6 @@
         "href": "/submit-your-edec/sections/premises-equipment/return-user/task-list-premises-section-complete",
         "text": "Back to your task list"
       }) }}
-
 
     </div>
   </div>
