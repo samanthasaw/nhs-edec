@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Which days are there regular periods during each week that the practice is closed to patients between the hours of 8am and 6:30pm?" %}
+{% set contentTitle = "Which days does the practice have extended opening hours where the practice provides outside of core contract hours?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -32,15 +32,17 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      </span>{{ contentTitle }}</h1>
+
       <form action="" method="post">
         {{ checkboxes({
           "idPrefix": "daysEdit",
           "name": "daysEdit",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l",
+              "text": "Not within 8am and 6:30pm on Monday to Friday",
+              "classes": "nhsuk-label--m app-heading-m",
               "isPageHeading": true
             }
           },

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Extended Opening Hours – where the practice provides outside of core contract hours"%}
+{% set contentTitle = "What is the funding mechanism for the practice's extended opening hours?"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -49,15 +49,15 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
-        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-        </span>{{ contentTitle }}</h1>
+
 
         {{ conditionalRadios({
           "idPrefix": "gov",
           "name": "extendedFunding",
           "fieldset": {
             "legend": {
-              "text": "Funding mechanism",
+              "html": '<h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+              </span>' + contentTitle + '</h1>',
               "isPageHeading": true,
               "classes": "nhsuk-fieldset__legend--m"
             }

@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Change your Wednesday opening hours" %}
+{% set contentTitle = "Change your Wednesday reception opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -262,7 +262,7 @@ const times = [
 
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
-      
+
       <form action="" method="post">
 
         {% if data['wednesdayOpeningHours'] === "Closed" %}
@@ -300,7 +300,7 @@ const times = [
 
         {% call fieldset({
           "legend": {
-            "text": "Your opening hours",
+            "text": "Your Wednesday reception opening hours",
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }

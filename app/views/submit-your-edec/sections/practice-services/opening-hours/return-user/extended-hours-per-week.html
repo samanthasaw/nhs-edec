@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Extended Opening Hours – where the practice provides outside of core contract hours"%}
+{% set contentTitle = "Does the practice have any extended opening hours where the practice provides outside of core contract hours?"%}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -36,14 +36,31 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
-
-        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-        </span>{{ contentTitle }}</h1>
-
-        <h2 class="nhsuk-label--m app-heading-m">Hours per week (not within 08:00-18:30 Mon-Fri)</h2>
-
-
+      <form action="#" method="get">
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "gov",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+              </span>' + contentTitle + '</h1>',
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Not within 8am and 6:30pm on Monday to Friday"
+        },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

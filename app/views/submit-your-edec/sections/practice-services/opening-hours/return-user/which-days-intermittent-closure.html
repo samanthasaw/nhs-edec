@@ -5,10 +5,11 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What is the contract/agreement end date for the practice's extended opening hours?"%}
+{% set contentTitle = "Which days are there other intermittent periods during each month that the practice is closed to patients between the hours of 8.00 and 6.30pm Monday to Friday (except bank holidays)?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -20,47 +21,52 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
-
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
     <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
   </div>
 </div>
-
 {% endblock %}
 
 {% block content %}
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
-
-
-        {{ dateInput({
-          "id": "dob",
-          "namePrefix": "extendedEnd",
+      <form action="" method="post">
+        {{ checkboxes({
+          "idPrefix": "daysEdit",
+          "name": "daysEdit",
           "fieldset": {
             "legend": {
-              "html": '<h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-              </span>' + contentTitle + '</h1>'
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--l app-heading-l",
+              "isPageHeading": true
             }
           },
           "hint": {
-            "text": "For example, 14 12 2020"
-          },
+          "text": "Select all that apply"
+        },
           "items": [
             {
-              "name": "day",
-              "classes": "nhsuk-input--width-2"
+              "value": "monday",
+              "html": "Monday"
             },
             {
-              "name": "month",
-              "classes": "nhsuk-input--width-2"
+              "value": "tuesday",
+              "text": "Tuesday"
             },
             {
-              "name": "year",
-              "classes": "nhsuk-input--width-4"
+              "value": "wednesday",
+              "text": "Wednesday"
+            },
+            {
+              "value": "thursday",
+              "text": "Thursday"
+            },
+            {
+              "value": "friday",
+              "text": "Friday"
             }
           ]
         }) }}
@@ -69,8 +75,6 @@
         </input>
 
       </form>
-
-
 
     </div>
   </div>
