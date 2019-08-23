@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check the intermittent periods you submitted last year that the practice is closed to patients each month" %}
+{% set contentTitle = "Check the practice closure details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -95,13 +95,10 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-
-            {{ hint({
-              "text": "Between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
-            }) }}
+      <h2 class="nhsuk-heading-m">Is the practice closed each week for half a day during core contract hours?</h2>
 
       {{ summaryList({
         rows: [
@@ -110,7 +107,7 @@
               text: "Monday"
             },
             value: {
-              html: data['mondayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
+              text: "Yes"
             },
             actions: {
               items: [
@@ -127,7 +124,7 @@
               text: "Tuesday"
             },
             value: {
-              html: data['tuesdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
+              text: "No"
             },
             actions: {
               items: [
@@ -144,7 +141,7 @@
               text: "Wednesday"
             },
             value: {
-              html: data['wednesdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
+              text: "No"
             },
             actions: {
               items: [
@@ -161,7 +158,7 @@
               text: "Thursday"
             },
             value: {
-              html: data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('2pm to 4pm') + '<br>' + thursdayFrequency | placeholder('Fortnightly')
+              text: "No"
             },
             actions: {
               items: [
@@ -178,7 +175,7 @@
               text: "Friday"
             },
             value: {
-              html: data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('2pm to 4pm') + '<br>' + fridayFrequency | placeholder('Fortnightly')
+              text: "No"
             },
             actions: {
               items: [

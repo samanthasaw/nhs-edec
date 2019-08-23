@@ -1,0 +1,113 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check the extended opening hours details you submitted last year" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+ // remove all :00 from times so that 9:00am becomes 9am but the raw data stays the same
+  $('dd:contains(":00")').each(function(){
+      $(this).html($(this).html().split(":00").join(""));
+  });
+  $('dd:contains(".00")').each(function(){
+      $(this).html($(this).html().split(".00").join(""));
+  });
+</script>
+{% endblock %}
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      </span>{{ contentTitle }}</h1>
+
+      {{ hint({
+        "text": "Where the practice provides outside of core contract hours"
+      }) }}
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Total number of extended opening hours per week not within 8am and 6:30pm"
+            },
+            value: {
+              text: "14" | placeholder('14')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-monday",
+                  text: "Change",
+                  visuallyHiddenText: "your Monday opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Funding mechanism"
+            },
+            value: {
+              text: "Network Directed Enhanced Service (DES)" | placeholder('Network Directed Enhanced Service (DES)')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-tuesday",
+                  text: "Change",
+                  visuallyHiddenText: "your Tuesday opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract/agreement end date for the practice's extended opening hours"
+            },
+            value: {
+              text: "12 November 2020" | placeholder('12 November 2020')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-wednesday",
+                  text: "Change",
+                  visuallyHiddenText: "your Wednesday opening hours"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/v2/" method="get">
+        <input type="submit" class="nhsuk-button" value="Save and continue">
+        </input>
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

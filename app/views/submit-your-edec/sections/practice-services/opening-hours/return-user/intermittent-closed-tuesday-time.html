@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us the intermittent times during each month your practice is closed to patients on Tuesday" %}
+{% set contentTitle = "Tell us the intermittent times during each month that the practice is closed to patients on Tuesday between 8am and 6:30pm except bank holidays" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -268,7 +268,7 @@ const times = [
         }) %}
 
         {{ hint({
-          "text": "Between 8am and 6:30pm except bank holidays",
+          "text": "For example, 9am to 10:30am",
           "classes": "nhsuk-body-l nhsuk-u-margin-bottom-4"
         }) }}
 

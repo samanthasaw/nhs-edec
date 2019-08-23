@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2"] | placeholder('11') + data["ampm"] | placeholder('am') + " and " + data["ODS"] | placeholder('2') + data["ampm1"] | placeholder('pm') + " on Thursday?" %}
+{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2thursday"] | placeholder('11') + data["ampmthursday"] | placeholder('am') + " and " + data["ODSthursday"] | placeholder('2') + data["ampm1thursday"] | placeholder('pm') + " on Thursday?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,20 +35,20 @@
   "label": {
     "text": contentTitle
   },
-  "id": "inputnhsnumber",
-  "name": "nhsnumber",
+  "id": "inputotherFrequencyThursday",
+  "name": "inputOtherThursday",
   "classes": "nhsuk-input--width-30"
 }) }}
 {% endset %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="#" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/check-intermittent-periods" method="post">
 
 
                 {{ conditionalRadios({
                   "idPrefix": "gov",
-                  "name": "gov",
+                  "name": "intermittentThursday",
                   "fieldset": {
                     "legend": {
                       "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
@@ -59,26 +59,26 @@
                   },
                   "items": [
                   {
-                    "value": "fortnightly",
+                    "value": "fortnightlyThursday",
                     "text": "Fortnightly"
                   },
                     {
-                      "value": "threeWeeks",
+                      "value": "threeWeeksThursday",
                       "text": "Once every three weeks"
                     },
                     {
-                      "value": "month",
+                      "value": "monthThursday",
                       "text": "Once a month"
                     },
                     {
-                      "value": "otherMonth",
+                      "value": "otherMonthThursday",
                       "text": "Once every other month"
                     },
                     {
                       "divider": "or"
                     },
                     {
-                      "value": "other",
+                      "value": "otherThursday",
                       "text": "Other",
                       "conditional": {
                         html: input

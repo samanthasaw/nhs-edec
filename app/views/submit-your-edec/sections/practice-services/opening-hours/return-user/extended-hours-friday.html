@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your Friday extended opening hours not within 8am and 6:30pm" %}
+{% set contentTitle = "Tell us your Friday extended opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -255,6 +255,12 @@ const times = [
             "isPageHeading": false
           }
         }) %}
+
+
+                {{ hint({
+                  "text": "Not within 8am and 6:30pm",
+                  "classes": "nhsuk-body-l nhsuk-u-margin-bottom-4"
+                }) }}
 
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">

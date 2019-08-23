@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Contract/agreement end date for the practice's extended opening hours"%}
+{% set contentTitle = "Total number of extended opening hours per week not within 8am and 6:30pm" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,39 +30,24 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/" method="post">
 
-
-        {{ dateInput({
-          "id": "dob",
-          "namePrefix": "extendedEnd",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-              </span>' + contentTitle + '</h1>'
-            }
+        {{ input({
+          "label": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--l"
           },
           "hint": {
-            "text": "For example, 14 12 2020"
+            "text": "Number of hours"
           },
-          "items": [
-            {
-              "name": "day",
-              "classes": "nhsuk-input--width-2"
-            },
-            {
-              "name": "month",
-              "classes": "nhsuk-input--width-2"
-            },
-            {
-              "name": "year",
-              "classes": "nhsuk-input--width-4"
-            }
-          ]
+          "id": "inputnumberExtended",
+          "name": "numberExtended",
+          "classes": "nhsuk-input--width-3"
         }) }}
 
         <input type="submit" class="nhsuk-button" value="Continue">

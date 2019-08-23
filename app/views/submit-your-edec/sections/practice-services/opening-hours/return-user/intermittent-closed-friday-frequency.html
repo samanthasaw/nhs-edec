@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2"] | placeholder('11') + data["ampm"] | placeholder('am') + " and " + data["ODS"] | placeholder('2') + data["ampm1"] | placeholder('pm') + " on Friday?" %}
+{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2friday"] | placeholder('11') + data["ampmfriday"] | placeholder('am') + " and " + data["ODSfriday"] | placeholder('2') + data["ampm1friday"] | placeholder('pm') + " on Friday?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,8 +35,8 @@
   "label": {
     "text": contentTitle
   },
-  "id": "inputnhsnumber",
-  "name": "nhsnumber",
+  "id": "inputotherFrequencyFriday",
+  "name": "inputOtherFriday",
   "classes": "nhsuk-input--width-30"
 }) }}
 {% endset %}
@@ -59,26 +59,26 @@
                   },
                   "items": [
                   {
-                    "value": "fortnightly",
+                    "value": "fortnightlyFriday",
                     "text": "Fortnightly"
                   },
                     {
-                      "value": "threeWeeks",
+                      "value": "threeWeeksFriday",
                       "text": "Once every three weeks"
                     },
                     {
-                      "value": "month",
+                      "value": "monthFriday",
                       "text": "Once a month"
                     },
                     {
-                      "value": "otherMonth",
+                      "value": "otherMonthFriday",
                       "text": "Once every other month"
                     },
                     {
                       "divider": "or"
                     },
                     {
-                      "value": "other",
+                      "value": "otherFriday",
                       "text": "Other",
                       "conditional": {
                         html: input
