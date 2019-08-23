@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check the phone opening hours you submitted last year" %}
+{% set contentTitle = "Check the intermittent periods you submitted last year that the practice is closed to patients each month" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -18,6 +18,17 @@
   });
 </script>
 {% endblock %}
+
+{% set fridayRegularPeriods %}
+  {% if data['ODS2'] + data["ampm"] + data["ODS"] + data["ampm1"] %}
+     {{ data['fridayRegularPeriods'] }}
+  {% else %}
+      No intermittent periods that the practice is closed each month
+  {% endif %}
+{% endset %}
+
+
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -36,14 +47,19 @@
 {% endblock %}
 
 {% block content %}
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      </span>{{ contentTitle }}</h1>
 
-      <p>Check your phone opening hours and change any times that need updating</p>
 
-      <h2 class="nhsuk-heading-m">Your phone opening hours</h2>
+            {{ hint({
+              "text": "Between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
+            }) }}
+
       {{ summaryList({
         rows: [
           {
@@ -51,12 +67,12 @@
               text: "Monday"
             },
             value: {
-              html: data['mondayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: data['mondayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-monday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-monday-time",
                   text: "Change",
                   visuallyHiddenText: "your Monday opening hours"
                 }
@@ -68,12 +84,12 @@
               text: "Tuesday"
             },
             value: {
-              html: data['tuesdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: data['tuesdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-tuesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-tuesday-time",
                   text: "Change",
                   visuallyHiddenText: "your Tuesday opening hours"
                 }
@@ -85,12 +101,12 @@
               text: "Wednesday"
             },
             value: {
-              html: data['wednesdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: data['wednesdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-wednesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-wednesday-time",
                   text: "Change",
                   visuallyHiddenText: "your Wednesday opening hours"
                 }
@@ -102,12 +118,12 @@
               text: "Thursday"
             },
             value: {
-              html: data['thursdayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: data['thursdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-thursday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-thursday-time",
                   text: "Change",
                   visuallyHiddenText: "your Thursday opening hours"
                 }
@@ -119,48 +135,14 @@
               text: "Friday"
             },
             value: {
-              html: data['fridayOpeningHours'] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: fridayRegularPeriods | placeholder('No intermittent periods that the practice is closed each month')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-friday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-friday-time",
                   text: "Change",
                   visuallyHiddenText: "your Friday opening hours"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Saturday"
-            },
-            value: {
-              html: data['saturdayOpeningHours'] | placeholder('Closed')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-saturday",
-                  text: "Change",
-                  visuallyHiddenText: "your Saturday opening hours"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Sunday"
-            },
-            value: {
-              html: data['sundayOpeningHours'] | placeholder('Closed')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-sunday",
-                  text: "Change",
-                  visuallyHiddenText: "your Sunday opening hours"
                 }
               ]
             }

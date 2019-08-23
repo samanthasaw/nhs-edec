@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Are there any regular periods during each week that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)?" %}
+{% set contentTitle = "Are there any regular periods during each week that the practice is closed to patients?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -44,6 +44,9 @@
               </span>' + contentTitle + '</h1>',
               "classes": "nhsuk-label--l app-heading-l"
             }
+          },
+          "hint": {
+            "text": "Between the hours of 8am and 6.30pm Monday to Friday (except bank holidays)"
           },
           "items": [
             {
