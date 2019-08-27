@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2"] | placeholder('11') + data["ampm"] | placeholder('am') + " and " + data["ODS"] | placeholder('2') + data["ampm1"] | placeholder('pm') + " on Monday?" %}
+{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2monday"] | placeholder('11') + data["ampmmonday"] | placeholder('am') + " and " + data["ODSmonday"] | placeholder('2') + data["ampm1monday"] | placeholder('pm') + " on Monday?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,8 +35,8 @@
   "label": {
     "text": contentTitle
   },
-  "id": "inputnhsnumber",
-  "name": "nhsnumber",
+  "id": "inputotherFrequencyMonday",
+  "name": "inputOtherMonday",
   "classes": "nhsuk-input--width-30"
 }) }}
 {% endset %}
@@ -48,7 +48,7 @@
 
                 {{ conditionalRadios({
                   "idPrefix": "gov",
-                  "name": "gov",
+                  "name": "intermittentMonday",
                   "fieldset": {
                     "legend": {
                       "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
@@ -59,26 +59,26 @@
                   },
                   "items": [
                   {
-                    "value": "fortnightly",
+                    "value": "fortnightlyMonday",
                     "text": "Fortnightly"
                   },
                     {
-                      "value": "threeWeeks",
+                      "value": "threeWeeksMonday",
                       "text": "Once every three weeks"
                     },
                     {
-                      "value": "month",
+                      "value": "monthMonday",
                       "text": "Once a month"
                     },
                     {
-                      "value": "otherMonth",
+                      "value": "otherMonthMonday",
                       "text": "Once every other month"
                     },
                     {
                       "divider": "or"
                     },
                     {
-                      "value": "other",
+                      "value": "otherMonday",
                       "text": "Other",
                       "conditional": {
                         html: input

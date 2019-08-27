@@ -263,7 +263,7 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-      <form action="" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/v2/new-opening-hours" method="post">
 
         {% if data['thursdayOpeningHours'] === "Closed" %}
           {% set closedTrue = "True" %}
@@ -273,7 +273,7 @@ const times = [
 
         {{ radios({
           "idPrefix": "gov",
-          "name": "gov",
+          "name": "openClosedThursday",
           "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {

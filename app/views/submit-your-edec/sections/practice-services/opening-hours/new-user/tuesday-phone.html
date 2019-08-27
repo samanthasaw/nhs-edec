@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Change your Friday reception opening hours" %}
+{% set contentTitle = "Your Tuesday phone opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -173,9 +173,9 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS2-container'),
     id: 'ODS2', // To match it to the existing <label>.
-    name: 'ODS2',
+    name: 'ODS2TuesdayPhone',
     source: times,
-    defaultValue: '{{ data.fridayTimeFrom1 }}',
+    defaultValue: '{{ data.mondayTimeFrom1 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -184,9 +184,9 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS-container'),
     id: 'ODS', // To match it to the existing <label>.
-    name: 'ODS',
+    name: 'ODSTuesdayPhone',
     source: times,
-    defaultValue: '{{ data.fridayTimeTo1 }}',
+    defaultValue: '{{ data.mondayTimeTo1 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -197,7 +197,7 @@ const times = [
     id: 'ODS3', // To match it to the existing <label>.
     name: 'ODS3',
     source: times,
-    defaultValue: '{{ data.fridayTimeFrom2 }}',
+    defaultValue: '{{ data.mondayTimeFrom2 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -208,7 +208,7 @@ const times = [
     id: 'ODS4', // To match it to the existing <label>.
     name: 'ODS4',
     source: times,
-    defaultValue: '{{ data.fridayTimeTo2 }}',
+    defaultValue: '{{ data.mondayTimeTo2 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -219,7 +219,7 @@ const times = [
     id: 'ODS5', // To match it to the existing <label>.
     name: 'ODS5',
     source: times,
-    defaultValue: '{{ data.fridayTimeFrom3 }}',
+    defaultValue: '{{ data.mondayTimeFrom3 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -230,7 +230,7 @@ const times = [
     id: 'ODS6', // To match it to the existing <label>.
     name: 'ODS6',
     source: times,
-    defaultValue: '{{ data.fridayTimeTo3 }}',
+    defaultValue: '{{ data.mondayTimeTo3 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -263,44 +263,11 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/v2/new-opening-hours" method="post">
-
-        {% if data['fridayOpeningHours'] === "Closed" %}
-          {% set closedTrue = "True" %}
-        {% else %}
-          {% set openTrue = "True" %}
-        {% endif %}
-
-        {{ radios({
-          "idPrefix": "gov",
-          "name": "gov",
-          "classes": "nhsuk-radios--inline",
-          "fieldset": {
-            "legend": {
-              "text": "Is your practice open on Friday?",
-              "isPageHeading": false,
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "open",
-              "text": "Yes",
-              "checked": openTrue
-            },
-            {
-              "value": "closed",
-              "text": "No",
-              "checked": closedTrue
-            }
-          ]
-        }) }}
-
-        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/wednesday-phone" method="post">
 
         {% call fieldset({
           "legend": {
-            "text": "Your Friday reception opening hours",
+            "text": "What are your Tuesday phone opening hours?",
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
@@ -344,9 +311,9 @@ const times = [
                 "id": "ampm"
               }) }}
 
-              <select class="nhsuk-select" name="ampm" id="ampm">
-                <option {% if data['fridayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['fridayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              <select class="nhsuk-select" name="ampmTuesdayPhone" id="ampm">
+                <option {% if data['mondayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -387,9 +354,9 @@ const times = [
                 "id": "ampm1"
               }) }}
 
-              <select class="nhsuk-select" name="ampm1" id="ampm1">
-                <option {% if data['fridayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['fridayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              <select class="nhsuk-select" name="ampm1TuesdayPhone" id="ampm1">
+                <option {% if data['mondayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -402,7 +369,7 @@ const times = [
 
 
 
-        <div {% if data['fridayRow2'] %} style='display:block;'{% else %} style='display:none;'{% endif %}  class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
+        <div {% if data['mondayRow2'] %} style='display:block;'{% else %} style='display:none;'{% endif %}  class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
               "classes": "nhsuk-u-margin-bottom-2",
@@ -437,8 +404,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm3" id="ampm3">
-                <option {% if data['fridayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['fridayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['mondayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -480,8 +447,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm4" id="ampm4">
-                <option {% if data['fridayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['fridayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['mondayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -498,7 +465,7 @@ const times = [
           </div>
         </div>
 
-        <div {% if data['fridayRow3'] %} style='display:block;'{% else %} style='display:none;'{% endif %} class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
+        <div {% if data['mondayRow3'] %} style='display:block;'{% else %} style='display:none;'{% endif %} class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
 
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
@@ -533,8 +500,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm5" id="ampm5">
-                <option {% if data['fridayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['fridayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['mondayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -574,8 +541,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm6" id="ampm6">
-                <option {% if data['fridayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['fridayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['mondayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -601,10 +568,10 @@ const times = [
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
         </p>
 
-        </div>
-
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
+
+
 
       </form>
 

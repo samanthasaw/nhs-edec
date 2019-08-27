@@ -20,6 +20,74 @@
 {% endblock %}
 
 
+{% set otherMonday %}
+  {% if data['inputOtherMonday'] %}
+    {{ data['inputOtherMonday'] }}
+  {% endif %}
+{% endset %}
+
+{% set mondayFrequency %}
+  {% if data['intermittentMonday'] == 'fortnightlyMonday' %}
+    Every fortnight
+  {% elseif data['intermittentMonday'] == 'threeWeeksMonday' %}
+    Once every three weeks
+  {% elseif data['intermittentMonday'] == 'monthMonday' %}
+    Once a month
+  {% elseif data['intermittentMonday'] == 'otherMonthMonday' %}
+    Once every other month
+  {% elseif data['intermittentMonday'] == 'otherMonday' %}
+        {{ data['inputOtherMonday'] }}
+  {% else %}
+
+  {% endif %}
+{% endset %}
+
+
+{% set otherTuesday %}
+  {% if data['inputOtherTuesday'] %}
+    {{ data['inputOtherTuesday'] }}
+  {% endif %}
+{% endset %}
+
+{% set tuesdayFrequency %}
+  {% if data['intermittentTuesday'] == 'fortnightlyTuesday' %}
+    Every fortnight
+  {% elseif data['intermittentTuesday'] == 'threeWeeksTuesday' %}
+    Once every three weeks
+  {% elseif data['intermittentTuesday'] == 'monthTuesday' %}
+    Once a month
+  {% elseif data['intermittentTuesday'] == 'otherMonthTuesday' %}
+    Once every other month
+  {% elseif data['intermittentTuesday'] == 'otherTuesday' %}
+        {{ data['inputOtherTuesday'] }}
+  {% else %}
+
+  {% endif %}
+{% endset %}
+
+
+{% set otherWednesday %}
+  {% if data['inputOtherWednesday'] %}
+    {{ data['inputOtherWednesday'] }}
+  {% endif %}
+{% endset %}
+
+{% set wednesdayFrequency %}
+  {% if data['intermittentWednesday'] == 'fortnightlyWednesday' %}
+    Every fortnight
+  {% elseif data['intermittentWednesday'] == 'threeWeeksWednesday' %}
+    Once every three weeks
+  {% elseif data['intermittentWednesday'] == 'monthWednesday' %}
+    Once a month
+  {% elseif data['intermittentWednesday'] == 'otherMonthWednesday' %}
+    Once every other month
+  {% elseif data['intermittentWednesday'] == 'otherWednesday' %}
+        {{ data['inputOtherWednesday'] }}
+  {% else %}
+
+  {% endif %}
+{% endset %}
+
 
 
 {% set otherThursday %}
@@ -110,7 +178,7 @@
               text: "Monday"
             },
             value: {
-              html: data['mondayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
+              html: data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('2pm to 4pm') + '<br>' + mondayFrequency | placeholder('Fortnightly')
             },
             actions: {
               items: [
@@ -127,7 +195,7 @@
               text: "Tuesday"
             },
             value: {
-              html: data['tuesdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
+              html: data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('2pm to 4pm') + '<br>' + tuesdayFrequency | placeholder('Fortnightly')
             },
             actions: {
               items: [
@@ -144,7 +212,7 @@
               text: "Wednesday"
             },
             value: {
-              html: data['wednesdayRegularPeriods'] | placeholder('No intermittent periods that the practice is closed each month')
+              html: data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('2pm to 4pm') + '<br>' + wednesdayFrequency | placeholder('Fortnightly')
             },
             actions: {
               items: [

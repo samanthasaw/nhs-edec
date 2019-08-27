@@ -156,7 +156,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS2-container'),
     id: 'ODS2', // To match it to the existing <label>.
-    name: 'ODS2',
+    name: 'ODS2wednesday',
     source: times,
     defaultValue: '{{ data.mondayTimeFrom1 }}',
     showAllValues: false,
@@ -167,7 +167,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS-container'),
     id: 'ODS', // To match it to the existing <label>.
-    name: 'ODS',
+    name: 'ODSwednesday',
     source: times,
     defaultValue: '{{ data.mondayTimeTo1 }}',
     showAllValues: false,
@@ -305,7 +305,7 @@ const times = [
                 "id": "ampm"
               }) }}
 
-              <select class="nhsuk-select" name="ampm" id="ampm">
+              <select class="nhsuk-select" name="ampmwednesday" id="ampm">
                 <option {% if data['mondayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['mondayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -348,7 +348,7 @@ const times = [
                 "id": "ampm1"
               }) }}
 
-              <select class="nhsuk-select" name="ampm1" id="ampm1">
+              <select class="nhsuk-select" name="ampm1wednesday" id="ampm1">
                 <option {% if data['mondayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['mondayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>

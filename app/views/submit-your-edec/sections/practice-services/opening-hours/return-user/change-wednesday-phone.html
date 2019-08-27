@@ -173,7 +173,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS2-container'),
     id: 'ODS2', // To match it to the existing <label>.
-    name: 'ODS2',
+    name: 'ODS2WednesdayPhone',
     source: times,
     defaultValue: '{{ data.mondayTimeFrom1 }}',
     showAllValues: false,
@@ -184,7 +184,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS-container'),
     id: 'ODS', // To match it to the existing <label>.
-    name: 'ODS',
+    name: 'ODSWednesdayPhone',
     source: times,
     defaultValue: '{{ data.mondayTimeTo1 }}',
     showAllValues: false,
@@ -263,7 +263,7 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-      <form action="" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/new-phone-hours" method="post">
 
         {% call fieldset({
           "legend": {
@@ -311,7 +311,7 @@ const times = [
                 "id": "ampm"
               }) }}
 
-              <select class="nhsuk-select" name="ampm" id="ampm">
+              <select class="nhsuk-select" name="ampmWednesdayPhone" id="ampm">
                 <option {% if data['mondayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['mondayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -354,7 +354,7 @@ const times = [
                 "id": "ampm1"
               }) }}
 
-              <select class="nhsuk-select" name="ampm1" id="ampm1">
+              <select class="nhsuk-select" name="ampm1WednesdayPhone" id="ampm1">
                 <option {% if data['mondayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['mondayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
