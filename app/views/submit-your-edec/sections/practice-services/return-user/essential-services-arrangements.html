@@ -8,38 +8,6 @@
 {% set contentTitle = "If practice services are not available to patients during core contract hours what arrangements are in place?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
-<script type="text/javascript">
-  $( "#nhs-6" ).on( "click", function() {
-  if ( $( "#nhs-6" ).is(':checked') ){
-    console.log( "closed" );
-    $( "#nhs-1" ).attr('disabled', true);
-    $( "#nhs-2" ).attr('disabled', true);
-    $( "#nhs-3" ).attr('disabled', true);
-    $( "#nhs-4" ).attr('disabled', true);
-    if ($( "#nhs-2" ).is(":checked")) {
-      $( "#conditional-nhs-2" ).hide();
-    }
-    if ($( "#nhs-4" ).is(":checked")) {
-      $( "#conditional-nhs-4" ).hide();
-    }
-
-
-
-  } else {
-    $( "#nhs-1" ).attr('disabled', false);
-    $( "#nhs-2" ).attr('disabled', false);
-    $( "#nhs-3" ).attr('disabled', false);
-    $( "#nhs-4" ).attr('disabled', false);
-    if ($( "#nhs-2" ).is(":checked")) {
-      $( "#conditional-nhs-2" ).show();
-    }
-    if ($( "#nhs-4" ).is(":checked")) {
-      $( "#conditional-nhs-4" ).show();
-    }
-
-  }
-});
-</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -93,7 +61,7 @@
 
 
 
-        {{ checkboxesDivider({
+        {{ conditionalRadios({
           "idPrefix": "nhs",
           "name": "servicesArrangements",
           "fieldset": {
@@ -104,9 +72,6 @@
               "isPageHeading": true
             }
           },
-          "hint": {
-          "text": "Select all that apply"
-        },
           "items": [
             {
               "value": "OOH",
@@ -139,6 +104,7 @@
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
