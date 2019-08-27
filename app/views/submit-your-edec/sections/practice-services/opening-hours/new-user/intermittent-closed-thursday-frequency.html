@@ -1,0 +1,99 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "How frequently is your practice closed between " +  data["ODS2thursday"] | placeholder('11') + data["ampmthursday"] | placeholder('am') + " and " + data["ODSthursday"] | placeholder('2') + data["ampm1thursday"] | placeholder('pm') + " on Thursday?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+{% set input %}
+{{ input({
+  "label": {
+    "text": contentTitle
+  },
+  "id": "inputotherFrequencyThursday",
+  "name": "inputOtherThursday",
+  "classes": "nhsuk-input--width-30"
+}) }}
+{% endset %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/check-intermittent-periods" method="post">
+
+
+                {{ conditionalRadios({
+                  "idPrefix": "gov",
+                  "name": "intermittentThursday",
+                  "fieldset": {
+                    "legend": {
+                      "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+                      </span>' + contentTitle + '</h1>',
+                      "isPageHeading": true,
+                      "classes": "nhsuk-fieldset__legend--l"
+                    }
+                  },
+                  "items": [
+                  {
+                    "value": "fortnightlyThursday",
+                    "text": "Fortnightly"
+                  },
+                    {
+                      "value": "threeWeeksThursday",
+                      "text": "Once every three weeks"
+                    },
+                    {
+                      "value": "monthThursday",
+                      "text": "Once a month"
+                    },
+                    {
+                      "value": "otherMonthThursday",
+                      "text": "Once every other month"
+                    },
+                    {
+                      "divider": "or"
+                    },
+                    {
+                      "value": "otherThursday",
+                      "text": "Other",
+                      "conditional": {
+                        html: input
+                      }
+                    }
+                  ]
+                }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

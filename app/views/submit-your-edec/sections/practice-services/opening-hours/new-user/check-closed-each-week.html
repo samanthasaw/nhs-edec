@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your phone opening hours" %}
+{% set contentTitle = "Check your practice closure details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -18,6 +18,60 @@
   });
 </script>
 {% endblock %}
+
+
+
+
+{% set otherThursday %}
+  {% if data['inputOtherThursday'] %}
+    {{ data['inputOtherThursday'] }}
+  {% endif %}
+{% endset %}
+
+{% set thursdayFrequency %}
+  {% if data['intermittentThursday'] == 'fortnightlyThursday' %}
+    Every fortnight
+  {% elseif data['intermittentThursday'] == 'threeWeeksThursday' %}
+    Once every three weeks
+  {% elseif data['intermittentThursday'] == 'monthThursday' %}
+    Once a month
+  {% elseif data['intermittentThursday'] == 'otherMonthThursday' %}
+    Once every other month
+  {% elseif data['intermittentThursday'] == 'otherThursday' %}
+        {{ data['inputOtherThursday'] }}
+  {% else %}
+
+  {% endif %}
+{% endset %}
+
+
+
+{% set otherFriday %}
+  {% if data['inputOtherFriday'] %}
+    {{ data['inputOtherFriday'] }}
+  {% endif %}
+{% endset %}
+
+
+{% set fridayFrequency %}
+  {% if data['intermittentFriday'] == 'fortnightlyFriday' %}
+    Every fortnight
+  {% elseif data['intermittentFriday'] == 'threeWeeksFriday' %}
+    Once every three weeks
+  {% elseif data['intermittentFriday'] == 'monthFriday' %}
+    Once a month
+  {% elseif data['intermittentFriday'] == 'otherMonthFriday' %}
+    Once every other month
+  {% elseif data['intermittentFriday'] == 'otherFriday' %}
+        {{ data['inputOtherFriday'] }}
+  {% else %}
+
+  {% endif %}
+{% endset %}
+
+
+
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -36,14 +90,16 @@
 {% endblock %}
 
 {% block content %}
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      </span>{{ contentTitle }}</h1>
 
-      <p>Check your phone opening hours and change any times that need updating.</p>
+      <h2 class="nhsuk-heading-m">Is the practice closed each week for half a day during core contract hours?</h2>
 
-      <h2 class="nhsuk-heading-m">Your phone opening hours</h2>
       {{ summaryList({
         rows: [
           {
@@ -51,12 +107,12 @@
               text: "Monday"
             },
             value: {
-              html: data['ODS2MondayPhone'] + data["ampmMondayPhone"] + " to " + data["ODSMondayPhone"] + data["ampm1MondayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              text: "Yes"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-monday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-monday-time",
                   text: "Change",
                   visuallyHiddenText: "your Monday opening hours"
                 }
@@ -68,12 +124,12 @@
               text: "Tuesday"
             },
             value: {
-              html: data['ODS2TuesdayPhone'] + data["ampmTuesdayPhone"] + " to " + data["ODSTuesdayPhone"] + data["ampm1TuesdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              text: "No"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-tuesday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-tuesday-time",
                   text: "Change",
                   visuallyHiddenText: "your Tuesday opening hours"
                 }
@@ -85,12 +141,12 @@
               text: "Wednesday"
             },
             value: {
-              html: data['ODS2WednesdayPhone'] + data["ampmWednesdayPhone"] + " to " + data["ODSWednesdayPhone"] + data["ampm1WednesdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              text: "No"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-wednesday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-wednesday-time",
                   text: "Change",
                   visuallyHiddenText: "your Wednesday opening hours"
                 }
@@ -102,12 +158,12 @@
               text: "Thursday"
             },
             value: {
-              html: data['ODS2ThursdayPhone'] + data["ampmThursdayPhone"] + " to " + data["ODSThursdayPhone"] + data["ampm1ThursdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              text: "No"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-thursday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-thursday-time",
                   text: "Change",
                   visuallyHiddenText: "your Thursday opening hours"
                 }
@@ -119,48 +175,14 @@
               text: "Friday"
             },
             value: {
-              html: data['ODS2FridayPhone'] + data["ampmFridayPhone"] + " to " + data["ODSFridayPhone"] + data["ampm1FridayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              text: "No"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-friday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-friday-time",
                   text: "Change",
                   visuallyHiddenText: "your Friday opening hours"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Saturday"
-            },
-            value: {
-              html: data['ODS2SaturdayPhone'] + data["ampmSaturdayPhone"] + " to " + data["ODSSaturdayPhone"] + data["ampm1SaturdayPhone"] | placeholder('Closed')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-saturday-phone",
-                  text: "Change",
-                  visuallyHiddenText: "your Saturday opening hours"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Sunday"
-            },
-            value: {
-              html: data['ODS2SundayPhone'] + data["ampmSundayPhone"] + " to " + data["ODSSundayPhone"] + data["ampm1SundayPhone"] | placeholder('Closed')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-sunday-phone",
-                  text: "Change",
-                  visuallyHiddenText: "your Sunday opening hours"
                 }
               ]
             }
@@ -168,10 +190,8 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods" method="get">
-
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/v2/" method="get">
         <input type="submit" class="nhsuk-button" value="Save and continue">
-
         </input>
       </form>
 

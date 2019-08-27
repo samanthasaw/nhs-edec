@@ -332,6 +332,49 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
   }
 });
 
+// practice services
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods', function (req, res) {
+  let answer = req.body.regularPeriods;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-regular-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-periods') }
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-periods', function (req, res) {
+  let answer = req.body.intermittentPeriods;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-intermittent-closure')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended-hours-per-week', function (req, res) {
+  let answer = req.body.extendHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/number-of-extended-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-extended-hours') }
+
+});
+
+
 
 // procedures details
 
@@ -627,7 +670,7 @@ router.get('/submit-your-edec/sections/practice-details/return-user/redirect', f
 //
 
 // Set defaults for prototype
-router.post('/submit-your-edec/sections/opening-hours/v2/', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/', function (req, res) {
 
   // Set several default times for the practice
   //
