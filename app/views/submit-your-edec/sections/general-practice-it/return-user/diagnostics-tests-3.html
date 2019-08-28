@@ -9,27 +9,18 @@
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "#diagnostic-6" ).on( "click", function() {
-  if ( $( "#diagnostic-6" ).is(':checked') ){
+  $( "#diagnostic-5" ).on( "click", function() {
+  if ( $( "#diagnostic-5" ).is(':checked') ){
     console.log( "closed" );
     $( "#diagnostic-1" ).attr('disabled', true);
     $( "#diagnostic-2" ).attr('disabled', true);
     $( "#diagnostic-3" ).attr('disabled', true);
-    $( "#diagnostic-4" ).attr('disabled', true);
-
-    if ($( "#diagnostic-4" ).is(":checked")) {
-      $( "#conditional-diagnostic-4" ).hide();
-    }
 
   } else {
     $( "#diagnostic-1" ).attr('disabled', false);
     $( "#diagnostic-2" ).attr('disabled', false);
     $( "#diagnostic-3" ).attr('disabled', false);
-    $( "#diagnostic-4" ).attr('disabled', false);
 
-    if ($( "#diagnostic-4" ).is(":checked")) {
-      $( "#conditional-diagnostic-4" ).show();
-    }
   }
 });
 </script>
@@ -97,13 +88,6 @@
             {
               "value": "receiveImaging",
               "text": "Receive diagnostic reports for common imaging and diagnostic tests"
-            },
-            {
-              "value": "other",
-              "text": "Other",
-              "conditional": {
-                html: diagnosticsOther
-              }
             },
             {
               "divider": "or"
