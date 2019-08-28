@@ -16,6 +16,28 @@
   $('dd:contains(".00")').each(function(){
       $(this).html($(this).html().split(".00").join(""));
   });
+
+
+    $( "input[name='extendHours']" ).on( "click", function() {
+    if ( $( "input[name='extendHours']:checked" ).val() === "no") {
+      console.log( "closed" );
+      $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+      $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+    } else {
+      console.log( "open" );
+      $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+      // Find inputs that are now visible and make them disabled.
+      $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+    }
+  });
+
+  // This kills any row that is empty
+  $('div.nhsuk-summary-list__row').each(function() {
+           if ($(this).text().trim() === "") {
+                     $(this).css('display','none');
+           }
+  });
 </script>
 {% endblock %}
 
@@ -28,6 +50,16 @@
   {% endif %}
 {% endset %}
 
+
+{% if data['extendHours'] %}
+    {% if data['extendHours'] == "yes" %}
+      {% set extendHoursRow = "show" %}
+    {% else %}
+      {% set extendHoursRow = "hide" %}
+    {% endif %}
+{% else %}
+    {% set extendHoursRow = "show" %}
+{% endif %}
 
 
 {% set numberExtended %}
@@ -51,6 +83,51 @@
   {% endif %}
 {% endset %}
 
+{% set closedWeek %}
+  {% if data['closedWeek'] == 'monday' %}
+        On Monday
+  {% elif data['closedWeek'] == 'tuesday' %}
+    <p> On Tuesday </p>
+  {% elif data['closedWeek'] == 'wednesday' %}
+    <p> On Wednesday </p>
+  {% elif data['closedWeek'] == 'thursday' %}
+    <p> On Thursday </p>
+  {% elif data['closedWeek'] == 'friday' %}
+    <p> On Friday </p>
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+  {% endset %}
+
+  {% if data['closedWeek'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set closedEachWeek %}
+    {% if cheese == 'stringyCheese' %}
+      {{ closedWeek | safe }}
+    {% else %}
+      {% for item in data['closedWeek'] %}
+      {% if item == 'monday' %}
+        <p>On Monday</p>
+      {% elif item == 'tuesday' %}
+        <p> On Tuesday </p>
+      {% elif item == 'wednesday' %}
+        <p> On Wednesday </p>
+      {% elif item == 'thursday' %}
+        <p> On Thursday </p>
+      {% elif item == 'friday' %}
+        <p> On Friday </p>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
+
+
+  {% set contractExtend %}
+    {% if (data['extendedEnd-day']) and (data['extendedEnd-month']) and (data['extendedEnd-year']) %}
+      {{ data['extendedEnd-day'] + " " + data['extendedEnd-month'] | monthToWord + " " + data['extendedEnd-year'] }}
+    {% else %}
+      18 November 2020
+    {% endif %}
+  {% endset %}
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -85,14 +162,14 @@
             text: "Is the practice closed each week for half a day during core contract hours?"
           },
           value: {
-            html: "On Monday <br> On Tuesday" | placeholder('On Monday <br> On Tuesday')
+            html: closedEachWeek | placeholder('On Monday <br> On Tuesday')
           },
           actions: {
             items: [
               {
-                href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-monday",
+                href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-closed-each-week",
                 text: "Change",
-                visuallyHiddenText: "your Monday opening hours"
+                visuallyHiddenText: "if the practice is closed each week for half a day during core contract hours"
               }
             ]
           }
@@ -107,9 +184,9 @@
           actions: {
             items: [
               {
-                href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-monday",
+                href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-extended-hours-per-week",
                 text: "Change",
-                visuallyHiddenText: "your Monday opening hours"
+                visuallyHiddenText: "if the practice has any extended opening hours where the practice provides outside of core contract hours"
               }
             ]
           }
@@ -124,13 +201,13 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-monday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-number-of-extended-hours",
                   text: "Change",
-                  visuallyHiddenText: "your Monday opening hours"
+                  visuallyHiddenText: "your total number of extended opening hours per week not within 8am and 6:30pm"
                 }
               ]
             }
-          },
+          } if extendHoursRow == 'show',
           {
             key: {
               text: "Funding mechanism for the practice's extended opening hours"
@@ -141,34 +218,34 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-tuesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-extended-hours-funding",
                   text: "Change",
-                  visuallyHiddenText: "your Tuesday opening hours"
+                  visuallyHiddenText: "your funding mechanism for the practice's extended opening hours"
                 }
               ]
             }
-          },
+          } if extendHoursRow == 'show',
           {
             key: {
               text: "Contract/agreement end date for the practice's extended opening hours"
             },
             value: {
-              text: "12 November 2020" | placeholder('12 November 2020')
+              text: contractExtend | placeholder('12 November 2020')
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-wednesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-extended-hours-contract",
                   text: "Change",
-                  visuallyHiddenText: "your Wednesday opening hours"
+                  visuallyHiddenText: "your contract/agreement end date for the practice's extended opening hours"
                 }
               ]
             }
-          }
+          } if extendHoursRow == 'show'
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/v2/" method="get">
+      <form action="#" method="get">
         <input type="submit" class="nhsuk-button" value="Save and continue">
         </input>
       </form>
