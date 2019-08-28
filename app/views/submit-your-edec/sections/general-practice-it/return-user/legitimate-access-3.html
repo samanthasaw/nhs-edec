@@ -9,29 +9,21 @@
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
-  $( "#legitimate-7" ).on( "click", function() {
-  if ( $( "#legitimate-7" ).is(':checked') ){
+  $( "#legitimate-6" ).on( "click", function() {
+  if ( $( "#legitimate-6" ).is(':checked') ){
     console.log( "closed" );
     $( "#legitimate-1" ).attr('disabled', true);
     $( "#legitimate-2" ).attr('disabled', true);
     $( "#legitimate-3" ).attr('disabled', true);
     $( "#legitimate-4" ).attr('disabled', true);
-    $( "#legitimate-5" ).attr('disabled', true);
 
-    if ($( "#legitimate-5" ).is(":checked")) {
-      $( "#conditional-legitimate-5" ).hide();
-    }
 
   } else {
     $( "#legitimate-1" ).attr('disabled', false);
     $( "#legitimate-2" ).attr('disabled', false);
     $( "#legitimate-3" ).attr('disabled', false);
     $( "#legitimate-4" ).attr('disabled', false);
-    $( "#legitimate-5" ).attr('disabled', false);
 
-    if ($( "#legitimate-5" ).is(":checked")) {
-      $( "#conditional-legitimate-5" ).show();
-    }
   }
 });
 
@@ -102,15 +94,8 @@
               "text": "Practice can access records from other local health providers"
             },
             {
-              "value": "other",
+              "value": "localSocial",
               "text": "Practice can access records from local social care providers"
-            },
-            {
-              "value": "other",
-              "text": "Other",
-              "conditional": {
-                html: legitimateAccessConditional
-              }
             },
             {
               "divider": "or"
