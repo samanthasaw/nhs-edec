@@ -80,7 +80,8 @@
 
         {% call fieldset({
           "legend": {
-            "text": contentTitle,
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+            </span>' + contentTitle + '</h1>',
             "classes": "nhsuk-fieldset__legend--l",
             "isPageHeading": true
           }
