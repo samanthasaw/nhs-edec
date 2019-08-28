@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What are your Monday reception opening hours for Park Surgery?" %}
+{% set contentTitle = "What are your Sunday reception opening hours for Park Surgery?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -238,8 +238,8 @@ const times = [
 </script>
 
 <script type="text/javascript">
-  $( "input[name='branchMonday']" ).on( "click", function() {
-  if ( $( "input[name='branchMonday']:checked" ).val() === "closed") {
+  $( "input[name='branchSunday']" ).on( "click", function() {
+  if ( $( "input[name='branchSunday']:checked" ).val() === "closed") {
     console.log( "no" );
     $( ".app-opening-time__container" ).addClass("app-u-display--none ")
     $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
@@ -281,7 +281,7 @@ const times = [
 
       <form action="#" method="post">
 
-        {% if data['branchMonday'] === "Closed" %}
+        {% if data['branchSunday'] === "Closed" %}
           {% set closedTrue = "True" %}
         {% else %}
           {% set openTrue = "True" %}
@@ -289,11 +289,11 @@ const times = [
 
         {{ radios({
           "idPrefix": "gov",
-          "name": "branchMonday",
+          "name": "branchSunday",
           "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {
-              "text": "Is Park Surgery open on Monday?",
+              "text": "Is Park Surgery open on Sunday?",
               "isPageHeading": false,
               "classes": ""
             }
@@ -316,7 +316,7 @@ const times = [
 
         {% call fieldset({
           "legend": {
-            "text": "Your Monday reception opening hours for Park Surgery",
+            "text": "Your Sunday reception opening hours for Park Surgery",
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
