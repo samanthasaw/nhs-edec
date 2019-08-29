@@ -53,6 +53,7 @@
 }
 
 .app-task-list__task-name {
+  text-decoration: none;
   max-width: 50%;
   display: inline-block;
   @include mq($from: tablet) {

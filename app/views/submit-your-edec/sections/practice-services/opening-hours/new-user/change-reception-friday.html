@@ -278,7 +278,7 @@ const times = [
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-reception-answers" method="post">
 
-        {% if data['fridayReceptionOpen'] === "Closed" %}
+        {% if data['fridayReceptionOpen'] === "closed" %}
           {% set closedTrue = "True" %}
         {% else %}
           {% set openTrue = "True" %}
