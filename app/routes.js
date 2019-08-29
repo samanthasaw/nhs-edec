@@ -1037,12 +1037,12 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/return-u
 
 
   // Now redirect to check page
-  res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
 });
 
 // Monday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-monday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1104,19 +1104,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
       req.session.data.mondayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.mondayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Tuesday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-tuesday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1178,19 +1178,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', functi
       req.session.data.tuesdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.tuesdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Wednesday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-wednesday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1252,19 +1252,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', func
       req.session.data.wednesdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.wednesdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Thursday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-thursday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1326,19 +1326,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', funct
       req.session.data.thursdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.thursdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Friday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-friday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1400,19 +1400,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', functio
       req.session.data.fridayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.fridayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Saturday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-saturday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1474,19 +1474,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', funct
       req.session.data.saturdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.saturdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Sunday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-sunday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1548,13 +1548,13 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', functio
       req.session.data.sundayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.sundayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });

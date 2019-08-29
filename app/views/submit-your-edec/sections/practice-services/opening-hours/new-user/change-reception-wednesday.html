@@ -173,7 +173,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS2-container'),
     id: 'ODS2', // To match it to the existing <label>.
-    name: 'ODS2',
+    name: 'ODS2ReceptionWednesday',
     source: times,
     defaultValue: '{{ data.wednesdayTimeFrom1 }}',
     showAllValues: false,
@@ -184,7 +184,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS-container'),
     id: 'ODS', // To match it to the existing <label>.
-    name: 'ODS',
+    name: 'ODSReceptionWednesday',
     source: times,
     defaultValue: '{{ data.wednesdayTimeTo1 }}',
     showAllValues: false,
@@ -195,7 +195,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS3-container'),
     id: 'ODS3', // To match it to the existing <label>.
-    name: 'ODS3',
+    name: 'ODS3ReceptionWednesday',
     source: times,
     defaultValue: '{{ data.wednesdayTimeFrom2 }}',
     showAllValues: false,
@@ -206,7 +206,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS4-container'),
     id: 'ODS4', // To match it to the existing <label>.
-    name: 'ODS4',
+    name: 'ODS4ReceptionWednesday',
     source: times,
     defaultValue: '{{ data.wednesdayTimeTo2 }}',
     showAllValues: false,
@@ -217,7 +217,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS5-container'),
     id: 'ODS5', // To match it to the existing <label>.
-    name: 'ODS5',
+    name: 'ODS5ReceptionWednesday',
     source: times,
     defaultValue: '{{ data.wednesdayTimeFrom3 }}',
     showAllValues: false,
@@ -228,7 +228,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS6-container'),
     id: 'ODS6', // To match it to the existing <label>.
-    name: 'ODS6',
+    name: 'ODS6ReceptionWednesday',
     source: times,
     defaultValue: '{{ data.wednesdayTimeTo3 }}',
     showAllValues: false,
@@ -263,7 +263,7 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/v2/new-opening-hours" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-reception-answers" method="post">
 
         {% if data['wednesdayOpeningHours'] === "Closed" %}
           {% set closedTrue = "True" %}
@@ -273,7 +273,7 @@ const times = [
 
         {{ radios({
           "idPrefix": "gov",
-          "name": "openClosedWednesday",
+          "name": "gov",
           "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {
@@ -344,7 +344,7 @@ const times = [
                 "id": "ampm"
               }) }}
 
-              <select class="nhsuk-select" name="ampm" id="ampm">
+              <select class="nhsuk-select" name="ampmReceptionWednesday" id="ampm">
                 <option {% if data['wednesdayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['wednesdayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -387,7 +387,7 @@ const times = [
                 "id": "ampm1"
               }) }}
 
-              <select class="nhsuk-select" name="ampm1" id="ampm1">
+              <select class="nhsuk-select" name="ampm1ReceptionWednesday" id="ampm1">
                 <option {% if data['wednesdayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['wednesdayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -436,7 +436,7 @@ const times = [
                 "id": "ampm3"
               }) }}
 
-              <select class="nhsuk-select" name="ampm3" id="ampm3">
+              <select class="nhsuk-select" name="ampm3ReceptionWednesday" id="ampm3">
                 <option {% if data['wednesdayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['wednesdayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -479,7 +479,7 @@ const times = [
                 "id": "ampm4"
               }) }}
 
-              <select class="nhsuk-select" name="ampm4" id="ampm4">
+              <select class="nhsuk-select" name="ampm4ReceptionWednesday" id="ampm4">
                 <option {% if data['wednesdayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['wednesdayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -532,7 +532,7 @@ const times = [
                 "id": "ampm5"
               }) }}
 
-              <select class="nhsuk-select" name="ampm5" id="ampm5">
+              <select class="nhsuk-select" name="ampm5ReceptionWednesday" id="ampm5">
                 <option {% if data['wednesdayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['wednesdayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -573,7 +573,7 @@ const times = [
                 "id": "ampm6"
               }) }}
 
-              <select class="nhsuk-select" name="ampm6" id="ampm6">
+              <select class="nhsuk-select" name="ampm6ReceptionWednesday" id="ampm6">
                 <option {% if data['wednesdayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['wednesdayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>

@@ -173,7 +173,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS2-container'),
     id: 'ODS2', // To match it to the existing <label>.
-    name: 'ODS2',
+    name: 'ODS2ReceptionThursday',
     source: times,
     defaultValue: '{{ data.thursdayTimeFrom1 }}',
     showAllValues: false,
@@ -184,7 +184,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS-container'),
     id: 'ODS', // To match it to the existing <label>.
-    name: 'ODS',
+    name: 'ODSReceptionThursday',
     source: times,
     defaultValue: '{{ data.thursdayTimeTo1 }}',
     showAllValues: false,
@@ -195,7 +195,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS3-container'),
     id: 'ODS3', // To match it to the existing <label>.
-    name: 'ODS3',
+    name: 'ODS3ReceptionThursday',
     source: times,
     defaultValue: '{{ data.thursdayTimeFrom2 }}',
     showAllValues: false,
@@ -206,7 +206,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS4-container'),
     id: 'ODS4', // To match it to the existing <label>.
-    name: 'ODS4',
+    name: 'ODS4ReceptionThursday',
     source: times,
     defaultValue: '{{ data.thursdayTimeTo2 }}',
     showAllValues: false,
@@ -217,7 +217,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS5-container'),
     id: 'ODS5', // To match it to the existing <label>.
-    name: 'ODS5',
+    name: 'ODS5ReceptionThursday',
     source: times,
     defaultValue: '{{ data.thursdayTimeFrom3 }}',
     showAllValues: false,
@@ -228,7 +228,7 @@ const times = [
   accessibleAutocomplete({
     element: document.querySelector('#ODS6-container'),
     id: 'ODS6', // To match it to the existing <label>.
-    name: 'ODS6',
+    name: 'ODS6ReceptionThursday',
     source: times,
     defaultValue: '{{ data.thursdayTimeTo3 }}',
     showAllValues: false,
@@ -273,7 +273,7 @@ const times = [
 
         {{ radios({
           "idPrefix": "gov",
-          "name": "openClosedThursday",
+          "name": "gov",
           "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {
@@ -344,7 +344,7 @@ const times = [
                 "id": "ampm"
               }) }}
 
-              <select class="nhsuk-select" name="ampm" id="ampm">
+              <select class="nhsuk-select" name="ampmReceptionThursday" id="ampm">
                 <option {% if data['thursdayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['thursdayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -387,7 +387,7 @@ const times = [
                 "id": "ampm1"
               }) }}
 
-              <select class="nhsuk-select" name="ampm1" id="ampm1">
+              <select class="nhsuk-select" name="ampm1ReceptionThursday" id="ampm1">
                 <option {% if data['thursdayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['thursdayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -436,7 +436,7 @@ const times = [
                 "id": "ampm3"
               }) }}
 
-              <select class="nhsuk-select" name="ampm3" id="ampm3">
+              <select class="nhsuk-select" name="ampm3ReceptionThursday" id="ampm3">
                 <option {% if data['thursdayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['thursdayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -479,7 +479,7 @@ const times = [
                 "id": "ampm4"
               }) }}
 
-              <select class="nhsuk-select" name="ampm4" id="ampm4">
+              <select class="nhsuk-select" name="ampm4ReceptionThursday" id="ampm4">
                 <option {% if data['thursdayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['thursdayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -532,7 +532,7 @@ const times = [
                 "id": "ampm5"
               }) }}
 
-              <select class="nhsuk-select" name="ampm5" id="ampm5">
+              <select class="nhsuk-select" name="ampm5ReceptionThursday" id="ampm5">
                 <option {% if data['thursdayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['thursdayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
