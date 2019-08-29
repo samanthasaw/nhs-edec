@@ -38,6 +38,96 @@
 {% endblock %}
 
 {% block content %}
+
+
+
+{% set "mondayOpening" %}
+  {% if data['mondayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionMonday'] and data["ODSReceptionMonday"] %}
+        {{ data['ODS2ReceptionMonday'] + data["ampmReceptionMonday"] + " to " + data["ODSReceptionMonday"] + data["ampm1ReceptionMonday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "tuesdayOpening" %}
+  {% if data['tuesdayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionTuesday'] and data["ODSReceptionTuesday"] %}
+        {{ data['ODS2ReceptionTuesday'] + data["ampmReceptionTuesday"] + " to " + data["ODSReceptionTuesday"] + data["ampm1ReceptionTuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+{% set "wednesdayOpening" %}
+  {% if data['wednesdayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionWednesday'] and data["ODSReceptionWednesday"] %}
+        {{ data['ODS2ReceptionWednesday'] + data["ampmReceptionWednesday"] + " to " + data["ODSReceptionWednesday"] + data["ampm1ReceptionWednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+{% set "thursdayOpening" %}
+  {% if data['thursdayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionThursday'] and data["ODSReceptionThursday"] %}
+        {{ data['ODS2ReceptionThursday'] + data["ampmReceptionThursday"] + " to " + data["ODSReceptionThursday"] + data["ampm1ReceptionThursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "fridayOpening" %}
+  {% if data['fridayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionFriday'] and data["ODSReceptionFriday"] %}
+        {{ data['ODS2ReceptionFriday'] + data["ampmReceptionFriday"] + " to " + data["ODSReceptionThursday"] + data["ampm1ReceptionFriday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "saturdayOpening" %}
+  {% if data['saturdayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionSaturday'] and data["ODSReceptionSaturday"] %}
+        {{ data['ODS2ReceptionSaturday'] + data["ampmReceptionSaturday"] + " to " + data["ODSReceptionSaturday"] + data["ampm1ReceptionSaturday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "sundayOpening" %}
+  {% if data['sundayReceptionOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ReceptionSunday'] and data["ODSReceptionSunday"] %}
+        {{ data['ODS2ReceptionSunday'] + data["ampmReceptionSunday"] + " to " + data["ODSReceptionSunday"] + data["ampm1ReceptionSunday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -54,7 +144,7 @@
               text: "Monday"
             },
             value: {
-              html: data['ODS2ReceptionMonday'] + data["ampmReceptionMonday"] + " to " + data["ODSReceptionMonday"] + data["ampm1ReceptionMonday"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: mondayOpening
             },
             actions: {
               items: [
@@ -71,8 +161,8 @@
               text: "Tuesday"
             },
             value: {
-              html: data['ODS2ReceptionTuesday'] + data["ampmReceptionTuesday"] + " to " + data["ODSReceptionTuesday"] + data["ampm1ReceptionTuesday"] | placeholder('9am to 12pm<br>2pm to 6pm')
-            },
+              html: tuesdayOpening
+              },
             actions: {
               items: [
                 {
@@ -88,7 +178,7 @@
               text: "Wednesday"
             },
             value: {
-              html: data['ODS2ReceptionWednesday'] + data["ampmReceptionWednesday"] + " to " + data["ODSReceptionWednesday"] + data["ampm1ReceptionWednesday"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: wednesdayOpening
             },
             actions: {
               items: [
@@ -105,7 +195,7 @@
               text: "Thursday"
             },
             value: {
-              html: data['ODS2ReceptionThursday'] + data["ampmReceptionThursday"] + " to " + data["ODSReceptionThursday"] + data["ampm1ReceptionThursday"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: thursdayOpening
             },
             actions: {
               items: [
@@ -122,8 +212,8 @@
               text: "Friday"
             },
             value: {
-              html: data['ODS2ReceptionFriday'] + data["ampmReceptionFriday"] + " to " + data["ODSReceptionFriday"] + data["ampm1ReceptionFriday"] | placeholder('9am to 12pm<br>2pm to 6pm')
-            },
+              html: fridayOpening
+              },
             actions: {
               items: [
                 {
@@ -139,7 +229,7 @@
               text: "Saturday"
             },
             value: {
-              html: data['ODS2ReceptionSaturday'] + data["ampmReceptionSaturday"] + " to " + data["ODSReceptionSaturday"] + data["ampm1ReceptionSaturday"] | placeholder('9am to 12pm<br>2pm to 6pm')
+              html: saturdayOpening
             },
             actions: {
               items: [
@@ -156,7 +246,7 @@
               text: "Sunday"
             },
             value: {
-              html: data['ODS2ReceptionSunday'] + data["ampmReceptionSunday"] + " to " + data["ODSReceptionSunday"] + data["ampm1ReceptionSunday"] | placeholder('Closed')
+              html: sundayOpening
             },
             actions: {
               items: [
