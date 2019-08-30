@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What are your Thursday reception opening hours for Park Surgery?" %}
+{% set contentTitle = "Your Park Surgery phone opening hours" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -279,7 +279,7 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-      <form action="#" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-branch-phone-hours" method="post">
 
         {% if data['branchThursday'] === "Closed" %}
           {% set closedTrue = "True" %}
@@ -293,7 +293,7 @@ const times = [
           "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {
-              "text": "Is Park Surgery open on Thursday?",
+              "text": "Are the Park Surgery phone lines open on Thursday?",
               "isPageHeading": false,
               "classes": ""
             }
@@ -316,7 +316,7 @@ const times = [
 
         {% call fieldset({
           "legend": {
-            "text": "Your Thursday reception opening hours for Park Surgery",
+            "text": "What are your Thursday phone opening hours for Park Surgery?",
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }

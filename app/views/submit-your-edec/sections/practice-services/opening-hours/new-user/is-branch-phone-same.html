@@ -5,11 +5,10 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Which days are there other intermittent periods during each month that the practice is closed to patients between the hours of 8.00 and 6.30pm Monday to Friday (except bank holidays)?" %}
+{% set contentTitle = "Are your phone line opening hours for Park Surgery the same as your phone line opening hours for The Nye Practice?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -21,52 +20,39 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
+
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
     <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
   </div>
 </div>
+
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-intermittent-closure" method="post">
-        {{ checkboxes({
-          "idPrefix": "intermittent",
-          "name": "intermittentEdit",
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/is-branch-phone-same" method="post">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "branchPhoneHours",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l",
-              "isPageHeading": true
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
-          "hint": {
-          "text": "Select all that apply"
-        },
           "items": [
             {
-              "value": "monday",
-              "html": "Monday"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "tuesday",
-              "text": "Tuesday"
-            },
-            {
-              "value": "wednesday",
-              "text": "Wednesday"
-            },
-            {
-              "value": "thursday",
-              "text": "Thursday"
-            },
-            {
-              "value": "friday",
-              "text": "Friday"
+              "value": "no",
+              "text": "No"
             }
           ]
         }) }}
@@ -75,6 +61,8 @@
         </input>
 
       </form>
+
+
 
     </div>
   </div>

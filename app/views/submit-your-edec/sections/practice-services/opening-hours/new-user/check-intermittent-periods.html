@@ -19,6 +19,14 @@
 </script>
 {% endblock %}
 
+{% set mondayTime %}
+    {% if data['ODS2monday'] and data["ODSmonday"] %}
+        {{ data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No intermittent periods that the practice is closed
+    {% endif %}
+{% endset %}
+
 
 {% set otherMonday %}
   {% if data['inputOtherMonday'] %}
@@ -42,6 +50,14 @@
   {% endif %}
 {% endset %}
 
+{% set tuesdayTime %}
+    {% if data['ODS2tuesday'] and data["ODStuesday"] %}
+        {{ data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No intermittent periods that the practice is closed
+    {% endif %}
+{% endset %}
+
 
 {% set otherTuesday %}
   {% if data['inputOtherTuesday'] %}
@@ -63,6 +79,14 @@
   {% else %}
 
   {% endif %}
+{% endset %}
+
+{% set wednesdayTime %}
+    {% if data['ODS2wednesday'] and data["ODSwednesday"] %}
+        {{ data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No intermittent periods that the practice is closed
+    {% endif %}
 {% endset %}
 
 
@@ -90,6 +114,15 @@
 
 
 
+{% set thursdayTime %}
+    {% if data['ODS2thursday'] and data["ODSthursday"] %}
+        {{ data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No intermittent periods that the practice is closed
+    {% endif %}
+{% endset %}
+
+
 {% set otherThursday %}
   {% if data['inputOtherThursday'] %}
     {{ data['inputOtherThursday'] }}
@@ -113,6 +146,14 @@
 {% endset %}
 
 
+
+{% set fridayTime %}
+    {% if data['ODS2friday'] and data["ODSfriday"] %}
+        {{ data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No intermittent periods that the practice is closed
+    {% endif %}
+{% endset %}
 
 {% set otherFriday %}
   {% if data['inputOtherFriday'] %}
@@ -178,7 +219,7 @@
               text: "Monday"
             },
             value: {
-              html: data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('2pm to 4pm') + '<br>' + mondayFrequency | placeholder('Fortnightly')
+              html: mondayTime + mondayFrequency + otherMonday
             },
             actions: {
               items: [
@@ -195,7 +236,7 @@
               text: "Tuesday"
             },
             value: {
-              html: data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('2pm to 4pm') + '<br>' + tuesdayFrequency | placeholder('Fortnightly')
+              html: tuesdayTime + tuesdayFrequency + otherTuesday
             },
             actions: {
               items: [
@@ -212,7 +253,7 @@
               text: "Wednesday"
             },
             value: {
-              html: data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('2pm to 4pm') + '<br>' + wednesdayFrequency | placeholder('Fortnightly')
+              html: wednesdayTime + wednesdayFrequency + otherWednesday
             },
             actions: {
               items: [
@@ -229,7 +270,7 @@
               text: "Thursday"
             },
             value: {
-              html: data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('2pm to 4pm') + '<br>' + thursdayFrequency | placeholder('Fortnightly')
+              html: thursdayTime + thursdayFrequency + otherThursday
             },
             actions: {
               items: [
@@ -246,7 +287,7 @@
               text: "Friday"
             },
             value: {
-              html: data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('2pm to 4pm') + '<br>' + fridayFrequency | placeholder('Fortnightly')
+              html: fridayTime + fridayFrequency + otherFriday
             },
             actions: {
               items: [
@@ -261,7 +302,7 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/v2/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/closed-each-week" method="get">
         <input type="submit" class="nhsuk-button" value="Save and continue">
         </input>
       </form>
