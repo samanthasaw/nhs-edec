@@ -35,15 +35,15 @@
 {% endset %}
 
 {% set mondayFrequency %}
-  {% if data['intermittentMonday'] == 'fortnightlyMonday' %}
+  {% if data['intermittentEditMonday'] == 'fortnightlyMonday' %}
     Every fortnight
-  {% elseif data['intermittentMonday'] == 'threeWeeksMonday' %}
+  {% elseif data['intermittentEditMonday'] == 'threeWeeksMonday' %}
     Once every three weeks
-  {% elseif data['intermittentMonday'] == 'monthMonday' %}
+  {% elseif data['intermittentEditMonday'] == 'monthMonday' %}
     Once a month
-  {% elseif data['intermittentMonday'] == 'otherMonthMonday' %}
+  {% elseif data['intermittentEditMonday'] == 'otherMonthMonday' %}
     Once every other month
-  {% elseif data['intermittentMonday'] == 'otherMonday' %}
+  {% elseif data['intermittentEditMonday'] == 'otherMonday' %}
         {{ data['inputOtherMonday'] }}
   {% else %}
 
@@ -66,15 +66,15 @@
 {% endset %}
 
 {% set tuesdayFrequency %}
-  {% if data['intermittentTuesday'] == 'fortnightlyTuesday' %}
+  {% if data['intermittentEditTuesday'] == 'fortnightlyTuesday' %}
     Every fortnight
-  {% elseif data['intermittentTuesday'] == 'threeWeeksTuesday' %}
+  {% elseif data['intermittentEditTuesday'] == 'threeWeeksTuesday' %}
     Once every three weeks
-  {% elseif data['intermittentTuesday'] == 'monthTuesday' %}
+  {% elseif data['intermittentEditTuesday'] == 'monthTuesday' %}
     Once a month
-  {% elseif data['intermittentTuesday'] == 'otherMonthTuesday' %}
+  {% elseif data['intermittentEditTuesday'] == 'otherMonthTuesday' %}
     Once every other month
-  {% elseif data['intermittentTuesday'] == 'otherTuesday' %}
+  {% elseif data['intermittentEditTuesday'] == 'otherTuesday' %}
         {{ data['inputOtherTuesday'] }}
   {% else %}
 
@@ -97,15 +97,15 @@
 {% endset %}
 
 {% set wednesdayFrequency %}
-  {% if data['intermittentWednesday'] == 'fortnightlyWednesday' %}
+  {% if data['intermittentEditWednesday'] == 'fortnightlyWednesday' %}
     Every fortnight
-  {% elseif data['intermittentWednesday'] == 'threeWeeksWednesday' %}
+  {% elseif data['intermittentEditWednesday'] == 'threeWeeksWednesday' %}
     Once every three weeks
-  {% elseif data['intermittentWednesday'] == 'monthWednesday' %}
+  {% elseif data['intermittentEditWednesday'] == 'monthWednesday' %}
     Once a month
-  {% elseif data['intermittentWednesday'] == 'otherMonthWednesday' %}
+  {% elseif data['intermittentEditWednesday'] == 'otherMonthWednesday' %}
     Once every other month
-  {% elseif data['intermittentWednesday'] == 'otherWednesday' %}
+  {% elseif data['intermittentEditWednesday'] == 'otherWednesday' %}
         {{ data['inputOtherWednesday'] }}
   {% else %}
 
@@ -130,15 +130,15 @@
 {% endset %}
 
 {% set thursdayFrequency %}
-  {% if data['intermittentThursday'] == 'fortnightlyThursday' %}
+  {% if data['intermittentEditThursday'] == 'fortnightlyThursday' %}
     Every fortnight
-  {% elseif data['intermittentThursday'] == 'threeWeeksThursday' %}
+  {% elseif data['intermittentEditThursday'] == 'threeWeeksThursday' %}
     Once every three weeks
-  {% elseif data['intermittentThursday'] == 'monthThursday' %}
+  {% elseif data['intermittentEditThursday'] == 'monthThursday' %}
     Once a month
-  {% elseif data['intermittentThursday'] == 'otherMonthThursday' %}
+  {% elseif data['intermittentEditThursday'] == 'otherMonthThursday' %}
     Once every other month
-  {% elseif data['intermittentThursday'] == 'otherThursday' %}
+  {% elseif data['intermittentEditThursday'] == 'otherThursday' %}
         {{ data['inputOtherThursday'] }}
   {% else %}
 
@@ -163,15 +163,15 @@
 
 
 {% set fridayFrequency %}
-  {% if data['intermittentFriday'] == 'fortnightlyFriday' %}
+  {% if data['intermittentEditFriday'] == 'fortnightlyFriday' %}
     Every fortnight
-  {% elseif data['intermittentFriday'] == 'threeWeeksFriday' %}
+  {% elseif data['intermittentEditFriday'] == 'threeWeeksFriday' %}
     Once every three weeks
-  {% elseif data['intermittentFriday'] == 'monthFriday' %}
+  {% elseif data['intermittentEditFriday'] == 'monthFriday' %}
     Once a month
-  {% elseif data['intermittentFriday'] == 'otherMonthFriday' %}
+  {% elseif data['intermittentEditFriday'] == 'otherMonthFriday' %}
     Once every other month
-  {% elseif data['intermittentFriday'] == 'otherFriday' %}
+  {% elseif data['intermittentEditFriday'] == 'otherFriday' %}
         {{ data['inputOtherFriday'] }}
   {% else %}
 
