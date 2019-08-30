@@ -32,10 +32,10 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-regular-periods" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-phone" method="post">
         {{ checkboxes({
-          "idPrefix": "regularEdit",
-          "name": "regEdit",
+          "idPrefix": "phoneTimes",
+          "name": "phoneEdit",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
@@ -67,6 +67,14 @@
             {
               "value": "friday",
               "text": "Friday"
+            },
+            {
+              "value": "saturday",
+              "text": "Saturday"
+            },
+            {
+              "value": "sunday",
+              "text": "Sunday"
             }
           ]
         }) }}

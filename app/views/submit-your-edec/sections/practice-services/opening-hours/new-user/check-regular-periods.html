@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your regular periods during each week that the practice is closed to patients" %}
+{% set contentTitle = "Check your regular periods during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -36,6 +36,52 @@
 {% endblock %}
 
 {% block content %}
+
+
+{% set "mondayReg" %}
+    {% if data['ODS2MondayReg'] and data["ODSMondayReg"] %}
+        {{ data['ODS2MondayReg'] + data["ampmMondayReg"] + " to " + data["ODSMondayReg"] + data["ampm1MondayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No regular periods that the practice is closed each week
+    {% endif %}
+{% endset %}
+
+{% set "tuesdayReg" %}
+    {% if data['ODS2TuesdayReg'] and data["ODSTuesdayReg"] %}
+        {{ data['ODS2TuesdayReg'] + data["ampmTuesdayReg"] + " to " + data["ODSTuesdayReg"] + data["ampm1TuesdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No regular periods that the practice is closed each week
+  {% endif %}
+{% endset %}
+
+
+{% set "wednesdayReg" %}
+    {% if data['ODS2WednesdayReg'] and data["ODSWednesdayReg"] %}
+        {{ data['ODS2WednesdayReg'] + data["ampmWednesdayReg"] + " to " + data["ODSWednesdayReg"] + data["ampm1WednesdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No regular periods that the practice is closed each week
+    {% endif %}
+{% endset %}
+
+
+{% set "thursdayReg" %}
+    {% if data['ODS2ThursdayReg'] and data["ODSThursdayReg"] %}
+        {{ data['ODS2ThursdayReg'] + data["ampmThursdayReg"] + " to " + data["ODSThursdayReg"] + data["ampm1ThursdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No regular periods that the practice is closed each week
+    {% endif %}
+{% endset %}
+
+{% set "fridayReg" %}
+    {% if data['ODS2FridayReg'] and data["ODSFridayReg"] %}
+        {{ data['ODS2FridayReg'] + data["ampmFridayReg"] + " to " + data["ODSThursdayReg"] + data["ampm1FridayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        No regular periods that the practice is closed each week
+    {% endif %}
+{% endset %}
+
+
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -45,10 +91,6 @@
       <p>Check your regularly closed periods and change any times that need updating.</p>
 
 
-      {{ hint({
-        "text": "Between the hours of 8am and 6.30pm Monday to Friday (except bank holidays)"
-      }) }}
-
       {{ summaryList({
         rows: [
           {
@@ -56,14 +98,14 @@
               text: "Monday"
             },
             value: {
-              html: data['mondayRegularPeriods'] | placeholder('No regular periods that the practice is closed each week')
+              html: mondayReg
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-monday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-regular-periods-closed-monday",
                   text: "Change",
-                  visuallyHiddenText: "your Monday opening hours"
+                  visuallyHiddenText: "your regular periods on Monday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
               ]
             }
@@ -73,14 +115,14 @@
               text: "Tuesday"
             },
             value: {
-              html: data['tuesdayRegularPeriods'] | placeholder('No regular periods that the practice is closed each week')
+              html: tuesdayReg
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-tuesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-regular-periods-closed-tuesday",
                   text: "Change",
-                  visuallyHiddenText: "your Tuesday opening hours"
+                  visuallyHiddenText: "your regular periods on Tuesday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
               ]
             }
@@ -90,14 +132,14 @@
               text: "Wednesday"
             },
             value: {
-              html: data['wednesdayRegularPeriods'] | placeholder('No regular periods that the practice is closed each week')
+              html: wednesdayReg
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-wednesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-regular-periods-closed-wednesday",
                   text: "Change",
-                  visuallyHiddenText: "your Wednesday opening hours"
+                  visuallyHiddenText: "your regular periods on Wednesday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
               ]
             }
@@ -107,14 +149,14 @@
               text: "Thursday"
             },
             value: {
-              html: data['thursdayRegularPeriods'] | placeholder('No regular periods that the practice is closed each week')
+              html: thursdayReg
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-thursday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-regular-periods-closed-thursday",
                   text: "Change",
-                  visuallyHiddenText: "your Thursday opening hours"
+                  visuallyHiddenText: "your regular periods on Thursday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
               ]
             }
@@ -124,14 +166,14 @@
               text: "Friday"
             },
             value: {
-              html: data['fridayRegularPeriods'] | placeholder('8am to 9am<br>5:30pm to 6:30pm')
+              html: fridayReg
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular-periods-closed-friday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-regular-periods-closed-friday",
                   text: "Change",
-                  visuallyHiddenText: "your Friday opening hours"
+                  visuallyHiddenText: "your regular periods on Friday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
               ]
             }

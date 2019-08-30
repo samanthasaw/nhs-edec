@@ -235,6 +235,19 @@ const times = [
     showNoOptionsFound: false,
     displayMenu: 'overlay',
     })
+
+    $("input[name='sundayPhonesOpen']").on("click", function () {
+      if ($("input[name='sundayPhonesOpen']:checked").val() === "closed") {
+        console.log("closed");
+        $(".app-opening-time__container").addClass("app-u-display--none ");
+        $('.app-opening-time__container').find('input, textarea, button, select').attr('disabled', true);
+      } else {
+        console.log("open");
+        $(".app-opening-time__container").removeClass("app-u-display--none "); // Find inputs that are now visible and make them disabled.
+
+        $('.app-opening-time__container').find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+      }
+    });
 </script>
 {% endblock %}
 
@@ -263,7 +276,40 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-phone-answers" method="post">
+      <form action="" method="post">
+
+        {% if data['sundayPhonesOpen'] === "Closed" %}
+          {% set closedTrue = "True" %}
+        {% else %}
+          {% set openTrue = "True" %}
+        {% endif %}
+
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "sundayPhonesOpen",
+          "classes": "nhsuk-radios--inline",
+          "fieldset": {
+            "legend": {
+              "text": "Are your phone lines open on Sunday?",
+              "isPageHeading": false,
+              "classes": ""
+            }
+          },
+          "items": [
+            {
+              "value": "open",
+              "text": "Yes",
+              "checked": openTrue
+            },
+            {
+              "value": "closed",
+              "text": "No",
+              "checked": closedTrue
+            }
+          ]
+        }) }}
+
+        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
 
         {% call fieldset({
           "legend": {
@@ -567,6 +613,8 @@ const times = [
         <p>
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
         </p>
+
+              </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
