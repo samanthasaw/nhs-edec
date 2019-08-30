@@ -1,0 +1,487 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check the general practice IT details you submitted last year" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+
+{% set practiceLeaflet %}
+  {% if data['practiceLeaflet'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set reviewsLeaflet %}
+  {% if data['reviewsLeaflet'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set availableLeaflet %}
+  {% if data['availableLeaflet'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set complaintsPolicy %}
+  {% if data['complaintsPolicy'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set refusedApplication %}
+  {% if data['refusedApplication'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set removingPatients %}
+  {% if data['removingPatients'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set engagePpg %}
+  {% if data['engagePpg'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set representativePpg %}
+  {% if data['representativePpg'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set callRecall %}
+  {% if data['callRecall'] == 'posterPatient' %}
+    Poster in waiting room
+  {% elif data['callRecall'] == 'notificationWebsite' %}
+    <p> Notification on practice website </p>
+  {% elif data['callRecall'] == 'letterPatient' %}
+    <p> Letter to patient </p>
+  {% elif data['callRecall'] == 'textMessage' %}
+    <p> Text message to patient </p>
+  {% elif data['callRecall'] == 'phoneCall' %}
+    <p> Phone call to patient </p>
+  {% elif data['callRecall'] == 'consultation' %}
+    <p> During consultation or appointment </p>
+  {% elif data['callRecall'] == 'other' %}
+    <p> Other - {{ data['electronicTechSolution'] }} </p>
+  {% elif data['callRecall'] == 'othernonElectronic' %}
+    <p> Other - {{ data['nonElectronicTechSolution'] }} </p>
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+  {% endset %}
+
+  {% if data['callRecall'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set totalRecall %}
+    {% if cheese == 'stringyCheese' %}
+      {{ callRecall | safe }}
+    {% else %}
+      {% for item in data['callRecall'] %}
+      {% if item == 'posterPatient' %}
+        <p>Poster in waiting room</p>
+      {% elif item == 'notificationWebsite' %}
+        <p> Notification on practice website </p>
+      {% elif item == 'letterPatient' %}
+        <p> Letter to patient </p>
+      {% elif item == 'textMessage' %}
+        <p> Text message to patient </p>
+      {% elif item == 'phoneCall' %}
+        <p> Phone call to patient </p>
+      {% elif item == 'consultation' %}
+        <p> During consultation or appointment </p>
+      {% elif item == 'other' %}
+        <p> Other - {{ data['electronicTechSolution'] }} </p>
+      {% elif item == 'othernonElectronic' %}
+        <p> Other - {{ data['nonElectronicTechSolution'] }} </p>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
+
+
+  {% set electronicTechSolution %}
+    {% if data['electronicTechSolution'] %}
+      <br> {{ data['electronicTechSolution'] }}
+    {% endif %}
+  {% endset %}
+
+  {% set nonElectronicTechSolution %}
+    {% if data['nonElectronicTechSolution'] %}
+      <br> {{ data['nonElectronicTechSolution'] }}
+    {% endif %}
+  {% endset %}
+
+
+{% set whistleblowing %}
+  {% if data['whistleblowing'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set whistleLead %}
+  {% if data['whistleLead'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT</span>{{ contentTitle }}</h1>
+
+      <p>Check your general practice IT and change any incorrect details.</p>
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "The practice promotes and offers the facility for patients to receive consultations electronically"
+            },
+            value: {
+              text: practiceLeaflet | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/return-user/practice-leaflet",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice produces a leaflet that includes all of the requirements set out in its contract"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice promotes and offers the facility for nursing homes to receive consultations electronically"
+            },
+            value: {
+              text: reviewsLeaflet | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/return-user/reviews-leaflet",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice reviews and updates its leaflet at least once every 12 months"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice promotes and offers the facility for residential homes to receive consultations electronically"
+            },
+            value: {
+              text: availableLeaflet | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/return-user/available-leaflet",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice leaflet is made available for patients/prospective patients"
+                }
+              ]
+            }
+           },
+           {
+             key: {
+               text: "The practice principle clinical system is accessible outside the practice for the following purposes:"
+             },
+             value: {
+               text: complaintsPolicy | placeholder('Yes')
+             },
+             actions: {
+               items: [
+                 {
+                   href: "/submit-your-edec/sections/practice-procedures/return-user/complaints-policy",
+                   text: "Change",
+                   visuallyHiddenText: "if the practice has a complaints policy which complies with the NHS complaints procedure and if it is advertised to patients"
+                 }
+               ]
+             }
+           },
+           {
+             key: {
+               text: "Local acute trust discharge letters/summaries received by the practice electronically"
+             },
+             value: {
+               text: refusedApplication | placeholder('Yes')
+             },
+             actions: {
+               items: [
+                 {
+                   href: "/submit-your-edec/sections/practice-procedures/return-user/refused-application",
+                   text: "Change",
+                   visuallyHiddenText: "if the practice can demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them"
+                 }
+               ]
+             }
+            },
+            {
+              key: {
+                text: "The practice is enriching the Summary Care Record of patients who have given their consent, including those living with severe frailty?"
+              },
+              value: {
+                text: removingPatients | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/removing-patients",
+                    text: "Change",
+                    visuallyHiddenText: "if when removing patients from its list the practice can demonstrate that it does so in accordance with contractual requirements and provides the required notice, including providing an explanation of the reasons in writing to the patient"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure), the practice as contract holder, has reviewed these arrangements for:
+compliance with the ten NDG data security standards and applicable legal requirements
+appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE) and CE+, where appropriate"
+              },
+              value: {
+                text: engagePpg | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/engage-ppg",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice can evidence that they have engaged with their Patient Participation Group (PPG) throughout the year and make available such feedback to the practice population including actions and reports, including where they have acted on suggestions for improvement"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Does the practice have a process in place to systematically review all locally developed Templates and Searches to ensure alignment with the transition to SNOMED CT?"
+              },
+              value: {
+                text: representativePpg | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/representative-ppg",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice is able to show that the Patient Participation Group (PPG) is properly representative of its practice population or that it has made and continues to make efforts to ensure it is representative of its local population"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "The practice have completely digitised all of its paper records (Lloyd George)?"
+              },
+              value: {
+                html: totalRecall | placeholder('Letter to patient')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/call-recall-2",
+                    text: "Change",
+                    visuallyHiddenText: "how the practice’s eligible population are contacted"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "The practice uses offsite storage for its paper patient records? CONDITIONAL ON A NO TO THE LLOYD GEORGE QUESTION"
+              },
+              value: {
+                text: whistleblowing | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/whistleblowing",
+                    text: "Change",
+                    visuallyHiddenText: "if the GP practice has updated their whistleblowing policy in light of published guidance"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "The practice makes 25% of their appointments available for booking online?"
+              },
+              value: {
+                text: whistleLead | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/whistleblowing-lead",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice has identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "The practice can process directly booked appointments from NHS 111?"
+              },
+              value: {
+                text: whistleLead | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/return-user/whistleblowing-lead",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice has identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead"
+                  }
+                ]
+              }
+            }
+        ]
+      }) }}
+
+
+      <h2>Optional information</h2>
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+      {
+        key: {
+          text: "The practice and its registered patients have access to a shared online system which allows patients to engage with their GP by:"
+        },
+        value: {
+          text: startDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/return-user/contract-start-date",
+              text: "Change",
+              visuallyHiddenText: "contract start date"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Where the practice works within a federation it is able to use its principal clinical system and its Isture to support shared working between practices in the following ways:"
+        },
+        value: {
+          text: endDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/return-user/contract-end-date",
+              text: "Change",
+              visuallyHiddenText: "contract end date"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "The practice routinely electronically orders or receives the following diagnostics tests with their main acute provider"
+        },
+        value: {
+          text: endDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/return-user/contract-end-date",
+              text: "Change",
+              visuallyHiddenText: "contract end date"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records in the following ways: "
+        },
+        value: {
+          text: endDate
+        },
+        actions: {
+          items: [
+            {
+              href: "/submit-your-edec/sections/practice-details/return-user/contract-end-date",
+              text: "Change",
+              visuallyHiddenText: "contract end date"
+            }
+          ]
+        }
+      }
+      ]
+    }) }}
+
+
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-question-card" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and continue">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}
