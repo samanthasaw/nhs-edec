@@ -836,7 +836,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-monday-time', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-monday-frequency', function (req, res) {
   let answer = req.session.data.intermittentEdit;
 
   if (answer) {
@@ -856,7 +856,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-tuesday-time', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-tuesday-frequency', function (req, res) {
   let answer = req.session.data.intermittentEdit;
 
   if (answer) {
@@ -873,7 +873,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-wednesday-time', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-wednesday-frequency', function (req, res) {
   let answer = req.session.data.intermittentEdit;
 
   if (answer) {
@@ -890,7 +890,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 });
 
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-thursday-time', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-thursday-frequency', function (req, res) {
   let answer = req.session.data.intermittentEdit;
 
   if (answer) {
@@ -903,7 +903,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-time', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-frequency', function (req, res) {
   let answer = req.session.data.intermittentEdit;
 
       res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-intermittent-periods')
