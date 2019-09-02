@@ -920,7 +920,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/opening-hours-complete')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/is-branch-phone-same')
 
   }   else {
 
@@ -1540,6 +1540,22 @@ router.get('/submit-your-edec/sections/practice-details/return-user/redirect', f
 
   res.redirect('/submit-your-edec/sections/practice-details/return-user/configuration-structure')
 
+});
+
+// General practice IT
+
+
+router.post('/submit-your-edec/sections/general-practice-it/return-user/lloyd-george', function (req, res) {
+  let answer = req.body.lloydGeorge;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/return-user/new-general-details')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/return-user/offsite-storage')
+  }
 });
 
 

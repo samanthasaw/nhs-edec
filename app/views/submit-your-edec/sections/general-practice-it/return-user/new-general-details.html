@@ -8,6 +8,28 @@
 {% set contentTitle = "Check the general practice IT details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='lloydGeorge']" ).on( "click", function() {
+  if ( $( "input[name='lloydGeorge']:checked" ).val() === "yes") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+
+// This kills any row that is empty
+$('div.nhsuk-summary-list__row').each(function() {
+         if ($(this).text().trim() === "") {
+                   $(this).css('display','none');
+         }
+});
+</script>
 {% endblock %}
 
 
@@ -139,8 +161,26 @@
   {% endset %}
 
 
-{% set whistleblowing %}
-  {% if data['whistleblowing'] == 'yes' %}
+{% set lloydGeorge %}
+  {% if data['lloydGeorge'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% if data['lloydGeorge'] %}
+    {% if data['lloydGeorge'] == "no" %}
+      {% set lloydGeorgeRow = "show" %}
+    {% else %}
+      {% set lloydGeorgeRow = "hide" %}
+    {% endif %}
+{% else %}
+    {% set lloydGeorgeRow = "show" %}
+{% endif %}
+
+{% set offsiteStorage %}
+  {% if data['offsiteStorage'] == 'yes' %}
     Yes
   {% else %}
     No
@@ -148,13 +188,6 @@
 {% endset %}
 
 
-{% set whistleLead %}
-  {% if data['whistleLead'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -189,55 +222,21 @@
         rows: [
           {
             key: {
-              text: "The practice promotes and offers the facility for patients to receive consultations electronically"
+              text: "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
             },
             value: {
-              text: practiceLeaflet | placeholder('Yes')
+              html: "<strong>Patients:</strong> video <br><br> <strong>Nursing homes:</strong> sfsf <br><br> <strong>Residential homes:</strong> fgfd"
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-procedures/return-user/practice-leaflet",
+                  href: "/submit-your-edec/sections/general-practice-it/return-user/patient-consultations-3",
                   text: "Change",
-                  visuallyHiddenText: "if the practice produces a leaflet that includes all of the requirements set out in its contract"
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
                 }
               ]
             }
           },
-          {
-            key: {
-              text: "The practice promotes and offers the facility for nursing homes to receive consultations electronically"
-            },
-            value: {
-              text: reviewsLeaflet | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-procedures/return-user/reviews-leaflet",
-                  text: "Change",
-                  visuallyHiddenText: "if the practice reviews and updates its leaflet at least once every 12 months"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "The practice promotes and offers the facility for residential homes to receive consultations electronically"
-            },
-            value: {
-              text: availableLeaflet | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-procedures/return-user/available-leaflet",
-                  text: "Change",
-                  visuallyHiddenText: "if the practice leaflet is made available for patients/prospective patients"
-                }
-              ]
-            }
-           },
            {
              key: {
                text: "The practice principle clinical system is accessible outside the practice for the following purposes:"
@@ -248,7 +247,7 @@
              actions: {
                items: [
                  {
-                   href: "/submit-your-edec/sections/practice-procedures/return-user/complaints-policy",
+                   href: "/submit-your-edec/sections/general-practice-it/return-user/complaints-policy",
                    text: "Change",
                    visuallyHiddenText: "if the practice has a complaints policy which complies with the NHS complaints procedure and if it is advertised to patients"
                  }
@@ -265,7 +264,7 @@
              actions: {
                items: [
                  {
-                   href: "/submit-your-edec/sections/practice-procedures/return-user/refused-application",
+                   href: "/submit-your-edec/sections/general-practice-it/return-user/refused-application",
                    text: "Change",
                    visuallyHiddenText: "if the practice can demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them"
                  }
@@ -282,7 +281,7 @@
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/removing-patients",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/removing-patients",
                     text: "Change",
                     visuallyHiddenText: "if when removing patients from its list the practice can demonstrate that it does so in accordance with contractual requirements and provides the required notice, including providing an explanation of the reasons in writing to the patient"
                   }
@@ -301,7 +300,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/engage-ppg",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/engage-ppg",
                     text: "Change",
                     visuallyHiddenText: "if the practice can evidence that they have engaged with their Patient Participation Group (PPG) throughout the year and make available such feedback to the practice population including actions and reports, including where they have acted on suggestions for improvement"
                   }
@@ -318,7 +317,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/representative-ppg",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/representative-ppg",
                     text: "Change",
                     visuallyHiddenText: "if the practice is able to show that the Patient Participation Group (PPG) is properly representative of its practice population or that it has made and continues to make efforts to ensure it is representative of its local population"
                   }
@@ -330,12 +329,12 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
                 text: "The practice have completely digitised all of its paper records (Lloyd George)?"
               },
               value: {
-                html: totalRecall | placeholder('Letter to patient')
+                text: lloydGeorge | placeholder('Yes')
               },
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/call-recall-2",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/lloyd-george",
                     text: "Change",
                     visuallyHiddenText: "how the practice’s eligible population are contacted"
                   }
@@ -344,21 +343,21 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
             },
             {
               key: {
-                text: "The practice uses offsite storage for its paper patient records? CONDITIONAL ON A NO TO THE LLOYD GEORGE QUESTION"
+                text: "The practice uses offsite storage for its paper patient records?"
               },
               value: {
-                text: whistleblowing | placeholder('Yes')
+                text: offsiteStorage | placeholder('Yes')
               },
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/whistleblowing",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/offsite-storage",
                     text: "Change",
                     visuallyHiddenText: "if the GP practice has updated their whistleblowing policy in light of published guidance"
                   }
                 ]
               }
-            },
+            } if lloydGeorgeRow == 'show',
             {
               key: {
                 text: "The practice makes 25% of their appointments available for booking online?"
@@ -369,7 +368,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/whistleblowing-lead",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/whistleblowing-lead",
                     text: "Change",
                     visuallyHiddenText: "if the practice has identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead"
                   }
@@ -386,7 +385,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/practice-procedures/return-user/whistleblowing-lead",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/whistleblowing-lead",
                     text: "Change",
                     visuallyHiddenText: "if the practice has identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead"
                   }
@@ -476,7 +475,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
 
 
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-question-card" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/new-question-card" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and continue">
         </form>

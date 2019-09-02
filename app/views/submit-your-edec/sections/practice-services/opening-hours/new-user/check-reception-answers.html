@@ -120,9 +120,9 @@
     Closed
   {% else %}
     {% if data['ODS2ReceptionSunday'] and data["ODSReceptionSunday"] %}
-        {{ data['ODS2ReceptionSunday'] + data["ampmReceptionSunday"] + " to " + data["ODSReceptionSunday"] + data["ampm1ReceptionSunday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+        {{ data['ODS2ReceptionSunday'] + data["ampmReceptionSunday"] + " to " + data["ODSReceptionSunday"] + data["ampm1ReceptionSunday"] | placeholder('Closed') }}
       {% else %}
-        9am to 12pm<br>2pm to 6pm
+        Closed
     {% endif %}
   {% endif %}
 {% endset %}
