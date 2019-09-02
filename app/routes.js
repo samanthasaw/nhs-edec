@@ -1550,7 +1550,7 @@ router.post('/submit-your-edec/sections/general-practice-it/return-user/lloyd-ge
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/general-practice-it/return-user/new-general-details')
+    res.redirect('/submit-your-edec/sections/general-practice-it/return-user/available-book-online')
 
   } else {
 

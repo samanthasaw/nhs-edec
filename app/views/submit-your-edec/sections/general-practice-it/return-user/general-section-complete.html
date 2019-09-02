@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice uses offsite storage for its paper patient records?" %}
+{% set contentTitle = "You've confirmed your general practice IT details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,36 +33,16 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/available-book-online" method="post">
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT</span>{{ contentTitle }}</h1>
 
-        {{ radios({
-          "idPrefix": "nhs",
-          "name": "offsiteStorage",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
+      <p>You have 4 more sections to complete before you can submit your electronic declaration.</p>
 
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/change-general-details">change your information and clinical governance details</a> at any time before submitting your electronic declaration.</p>
 
-      </form>
-
-
+      {{ button({
+        "text": "Continue",
+        "href": "/submit-your-edec/sections/general-practice-it/return-user/task-list-general-section-complete"
+      }) }}
 
     </div>
   </div>

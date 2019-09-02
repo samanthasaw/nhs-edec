@@ -64,7 +64,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/new-general-details" method="post">
 
         {{ checkboxesDivider({
           "idPrefix": "legitimate",
@@ -82,15 +82,15 @@
         },
           "items": [
             {
-              "value": "laboratory",
+              "value": "localHealth",
               "text": "Other local health providers can access practice records"
             },
             {
-              "value": "orderImaging",
+              "value": "practiceRecords",
               "text": "Local social care providers can access practice records"
             },
             {
-              "value": "receiveImaging",
+              "value": "accessRecords",
               "text": "Practice can access records from other local health providers"
             },
             {

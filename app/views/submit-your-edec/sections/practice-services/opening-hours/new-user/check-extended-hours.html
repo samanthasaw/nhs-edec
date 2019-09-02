@@ -85,15 +85,15 @@
 
 {% set closedWeek %}
   {% if data['closedWeek'] == 'monday' %}
-        On Monday
+        Monday
   {% elif data['closedWeek'] == 'tuesday' %}
-    <p> On Tuesday </p>
+    <p> Tuesday </p>
   {% elif data['closedWeek'] == 'wednesday' %}
-    <p> On Wednesday </p>
+    <p> Wednesday </p>
   {% elif data['closedWeek'] == 'thursday' %}
-    <p> On Thursday </p>
+    <p> Thursday </p>
   {% elif data['closedWeek'] == 'friday' %}
-    <p> On Friday </p>
+    <p> Friday </p>
   {% else %}
     This does not apply to my practice
   {% endif %}
@@ -106,15 +106,15 @@
     {% else %}
       {% for item in data['closedWeek'] %}
       {% if item == 'monday' %}
-        <p>On Monday</p>
+        <p> Monday</p>
       {% elif item == 'tuesday' %}
-        <p> On Tuesday </p>
+        <p> Tuesday </p>
       {% elif item == 'wednesday' %}
-        <p> On Wednesday </p>
+        <p> Wednesday </p>
       {% elif item == 'thursday' %}
-        <p> On Thursday </p>
+        <p> Thursday </p>
       {% elif item == 'friday' %}
-        <p> On Friday </p>
+        <p> Friday </p>
       {% endif %}
       {% endfor %}
     {% endif %}
