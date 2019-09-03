@@ -82,122 +82,128 @@
 
 
 
-  {% set selectPatientConsultations %}
-    {% if data['selectPatientConsultations'] == 'email' %}
-      <p> Email </p>
-    {% elif data['selectPatientConsultations'] == 'video' %}
-      <p> Video </p>
-    {% elif data['selectPatientConsultations'] == 'telephone' %}
-      <p> Telephone </p>
-      {% elif data['selectPatientConsultations'] == 'onlineConsultation' %}
-        <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
-    {% else %}
-      None of the above
-    {% endif %}
-    {% endset %}
 
-    {% if data['selectPatientConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
-    {% set patientConsultations %}
-      {% if cheese == 'stringyCheese' %}
-        {{ selectPatientConsultations | safe }}
+
+    {% set selectPatientConsultations %}
+      {% if data['selectPatientConsultations'] == 'email' %}
+        <p> <strong>Patients: </strong>Email </p>
+      {% elif data['selectPatientConsultations'] == 'video' %}
+        <p> <strong>Patients: </strong>Video </p>
+      {% elif data['selectPatientConsultations'] == 'telephone' %}
+        <p> <strong>Patients: </strong>Telephone </p>
+        {% elif data['selectPatientConsultations'] == 'onlineConsultation' %}
+          <p> <strong>Patients: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
       {% else %}
-        {% for item in data['selectPatientConsultations'] %}
-        {% if item == 'email' %}
-        <p> Email </p>
-        {% elif item == 'video' %}
-        <p> Video </p>
-        {% elif item == 'telephone' %}
-        <p> Telephone </p>
-        {% elif item == 'onlineConsultation' %}
-        <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
-        {% else %}
-          None of the above
-        {% endif %}
-        {% endfor %}
+        <p><strong>Patients: </strong>Not applicable</p>
       {% endif %}
-    {% endset %}
+      {% endset %}
 
-
-
-      {% set selectNursingConsultations %}
-        {% if data['selectNursingConsultations'] == 'email' %}
-          <p> Email </p>
-        {% elif data['selectNursingConsultations'] == 'video' %}
-          <p> Video </p>
-        {% elif data['selectNursingConsultations'] == 'telephone' %}
-          <p> Telephone </p>
-          {% elif data['selectNursingConsultations'] == 'onlineConsultation' %}
-            <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
+      {% if data['selectPatientConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+      {% set patientConsultations %}
+        {% if cheese == 'stringyCheese' %}
+          {{ selectPatientConsultations | safe }}
         {% else %}
-          None of the above
-        {% endif %}
-        {% endset %}
-
-        {% if data['selectNursingConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
-        {% set nursingConsultations %}
-          {% if cheese == 'stringyCheese' %}
-            {{ selectNursingConsultations | safe }}
+          {% for item in data['selectPatientConsultations'] %}
+          {% if item == 'email' %}
+          <p> Email </p>
+          {% elif item == 'video' %}
+          <p> Video </p>
+          {% elif item == 'telephone' %}
+          <p> Telephone </p>
+          {% elif item == 'onlineConsultation' %}
+          <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
           {% else %}
-            {% for item in data['selectNursingConsultations'] %}
-            {% if item == 'email' %}
-            <p> Email </p>
-            {% elif item == 'video' %}
-            <p> Video </p>
-            {% elif item == 'telephone' %}
-            <p> Telephone </p>
-            {% elif item == 'onlineConsultation' %}
-            <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
-            {% else %}
-              None of the above
-            {% endif %}
-            {% endfor %}
+            Not applicable
           {% endif %}
-        {% endset %}
+          {% endfor %}
+        {% endif %}
+      {% endset %}
 
 
 
-              {% set selectResidentialConsultations %}
-                {% if data['selectResidentialConsultations'] == 'email' %}
-                  <p> Email </p>
-                {% elif data['selectResidentialConsultations'] == 'video' %}
-                  <p> Video </p>
-                {% elif data['selectResidentialConsultations'] == 'telephone' %}
-                  <p> Telephone </p>
-                  {% elif data['selectResidentialConsultations'] == 'onlineConsultation' %}
-                    <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
-                {% else %}
-                  None of the above
-                {% endif %}
-                {% endset %}
+        {% set selectNursingConsultations %}
+          {% if data['selectNursingConsultations'] == 'email' %}
+            <p><strong>Nursing homes: </strong>Email </p>
+          {% elif data['selectNursingConsultations'] == 'video' %}
+            <p><strong>Nursing homes: </strong>Video </p>
+          {% elif data['selectNursingConsultations'] == 'telephone' %}
+            <p><strong>Nursing homes: </strong>Telephone </p>
+            {% elif data['selectNursingConsultations'] == 'onlineConsultation' %}
+              <p><strong>Nursing homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+          {% else %}
+            <p><strong>Nursing homes: </strong>Not applicable</p>
+          {% endif %}
+          {% endset %}
 
-                {% if data['selectResidentialConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
-                {% set residentialConsultations %}
-                  {% if cheese == 'stringyCheese' %}
-                    {{ selectResidentialConsultations | safe }}
+          {% if data['selectNursingConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+          {% set nursingConsultations %}
+            {% if cheese == 'stringyCheese' %}
+              {{ selectNursingConsultations | safe }}
+            {% else %}
+              {% for item in data['selectNursingConsultations'] %}
+              {% if item == 'email' %}
+              <p> Email </p>
+              {% elif item == 'video' %}
+              <p> Video </p>
+              {% elif item == 'telephone' %}
+              <p> Telephone </p>
+              {% elif item == 'onlineConsultation' %}
+              <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
+              {% else %}
+                Not applicable
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endset %}
+
+
+
+                {% set selectResidentialConsultations %}
+                  {% if data['selectResidentialConsultations'] == 'email' %}
+                    <p><strong>Residential homes: </strong> Email </p>
+                  {% elif data['selectResidentialConsultations'] == 'video' %}
+                    <p><strong>Residential homes: </strong> Video </p>
+                  {% elif data['selectResidentialConsultations'] == 'telephone' %}
+                    <p><strong>Residential homes: </strong>Telephone </p>
+                    {% elif data['selectResidentialConsultations'] == 'onlineConsultation' %}
+                      <p><strong>Residential homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
                   {% else %}
-                    {% for item in data['selectResidentialConsultations'] %}
-                    {% if item == 'email' %}
-                    <p> Email </p>
-                    {% elif item == 'video' %}
-                    <p> Video </p>
-                    {% elif item == 'telephone' %}
-                    <p> Telephone </p>
-                    {% elif item == 'onlineConsultation' %}
-                    <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
-                    {% else %}
-                      None of the above
-                    {% endif %}
-                    {% endfor %}
+                    <p><strong>Residential homes: </strong>Not applicable</p>
                   {% endif %}
-                {% endset %}
+                  {% endset %}
+
+                  {% if data['selectResidentialConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+                  {% set residentialConsultations %}
+                    {% if cheese == 'stringyCheese' %}
+                      {{ selectResidentialConsultations | safe }}
+                    {% else %}
+                      {% for item in data['selectResidentialConsultations'] %}
+                      {% if item == 'email' %}
+                      <p> Email </p>
+                      {% elif item == 'video' %}
+                      <p> Video </p>
+                      {% elif item == 'telephone' %}
+                      <p> Telephone </p>
+                      {% elif item == 'onlineConsultation' %}
+                      <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                      {% else %}
+                        Not applicable
+                      {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endset %}
+
+
 
 
 
   {% set enrichScr %}
     {% if data['enrichScr'] == 'yes' %}
       Yes
-    {% else %}
+    {% elif data['enrichScr'] == 'no' %}
       No
+    {% else %}
+      Yes
     {% endif %}
   {% endset %}
 
@@ -215,8 +221,10 @@
     {% set snomed %}
       {% if data['snomed'] == 'yes' %}
         Yes
-      {% else %}
+      {% elif data['enrichScr'] == 'no' %}
         No
+      {% else %}
+        Yes
       {% endif %}
     {% endset %}
 

@@ -35,6 +35,8 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 
 
+
+
       {% set electronicDischarge %}
         {% if data['electronicDischarge'] == 'outPatients' %}
           <p> The majority of local acute discharge summaries/letters are received electronically for <strong>out patients</strong> </p>
@@ -102,33 +104,317 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 
 
-  {% set enrichScr %}
-    {% if data['enrichScr'] == 'yes' %}
-      Yes
+
+
+
+      {% set selectPatientConsultations %}
+        {% if data['selectPatientConsultations'] == 'email' %}
+          <p> <strong>Patients: </strong>Email </p>
+        {% elif data['selectPatientConsultations'] == 'video' %}
+          <p> <strong>Patients: </strong>Video </p>
+        {% elif data['selectPatientConsultations'] == 'telephone' %}
+          <p> <strong>Patients: </strong>Telephone </p>
+          {% elif data['selectPatientConsultations'] == 'onlineConsultation' %}
+            <p> <strong>Patients: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+        {% else %}
+          <p><strong>Patients: </strong>Not applicable</p>
+        {% endif %}
+        {% endset %}
+
+        {% if data['selectPatientConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+        {% set patientConsultations %}
+          {% if cheese == 'stringyCheese' %}
+            {{ selectPatientConsultations | safe }}
+          {% else %}
+            {% for item in data['selectPatientConsultations'] %}
+            {% if item == 'email' %}
+            <p> Email </p>
+            {% elif item == 'video' %}
+            <p> Video </p>
+            {% elif item == 'telephone' %}
+            <p> Telephone </p>
+            {% elif item == 'onlineConsultation' %}
+            <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
+            {% else %}
+              Not applicable
+            {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endset %}
+
+
+
+          {% set selectNursingConsultations %}
+            {% if data['selectNursingConsultations'] == 'email' %}
+              <p><strong>Nursing homes: </strong>Email </p>
+            {% elif data['selectNursingConsultations'] == 'video' %}
+              <p><strong>Nursing homes: </strong>Video </p>
+            {% elif data['selectNursingConsultations'] == 'telephone' %}
+              <p><strong>Nursing homes: </strong>Telephone </p>
+              {% elif data['selectNursingConsultations'] == 'onlineConsultation' %}
+                <p><strong>Nursing homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+            {% else %}
+              <p><strong>Nursing homes: </strong>Not applicable</p>
+            {% endif %}
+            {% endset %}
+
+            {% if data['selectNursingConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+            {% set nursingConsultations %}
+              {% if cheese == 'stringyCheese' %}
+                {{ selectNursingConsultations | safe }}
+              {% else %}
+                {% for item in data['selectNursingConsultations'] %}
+                {% if item == 'email' %}
+                <p> Email </p>
+                {% elif item == 'video' %}
+                <p> Video </p>
+                {% elif item == 'telephone' %}
+                <p> Telephone </p>
+                {% elif item == 'onlineConsultation' %}
+                <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                {% else %}
+                  Not applicable
+                {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endset %}
+
+
+
+                  {% set selectResidentialConsultations %}
+                    {% if data['selectResidentialConsultations'] == 'email' %}
+                      <p><strong>Residential homes: </strong> Email </p>
+                    {% elif data['selectResidentialConsultations'] == 'video' %}
+                      <p><strong>Residential homes: </strong> Video </p>
+                    {% elif data['selectResidentialConsultations'] == 'telephone' %}
+                      <p><strong>Residential homes: </strong>Telephone </p>
+                      {% elif data['selectResidentialConsultations'] == 'onlineConsultation' %}
+                        <p><strong>Residential homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                    {% else %}
+                      <p><strong>Residential homes: </strong>Not applicable</p>
+                    {% endif %}
+                    {% endset %}
+
+                    {% if data['selectResidentialConsultations'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+                    {% set residentialConsultations %}
+                      {% if cheese == 'stringyCheese' %}
+                        {{ selectResidentialConsultations | safe }}
+                      {% else %}
+                        {% for item in data['selectResidentialConsultations'] %}
+                        {% if item == 'email' %}
+                        <p> Email </p>
+                        {% elif item == 'video' %}
+                        <p> Video </p>
+                        {% elif item == 'telephone' %}
+                        <p> Telephone </p>
+                        {% elif item == 'onlineConsultation' %}
+                        <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                        {% else %}
+                          Not applicable
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endset %}
+
+
+
+
+                  {% set enrichScr %}
+                    {% if data['enrichScr'] == 'yes' %}
+                      Yes
+                    {% elif data['enrichScr'] == 'no' %}
+                      No
+                    {% else %}
+                      Yes
+                    {% endif %}
+                  {% endset %}
+
+
+                    {% set reviewArrangements %}
+                      {% if data['reviewArrangements'] == 'yes' %}
+                        Yes
+                      {% elif data['reviewArrangements'] == 'no' %}
+                        No
+                      {% else %}
+                        This does not apply to my practice
+                      {% endif %}
+                    {% endset %}
+
+                    {% set snomed %}
+                      {% if data['snomed'] == 'yes' %}
+                        Yes
+                      {% elif data['enrichScr'] == 'no' %}
+                        No
+                      {% else %}
+                        Yes
+                      {% endif %}
+                    {% endset %}
+
+
+
+
+    {% set engageOnlineSystem %}
+      {% if data['engageOnlineSystem'] == 'recordData' %}
+        <p> Patients can record their personal health data which is accessible online by the GP </p>
+      {% elif data['engageOnlineSystem'] == 'careOutcomes' %}
+        <p> Patients and GPs can online collaboratively set goals and care outcomes and track progress against these </p>
+      {% elif data['engageOnlineSystem'] == 'notApplicable' %}
+        <p> This does not apply to my practice </p>
+      {% else %}
+        No answer provided
+      {% endif %}
+      {% endset %}
+
+      {% if data['engageOnlineSystem'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+      {% set onlineSystem %}
+        {% if cheese == 'stringyCheese' %}
+          {{ engageOnlineSystem | safe }}
+        {% else %}
+          {% for item in data['engageOnlineSystem'] %}
+          {% if item == 'recordData' %}
+          <p> Patients can record their personal health data which is accessible online by the GP </p>
+          {% elif item == 'careOutcomes' %}
+          <p> Patients and GPs can online collaboratively set goals and care outcomes and track progress against these </p>
+          {% elif item == 'notApplicable' %}
+          <p> This does not apply to my practice </p>
+          {% else %}
+            No answer provided
+          {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endset %}
+
+
+
+          {% set sharedWorking %}
+            {% if data['sharedWorking'] == 'records' %}
+              <p> Clinical system (records) </p>
+            {% elif data['sharedWorking'] == 'appointments' %}
+              <p> Appointment booking and management </p>
+            {% elif data['sharedWorking'] == 'telephony' %}
+              <p> Integrated telephony systems across practices </p>
+              {% elif data['sharedWorking'] == 'reporting' %}
+                <p> Reporting on activity and coded clinical data </p>
+                {% elif data['sharedWorking'] == 'morbidity' %}
+                  <p> Morbidity Registers across aggregated (federation) populations </p>
+                  {% elif data['sharedWorking'] == 'notApplicable' %}
+                    <p> This does not apply to my practice </p>
+          {% else %}
+              No answer provided
+            {% endif %}
+            {% endset %}
+
+            {% if data['sharedWorking'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+            {% set fedShare %}
+              {% if cheese == 'stringyCheese' %}
+                {{ sharedWorking | safe }}
+              {% else %}
+                {% for item in data['sharedWorking'] %}
+                {% if item == 'records' %}
+                <p> Clinical system (records) </p>
+                {% elif item == 'appointments' %}
+                <p> Appointment booking and management </p>
+                {% elif item == 'telephony' %}
+                <p> Integrated telephony systems across practices </p>
+                {% elif item == 'reporting' %}
+                <p> Reporting on activity and coded clinical data </p>
+                {% elif item == 'morbidity' %}
+                <p> Morbidity Registers across aggregated (federation) populations </p>
+                {% elif item == 'notApplicable' %}
+                <p> This does not apply to my practice </p>
+                {% else %}
+                  No answer provided
+                {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endset %}
+
+
+
+
+
+
+
+
+{% set diagnostics %}
+  {% if data['diagnostics'] == 'laboratory' %}
+    <p> Place orders for common laboratory diagnostic tests </p>
+  {% elif data['diagnostics'] == 'orderImaging' %}
+    <p> Place orders for common imaging and diagnostic tests </p>
+  {% elif data['diagnostics'] == 'receiveImaging' %}
+    <p> Receive diagnostic reports for common imaging and diagnostic tests </p>
+  {% elif data['diagnostics'] == 'notApplicable' %}
+    <p> This does not apply to my practice </p>
+{% else %}
+    No answer provided
+  {% endif %}
+  {% endset %}
+
+
+
+  {% if data['diagnostics'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set electronicTests %}
+    {% if cheese == 'stringyCheese' %}
+      {{ diagnostics | safe }}
     {% else %}
-      No
+      {% for item in data['diagnostics'] %}
+      {% if item == 'laboratory' %}
+      <p> Place orders for common laboratory diagnostic tests </p>
+      {% elif item == 'orderImaging' %}
+      <p> Place orders for common imaging and diagnostic tests </p>
+      {% elif item == 'receiveImaging' %}
+      <p> Receive diagnostic reports for common imaging and diagnostic tests </p>
+      {% elif item == 'notApplicable' %}
+      <p> This does not apply to my practice </p>
+      {% else %}
+        No answer provided
+      {% endif %}
+      {% endfor %}
     {% endif %}
   {% endset %}
 
 
-    {% set reviewArrangements %}
-      {% if data['reviewArrangements'] == 'yes' %}
-        Yes
-      {% elif data['reviewArrangements'] == 'no' %}
-        No
-      {% else %}
-        This does not apply to my practice
-      {% endif %}
+  {% set legitimateAccess %}
+    {% if data['legitimateAccess'] == 'localHealth' %}
+      <p> Other local health providers can access practice records </p>
+    {% elif data['legitimateAccess'] == 'practiceRecords' %}
+      <p> Local social care providers can access practice records </p>
+    {% elif data['legitimateAccess'] == 'accessRecords' %}
+      <p> Practice can access records from other local health providers </p>
+    {% elif data['legitimateAccess'] == 'localSocial' %}
+      <p> Practice can access records from local social care providers </p>
+    {% elif data['legitimateAccess'] == 'notApplicable' %}
+      <p> This does not apply to my practice </p>
+  {% else %}
+      No answer provided
+    {% endif %}
     {% endset %}
 
-    {% set snomed %}
-      {% if data['snomed'] == 'yes' %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-    {% endset %}
 
+
+
+  {% if data['legitimateAccess'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set patientData %}
+    {% if cheese == 'stringyCheese' %}
+      {{ legitimateAccess | safe }}
+    {% else %}
+      {% for item in data['legitimateAccess'] %}
+      {% if item == 'localHealth' %}
+      <p> Other local health providers can access practice records </p>
+      {% elif item == 'practiceRecords' %}
+      <p> Local social care providers can access practice records </p>
+      {% elif item == 'accessRecords' %}
+      <p> Practice can access records from other local health providers </p>
+      {% elif item == 'localSocial' %}
+      <p> Practice can access records from local social care providers </p>
+      {% elif item == 'notApplicable' %}
+      <p> This does not apply to my practice </p>
+      {% else %}
+        No answer provided
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
 
 
 
@@ -161,6 +447,14 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 {% set availableBook %}
   {% if data['availableBook'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set nhs111 %}
+  {% if data['nhs111'] == 'yes' %}
     Yes
   {% else %}
     No
@@ -204,12 +498,12 @@ $('div.nhsuk-summary-list__row').each(function() {
               text: "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
             },
             value: {
-              html: "<strong>Patients:</strong> video <br><br> <strong>Nursing homes:</strong> sfsf <br><br> <strong>Residential homes:</strong> fgfd"
+              html: patientConsultations + "<br>" + nursingConsultations + "<br>" + residentialConsultations
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/general-practice-it/return-user/patient-consultations-3",
+                  href: "/submit-your-edec/sections/general-practice-it/return-user/change-patient-consultations-3",
                   text: "Change",
                   visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
                 }
@@ -226,7 +520,7 @@ $('div.nhsuk-summary-list__row').each(function() {
              actions: {
                items: [
                  {
-                   href: "/submit-your-edec/sections/general-practice-it/return-user/clinical-system-3",
+                   href: "/submit-your-edec/sections/general-practice-it/return-user/change-clinical-system-3",
                    text: "Change",
                    visuallyHiddenText: "what purposes the practice principle clinical system is accessible outside the practice for"
                  }
@@ -243,7 +537,7 @@ $('div.nhsuk-summary-list__row').each(function() {
              actions: {
                items: [
                  {
-                   href: "/submit-your-edec/sections/general-practice-it/return-user/electronic-discharge-4",
+                   href: "/submit-your-edec/sections/general-practice-it/return-user/change-electronic-discharge-4",
                    text: "Change",
                    visuallyHiddenText: "if local acute trust discharge letters/summaries are received by the practice electronically"
                  }
@@ -260,7 +554,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/summary-care-record",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-summary-care-record",
                     text: "Change",
                     visuallyHiddenText: "if the practice is enriching the Summary Care Record of patients who have given their consent, including those living with severe frailty"
                   }
@@ -279,7 +573,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/review-arrangements-2",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-review-arrangements-2",
                     text: "Change",
                     visuallyHiddenText: "if the practice as contract holder has reviewed these arrangements where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure)"
                   }
@@ -296,7 +590,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/snomed",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-snomed",
                     text: "Change",
                     visuallyHiddenText: "if the practice has a process in place to systematically review all locally developed Templates and Searches to ensure alignment with the transition to SNOMED CT"
                   }
@@ -313,7 +607,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/lloyd-george",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-lloyd-george",
                     text: "Change",
                     visuallyHiddenText: "how the practice’s eligible population are contacted"
                   }
@@ -330,7 +624,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/offsite-storage",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-offsite-storage",
                     text: "Change",
                     visuallyHiddenText: "if the GP practice has updated their whistleblowing policy in light of published guidance"
                   }
@@ -347,7 +641,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/available-book-online",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-available-book-online",
                     text: "Change",
                     visuallyHiddenText: "if the practice makes 25% of their appointments available for booking online"
                   }
@@ -364,7 +658,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/nhs-111",
+                    href: "/submit-your-edec/sections/general-practice-it/return-user/change-nhs-111",
                     text: "Change",
                     visuallyHiddenText: "if the practice can process directly booked appointments from NHS 111"
                   }
@@ -385,12 +679,12 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
           text: "The practice and its registered patients have access to a shared online system which allows patients to engage with their GP by:"
         },
         value: {
-          text: "" | placeholder('No answer provided')
+          html: onlineSystem | placeholder('No answer provided')
         },
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/shared-online-system-3",
+              href: "/submit-your-edec/sections/general-practice-it/return-user/change-shared-online-system-3",
               text: "Change",
               visuallyHiddenText: "if the practice and its registered patients have access to a shared online system and how it allows patients to engage with their GP"
             }
@@ -402,12 +696,12 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
           text: "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways:"
         },
         value: {
-          text: "" | placeholder('No answer provided')
+          html: fedShare | placeholder('No answer provided')
         },
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/federation-3",
+              href: "/submit-your-edec/sections/general-practice-it/return-user/change-federation-3",
               text: "Change",
               visuallyHiddenText: "where the practice works within a federation how it is able to use its principal clinical system and its IT infrastructure to support shared working between practices"
             }
@@ -419,12 +713,12 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
           text: "The practice routinely electronically orders or receives the following diagnostics tests with their main acute provider"
         },
         value: {
-          text: "" | placeholder('No answer provided')
+          html: electronicTests | placeholder('No answer provided')
         },
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/diagnostics-tests-3",
+              href: "/submit-your-edec/sections/general-practice-it/return-user/change-diagnostics-tests-3",
               text: "Change",
               visuallyHiddenText: "which diagnostics tests the practice routinely electronically orders or receives with their main acute provider"
             }
@@ -436,12 +730,12 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
           text: "Where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records in the following ways: "
         },
         value: {
-          text: "" | placeholder('No answer provided')
+          html: patientData | placeholder('No answer provided')
         },
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/legitimate-access-3",
+              href: "/submit-your-edec/sections/general-practice-it/return-user/change-legitimate-access-3",
               text: "Change",
               visuallyHiddenText: "which ways where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records"
             }
@@ -454,7 +748,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
 
 
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/new-question-card" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/general-section-complete" method="post">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>

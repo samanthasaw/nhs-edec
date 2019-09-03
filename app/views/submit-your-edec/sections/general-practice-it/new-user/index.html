@@ -1,0 +1,130 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "General practice IT flow for a new user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/practice-it-task-list-start">Task list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/general-practice-intro">General practice IT section intro</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/general-practice-intro-page-2">General practice IT section intro page 2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/instructions-card">Instructions card</a></li>
+
+      </ul>
+
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/patient-consultations-3">Patient consultations V3</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/shared-online-system-3">Shared online system V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/clinical-system-3">Clinical system V3</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/federation-3">Federation V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/electronic-discharge-4">Electronic discharge V4</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/diagnostics-tests-3">Diagnostics tests V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/legitimate-access-3">Legitimate access V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/summary-care-record">Summary Care Record</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/review-arrangements-2">Review arrangements V2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/snomed">SNOMED CT</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/lloyd-george">Lloyd George</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/offsite-storage">Offsite storage</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/available-book-online">Available book online</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/nhs-111">NHS 111</a></li>
+      </ul>
+
+
+      <h3>Check your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/check-your-answers">Check your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-patient-consultations-3">Patient consultations V3</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-shared-online-system-3">Shared online system V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-clinical-system-3">Clinical system V3</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-federation-3">Federation V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-electronic-discharge-4">Electronic discharge V4</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-diagnostics-tests-3">Diagnostics tests V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-legitimate-access-3">Legitimate access V3 (optional)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-summary-care-record">Summary Care Record</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-review-arrangements-2">Review arrangements V2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-snomed">SNOMED CT</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-lloyd-george">Lloyd George</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-offsite-storage">Offsite storage</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-available-book-online">Available book online</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-nhs-111">NHS 111</a></li>
+      </ul>
+
+
+        <h3>Section complete</h3>
+
+        <ul>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/general-section-complete">General practice section complete</a></li>
+        </ul>
+
+        <h3>Check and change answers</h3>
+
+        <ul>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-your-answers">Check your answers</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-general-details-2">Check and change your details</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-patient-consultations-3-2">Patient consultations V3</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-shared-online-system-3-2">Shared online system V3 (optional)</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-clinical-system-3-2">Clinical system V3</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-federation-3-2">Federation V3 (optional)</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-electronic-discharge-4-2">Electronic discharge V4</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-diagnostics-tests-3-2">Diagnostics tests V3 (optional)</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-legitimate-access-3-2">Legitimate access V3 (optional)</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-summary-care-record-2">Summary Care Record</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-review-arrangements-2-2">Review arrangements V2</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-snomed-2">SNOMED CT</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-lloyd-george-2">Lloyd George</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-offsite-storage-2">Offsite storage</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-available-book-online-2">Available book online</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-nhs-111-2">NHS 111</a></li>
+        </ul>
+
+      <h3>User goes back into completed section</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/returns-to-complete-section">User goes to the now completed section</a></li>
+      </ul>
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

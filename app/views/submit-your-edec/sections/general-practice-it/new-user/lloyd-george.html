@@ -1,0 +1,72 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice have completely digitised all of its paper records (Lloyd George)?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/lloyd-george" method="post">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "lloydGeorge",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--xl app-heading-xl"
+            }
+          },
+          "hint": {
+            text: "For practices who have commissioned the digitisation of all their records (with the process underway but not yet completed), including offsite storage and scanning on demand, should respond Yes."
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

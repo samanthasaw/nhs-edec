@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your new staff details" %}
+{% set contentTitle = "Check the practice staff details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -101,7 +101,7 @@
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff</span>{{ contentTitle }}</h1>
 
-      <p>Check your staff details and change any incorrect staff details.</p>
+      <p>Check your practice staff details and change any incorrect practice staff details.</p>
 
 
       {{ summaryList({
@@ -248,7 +248,7 @@
       }) }}
 
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/locum-sessions" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/return-user/new-question-card" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and continue">
         </form>

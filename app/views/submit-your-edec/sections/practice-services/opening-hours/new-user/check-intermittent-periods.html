@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your intermittent periods the practice is closed to patients each month" %}
+{% set contentTitle = "Check your closure details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -179,6 +179,43 @@
 {% endset %}
 
 
+{% set closedWeek %}
+  {% if data['closedWeek'] == 'monday' %}
+        Monday
+  {% elif data['closedWeek'] == 'tuesday' %}
+    <p> Tuesday </p>
+  {% elif data['closedWeek'] == 'wednesday' %}
+    <p> Wednesday </p>
+  {% elif data['closedWeek'] == 'thursday' %}
+    <p> Thursday </p>
+  {% elif data['closedWeek'] == 'friday' %}
+    <p> Friday </p>
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+  {% endset %}
+
+  {% if data['closedWeek'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set closedEachWeek %}
+    {% if cheese == 'stringyCheese' %}
+      {{ closedWeek | safe }}
+    {% else %}
+      {% for item in data['closedWeek'] %}
+      {% if item == 'monday' %}
+        <p> Monday</p>
+      {% elif item == 'tuesday' %}
+        <p> Tuesday </p>
+      {% elif item == 'wednesday' %}
+        <p> Wednesday </p>
+      {% elif item == 'thursday' %}
+        <p> Thursday </p>
+      {% elif item == 'friday' %}
+        <p> Friday </p>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
+
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -204,13 +241,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
       </span>{{ contentTitle }}</h1>
 
+      <h2 class="nhsuk-heading-s">Check your intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)</h2>
 
-            {{ hint({
-              "text": "Between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
-            }) }}
 
       {{ summaryList({
         rows: [
@@ -301,6 +336,32 @@
           }
         ]
       }) }}
+
+
+      <h2 class="nhsuk-heading-s">Check your weekly closure details</h2>
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+        {
+          key: {
+            text: "Which days is the practice closed each week for half a day during core contract hours?"
+          },
+          value: {
+            html: closedEachWeek | placeholder('Monday <br> Tuesday')
+          },
+          actions: {
+            items: [
+              {
+                href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-closed-each-week",
+                text: "Change",
+                visuallyHiddenText: "if the practice is closed each week for half a day during core contract hours"
+              }
+            ]
+          }
+        }
+    ]
+  }) }}
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/closed-each-week" method="get">
         <input type="submit" class="nhsuk-button" value="Save and continue">

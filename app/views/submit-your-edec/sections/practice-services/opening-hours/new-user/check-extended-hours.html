@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your closure details and extended opening hours details" %}
+{% set contentTitle = "Check your extended opening hours details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -83,42 +83,6 @@
   {% endif %}
 {% endset %}
 
-{% set closedWeek %}
-  {% if data['closedWeek'] == 'monday' %}
-        Monday
-  {% elif data['closedWeek'] == 'tuesday' %}
-    <p> Tuesday </p>
-  {% elif data['closedWeek'] == 'wednesday' %}
-    <p> Wednesday </p>
-  {% elif data['closedWeek'] == 'thursday' %}
-    <p> Thursday </p>
-  {% elif data['closedWeek'] == 'friday' %}
-    <p> Friday </p>
-  {% else %}
-    This does not apply to my practice
-  {% endif %}
-  {% endset %}
-
-  {% if data['closedWeek'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
-  {% set closedEachWeek %}
-    {% if cheese == 'stringyCheese' %}
-      {{ closedWeek | safe }}
-    {% else %}
-      {% for item in data['closedWeek'] %}
-      {% if item == 'monday' %}
-        <p> Monday</p>
-      {% elif item == 'tuesday' %}
-        <p> Tuesday </p>
-      {% elif item == 'wednesday' %}
-        <p> Wednesday </p>
-      {% elif item == 'thursday' %}
-        <p> Thursday </p>
-      {% elif item == 'friday' %}
-        <p> Friday </p>
-      {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endset %}
 
 
   {% set contractExtend %}
@@ -157,23 +121,6 @@
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",
         rows: [
-        {
-          key: {
-            text: "Is the practice closed each week for half a day during core contract hours?"
-          },
-          value: {
-            html: closedEachWeek | placeholder('On Monday <br> On Tuesday')
-          },
-          actions: {
-            items: [
-              {
-                href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-closed-each-week",
-                text: "Change",
-                visuallyHiddenText: "if the practice is closed each week for half a day during core contract hours"
-              }
-            ]
-          }
-        },
         {
           key: {
             text: "Does the practice have any extended opening hours where the practice provides outside of core contract hours?"

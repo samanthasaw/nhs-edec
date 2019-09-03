@@ -1,0 +1,68 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "What the General practice IT section covers" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "/submit-your-edec/sections/general-practice-it/new-user/practice-it-task-list-start",
+        "text": "Back to your task list"
+      }) }}
+
+      <div class="app-card">
+        <div class="app-card__wrapper">
+          <div class="app-card__content">
+            <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
+            <p>
+              NHS England and NHS Improvement has a responsibility to ensure general practices are provided with core GP IT services and  this responsibility has been delegated to CCGs. This section, will be  analysed with other relevant sections of eDEC and together with data collected from CCGs and central NHS sources (NHS Digital) to support assurance and provide insight to support investment in digital services in General Practice. As part of the Digital Primary Care Maturity Assurance Model, the objective is to:
+            </p>
+
+            <ul>
+              <li>Support General Practice in improving service and organisational efficiency and effectiveness by utilising digital technology enablers. This aligns with the ambitions outlined in the GPFV.</li>
+              <li>Support local commissioners (CCGs) and NHS England in ensuring local GP IT services support GMS contractual requirements, meet NHS commitments and mandates, are safe and secure and appropriately utilise delegated GP IT funds.</li>
+              <li>Support emerging ICS/STPs and new models of care based on integrated care by contributing General Practice digital datasets to wider “place based” digital maturity models.</li>
+            </ul>
+
+
+            <form action="/{{PROTOTYPEURL}}/sections/general-practice-it/new-user/general-practice-intro-page-2" method="post">
+
+              <input type="submit" class="nhsuk-button" value="Continue">
+              </input>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
