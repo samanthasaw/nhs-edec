@@ -490,15 +490,16 @@ $('div.nhsuk-summary-list__row').each(function() {
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT</span>{{ contentTitle }}</h1>
 
+      <h2 class="nhsuk-label--m app-heading-m">The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically</h2>
+
       {{ summaryList({
-        "classes": "nhsuk-summary-list--long",
         rows: [
           {
             key: {
-              text: "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+              text: "Patients"
             },
             value: {
-              html: patientConsultations + "<br>" + nursingConsultations + "<br>" + residentialConsultations
+              html: patientConsultations
             },
             actions: {
               items: [
@@ -510,6 +511,50 @@ $('div.nhsuk-summary-list__row').each(function() {
               ]
             }
           },
+          {
+            key: {
+              text: "Nursing homes"
+            },
+            value: {
+              html: nursingConsultations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/general-practice-it/new-user/change-patient-consultations-3-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Residential homes"
+            },
+            value: {
+              html: residentialConsultations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/general-practice-it/new-user/change-patient-consultations-3-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+        <h2 class="nhsuk-label--m app-heading-m">Your other general practice IT details</h2>
+
+
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
            {
              key: {
                text: "The practice principle clinical system is accessible outside the practice for the following purposes:"
@@ -669,7 +714,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
       }) }}
 
 
-      <h2>Optional information</h2>
+      <h2 class="nhsuk-label--m app-heading-m">Optional information</h2>
 
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",

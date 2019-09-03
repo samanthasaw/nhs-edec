@@ -850,7 +850,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
     } else if (answer.includes('friday')) {
       res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-time')
     } else {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-intermittent-periods')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week')
   }}
 
 
@@ -868,7 +868,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
     } else if (answer.includes('friday')) {
       res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-time')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-intermittent-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week')
     }}
 
 });
@@ -883,7 +883,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
     } else if (answer.includes('friday')) {
       res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-time')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-intermittent-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week')
     }}
 
 
@@ -898,7 +898,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
     if (answer.includes('friday')) {
       res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-time')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-intermittent-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week')
     }}
 
 });
@@ -906,7 +906,7 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-frequency', function (req, res) {
   let answer = req.session.data.intermittentEdit;
 
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-intermittent-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week')
 
 });
 

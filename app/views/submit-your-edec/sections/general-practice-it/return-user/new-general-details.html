@@ -86,15 +86,15 @@
 
     {% set selectPatientConsultations %}
       {% if data['selectPatientConsultations'] == 'email' %}
-        <p> <strong>Patients: </strong>Email </p>
+        <p> Email </p>
       {% elif data['selectPatientConsultations'] == 'video' %}
-        <p> <strong>Patients: </strong>Video </p>
+        <p> Video </p>
       {% elif data['selectPatientConsultations'] == 'telephone' %}
-        <p> <strong>Patients: </strong>Telephone </p>
+        <p> Telephone </p>
         {% elif data['selectPatientConsultations'] == 'onlineConsultation' %}
-          <p> <strong>Patients: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+          <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
       {% else %}
-        <p><strong>Patients: </strong>Not applicable</p>
+        <p>Not applicable</p>
       {% endif %}
       {% endset %}
 
@@ -103,7 +103,10 @@
         {% if cheese == 'stringyCheese' %}
           {{ selectPatientConsultations | safe }}
         {% else %}
+
           {% for item in data['selectPatientConsultations'] %}
+
+
           {% if item == 'email' %}
           <p> Email </p>
           {% elif item == 'video' %}
@@ -123,15 +126,15 @@
 
         {% set selectNursingConsultations %}
           {% if data['selectNursingConsultations'] == 'email' %}
-            <p><strong>Nursing homes: </strong>Email </p>
+            <p>Email </p>
           {% elif data['selectNursingConsultations'] == 'video' %}
-            <p><strong>Nursing homes: </strong>Video </p>
+            <p>Video </p>
           {% elif data['selectNursingConsultations'] == 'telephone' %}
-            <p><strong>Nursing homes: </strong>Telephone </p>
+            <p>Telephone </p>
             {% elif data['selectNursingConsultations'] == 'onlineConsultation' %}
-              <p><strong>Nursing homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+              <p>Online consultations (for example electronic questionnaires and text messaging systems) </p>
           {% else %}
-            <p><strong>Nursing homes: </strong>Not applicable</p>
+            <p>Not applicable</p>
           {% endif %}
           {% endset %}
 
@@ -140,7 +143,7 @@
             {% if cheese == 'stringyCheese' %}
               {{ selectNursingConsultations | safe }}
             {% else %}
-              {% for item in data['selectNursingConsultations'] %}
+            {% for item in data['selectNursingConsultations'] %}
               {% if item == 'email' %}
               <p> Email </p>
               {% elif item == 'video' %}
@@ -160,15 +163,15 @@
 
                 {% set selectResidentialConsultations %}
                   {% if data['selectResidentialConsultations'] == 'email' %}
-                    <p><strong>Residential homes: </strong> Email </p>
+                    <p> Email </p>
                   {% elif data['selectResidentialConsultations'] == 'video' %}
-                    <p><strong>Residential homes: </strong> Video </p>
+                    <p> Video </p>
                   {% elif data['selectResidentialConsultations'] == 'telephone' %}
-                    <p><strong>Residential homes: </strong>Telephone </p>
+                    <p>Telephone </p>
                     {% elif data['selectResidentialConsultations'] == 'onlineConsultation' %}
-                      <p><strong>Residential homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                      <p>Online consultations (for example electronic questionnaires and text messaging systems) </p>
                   {% else %}
-                    <p><strong>Residential homes: </strong>Not applicable</p>
+                    <p>Not applicable</p>
                   {% endif %}
                   {% endset %}
 
@@ -177,7 +180,7 @@
                     {% if cheese == 'stringyCheese' %}
                       {{ selectResidentialConsultations | safe }}
                     {% else %}
-                      {% for item in data['selectResidentialConsultations'] %}
+                    {% for item in data['selectResidentialConsultations'] %}
                       {% if item == 'email' %}
                       <p> Email </p>
                       {% elif item == 'video' %}
@@ -406,15 +409,16 @@
 
       <p>Check your general practice IT and change any incorrect details.</p>
 
+      <h2 class="nhsuk-label--m app-heading-m">The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically</h2>
+
       {{ summaryList({
-        "classes": "nhsuk-summary-list--long",
         rows: [
           {
             key: {
-              text: "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+              text: "Patients"
             },
             value: {
-              html: patientConsultations + "<br>" + nursingConsultations + "<br>" + residentialConsultations
+              html: patientConsultations
             },
             actions: {
               items: [
@@ -426,6 +430,50 @@
               ]
             }
           },
+          {
+            key: {
+              text: "Nursing homes"
+            },
+            value: {
+              html: nursingConsultations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/general-practice-it/return-user/patient-consultations-3",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Residential homes"
+            },
+            value: {
+              html: residentialConsultations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/general-practice-it/return-user/patient-consultations-3",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+        <h2 class="nhsuk-label--m app-heading-m">Your other general practice IT details</h2>
+
+
+
+          {{ summaryList({
+            "classes": "nhsuk-summary-list--long",
+            rows: [
            {
              key: {
                text: "The practice principle clinical system is accessible outside the practice for the following purposes:"
@@ -517,7 +565,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
       }) }}
 
 
-      <h2>Optional information</h2>
+      <h2 class="nhsuk-label--m app-heading-m">Optional information</h2>
 
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",

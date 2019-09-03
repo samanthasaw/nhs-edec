@@ -273,48 +273,13 @@ const times = [
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-      </span>{{ contentTitle }}</h1>
 
       <form action="" method="post">
-
-        {% if data['saturdayReceptionOpen'] === "Closed" %}
-          {% set closedTrue = "True" %}
-        {% else %}
-          {% set openTrue = "True" %}
-        {% endif %}
-
-        {{ radios({
-          "idPrefix": "gov",
-          "name": "saturdayReceptionOpen",
-          "classes": "nhsuk-radios--inline",
-          "fieldset": {
-            "legend": {
-              "text": "Is your practice open on Saturday?",
-              "isPageHeading": false,
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "open",
-              "text": "Yes",
-              "checked": openTrue
-            },
-            {
-              "value": "closed",
-              "text": "No",
-              "checked": closedTrue
-            }
-          ]
-        }) }}
-
-        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
-
         {% call fieldset({
           "legend": {
-            "text": "Your Saturday reception opening hours",
-            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-label--xl nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
         }) %}
@@ -614,7 +579,7 @@ const times = [
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
         </p>
 
-        </div>
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

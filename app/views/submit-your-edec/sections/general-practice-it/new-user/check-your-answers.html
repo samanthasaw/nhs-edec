@@ -406,26 +406,70 @@
 
       <p>Check your answers and change any incorrect answers.</p>
 
+      <h2 class="nhsuk-label--m app-heading-m">The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically</h2>
+
       {{ summaryList({
-        "classes": "nhsuk-summary-list--long",
         rows: [
           {
             key: {
-              text: "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+              text: "Patients"
             },
             value: {
-              html: patientConsultations + "<br>" + nursingConsultations + "<br>" + residentialConsultations
+              html: patientConsultations
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/general-practice-it/return-user/patient-consultations-3",
+                  href: "/submit-your-edec/sections/general-practice-it/new-user/change-patient-consultations-3",
                   text: "Change",
                   visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
                 }
               ]
             }
           },
+          {
+            key: {
+              text: "Nursing homes"
+            },
+            value: {
+              html: nursingConsultations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/general-practice-it/new-user/change-patient-consultations-3",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Residential homes"
+            },
+            value: {
+              html: residentialConsultations
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/general-practice-it/new-user/change-patient-consultations-3",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+        <h2 class="nhsuk-label--m app-heading-m">Your other general practice IT details</h2>
+
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
            {
              key: {
                text: "The practice principle clinical system is accessible outside the practice for the following purposes:"
@@ -436,7 +480,7 @@
              actions: {
                items: [
                  {
-                   href: "/submit-your-edec/sections/general-practice-it/return-user/clinical-system-3",
+                   href: "/submit-your-edec/sections/general-practice-it/new-user/change-clinical-system-3",
                    text: "Change",
                    visuallyHiddenText: "what purposes the practice principle clinical system is accessible outside the practice for"
                  }
@@ -453,7 +497,7 @@
              actions: {
                items: [
                  {
-                   href: "/submit-your-edec/sections/general-practice-it/return-user/electronic-discharge-4",
+                   href: "/submit-your-edec/sections/general-practice-it/new-user/change-electronic-discharge-4",
                    text: "Change",
                    visuallyHiddenText: "if local acute trust discharge letters/summaries are received by the practice electronically"
                  }
@@ -470,7 +514,7 @@
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/summary-care-record",
+                    href: "/submit-your-edec/sections/general-practice-it/new-user/change-summary-care-record",
                     text: "Change",
                     visuallyHiddenText: "if the practice is enriching the Summary Care Record of patients who have given their consent, including those living with severe frailty"
                   }
@@ -489,7 +533,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/review-arrangements-2",
+                    href: "/submit-your-edec/sections/general-practice-it/new-user/change-review-arrangements-2",
                     text: "Change",
                     visuallyHiddenText: "if the practice as contract holder has reviewed these arrangements where the practice has directly purchased IT services, infrastructure or systems (connected to the managed GP IT infrastructure)"
                   }
@@ -506,7 +550,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
               actions: {
                 items: [
                   {
-                    href: "/submit-your-edec/sections/general-practice-it/return-user/snomed",
+                    href: "/submit-your-edec/sections/general-practice-it/new-user/change-snomed",
                     text: "Change",
                     visuallyHiddenText: "if the practice has a process in place to systematically review all locally developed Templates and Searches to ensure alignment with the transition to SNOMED CT"
                   }
@@ -517,7 +561,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
       }) }}
 
 
-      <h2>Optional information</h2>
+      <h2 class="nhsuk-label--m app-heading-m">Optional information</h2>
 
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",
@@ -532,7 +576,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/shared-online-system-3",
+              href: "/submit-your-edec/sections/general-practice-it/new-user/change-shared-online-system-3",
               text: "Change",
               visuallyHiddenText: "if the practice and its registered patients have access to a shared online system and how it allows patients to engage with their GP"
             }
@@ -549,7 +593,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/federation-3",
+              href: "/submit-your-edec/sections/general-practice-it/new-user/change-federation-3",
               text: "Change",
               visuallyHiddenText: "where the practice works within a federation how it is able to use its principal clinical system and its IT infrastructure to support shared working between practices"
             }
@@ -566,7 +610,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/diagnostics-tests-3",
+              href: "/submit-your-edec/sections/general-practice-it/new-user/change-diagnostics-tests-3",
               text: "Change",
               visuallyHiddenText: "which diagnostics tests the practice routinely electronically orders or receives with their main acute provider"
             }
@@ -583,7 +627,7 @@ appropriate certification for example ISO/IEC 27001: 2013, Cyber Essentials (CE)
         actions: {
           items: [
             {
-              href: "/submit-your-edec/sections/general-practice-it/return-user/legitimate-access-3",
+              href: "/submit-your-edec/sections/general-practice-it/new-user/change-legitimate-access-3",
               text: "Change",
               visuallyHiddenText: "which ways where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records"
             }
