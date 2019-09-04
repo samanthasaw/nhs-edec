@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Your phone opening hours" %}
+{% set contentTitle = "What are your Tuesday phone opening hours?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -273,51 +273,17 @@ const times = [
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-      </span>{{ contentTitle }}</h1>
-
       <form action="" method="post">
 
-        {% if data['tuesdayPhonesOpen'] === "Closed" %}
-          {% set closedTrue = "True" %}
-        {% else %}
-          {% set openTrue = "True" %}
-        {% endif %}
+              {% call fieldset({
+                "legend": {
+                  "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+                  </span>' + contentTitle + '</h1>',
+                  "classes": "nhsuk-label--xl nhsuk-u-margin-bottom-4",
+                  "isPageHeading": false
+                }
+              }) %}
 
-        {{ radios({
-          "idPrefix": "gov",
-          "name": "tuesdayPhonesOpen",
-          "classes": "nhsuk-radios--inline",
-          "fieldset": {
-            "legend": {
-              "text": "Are your phone lines open on Tuesday?",
-              "isPageHeading": false,
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "open",
-              "text": "Yes",
-              "checked": openTrue
-            },
-            {
-              "value": "closed",
-              "text": "No",
-              "checked": closedTrue
-            }
-          ]
-        }) }}
-
-        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
-
-        {% call fieldset({
-          "legend": {
-            "text": "What are your Tuesday phone opening hours?",
-            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
-            "isPageHeading": false
-          }
-        }) %}
 
         {{ hint({
           "text": "For example, 8:30am to 1:00pm and 2:00pm to 6:00pm",
@@ -614,7 +580,6 @@ const times = [
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
         </p>
 
-              </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
