@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Sorry, there is a problem with this service" %}
+{% set contentTitle = "Sorry, we could not save your electronic declaration" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,8 +35,11 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Please try again later.</p>
-
+      <p>Please try again later or contact your clinical commissioning group (CCG) for help.
+      </p>
+      <button class="nhsuk-button" type="submit">
+        Go to home page
+      </button>
     </div>
   </div>
 {% endblock %}

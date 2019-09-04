@@ -1,0 +1,94 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "System errors" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  Submit your electronic declaration
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+
+      <h1>
+        {{ contentTitle }}
+      </h1>
+
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+
+
+<h3>Session expired</h3>
+      <ul>
+      <li><a href="/submit-your-edec/errors/system/session-expired">Session expired</a></li>
+      </ul>
+<h3>Page not found</h3>
+        <ul>
+        <li><a href="/submit-your-edec/errors/system/page-not-found-start-page">Page not found (go to start page)</a></li>
+        <li><a href="/submit-your-edec/errors/system/page-not-found-login-page">Page not found (go to log in page)</a></li>
+        </ul>
+<h3>Generic error</h3>
+        <ul>
+        <li><a href="/submit-your-edec/errors/system/generic-error">Generic error</a></li>
+        </ul>
+        <h3>Permission error</h3><ul>
+
+        <li><a href="/submit-your-edec/errors/system/no-permission">No permission</a></li>
+        </ul>
+        <h3>Submit error</h3>
+        <ul>
+        <li><a href="/submit-your-edec/errors/system/failed-to-submit">Failed to submit</a></li>
+        </ul>
+        <h3>Save error</h3>
+        <ul>
+        <li><a href="/submit-your-edec/errors/system/failed-to-save">Failed to save</a></li>
+</ul>
+<h3>JavaScript</h3>
+    <ul>
+        <li><a href="/submit-your-edec/errors/system/javascript-disabled">JavaScript disabled</a></li>
+        </ul>
+<h3>Cookies</h3>
+        <ul>
+          <li><a href="/submit-your-edec/errors/system/cookies-disabled">Cookies disabled</a></li>
+        </ul>
+<h3>Service down</h3>
+        <ul>
+        <li><a href="/submit-your-edec/errors/system/service-unavailable-unplanned">Service unavailable unplanned</a></li>
+        <li><a href="/submit-your-edec/errors/system/service-unavailable-planned">Service unavailable planned</a></li>
+      </ul>
+
+            {{ backLink({
+              "href": "/submit-your-edec/index",
+              "text": "Back"
+            }) }}
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

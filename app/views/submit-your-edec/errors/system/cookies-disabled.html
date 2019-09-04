@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Sorry, there is a problem with this service" %}
+{% set contentTitle = "You must enable cookies to use this site" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -35,7 +35,10 @@
 
       <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Please try again later.</p>
+      <p>We put small files called cookies onto your device to keep your visit secure. 
+        <a href="https://www.nhs.uk/your-nhs-data-matters/manage-your-choice/">Find out more or manage your cookie settings</a>.</p>
+
+</p>
 
     </div>
   </div>

@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Errors" %}
+{% set contentTitle = "Validation errors" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -41,16 +41,20 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-  
 
+
+
+
+      <h3>Reception opening hours</h3>
+      <p>Use this error message for all reception opening hours pages (e.g Monday to Sunday)</p>
       <ul>
-      <li><a href="/submit-your-edec/errors/system">System errors</a></li>
-      <li><a href="/submit-your-edec/errors/validation">Validation errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/time-input/reception-monday">Reception opening hours</a></li>
       </ul>
-
-
-
-
+<h3>Phone opening hours</h3>
+<p>Use this error message for all phone opening hours pages (e.g Monday to Sunday)</p>
+<ul>
+      <li><a href="/submit-your-edec/errors/validation/time-input/monday-phone">Phone opening hours</a></li>
+      </ul>
 
             {{ backLink({
               "href": "/submit-your-edec/index",

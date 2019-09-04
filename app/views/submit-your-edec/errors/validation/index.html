@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Errors" %}
+{% set contentTitle = "Validation errors" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -41,15 +41,14 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-  
+
+
 
       <ul>
-      <li><a href="/submit-your-edec/errors/system">System errors</a></li>
-      <li><a href="/submit-your-edec/errors/validation">Validation errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/radio">Radio validation errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/checkbox">Checkbox validation errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/time-input">Time input errors</a></li>
       </ul>
-
-
-
 
 
             {{ backLink({

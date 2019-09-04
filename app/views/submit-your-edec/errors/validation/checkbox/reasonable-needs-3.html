@@ -1,0 +1,149 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "How the practice is meeting the reasonable needs of its patient population in case of emergency during core contact hours"%}
+{% set title = "Error: " + contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#reasonable-6" ).on( "click", function() {
+  if ( $( "#reasonable-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#reasonable-1" ).attr('disabled', true);
+    $( "#reasonable-2" ).attr('disabled', true);
+    $( "#reasonable-3" ).attr('disabled', true);
+    $( "#reasonable-4" ).attr('disabled', true);
+
+    if ($( "#reasonable-4" ).is(":checked")) {
+      $( "#conditional-reasonable-4" ).hide();
+    }
+
+  } else {
+    $( "#reasonable-1" ).attr('disabled', false);
+    $( "#reasonable-2" ).attr('disabled', false);
+    $( "#reasonable-3" ).attr('disabled', false);
+    $( "#reasonable-4" ).attr('disabled', false);
+
+    if ($( "#reasonable-4" ).is(":checked")) {
+      $( "#conditional-reasonable-4" ).show();
+    }
+  }
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+{% set patientSourceOther %}
+{{ textarea({
+  "name": "inputPatientSourceOther",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other patient sources has your evidence been obtained from in the preceding 12 months?"
+  }
+}) }}
+{% endset %}
+
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ errorSummary({
+        "titleText": "There is a problem",
+        "errorList": [
+          {
+            "text": "Select at least one option",
+            "href": "#reasonable-error"
+          }
+
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
+
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+        </span>{{ contentTitle }}</h1>
+
+        <p>The contract states that “the Contractor must provide the services described in Part 8 (namely essential services) at such times, within core hours, as are appropriate to meet the reasonable needs of its patients, and to have in place arrangements for its patients to access such services throughout the core hours in case of emergency” (2014, NHS England, Standard GMS Contract)</p>
+
+        <p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (08:00 – 18:30 Monday to Friday) in case of emergency?</p>
+
+        {{ checkboxesDivider({
+          "idPrefix": "reasonable",
+          "name": "patientSources",
+          "fieldset": {
+            "legend": {
+              "text": "The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:",
+              "classes": "nhsuk-label--m app-heading-m"
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+        "errorMessage": {
+          "text": "Select at least one option"
+
+        },
+          "items": [
+            {
+              "value": "ppg",
+              "text": "Patient Participation Group"
+            },
+            {
+              "value": "patientSurvey",
+              "text": "GP patient survey"
+            },
+            {
+              "value": "localSurvey",
+              "text": "Local survey"
+            },
+            {
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: patientSourceOther
+              }
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "cannotConfirm",
+              "text": "The practice is not able to confirm"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}
