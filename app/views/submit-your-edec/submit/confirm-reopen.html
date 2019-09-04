@@ -6,7 +6,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Submit your electronic declaration for " + practice %}
+{% set contentTitle = "Are you sure you want to reopen your submission for " + practice + "?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -36,22 +36,39 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
-      <h1 class="nhsuk-label--xl app-heading-xl">
-        {{ contentTitle }}
-      </h1>
 
 
-      <p>By submitting your electronic declaration you are confirming that the answers you’ve given are correct.</p>
+      <form action="/{{ PROTOTYPEURL }}/task-list/task-list-sections-complete-4" method="get">
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "gov",
+          "fieldset": {
+            "legend": {
+              "text": contentTitle,
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--xl"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
 
-      <form action="/submit-your-edec/submit/submission-confirmation" method="get">
-        <input type="submit" class="nhsuk-button" value="Submit your declaration">
+        <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
 
       {{ backLink({
-        "href": "/submit-your-edec/task-list/task-list-sections-complete",
-        "text": "Back to your task list"
+        "href": "/submit-your-edec/select-practice/select-practice-nye-complete",
+        "text": "Back to your GP practices"
       }) }}
 
 
