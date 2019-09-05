@@ -1,0 +1,67 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Practice email address used by patients" %}
+{% set title = "Error: " + contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ errorSummary({
+        "titleText": "There is a problem",
+        "errorList": [
+          {
+            "text": "Enter an email address in the correct format, like name@example.com",
+            "href": "#example-divider-error"
+          }
+
+        ]
+      }) }}
+
+      <form action="#" method="get">
+
+        {{ input({
+          "label": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl"
+          },
+
+        "errorMessage": {
+          "text": "Enter an email address in the correct format, like name@example.com"
+      },
+          "id": "example-divider-error",
+          "name": "emailaddress",
+          "classes": "nhsuk-input--width-30"
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

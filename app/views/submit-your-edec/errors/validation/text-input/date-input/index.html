@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Validation errors" %}
+{% set contentTitle = "Date input errors" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,19 +42,24 @@
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
 
+      <h3>Contract start date errors</h3>
+      <ul>
+      <li><a href="/submit-your-edec/errors/validation/text-input/date-input/contract-start-date-invalid">Contract start date (invalid field)</a></li>
+      <li><a href="/submit-your-edec/errors/validation/text-input/date-input/contract-start-date-missing">Contract start date (missing field)</a></li>
+      </ul>
 
-<h3>Radio validation errors</h3>
+      <h3>Contract end date errors</h3>
       <ul>
-      <li><a href="/submit-your-edec/errors/validation/radio">Radio validation errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/text-input/date-input/contract-end-date-invalid">Contract end date (invalid field)</a></li>
+      <li><a href="/submit-your-edec/errors/validation/text-input/date-input/contract-end-date-missing">Contract end date (missing field)</a></li>
       </ul>
-      <h3>Checkbox validation errors</h3>
+
+      <h3>Extended opening hours contract end date errors</h3>
       <ul>
-      <li><a href="/submit-your-edec/errors/validation/checkbox">Checkbox validation errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/text-input/date-input/extended-hours-contract-invalid">Extended opening hours contract end date (invalid field)</a></li>
+      <li><a href="/submit-your-edec/errors/validation/text-input/date-input/extended-hours-contract-missing">Extended opening hours contract end date  (missing field)</a></li>
       </ul>
-      <h3>Text input errors</h3>
-      <ul>
-      <li><a href="/submit-your-edec/errors/validation/text-input">Text input errors</a></li>
-      </ul>
+
 
             {{ backLink({
               "href": "/submit-your-edec/index",

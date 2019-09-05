@@ -1,0 +1,93 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Contract/agreement end date for the practice's extended opening hours"%}
+{% set title = "Error: " + contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Enter contract/agreement end date",
+                  "href": "#dob-error"
+                }
+
+              ]
+            }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-extended-hours" method="post">
+
+
+        {{ dateInput({
+          "id": "dob",
+          "namePrefix": "extendedEnd",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+              </span>' + contentTitle + '</h1>'
+            }
+          },
+          "hint": {
+            "text": "For example, 14 12 2020"
+          },
+
+          "errorMessage": {
+          "text": "Enter contract/agreement end date"
+      },
+
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

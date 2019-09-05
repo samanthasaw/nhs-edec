@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Validation errors" %}
+{% set contentTitle = "Time input validation errors" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -43,17 +43,18 @@
 
 
 
-<h3>Radio validation errors</h3>
+
+
+      <h3>Reception opening hours</h3>
+      <p>Use this error message for all reception opening hours pages (Monday to Sunday)</p>
       <ul>
-      <li><a href="/submit-your-edec/errors/validation/radio">Radio validation errors</a></li>
-      </ul>
-      <h3>Checkbox validation errors</h3>
-      <ul>
-      <li><a href="/submit-your-edec/errors/validation/checkbox">Checkbox validation errors</a></li>
-      </ul>
-      <h3>Text input errors</h3>
-      <ul>
-      <li><a href="/submit-your-edec/errors/validation/text-input">Text input errors</a></li>
+      <li><a href="/submit-your-edec/errors/validation/time-input/reception-monday-missing">Reception opening hours (missing field error)</a></li>
+      <li><a href="/submit-your-edec/errors/validation/time-input/reception-monday-invalid">Reception opening hours (invalid field error)</a></li>
+  </ul>
+<h3>Phone opening hours</h3>
+<p>Use this error message for all phone opening hours pages (Monday to Sunday)</p>
+<ul>
+      <li><a href="/submit-your-edec/errors/validation/time-input/monday-phone">Phone opening hours</a></li>
       </ul>
 
             {{ backLink({
