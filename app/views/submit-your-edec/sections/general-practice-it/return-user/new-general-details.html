@@ -143,7 +143,6 @@
             {% if cheese == 'stringyCheese' %}
               {{ selectNursingConsultations | safe }}
             {% else %}
-            {% set truthy = "True" %}
             {% for item in data['selectNursingConsultations'] %}
               {% if item == 'email' %}
               <p> Email </p>

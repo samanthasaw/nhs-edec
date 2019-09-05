@@ -69,7 +69,16 @@
 
       </form>
 
-
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>Published guidance from the Care Quality Commission:</p>
+        <ul>
+          <li><a href='https://www.cqc.org.uk/sites/default/files/20151230_100001_Scope_of_registration_guidance_updated_March_2015_01.pdf'>Scope of registration (opens in new window)</a></li>
+          <li><a href='https://www.cqc.org.uk/sites/default/files/20160211_300900_v6_00_what_is_a_location_guidance.pdf'>What is a location? Guidance for providers and inspectors (opens in new window)</a></li>
+        </ul>
+        "
+      }) }}
 
     </div>
   </div>

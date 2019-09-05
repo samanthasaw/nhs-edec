@@ -62,7 +62,18 @@
 
       </form>
 
-
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>General Data Protection Regulation: <a href='https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/information-governance-alliance-iga/general-data-protection-regulation-gdpr-guidance'>GDPR general guidance including advice for general practice (opens in new window)</a></p>
+        <p>Additional support references on DPO:</p>
+        <ul>
+          <li>Information Commissioner's Office: <a href='https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/accountability-and-governance/data-protection-officers/'>Data protection officers (opens in new window)</a></li>
+          <li>PWC: <a href='http://pwc.blogs.com/data_protection/2017/02/data-protection-officer-do-you-need-to-appoint-one.html'>Data Protection Officer – do you need to appoint one? (opens in new window)</a></li>
+          <li>European Data Protection Supervisor: <a href='https://edps.europa.eu/data-protection/data-protection/reference-library/data-protection-officer-dpo_en'>Data Protection Officer (DPO)</a></li>
+        </ul>
+        "
+      }) }}
 
     </div>
   </div>
