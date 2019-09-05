@@ -42,25 +42,19 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
+      <p>You can <a href="/{{ PROTOTYPEURL }}/submit/confirm-reopen">reopen your submission</a> to make changes at any time until {end date of submission window}.</p>
+
 
       <h2>What happens next</h2>
 
-      <p>You will get an email confirming you've submitted your declaration.</p>
+      <p>Your PDF certificate to confirm you've submitted your declaration will be available when the submission window closes on the {submission end date}.</p>
 
-
-      <p>You can reopen your submission to make changes at any time until {end date of submission window}.</p>
-
+      <p>When it is available you will be able to download your PDF certificate by going to <a href="/{{ PROTOTYPEURL }}/">your previously submitted declarations for {{practice}}</a>.</p>
 
 
       {{ button({
-        "text": "Reopen your submission",
-        "href": "/submit-your-edec/submit/confirm-reopen"
-      }) }}
-
-
-      {{ backLink({
-        "href": "/submit-your-edec/select-practice/select-practice-nye-complete",
-        "text": "Back to your GP practices"
+        "text": "Continue",
+        "href": "/submit-your-edec/select-practice/select-practice-nye-complete"
       }) }}
 
 

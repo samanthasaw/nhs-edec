@@ -38,10 +38,10 @@
       <!-- Change the page title here -->
 
 
-      <form action="/{{ PROTOTYPEURL }}/task-list/task-list-sections-complete-4" method="get">
+      <form action="/{{ PROTOTYPEURL }}/submit/confirm-reopen" method="post">
         {{ radios({
           "idPrefix": "gov",
-          "name": "gov",
+          "name": "confirmReopen",
           "fieldset": {
             "legend": {
               "text": contentTitle,
@@ -65,11 +65,6 @@
         </input>
 
       </form>
-
-      {{ backLink({
-        "href": "/submit-your-edec/select-practice/select-practice-nye-complete",
-        "text": "Back to your GP practices"
-      }) }}
 
 
       <!-- End of content -->

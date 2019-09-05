@@ -6,7 +6,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Confirm you want to submit your electronic declaration for " + practice %}
+{% set contentTitle = "Confirm you want to resubmit your electronic declaration for " + practice %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -40,13 +40,13 @@
           <div class="app-card__content">
             <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
 
-            <p>By submitting your electronic declaration you are confirming that the answers you’ve given are correct.</p>
+            <p>By resubmitting your electronic declaration you are confirming that the answers you’ve given are correct.</p>
 
             <p>You can reopen your submission to make changes at any time until {end date of submission window}.</p>
 
-            <form action="/{{ PROTOTYPEURL }}/submit/submission-confirmation" method="get">
+            <form action="/{{ PROTOTYPEURL }}/submit/resubmission-confirmation" method="get">
 
-              <input type="submit" class="nhsuk-button" value="Submit your declaration">
+              <input type="submit" class="nhsuk-button" value="Resubmit your declaration">
               </input>
 
             </form>
@@ -56,7 +56,7 @@
 
 
       {{ backLink({
-        "href": "/submit-your-edec/task-list/task-list-with-subsections-3-complete",
+        "href": "/submit-your-edec/task-list/task-list-reopened",
         "text": "Back to your task list"
       }) }}
 

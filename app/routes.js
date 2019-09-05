@@ -1560,6 +1560,28 @@ router.post('/submit-your-edec/sections/general-practice-it/return-user/lloyd-ge
 
 
 
+// Submit
+
+
+router.post('/submit-your-edec/submit/confirm-reopen', function (req, res) {
+  let answer = req.body.confirmReopen;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/task-list/task-list-reopened')
+
+  } else {
+
+    res.redirect('/submit-your-edec/a-practice/a-practice-nye-complete')
+  }
+});
+
+
+
+
+
+
+
 
 //
 // v2 change opening times
