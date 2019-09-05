@@ -1,0 +1,188 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+$( "#nationality-10" ).on( "click", function() {
+if ( $( "#nationality-10" ).is(':checked') ){
+  console.log( "closed" );
+  $( "#nationality-1" ).attr('disabled', true);
+  $( "#nationality-2" ).attr('disabled', true);
+  $( "#nationality-3" ).attr('disabled', true);
+  $( "#nationality-4" ).attr('disabled', true);
+  $( "#nationality-5" ).attr('disabled', true);
+  $( "#nationality-6" ).attr('disabled', true);
+  $( "#nationality-7" ).attr('disabled', true);
+  $( "#nationality-8" ).attr('disabled', true);
+
+  if ($( "#nationality-7" ).is(":checked")) {
+    $( "#conditional-nationality-7" ).hide();
+  }
+  if ($( "#nationality-8" ).is(":checked")) {
+    $( "#conditional-nationality-8" ).hide();
+  }
+
+} else {
+  $( "#nationality-1" ).attr('disabled', false);
+  $( "#nationality-2" ).attr('disabled', false);
+  $( "#nationality-3" ).attr('disabled', false);
+  $( "#nationality-4" ).attr('disabled', false);
+  $( "#nationality-5" ).attr('disabled', false);
+  $( "#nationality-6" ).attr('disabled', false);
+  $( "#nationality-7" ).attr('disabled', false);
+  $( "#nationality-8" ).attr('disabled', false);
+
+  if ($( "#nationality-7" ).is(":checked")) {
+    $( "#conditional-nationality-7" ).show();
+  }
+  if ($( "#nationality-8" ).is(":checked")) {
+    $( "#conditional-nationality-8" ).show();
+  }
+
+}
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+{% set electronicTechSolution %}
+{{ input({
+  "name": "electronicTechSolution",
+  "id": "electronicTechSolutionInput",
+  "classes": "nhsuk-input--width-30",
+  "value": data['electronicTechSolution'],
+  "label": {
+    "text": "What other electronic technical solutions are used to contact the practice’s eligible population?"
+  }
+}) }}
+{% endset %}
+
+
+{% set nonElectronicTechSolution %}
+{{ input({
+  "name": "nonElectronicTechSolution",
+  "id": "nonElectronicTechSolutionInput",
+  "classes": "nhsuk-input--width-30",
+  "label": {
+    "text": "What other non-electronic technical solutions are used to contact the practice’s eligible population?"
+  }
+}) }}
+{% endset %}
+
+{% set trueORnot %}
+ {% if data['callRecall'] %}
+  {% if 'foo' in data['callRecall'] %}
+    True
+  {% endif %}
+{% else %}
+  False
+{% endif %}
+{% endset %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/new-communicating-details" method="get">
+
+
+        {{ checkboxesDivider({
+          "idPrefix": "nationality",
+          "name": "callRecall",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+          {
+            "value": "posterPatient",
+            "text": "Poster in waiting room"
+          },
+          {
+            "value": "notificationWebsite",
+            "text": "Notification on practice website"
+          },
+          {
+            "value": "letterPatient",
+            "text": "Letter to patient"
+          },
+          {
+            "value": "textMessage",
+            "text": "Text message to patient"
+          },
+          {
+            "value": "phoneCall",
+            "text": "Phone call to patient"
+          },
+          {
+            "value": "consultation",
+            "text": "During consultation or appointment"
+          },
+          {
+            "value": "other",
+            "text": "Other electronic technical solution",
+            "checked": trueORnot,
+            "conditional": {
+              html: electronicTechSolution
+            }
+          },
+          {
+            "value": "othernonElectronic",
+            "text": "Other non-electronic technical solution",
+            "conditional": {
+              html: nonElectronicTechSolution
+            }
+          },
+          {
+            "divider": "or"
+          },
+          {
+            "value": "notApplicable",
+            "text": "This does not apply to my practice"
+          }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

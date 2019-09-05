@@ -1,0 +1,78 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "With regard to dispensing doctors: The practice declares it complies with the terms of service of dispensing doctors outlined in schedule 6 of The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013 and;" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/medication/return-user/new-premises-details" method="get">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "termsService",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+              </span>' + contentTitle + '</h1>
+              <p class="nhsuk-heading-l">The practice can demonstrate that for all patients which it dispenses to it is satisfied that they would have serious difficulty in obtaining any necessary drugs or appliances from an NHS pharmacist by reason of distance or inadequacy of means of communication (colloquially known as the “serious difficulty” test which can apply anywhere in the country); or</p>
+              <p class="nhsuk-heading-l">A patient is resident in an area which is rural in character, known as a controlled locality, at a distance of more than one mile1 (1.6 km) from pharmacy premises (excluding any distance selling premises). The pharmacy premises do not have to be in a controlled locality.</p>',
+              "classes": "nhsuk-label--l app-heading-l"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

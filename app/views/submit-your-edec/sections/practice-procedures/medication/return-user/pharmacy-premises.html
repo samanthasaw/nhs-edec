@@ -1,0 +1,84 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/medication/return-user/new-premises-details" method="get">
+
+
+        {{ radios({
+  "idPrefix": "nhs",
+  "name": "gov",
+  "fieldset": {
+    "legend": {
+      "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+      </span>' + contentTitle + '</h1>',
+      "classes": "nhsuk-label--xl app-heading-xl",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+   {
+     "value": "distance",
+     "text": "The practice can demonstrate that for all patients which it dispenses to it is satisfied that they would have serious difficulty in obtaining any necessary drugs or appliances from an NHS pharmacist",
+     "hint": {
+      "text": "By reason of distance or inadequacy of means of communication (colloquially known as the “serious difficulty” test which can apply anywhere in the country)."
+     }
+   },
+    {
+      "value": "distance",
+      "text": "A patient is resident in an area which is rural in character, known as a controlled locality",
+      "hint": {
+        "text": "At a distance of more than one mile (1.6 km) from pharmacy premises (excluding any distance selling premises). The pharmacy premises do not have to be in a controlled locality."
+      }
+    },
+    {
+      "divider": "or"
+    },
+    {
+      "value": "notApplicable",
+      "text": "This does not apply to my practice"
+    }
+  ]
+}) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

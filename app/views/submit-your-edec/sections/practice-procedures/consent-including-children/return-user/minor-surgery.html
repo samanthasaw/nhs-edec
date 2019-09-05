@@ -1,0 +1,81 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice records patients’ consent for minor surgery" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/consent-including-children/return-user/new-premises-details" method="get">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "minorSurgery",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--xl app-heading-xl"
+            }
+          },
+          "hint": {
+            "text": "Including curettage and cautery and, in relation to warts, verrucae and other skin lesions, cryocautery"
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to:</p>
+        <ul>
+          <li>GMS Regulations Schedule 1 Paragraph 8</li>
+          <li>PMS subject to local agreement</li>
+        </ul>
+        "
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
