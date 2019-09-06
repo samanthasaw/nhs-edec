@@ -1,0 +1,119 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Your previously submitted declarations for " + practice %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "/submit-your-edec/a-practice/a-practice",
+        "text": "Back to " + practice
+      }) }}
+
+
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+
+      <p>You've submitted 7 electronic declarations for {{ practice }}.</p>
+
+
+
+      {{ summaryList({
+        rows: [
+        {
+          key: {
+            text: "2019"
+          },
+          value: {
+            html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2019</span></a>'
+          }
+        },
+          {
+            key: {
+              text: "2018"
+            },
+            value: {
+              html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2018</span></a>'
+            }
+          },
+          {
+            key: {
+              text: "2017"
+            },
+            value: {
+              html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2017</span></a>'
+            }
+          },
+          {
+            key: {
+              text: "2016"
+            },
+            value: {
+              html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2016</span></a>'
+            }
+          },
+          {
+            key: {
+              text: "2015"
+            },
+            value: {
+              html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2015</span></a>'
+            }
+          },
+          {
+            key: {
+              text: "2014"
+            },
+            value: {
+              html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2014</span></a>'
+            }
+          },
+          {
+            key: {
+              text: "2013"
+            },
+            value: {
+              html: '<a href="">Download certificate <span class="nhsuk-u-visually-hidden"> for 2013</span></a>'
+            }
+          }
+      ]
+    }) }}
+
+
+
+
+
+
+    </div>
+  </div>
+{% endblock %}
