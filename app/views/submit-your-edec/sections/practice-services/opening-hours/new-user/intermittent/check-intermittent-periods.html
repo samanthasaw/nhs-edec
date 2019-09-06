@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your closure details" %}
+{% set contentTitle = "Check your answers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -36,7 +36,7 @@
 
 {% set mondayFrequency %}
   {% if data['intermittentEditMonday'] == 'fortnightlyMonday' %}
-    Every fortnight
+    Fortnightly
   {% elseif data['intermittentEditMonday'] == 'threeWeeksMonday' %}
     Once every three weeks
   {% elseif data['intermittentEditMonday'] == 'monthMonday' %}
@@ -67,7 +67,7 @@
 
 {% set tuesdayFrequency %}
   {% if data['intermittentEditTuesday'] == 'fortnightlyTuesday' %}
-    Every fortnight
+    Fortnightly
   {% elseif data['intermittentEditTuesday'] == 'threeWeeksTuesday' %}
     Once every three weeks
   {% elseif data['intermittentEditTuesday'] == 'monthTuesday' %}
@@ -98,7 +98,7 @@
 
 {% set wednesdayFrequency %}
   {% if data['intermittentEditWednesday'] == 'fortnightlyWednesday' %}
-    Every fortnight
+    Fortnightly
   {% elseif data['intermittentEditWednesday'] == 'threeWeeksWednesday' %}
     Once every three weeks
   {% elseif data['intermittentEditWednesday'] == 'monthWednesday' %}
@@ -131,7 +131,7 @@
 
 {% set thursdayFrequency %}
   {% if data['intermittentEditThursday'] == 'fortnightlyThursday' %}
-    Every fortnight
+    Fortnightly
   {% elseif data['intermittentEditThursday'] == 'threeWeeksThursday' %}
     Once every three weeks
   {% elseif data['intermittentEditThursday'] == 'monthThursday' %}
@@ -164,7 +164,7 @@
 
 {% set fridayFrequency %}
   {% if data['intermittentEditFriday'] == 'fortnightlyFriday' %}
-    Every fortnight
+    Fortnightly
   {% elseif data['intermittentEditFriday'] == 'threeWeeksFriday' %}
     Once every three weeks
   {% elseif data['intermittentEditFriday'] == 'monthFriday' %}
@@ -244,6 +244,9 @@
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Intermittent closure periods
       </span>{{ contentTitle }}</h1>
 
+      <p>Check your answers and change any incorrect answers.</p>
+
+
       <h2 class="nhsuk-label--m app-heading-m">Your intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)</h2>
 
 
@@ -254,12 +257,12 @@
               text: "Monday"
             },
             value: {
-              html: mondayTime + mondayFrequency + otherMonday
+              html: mondayTime + "<br>" + mondayFrequency
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-monday-time",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/change-intermittent-closed-monday-time",
                   text: "Change",
                   visuallyHiddenText: "your Monday opening hours"
                 }
@@ -271,12 +274,12 @@
               text: "Tuesday"
             },
             value: {
-              html: tuesdayTime + tuesdayFrequency + otherTuesday
+              html: tuesdayTime + "<br>" + tuesdayFrequency
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-tuesday-time",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/change-intermittent-closed-tuesday-time",
                   text: "Change",
                   visuallyHiddenText: "your Tuesday opening hours"
                 }
@@ -288,12 +291,12 @@
               text: "Wednesday"
             },
             value: {
-              html: wednesdayTime + wednesdayFrequency + otherWednesday
+              html: wednesdayTime + "<br>" +  wednesdayFrequency
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-wednesday-time",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/change-intermittent-closed-wednesday-time",
                   text: "Change",
                   visuallyHiddenText: "your Wednesday opening hours"
                 }
@@ -305,12 +308,12 @@
               text: "Thursday"
             },
             value: {
-              html: thursdayTime + thursdayFrequency + otherThursday
+              html: thursdayTime + "<br>" +  thursdayFrequency
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-thursday-time",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/change-intermittent-closed-thursday-time",
                   text: "Change",
                   visuallyHiddenText: "your Thursday opening hours"
                 }
@@ -322,12 +325,12 @@
               text: "Friday"
             },
             value: {
-              html: fridayTime + fridayFrequency + otherFriday
+              html: fridayTime + "<br>" + fridayFrequency
             },
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent-closed-friday-time",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/change-intermittent-closed-friday-time",
                   text: "Change",
                   visuallyHiddenText: "your Friday opening hours"
                 }
@@ -352,7 +355,7 @@
           actions: {
             items: [
               {
-                href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-closed-each-week",
+                href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/change-closed-each-week",
                 text: "Change",
                 visuallyHiddenText: "if the practice is closed each week for half a day during core contract hours"
               }
@@ -362,8 +365,8 @@
     ]
   }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/closed-each-week" method="get">
-        <input type="submit" class="nhsuk-button" value="Save and continue">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent/intermittent-details-complete" method="get">
+        <input type="submit" class="nhsuk-button" value="Save and confirm">
         </input>
       </form>
 
