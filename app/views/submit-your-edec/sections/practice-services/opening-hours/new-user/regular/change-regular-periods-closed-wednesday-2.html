@@ -244,12 +244,12 @@ const times = [
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular/change-regular-hours" method="post">
 
 
         {% call fieldset({
           "legend": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Regular periods of closure
             </span>' + contentTitle + '</h1>',
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false

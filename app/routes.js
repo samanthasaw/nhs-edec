@@ -334,12 +334,12 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
 
 // practice services
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods', function (req, res) {
   let answer = req.body.regularPeriods;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-regular-periods')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/which-days-regular-periods')
 
   }   else {
 
@@ -706,103 +706,103 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
 
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-regular-periods', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/which-days-regular-periods', function (req, res) {
   let answer = req.body.regEdit;
 
   if (answer.includes('monday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-monday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-monday')
   }
 
   if (answer.includes('tuesday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-tuesday')
   }
 
   if (answer.includes('wednesday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday')
   }
 
   if (answer.includes('thursday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
   }
 
   if (answer.includes('friday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
   }
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-monday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-monday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('tuesday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-tuesday')
     } else if (answer.includes('wednesday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday')
     } else if (answer.includes('thursday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
     } else if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
   }}
 
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-tuesday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('wednesday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday')
     } else if (answer.includes('thursday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
     } else if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
     }}
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('thursday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
     } else if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
     }}
 
 
 });
 
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
     }}
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday', function (req, res) {
   let answer = req.session.data.regEdit;
 
 
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
 
 });
 
