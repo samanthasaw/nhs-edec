@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your phone opening hours" %}
+{% set contentTitle = "Check and change your phone opening hours details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -132,7 +132,6 @@
 
       <p>Check your phone opening hours and change any times that need updating.</p>
 
-      <h2 class="nhsuk-heading-m">Your phone opening hours</h2>
       {{ summaryList({
         rows: [
           {
@@ -145,7 +144,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-monday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-monday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Monday phone opening hours"
                 }
@@ -162,7 +161,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-tuesday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-tuesday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Tuesday phone opening hours"
                 }
@@ -179,7 +178,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-wednesday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-wednesday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Wednesday phone opening hours"
                 }
@@ -196,7 +195,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-thursday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-thursday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Thursday phone opening hours"
                 }
@@ -213,7 +212,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-friday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-friday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Friday phone opening hours"
                 }
@@ -230,7 +229,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-saturday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-saturday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Saturday phone opening hours"
                 }
@@ -247,7 +246,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-sunday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-sunday-phone-2",
                   text: "Change",
                   visuallyHiddenText: "your Sunday phone opening hours"
                 }
@@ -257,9 +256,9 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/phone-details-complete" method="get">
 
-        <input type="submit" class="nhsuk-button" value="Save and continue">
+        <input type="submit" class="nhsuk-button" value="Save and confirm">
 
         </input>
       </form>

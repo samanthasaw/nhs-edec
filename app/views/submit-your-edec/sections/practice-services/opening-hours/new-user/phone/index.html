@@ -1,7 +1,7 @@
 <!-- Use this page as the index for your project -->
 {% set PROTOTYPEURL = "submit-your-edec" %}
 {% set serviceName = "Submit your electronic declaration" %}
-{% set contentTitle = "Practice services opening hours flow for new user" %}
+{% set contentTitle = "Phone opening hours flow for new user" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -42,151 +42,64 @@
 
     <p><strong>When a user clicks off the input, the autocomplete should close.</strong></p>
 
-      <h3>Reception opening hours (4A)</h3>
+    <h3>Start</h3>
+
+        <ul>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/task-list-start">Task list start</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/services-intro">Section intro</a></li>
+        </ul>
+
+        <h3>Which days and questions</h3>
+
+        <ul>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/which-days-phone">Which days - phone</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/monday-phone">Monday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/tuesday-phone">Tuesday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/wednesday-phone">Wednesday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/thursday-phone">Thursday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/friday-phone">Friday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/saturday-phone">Saturday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/sunday-phone">Sunday phone opening hours</a></li>
+        </ul>
+
+        <h3>Check and change answers</h3>
+
+        <ul>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/check-phone-answers">Check your answers</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-monday-phone">Change Monday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-tuesday-phone">Change Tuesday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-wednesday-phone">Change Wednesday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-thursday-phone">Change Thursday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-friday-phone">Change Friday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-saturday-phone">Change Saturday phone opening hours</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-sunday-phone">Change Sunday phone opening hours</a></li>
+        </ul>
+
+
+
+        <h3>Section complete</h3>
+
+        <ul>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/phone-details-complete">Phone section complete</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/task-list-phone-section-complete">Task list section complete</a></li>
+          <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/returns-to-complete-section">User clicks back into completed section</a></li>
+        </ul>
+
+
+        <h2>Change answers again</h2>
 
       <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-reception">Which days - reception</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-monday">Monday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-tuesday">Tuesday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-wednesday">Wednesday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-thursday">Thursday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-friday">Friday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-saturday">Saturday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/reception-sunday">Sunday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-reception-answers">Check your answers</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-monday">Change Monday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-tuesday">Change Tuesday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-wednesday">Change Wednesday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-thursday">Change Thursday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-friday">Change Friday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-saturday">Change Saturday reception opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-reception-sunday">Change Sunday reception opening hours</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-phone-hours">Change phone hours</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-monday-phone-2">Change Monday phone opening hours again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-tuesday-phone-2">Change Tuesday phone opening hours again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-wednesday-phone-2">Change Wednesday phone opening hours again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-thursday-phone-2">Change Thursday phone opening hours again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-friday-phone-2">Change Friday phone opening hours again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-saturday-phone-2">Change Saturday phone opening hours again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/change-sunday-phone-2">Change Sunday phone opening hours again</a></li>
       </ul>
 
 
-      <h3>Phone opening hours (4B)</h3>
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-phone">Which days - phone</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/monday-phone">Monday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/tuesday-phone">Tuesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/wednesday-phone">Wednesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/thursday-phone">Thursday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/friday-phone">Friday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/saturday-phone">Saturday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/sunday-phone">Sunday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-phone-answers">Check your answers</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-monday-phone">Change Monday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-tuesday-phone">Change Tuesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-wednesday-phone">Change Wednesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-thursday-phone">Change Thursday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-friday-phone">Change Friday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-saturday-phone">Change Saturday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-sunday-phone">Change Sunday phone opening hours</a></li>
-      </ul>
-
-      <h4>Regular periods practice is closed</h4>
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods">Regular periods closed (4C)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-regular-periods">Which days are there regular periods during each week that the practice is closed</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods-closed-monday">Monday regular periods where practice is closed (4D)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday">Tuesday regular periods where practice is closed (4D)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday">Wednesday regular periods where practice is closed (4D)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday">Thursday regular periods where practice is closed (4D)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday">Friday regular periods where practice is closed (4D)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-regular-periods">Check your answers</a></li>
-      </ul>
-
-      <h4>Intermittent periods practice is closed</h4>
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-periods">Intermittent periods closed (4E)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-intermittent-closure">Which days are there intermittent periods of closure</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-monday-time">Monday intermittent closure - time (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-monday-frequency">Monday intermittent closure - frequency (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-tuesday-time">Tuesday intermittent closure - time (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-tuesday-frequency">Tuesday intermittent closure - frequency (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-wednesday-time">Wednesday intermittent closure - time (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-wednesday-frequency">Wednesday intermittent closure - frequency (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-thursday-time">Thursday intermittent closure - time (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-thursday-frequency">Thursday intermittent closure - frequency (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-time">Friday intermittent closure - time (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/intermittent-closed-friday-frequency">Friday intermittent closure - frequency (4F)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-intermittent-periods">Check your answers</a></li>
-      </ul>
-
-      <h4>Closed each week</h4>
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/closed-each-week">Closed each week (4fb)</a></li>
-      </ul>
-
-      <h4>Extended opening hours</h4>
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-per-week">Do you have extended opening hours per week</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/number-of-extended-hours">Number of extended hours (4G)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-funding">Extended opening hours funding mechanism (4H)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-contract">Extended opening hours contract end date (4I)</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-extended-hours">Check your answers</a></li>
-      </ul>
-
-      <h3>Branch details</h3>
-
-      <p>Applies to users who in the practice details section have told us they have branch practices.</p>
-
-      <p>If user has more than 1 branch, the button on the last branches check phone answers should say 'Save and confirm'. Buttons on the previous branch check answers pages should say 'Save and continue'.</p>
-
-      <p>If user has only 1 branch, the button on the check phone answers page should say 'Save and confirm'.</p>
-
-      <p>If user indicates that only some of their branch reception opening hours are different, the check your answers page should inject their main practice opening hours for the days that are the same.</p>
-
-
-      <h4>Branch reception opening hours (10C)</h4>
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/is-branch-same">Are your branch opening hours the same as your practice</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-branch">Branch which days</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-monday">Branch monday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-tuesday">Branch tuesday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-wednesday">Branch wednesday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-thursday">Branch thursday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-friday">Branch friday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-saturday">Branch saturday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-sunday">Branch sunday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-branch-hours">Check your answers</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-monday">Change branch monday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-tuesday">Change branch tuesday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-wednesday">Change branch wednesday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-thursday">Change branch thursday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-friday">Change branch friday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-saturday">Change branch saturday opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-sunday">Change branch sunday opening hours</a></li>
-      </ul>
-
-      <h4>Branch phone opening hours (10C)</h4>
-
-
-      <ul>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/is-branch-phone-same">Are your branch phone line opening hours the same as your practice</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/which-days-branch-phone">Branch phone which days</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-monday">Branch monday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-tuesday">Branch tuesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-wednesday">Branch wednesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-thursday">Branch thursday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-friday">Branch friday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-saturday">Branch saturday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/branch-phone-sunday">Branch sunday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/check-branch-phone-hours">Check your answers</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-monday">Change branch monday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-tuesday">Change branch tuesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-wednesday">Change branch wednesday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-thursday">Change branch thursday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-friday">Change branch friday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-saturday">Change branch saturday phone opening hours</a></li>
-        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/change-branch-phone-sunday">Change branch sunday phone opening hours</a></li>
-      </ul>
 
 
       <!-- End of content -->
