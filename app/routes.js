@@ -390,6 +390,32 @@ router.post('/submit-your-edec/sections/practice-services/new-user/change-interp
 });
 
 
+router.post('/submit-your-edec/sections/practice-services/new-user/change-provision-care-2', function (req, res) {
+  let answer = req.body.provision;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-sub-contracts-provision-2')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-quality-ooh-2') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-interpreting-2-2', function (req, res) {
+  let answer = req.body.selectInterpret;
+
+  if (answer === 'noInterpret') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/check-your-answers')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-funds-interpreting-2') }
+
+});
 
 
 

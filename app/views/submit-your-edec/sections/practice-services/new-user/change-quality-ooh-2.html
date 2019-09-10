@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
+{% set contentTitle = "The practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,41 +30,25 @@
 {% endblock %}
 
 {% block content %}
-
-{% set inputprovision %}
-{{ input({
-  "label": {
-    "text": "Please provide the name of the accredited out of hours provider"
-  },
-  "id": "inputprovisionprovider",
-  "name": "inputprovision",
-  "classes": "nhsuk-input--width-30"
-}) }}
-{% endset %}
-
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-monitor-ooh" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-review-ooh-2" method="get">
 
-        {{ conditionalRadios({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "subProvision",
+          "name": "qualityOoh",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
           "items": [
             {
               "value": "yes",
-              "text": "Yes",
-              "conditional": {
-                html: inputprovision
-              }
+              "text": "Yes"
             },
             {
               "value": "no",
@@ -78,7 +62,16 @@
 
       </form>
 
-
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to:</p>
+        <ul>
+          <li>GMS Regulations Part 5 Regulation 18</li>
+          <li>PMS Regulations Part 5 Regulation 22</li>
+        </ul>
+        "
+      }) }}
 
     </div>
   </div>

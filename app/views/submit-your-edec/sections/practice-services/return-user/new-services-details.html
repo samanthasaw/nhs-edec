@@ -104,6 +104,16 @@ $('div.nhsuk-summary-list__row').each(function() {
           {% endif %}
         {% endset %}
 
+        {% set otherArrangements %}
+          {% if data['otherArrangements'] and data['servicesArrangements'] == 'other'  %}
+              <p>Other arrangements - {{ data['otherArrangements'] }}</p>
+                  {% else %}
+
+                  {% endif %}
+                {% endset %}
+
+
+
 
         {% set servicesArrangements %}
           {% if data['servicesArrangements'] == 'OOH' %}
@@ -113,7 +123,7 @@ $('div.nhsuk-summary-list__row').each(function() {
           {% elif data['servicesArrangements'] == 'directProvide' %}
             <p>Provided directly by the practice</p>
           {% else %}
-          <p>Other arrangements - {{ data['otherArrangements'] }}</p>
+            {{ otherArrangements | safe }}
           {% endif %}
         {% endset %}
 
@@ -272,7 +282,6 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 
 
-
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -361,7 +370,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               text: "If practice services are not available to patients during core contract hours what arrangements are in place?"
             },
             value: {
-              html: servicesArrangements | placeholder('Provided directly by the practice')
+              html: servicesArrangements | placeholder('Provided directly by the practice') | safe
             },
             actions: {
               items: [

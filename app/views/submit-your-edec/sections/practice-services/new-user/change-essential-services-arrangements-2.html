@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
+{% set contentTitle = "If practice services are not available to patients during core contract hours what arrangements are in place?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,47 +31,73 @@
 
 {% block content %}
 
-{% set inputprovision %}
-{{ input({
+{% set otherArrangements %}
+{{ textarea({
+  "name": "otherArrangements",
+  "id": "inputnhsnumber",
   "label": {
-    "text": "Please provide the name of the accredited out of hours provider"
-  },
-  "id": "inputprovisionprovider",
-  "name": "inputprovision",
-  "classes": "nhsuk-input--width-30"
+    "text": "What other arrangements are in place?"
+  }
 }) }}
 {% endset %}
+
+{% set subContractProvider %}
+{{ textarea({
+  "name": "subContractProvider",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What is the name of your sub contracted provider?"
+  }
+}) }}
+{% endset %}
+
+
 
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-monitor-ooh" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-services-details" method="get">
+
+
 
         {{ conditionalRadios({
           "idPrefix": "nhs",
-          "name": "subProvision",
+          "name": "servicesArrangements",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l",
+              "isPageHeading": true
             }
           },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes",
+              "value": "OOH",
+              "text": "Same out of hours provider as that commissioned by CCG"
+            },
+            {
+              "value": "sub",
+              "text": "Sub contracted provider",
               "conditional": {
-                html: inputprovision
+                html: subContractProvider
               }
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "directProvide",
+              "text": "Provided directly by the practice"
+            },
+            {
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: otherArrangements
+              }
             }
           ]
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

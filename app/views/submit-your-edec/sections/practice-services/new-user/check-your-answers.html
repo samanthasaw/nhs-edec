@@ -104,14 +104,13 @@ $('div.nhsuk-summary-list__row').each(function() {
           {% endif %}
         {% endset %}
 
-
         {% set otherArrangements %}
-          {% if data['otherArrangements'] %}
-            <p>Other arrangements - {{ data['otherArrangements'] }}</p>
-          {% else %}
+          {% if data['otherArrangements'] and data['servicesArrangements'] == 'other'  %}
+              <p>Other arrangements - {{ data['otherArrangements'] }}</p>
+                  {% else %}
 
-          {% endif %}
-        {% endset %}
+                  {% endif %}
+                {% endset %}
 
 
 
@@ -121,9 +120,10 @@ $('div.nhsuk-summary-list__row').each(function() {
             <p>Same out of hours provider as that commissioned by CCG</p>
           {% elif data['servicesArrangements'] == 'sub' %}
             <p>Sub contracted provider - {{ data['subContractProvider'] }}</p>
-          {% else %}
+          {% elif data['servicesArrangements'] == 'directProvide' %}
             <p>Provided directly by the practice</p>
-
+          {% else %}
+            {{ otherArrangements | safe }}
           {% endif %}
         {% endset %}
 
@@ -369,7 +369,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                     text: "If practice services are not available to patients during core contract hours what arrangements are in place?"
                   },
                   value: {
-                    html: servicesArrangements + otherArrangements | placeholder('Provided directly by the practice')
+                    html: servicesArrangements | placeholder('Provided directly by the practice') | safe
                   },
                   actions: {
                     items: [

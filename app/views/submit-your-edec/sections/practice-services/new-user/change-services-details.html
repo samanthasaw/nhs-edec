@@ -104,6 +104,16 @@ $('div.nhsuk-summary-list__row').each(function() {
           {% endif %}
         {% endset %}
 
+        {% set otherArrangements %}
+          {% if data['otherArrangements'] and data['servicesArrangements'] == 'other'  %}
+              <p>Other arrangements - {{ data['otherArrangements'] }}</p>
+                  {% else %}
+
+                  {% endif %}
+                {% endset %}
+
+
+
 
         {% set servicesArrangements %}
           {% if data['servicesArrangements'] == 'OOH' %}
@@ -113,7 +123,7 @@ $('div.nhsuk-summary-list__row').each(function() {
           {% elif data['servicesArrangements'] == 'directProvide' %}
             <p>Provided directly by the practice</p>
           {% else %}
-          <p>Other arrangements - {{ data['otherArrangements'] }}</p>
+            {{ otherArrangements | safe }}
           {% endif %}
         {% endset %}
 
@@ -272,6 +282,7 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 
 
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -297,234 +308,233 @@ $('div.nhsuk-summary-list__row').each(function() {
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice services</span>{{ contentTitle }}</h1>
 
-            {{ summaryList({
-              "classes": "nhsuk-summary-list--long",
-              rows: [
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "Does the practice offer primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside their usual practice boundary area?"
+            },
+            value: {
+              text: practiceBoundary | placeholder('Yes')
+            },
+            actions: {
+              items: [
                 {
-                  key: {
-                    text: "Does the practice offer primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside their usual practice boundary area?"
-                  },
-                  value: {
-                    text: practiceBoundary | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-patients-outside-boundary",
-                        text: "Change",
-                        visuallyHiddenText: "if your practice offers primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside your usual practice boundary area"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    html: "<p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (8am to 6:30pm Monday to Friday) in case of emergency?</p>
-                    The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:"
-                  },
-                  value: {
-                    html: reasonableNeeds | placeholder('Patient Participation Group')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-reasonable-needs-3",
-                        text: "Change",
-                        visuallyHiddenText: "if during the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (8am to 6:30pm Monday to Friday) in case of emergency"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    text: "The practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours"
-                  },
-                  value: {
-                    text: arrangementsPlace | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-essential-services-4",
-                        text: "Change",
-                        visuallyHiddenText: "if your practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    text: "If practice services are not available to patients during core contract hours what arrangements are in place?"
-                  },
-                  value: {
-                    html: servicesArrangements | placeholder('Provided directly by the practice')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-essential-services-arrangements",
-                        text: "Change",
-                        visuallyHiddenText: "what arrangements are in place if practice services are not available to patients during core contract hours"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    text: "Is the practice responsible for the provision/commissioning of care in the Out of Hours period?"
-                  },
-                  value: {
-                    text: provision | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-provision-care",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice is responsible for the provision/commissioning of care in the Out of Hours period"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    text: "Does the practice sub-contract the provision of Out of Hours care?"
-                  },
-                  value: {
-                    html: subProvision | placeholder('No')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-sub-contracts-provision",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice sub-contracts the provision of Out of Hours care"
-                      }
-                    ]
-                  }
-                } if provisionRow == 'show',
-                {
-                  key: {
-                    text: "The practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider, including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints"
-                  },
-                  value: {
-                    text: monitorOoh | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-monitor-ooh",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider, including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints"
-                      }
-                    ]
-                  }
-                } if provisionRow == 'show',
-                {
-                  key: {
-                    text: "The practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services"
-                  },
-                  value: {
-                    text: qualityOoh | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-quality-ooh",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services"
-                      }
-                    ]
-                  }
-                } if provisionRow == 'hide',
-                {
-                  key: {
-                    text: "The practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider"
-                  },
-                  value: {
-                    text: reviewOoh | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-review-ooh",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider"
-                      }
-                    ]
-                  }
-                } if provisionRow == 'hide',
-                {
-                  key: {
-                    text: "Does the practice provide access to interpreting?"
-                  },
-                  value: {
-                    html: interpreting | placeholder('Telephone')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-interpreting-2",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice provides access to interpreting"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    text: "Who funds the interpreting service?"
-                  },
-                  value: {
-                    html: funding | placeholder('Practice')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-funds-interpreting",
-                        text: "Change",
-                        visuallyHiddenText: "who funds the interpreting service"
-                      }
-                    ]
-                  }
-                } if selectInterpretRow == 'show',
-                {
-                  key: {
-                    text: "Does the practice review and update (where appropriate) the content of the practice website on at least two separate occasions, or more, per year?"
-                  },
-                  value: {
-                    html: reviewWebsite | placeholder('Yes')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-review-website",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice reviews and updates (where appropriate) the content of the practice website on at least two separate occasions, or more, per year"
-                      }
-                    ]
-                  }
-                },
-                {
-                  key: {
-                    text: "Practice email address used by patients"
-                  },
-                  value: {
-                    html: data['emailaddress']  | placeholder('thepractice@nhsuk.net')
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/new-user/change-practice-email",
-                        text: "Change",
-                        visuallyHiddenText: "if the practice reviews and updates (where appropriate) the content of the practice website on at least two separate occasions, or more, per year"
-                      }
-                    ]
-                  }
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-patients-outside-boundary-2",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice offers primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside your usual practice boundary area"
                 }
               ]
-            }) }}
-
+            }
+          },
+          {
+            key: {
+              html: "<p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (8am to 6:30pm Monday to Friday) in case of emergency?</p>
+              The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:"
+            },
+            value: {
+              html: reasonableNeeds | placeholder('Patient Participation Group')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-reasonable-needs-3-2",
+                  text: "Change",
+                  visuallyHiddenText: "if during the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (8am to 6:30pm Monday to Friday) in case of emergency"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours"
+            },
+            value: {
+              text: arrangementsPlace | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-essential-services-4-2",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "If practice services are not available to patients during core contract hours what arrangements are in place?"
+            },
+            value: {
+              html: servicesArrangements | placeholder('Provided directly by the practice') | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-essential-services-arrangements-2",
+                  text: "Change",
+                  visuallyHiddenText: "what arrangements are in place if practice services are not available to patients during core contract hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Is the practice responsible for the provision/commissioning of care in the Out of Hours period?"
+            },
+            value: {
+              text: provision | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-provision-care-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice is responsible for the provision/commissioning of care in the Out of Hours period"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Does the practice sub-contract the provision of Out of Hours care?"
+            },
+            value: {
+              html: subProvision | placeholder('No')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-sub-contracts-provision-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice sub-contracts the provision of Out of Hours care"
+                }
+              ]
+            }
+          } if provisionRow == 'show',
+          {
+            key: {
+              text: "The practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider, including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints"
+            },
+            value: {
+              text: monitorOoh | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-monitor-ooh-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider, including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints"
+                }
+              ]
+            }
+          } if provisionRow == 'show',
+          {
+            key: {
+              text: "The practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services"
+            },
+            value: {
+              text: qualityOoh | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-quality-ooh-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services"
+                }
+              ]
+            }
+          } if provisionRow == 'hide',
+          {
+            key: {
+              text: "The practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider"
+            },
+            value: {
+              text: reviewOoh | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-review-ooh-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider"
+                }
+              ]
+            }
+          } if provisionRow == 'hide',
+          {
+            key: {
+              text: "Does the practice provide access to interpreting?"
+            },
+            value: {
+              html: interpreting | placeholder('Telephone')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-interpreting-2-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice provides access to interpreting"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Who funds the interpreting service?"
+            },
+            value: {
+              html: funding | placeholder('Practice')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-funds-interpreting-2",
+                  text: "Change",
+                  visuallyHiddenText: "who funds the interpreting service"
+                }
+              ]
+            }
+          } if selectInterpretRow == 'show',
+          {
+            key: {
+              text: "Does the practice review and update (where appropriate) the content of the practice website on at least two separate occasions, or more, per year?"
+            },
+            value: {
+              html: reviewWebsite | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-review-website-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice reviews and updates (where appropriate) the content of the practice website on at least two separate occasions, or more, per year"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Practice email address used by patients"
+            },
+            value: {
+              html: data['emailaddress']  | placeholder('thepractice@nhsuk.net')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/new-user/change-practice-email-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice reviews and updates (where appropriate) the content of the practice website on at least two separate occasions, or more, per year"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
 
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/services-details-complete" method="get">

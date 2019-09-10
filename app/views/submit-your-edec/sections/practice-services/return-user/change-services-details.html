@@ -357,7 +357,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                     text: "If practice services are not available to patients during core contract hours what arrangements are in place?"
                   },
                   value: {
-                    html: servicesArrangements | placeholder('Provided directly by the practice')
+                    html: servicesArrangements | placeholder('Provided directly by the practice') | safe
                   },
                   actions: {
                     items: [

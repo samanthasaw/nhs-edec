@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
+{% set contentTitle = "Is the practice responsible for the provision/commissioning of care in the Out of Hours period?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,45 +30,32 @@
 {% endblock %}
 
 {% block content %}
-
-{% set inputprovision %}
-{{ input({
-  "label": {
-    "text": "Please provide the name of the accredited out of hours provider"
-  },
-  "id": "inputprovisionprovider",
-  "name": "inputprovision",
-  "classes": "nhsuk-input--width-30"
-}) }}
-{% endset %}
-
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-monitor-ooh" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-provision-care-2" method="post">
 
-        {{ conditionalRadios({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "subProvision",
+          "name": "provision",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
+          },
+          "hint": {
+            "text": "For example care which is provided by the practice or commissioned by the practice. This does not refer to Out of Hours Care commissioned by the CCG."
           },
           "items": [
             {
               "value": "yes",
-              "text": "Yes",
-              "conditional": {
-                html: inputprovision
-              }
+              "text": "Yes"
             },
             {
               "value": "no",
-              "text": "No"
+              "text": "No, the practice has opted out of this"
             }
           ]
         }) }}
