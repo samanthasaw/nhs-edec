@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Practice email address used by patients" %}
+{% set contentTitle = "This section has a new question" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -21,36 +21,32 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
-
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-width-container">
     <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
   </div>
 </div>
-
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/services-details-complete" method="get">
 
-        {{ input({
-          "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-            </span>' + contentTitle + '</h1>',
-            "isPageHeading": true,
-            "classes": "nhsuk-label--xl"
-          },
-          "id": "inputemailaddress",
-          "name": "emailaddress",
-          "classes": "nhsuk-input--width-30"
-        }) }}
+      <div class="app-card">
+        <div class="app-card__wrapper">
+          <div class="app-card__content">
+            <h1 class="app-card__heading nhsuk-heading-l">{{ contentTitle }}</h1>
 
-        <input type="submit" class="nhsuk-button" value="Save and confirm">
-        </input>
 
-      </form>
+            <form action="/{{PROTOTYPEURL}}/sections/practice-services/return-user/practice-email" method="get">
+
+              <input type="submit" class="nhsuk-button" value="Continue">
+              </input>
+
+            </form>
+          </div>
+        </div>
+      </div>
 
 
     </div>

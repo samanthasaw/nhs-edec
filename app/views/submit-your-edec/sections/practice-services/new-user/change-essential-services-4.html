@@ -1,0 +1,112 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='arrangementsPlace']" ).on( "click", function() {
+  if ( $( "input[name='arrangementsPlace']:checked" ).val() === "no") {
+    console.log( "no" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "yes" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+
+{% set otherArrangements %}
+{{ textarea({
+  "name": "inputOtherArrangements",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other arrangements are in place?"
+  }
+}) }}
+{% endset %}
+
+{% set subContractProvider %}
+{{ textarea({
+  "name": "inputSubContractProvider",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What is the name of your sub contracted provider?"
+  }
+}) }}
+{% endset %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-services-details" method="get">
+
+
+                {{ radios({
+                  "idPrefix": "fart",
+                  "name": "arrangementsPlace",
+                  "fieldset": {
+                    "legend": {
+                      "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+                      </span>' + contentTitle + '</h1>',
+                      "isPageHeading": true,
+                      "classes": "nhsuk-fieldset__legend--l"
+                    }
+                  },
+                  "hint": {
+                  "text": "For example arrangements provided directly by the practice, using the same out of hours provider as that commissioned by the CCG or using a sub contracted provider."
+                },
+                  "items": [
+                    {
+                      "value": "yes",
+                      "text": "Yes"
+                    },
+                    {
+                      "value": "no",
+                      "text": "No"
+                    }
+                  ]
+                }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

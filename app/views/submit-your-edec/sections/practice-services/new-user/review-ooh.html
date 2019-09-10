@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Who funds the interpreting service?" %}
+{% set contentTitle = "The practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,61 +30,32 @@
 {% endblock %}
 
 {% block content %}
-
-{% set fundInterpretOther %}
-{{ input({
-  "id": "nhs",
-  "name": "fundInterpretOther",
-  "classes": "nhsuk-input--width-30"
-}) }}
-{% endset %}
-
-
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/new-services-details" method="get">
 
-
-
-        {{ checkboxes({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "fundInterpret",
+          "name": "reviewOoh",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl",
-              "isPageHeading": true
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
-          "hint": {
-          "text": "Select all that apply"
-        },
           "items": [
             {
-              "value": "practice",
-              "text": "Practice"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "ccq",
-              "text": "CCG"
-            },
-            {
-              "value": "nhsEngland",
-              "text": "NHS England"
-            },
-            {
-              "value": "other",
-              "text": "Other",
-              "conditional": {
-                html: fundInterpretOther
-              }
+              "value": "no",
+              "text": "No"
             }
           ]
         }) }}
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
@@ -92,6 +63,16 @@
       </form>
 
 
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to:</p>
+        <ul>
+          <li>GMS Regulations Part 5 Regulation 18</li>
+          <li>PMS Regulations Part 5 Regulation 22</li>
+        </ul>
+        "
+      }) }}
 
     </div>
   </div>

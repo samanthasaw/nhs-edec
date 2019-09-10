@@ -5,11 +5,10 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Practice email address used by patients" %}
+{% set contentTitle = "You've confirmed your practice services details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -33,24 +32,17 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/services-details-complete" method="get">
 
-        {{ input({
-          "label": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
-            </span>' + contentTitle + '</h1>',
-            "isPageHeading": true,
-            "classes": "nhsuk-label--xl"
-          },
-          "id": "inputemailaddress",
-          "name": "emailaddress",
-          "classes": "nhsuk-input--width-30"
-        }) }}
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice services</span>{{ contentTitle }}</h1>
 
-        <input type="submit" class="nhsuk-button" value="Save and confirm">
-        </input>
+      <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
 
-      </form>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-services-details">check and change your practice services details</a> at any time before submitting your electronic declaration.</p>
+
+      {{ button({
+        "text": "Continue",
+        "href": "/submit-your-edec/sections/practice-services/new-user/task-list-services-section-complete"
+      }) }}
 
 
     </div>

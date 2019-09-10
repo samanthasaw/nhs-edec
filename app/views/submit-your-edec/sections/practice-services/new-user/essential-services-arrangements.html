@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Who funds the interpreting service?" %}
+{% set contentTitle = "If practice services are not available to patients during core contract hours what arrangements are in place?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,55 +31,68 @@
 
 {% block content %}
 
-{% set fundInterpretOther %}
-{{ input({
-  "id": "nhs",
-  "name": "fundInterpretOther",
-  "classes": "nhsuk-input--width-30"
+{% set otherArrangements %}
+{{ textarea({
+  "name": "otherArrangements",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other arrangements are in place?"
+  }
 }) }}
 {% endset %}
+
+{% set subContractProvider %}
+{{ textarea({
+  "name": "subContractProvider",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What is the name of your sub contracted provider?"
+  }
+}) }}
+{% endset %}
+
 
 
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/provision-care" method="get">
 
 
 
-        {{ checkboxes({
+        {{ conditionalRadios({
           "idPrefix": "nhs",
-          "name": "fundInterpret",
+          "name": "servicesArrangements",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl",
+              "classes": "nhsuk-label--l app-heading-l",
               "isPageHeading": true
             }
           },
-          "hint": {
-          "text": "Select all that apply"
-        },
           "items": [
             {
-              "value": "practice",
-              "text": "Practice"
+              "value": "OOH",
+              "text": "Same out of hours provider as that commissioned by CCG"
             },
             {
-              "value": "ccq",
-              "text": "CCG"
+              "value": "sub",
+              "text": "Sub contracted provider",
+              "conditional": {
+                html: subContractProvider
+              }
             },
             {
-              "value": "nhsEngland",
-              "text": "NHS England"
+              "value": "directProvide",
+              "text": "Provided directly by the practice"
             },
             {
               "value": "other",
               "text": "Other",
               "conditional": {
-                html: fundInterpretOther
+                html: otherArrangements
               }
             }
           ]

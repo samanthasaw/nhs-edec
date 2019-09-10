@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Who funds the interpreting service?" %}
+{% set contentTitle = "Is the practice responsible for the provision/commissioning of care in the Out of Hours period?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,61 +30,35 @@
 {% endblock %}
 
 {% block content %}
-
-{% set fundInterpretOther %}
-{{ input({
-  "id": "nhs",
-  "name": "fundInterpretOther",
-  "classes": "nhsuk-input--width-30"
-}) }}
-{% endset %}
-
-
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/sub-contracts-provision" method="get">
 
-
-
-        {{ checkboxes({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "fundInterpret",
+          "name": "provision",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl",
-              "isPageHeading": true
+              "classes": "nhsuk-label--l app-heading-l"
             }
           },
           "hint": {
-          "text": "Select all that apply"
-        },
+            "text": "For example care which is provided by the practice or commissioned by the practice. This does not refer to Out of Hours Care commissioned by the CCG."
+          },
           "items": [
             {
-              "value": "practice",
-              "text": "Practice"
+              "value": "yes",
+              "text": "Yes"
             },
             {
-              "value": "ccq",
-              "text": "CCG"
-            },
-            {
-              "value": "nhsEngland",
-              "text": "NHS England"
-            },
-            {
-              "value": "other",
-              "text": "Other",
-              "conditional": {
-                html: fundInterpretOther
-              }
+              "value": "no",
+              "text": "No, the practice has opted out of this"
             }
           ]
         }) }}
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

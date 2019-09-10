@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Who funds the interpreting service?" %}
+{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,60 +31,47 @@
 
 {% block content %}
 
-{% set fundInterpretOther %}
+{% set inputprovision %}
 {{ input({
-  "id": "nhs",
-  "name": "fundInterpretOther",
+  "label": {
+    "text": "Please provide the name of the accredited out of hours provider"
+  },
+  "id": "inputprovisionprovider",
+  "name": "inputprovision",
   "classes": "nhsuk-input--width-30"
 }) }}
 {% endset %}
 
 
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/new-services-details" method="get">
 
-
-
-        {{ checkboxes({
+        {{ conditionalRadios({
           "idPrefix": "nhs",
-          "name": "fundInterpret",
+          "name": "subProvision",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl",
-              "isPageHeading": true
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
-          "hint": {
-          "text": "Select all that apply"
-        },
           "items": [
             {
-              "value": "practice",
-              "text": "Practice"
-            },
-            {
-              "value": "ccq",
-              "text": "CCG"
-            },
-            {
-              "value": "nhsEngland",
-              "text": "NHS England"
-            },
-            {
-              "value": "other",
-              "text": "Other",
+              "value": "yes",
+              "text": "Yes",
               "conditional": {
-                html: fundInterpretOther
+                html: inputprovision
               }
+            },
+            {
+              "value": "no",
+              "text": "No"
             }
           ]
         }) }}
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
