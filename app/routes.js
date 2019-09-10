@@ -334,6 +334,67 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
 
 // practice services
 
+router.post('/submit-your-edec/sections/practice-services/new-user/provision-care', function (req, res) {
+  let answer = req.body.provision;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/sub-contracts-provision')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/quality-ooh') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/interpreting-2', function (req, res) {
+  let answer = req.body.selectInterpret;
+
+  if (answer === 'noInterpret') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/review-website')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/funds-interpreting') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-provision-care', function (req, res) {
+  let answer = req.body.provision;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-sub-contracts-provision')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-quality-ooh') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-interpreting-2', function (req, res) {
+  let answer = req.body.selectInterpret;
+
+  if (answer === 'noInterpret') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/check-your-answers')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-funds-interpreting') }
+
+});
+
+
+
+
+
+
+
 router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods', function (req, res) {
   let answer = req.body.regularPeriods;
 

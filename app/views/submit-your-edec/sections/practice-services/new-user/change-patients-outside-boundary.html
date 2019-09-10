@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice sub-contract the provision of Out of Hours care?" %}
+{% set contentTitle = "Does the practice offer primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside their usual practice boundary area?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -30,41 +30,28 @@
 {% endblock %}
 
 {% block content %}
-
-{% set inputprovision %}
-{{ input({
-  "label": {
-    "text": "Please provide the name of the accredited out of hours provider"
-  },
-  "id": "inputprovisionprovider",
-  "name": "inputprovision",
-  "classes": "nhsuk-input--width-30"
-}) }}
-{% endset %}
-
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/check-your-answers" method="get">
 
-        {{ conditionalRadios({
+        {{ radios({
           "idPrefix": "nhs",
-          "name": "subProvision",
+          "name": "practiceBoundary",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-label--l app-heading-l"
             }
+          },
+          "hint": {
+            "text": "Provision of out of area registration by practices is optional."
           },
           "items": [
             {
               "value": "yes",
-              "text": "Yes",
-              "conditional": {
-                html: inputprovision
-              }
+              "text": "Yes"
             },
             {
               "value": "no",
