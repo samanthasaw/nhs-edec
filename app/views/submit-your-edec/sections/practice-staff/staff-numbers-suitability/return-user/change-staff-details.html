@@ -5,10 +5,34 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check and change your practice staff details" %}
+{% set contentTitle = "Check and change your staff numbers and suitability details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
+
+{% set needsAnalysis %}
+  {% if data['needsAnalysis'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set professionalCheck %}
+  {% if data['professionalCheck'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set dbsCheck %}
+  {% if data['dbsCheck'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
 
 
 {% if data['locumsessions'] %}
@@ -93,92 +117,6 @@
                   href: "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/return-user/change-dbs-check",
                   text: "Change",
                   visuallyHiddenText: "if all relevant staff been subject to the necessary Disclosure and Barring Service (DBS) checks"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "All health care professionals employed in the practice have annual appraisals and where applicable personal development plans and that this is aligned to revalidation for doctors and also for registered nurses and midwives (according to requirements issued by the Nursing and Midwifery Council)"
-            },
-            value: {
-              text: annualAppraisal | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/return-user/change-annual-appraisals",
-                  text: "Change",
-                  visuallyHiddenText: "if all health care professionals employed in your practice have annual appraisals and where applicable personal development plans"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum"
-            },
-            value: {
-              text: termsEmployment | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/return-user/change-terms-of-employment",
-                  text: "Change",
-                  visuallyHiddenText: "if all practice staff have written terms and conditions of employment conforming to or exceeding the statutory minimum"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "The practice can demonstrate that it is compliant with Equal Opportunities legislation on employment and discrimination (Equality Act 2010)"
-            },
-            value: {
-              text: equalOpportunities | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/return-user/change-equal-opportunities-2",
-                  text: "Change",
-                  visuallyHiddenText: "if your practice can demonstrate that it is compliant with equal opportunities legislation on employment and discrimination"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Are all healthcare workers employed by the practice familiar with the Government’s Prevent strategy and have all GPs (partners and salaried) participated in Prevent training in the past 3 years?"
-            },
-            value: {
-              text: preventStrategy | placeholder('Yes')
-
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/return-user/change-prevent-strategy-2",
-                  text: "Change",
-                  visuallyHiddenText: "if all healthcare workers employed by the practice are familiar with the Government’s Prevent strategy and if all GPs (partners and salaried) have participated in Prevent training in the past 3 years"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "The practice has policies for safeguarding both children and adults"
-            },
-            value: {
-              text: safeguardingPolicy | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/return-user/change-safeguarding-2",
-                  text: "Change",
-                  visuallyHiddenText: "if your practice has policies for safeguarding both children and adults"
                 }
               ]
             }

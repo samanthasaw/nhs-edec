@@ -10,29 +10,6 @@
 {% block pageScripts %}
 {% endblock %}
 
-{% set needsAnalysis %}
-  {% if data['needsAnalysis'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set professionalCheck %}
-  {% if data['professionalCheck'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
-
-{% set dbsCheck %}
-  {% if data['dbsCheck'] == 'yes' %}
-    Yes
-  {% else %}
-    No
-  {% endif %}
-{% endset %}
 
 {% set annualAppraisal %}
   {% if data['annualAppraisal'] == 'yes' %}
@@ -77,11 +54,6 @@
 {% endset %}
 
 
-{% if data['locumsessions'] %}
-    {% set locumsessions = data['locumsessions'] + ' sessions' %}
-{% else %}
-    {% set locumsessions = "" %}
-{% endif %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -114,74 +86,6 @@
       {{ summaryList({
         "classes": "nhsuk-summary-list--long",
         rows: [
-          {
-            key: {
-              text: "The practice can evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels. Recognising the need to have the right knowledge, experience, qualifications and skills for the purpose of providing services in the practice and demonstrating capacity to respond to unexpected service changes."
-            },
-            value: {
-              text: needsAnalysis | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/training-support/new-user/change-needs-analysis",
-                  text: "Change",
-                  visuallyHiddenText: "if your practice can evidence and make available the needs analysis and risk assessment it has used for deciding sufficient staff levels"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "All health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked"
-            },
-            value: {
-              text: professionalCheck | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/training-support/new-user/change-professional-body-check",
-                  text: "Change",
-                  visuallyHiddenText: "if all health care professionals working in the practice are registered with the relevant professional body, and that this registration is checked on employment (along with satisfactory references) and where applicable annually thereafter, and that health care professionals that are required to revalidate do so and that for GPs, inclusion on the performer list is checked"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "All relevant staff have been subject to the necessary Disclosure and Barring Service (DBS) checks"
-            },
-            value: {
-              text: dbsCheck | placeholder('Yes')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/training-support/new-user/change-dbs-check",
-                  text: "Change",
-                  visuallyHiddenText: "if all relevant staff been subject to the necessary Disclosure and Barring Service (DBS) checks"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Total number of locum sessions, between 1st of July 2019 through to 30th September 2019, where pay has exceeded the maximum indicative rate of £77.57 per hour"
-            },
-            value: {
-              text: locumsessions | placeholder('5 sessions')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-staff/training-support/new-user/change-locum-sessions",
-                  text: "Change",
-                  visuallyHiddenText: "your total number of locum sessions, between 1st of July 2018 through to 30th September 2018, where pay has exceeded the maximum indicative rate of £82.43 per hour"
-                }
-              ]
-            }
-          },
           {
             key: {
               text: "All health care professionals employed in the practice have annual appraisals and where applicable personal development plans and that this is aligned to revalidation for doctors and also for registered nurses and midwives (according to requirements issued by the Nursing and Midwifery Council)"
