@@ -1,0 +1,107 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check and change your consent including children details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+
+{% set minorSurgery %}
+  {% if data['minorSurgery'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set chaperones %}
+  {% if data['chaperones'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Consent, including children</span>{{ contentTitle }}</h1>
+
+
+            {{ summaryList({
+              "classes": "nhsuk-summary-list--long",
+              rows: [
+                {
+                  key: {
+                    text: "The practice records patients’ consent for minor surgery. Including curettage and cautery and, in relation to warts, verrucae and other skin lesions, cryocautery"
+                  },
+                  value: {
+                    text: minorSurgery | placeholder('Yes')
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/submit-your-edec/sections/practice-procedures/consent-including-children/new-user/change-minor-surgery",
+                        text: "Change",
+                        visuallyHiddenText: "if the practice records patients’ consent for minor surgery. Including curettage and cautery and, in relation to warts, verrucae and other skin lesions, cryocautery"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "The practice has a policy for patients to request chaperones. This policy includes children and young people as well as adult patients"
+                  },
+                  value: {
+                    text: chaperones | placeholder('Yes')
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/submit-your-edec/sections/practice-procedures/consent-including-children/new-user/change-chaperones",
+                        text: "Change",
+                        visuallyHiddenText: "if the practice has a policy for patients to request chaperones and this policy includes children and young people as well as adult patients"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/consent-including-children/return-user/procedures-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}
