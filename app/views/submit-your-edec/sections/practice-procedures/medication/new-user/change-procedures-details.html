@@ -1,0 +1,279 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check and change your medication details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+{% set medicinesAct %}
+  {% if data['medicinesAct'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set vaccineStore %}
+  {% if data['vaccineStore'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set batchNumbers %}
+  {% if data['batchNumbers'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set vaccineFridge %}
+  {% if data['vaccineFridge'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set administerVaccine %}
+  {% if data['administerVaccine'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+
+{% set controlledDrugs %}
+  {% if data['controlledDrugs'] == 'yes' %}
+    Yes
+  {% elif data['controlledDrugs'] == 'no' %}
+    No
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+{% endset %}
+
+
+{% set controlledDrugsRegulations %}
+  {% if data['controlledDrugsRegulations'] == 'yes' %}
+    Yes
+  {% elif data['controlledDrugsRegulations'] == 'no' %}
+    No
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+{% endset %}
+
+
+{% set termsService %}
+  {% if data['termsService'] == 'yes' %}
+    Yes
+  {% elif data['termsService'] == 'no' %}
+    No
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+{% endset %}
+
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Medication</span>{{ contentTitle }}</h1>
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "The practice has a written policy and procedures in line with the requirements of the Medicines Act which will be made available if requested"
+            },
+            value: {
+              text: medicinesAct | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-medicines-act-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice has a written policy and procedures in line with the requirements of the Medicines Act which will be made available if requested"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Practice stores vaccines in accordance with the manufacturer’s instructions"
+            },
+            value: {
+              text: vaccineStore | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-vaccine-storage-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice stores vaccines in accordance with the manufacturer’s instructions"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice has a procedure to ensure all batch numbers and expiry dates are recorded for all vaccines administered and that all immunisations, vaccinations and consent to immunisations are recorded in the patient record"
+            },
+            value: {
+              text: batchNumbers | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-batch-numbers-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice has a procedure to ensure all batch numbers and expiry dates are recorded for all vaccines administered and that all immunisations, vaccinations and consent to immunisations are recorded in the patient record"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice stores its vaccines in fridges which have a max and min thermometer and can demonstrate, if asked, that readings are taken on all working days"
+            },
+            value: {
+              text: vaccineFridge | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-vaccine-fridge-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice stores its vaccines in fridges which have a max and min thermometer and can demonstrate, if asked, that readings are taken on all working days"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "All staff involved in administering vaccines are trained in the recognition of anaphylaxis and able to administer appropriate first line treatment when it occurs"
+            },
+            value: {
+              text: administerVaccine | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-administer-vaccine-2",
+                  text: "Change",
+                  visuallyHiddenText: "if all staff involved in administering vaccines are trained in the recognition of anaphylaxis and able to administer appropriate first line treatment when it occurs"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: "<p>With regard to dispensing doctors: the practice can demonstrate it has clear procedures, that are followed in practice, monitored and reviewed, for controlled drugs, unless they are taken by the person themselves in their own home.</p>Including investigations about adverse events, incidents, errors and near misses; sharing concerns about mishandling."
+            },
+            value: {
+              html: controlledDrugs | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-controlled-drugs-2",
+                  text: "Change",
+                  visuallyHiddenText: "if with regard to dispensing doctors: the practice can demonstrate it has clear procedures, that are followed in practice, monitored and reviewed, for controlled drugs, unless they are taken by the person themselves in their own home. Including investigations about adverse events, incidents, errors and near misses; sharing concerns about mishandling."
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: "<p>With regard to dispensing doctors: The practice has systems in place to ensure they comply with:</p>
+              <ul>
+                <li>the requirements of the Controlled Drugs (Supervision of Management and Use) Regulations 2006</li>
+                <li>relevant health technical memoranda and professional guidance from the Royal Pharmaceutical Society of Great Britain</li>
+                <li>other relevant professional bodies and agencies</li>
+              </ul>
+              "
+            },
+            value: {
+              html: controlledDrugsRegulations | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-controlled-drugs-regulations-3-2",
+                  text: "Change",
+                  visuallyHiddenText: "what arrangements are in place to meet the reasonable needs of patients who are wheelchair users"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: "<p>With regard to dispensing doctors, the practice declares:</p>
+                <ul>
+                  <li>It complies with the terms of service of dispensing doctors outlined in schedule 6 of The National Health Service (Pharmaceutical and Local Pharmaceutical Services) Regulations 2013 and;</li>
+                  <li>The practice can demonstrate that for all patients which it dispenses to it is satisfied that they would have serious difficulty in obtaining any necessary drugs or appliances from an NHS pharmacist by reason of distance or inadequacy of means of communication (colloquially known as the “serious difficulty” test which can apply anywhere in the country); or</li>
+                  <li>A patient is resident in an area which is rural in character, known as a controlled locality, at a distance of more than one mile1 (1.6 km) from pharmacy premises (excluding any distance selling premises). The pharmacy premises do not have to be in a controlled locality.</li>
+                </ul>
+              "
+            },
+            value: {
+              html: termsService | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/medication/new-user/change-terms-of-service-3-2",
+                  text: "Change",
+                  visuallyHiddenText: "what arrangements are in place to meet the reasonable needs of patients who are wheelchair users"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/medication/new-user/procedures-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}

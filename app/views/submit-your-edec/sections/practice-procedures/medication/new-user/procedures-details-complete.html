@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "You've confirmed your information about the practice and its procedures details" %}
+{% set contentTitle = "You've confirmed your medication details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,15 +33,15 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Medication</span>{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Medication</span>{{ contentTitle }}</h1>
 
       <p>You have 5 more sections to complete before you can submit your electronic declaration.</p>
 
-      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/medication/new-user/change-communicating-details">change your communicating with patients details</a> or <a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/medication/new-user/change-medication-details">change your medication details</a> at any time before submitting your electronic declaration.</p>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/medication/new-user/change-procedures-details">change your medication details</a> at any time before submitting your electronic declaration.</p>
 
       {{ button({
         "text": "Continue",
-        "href": "/submit-your-edec/sections/practice-procedures/medication/return-user/task-list-procedures-section-complete"
+        "href": "/submit-your-edec/sections/practice-procedures/medication/new-user/task-list-procedures-section-complete"
       }) }}
 
     </div>

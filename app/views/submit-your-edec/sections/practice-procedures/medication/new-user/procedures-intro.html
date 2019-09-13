@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What the Information about the practice and its procedures section covers" %}
+{% set contentTitle = "What the medication section covers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,7 +34,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       {{ backLink({
-        "href": "/submit-your-edec/sections/practice-procedures/medication/return-user/procedures-task-list-start",
+        "href": "/submit-your-edec/sections/practice-procedures/medication/new-user/procedures-task-list-start",
         "text": "Back to your task list"
       }) }}
 
@@ -52,7 +52,7 @@
               <p>This section relates to Regulations 9, 10, 11, 12, 13 and 17 of the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014 (as amended).</p>
               "
             }) }}
-            <form action="/{{PROTOTYPEURL}}/sections/practice-procedures/medication/return-user/check-last-year" method="get">
+            <form action="/{{PROTOTYPEURL}}/sections/practice-procedures/medication/new-user/medicines-act" method="get">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>
