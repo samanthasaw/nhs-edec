@@ -1647,6 +1647,20 @@ router.post('/submit-your-edec/sections/general-practice-it/return-user/lloyd-ge
 
 
 
+router.post('/submit-your-edec/sections/general-practice-it/new-user/lloyd-george', function (req, res) {
+  let answer = req.body.lloydGeorge;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/new-user/available-book-online')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/new-user/offsite-storage')
+  }
+});
+
+
 // Submit
 
 

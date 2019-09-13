@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "What the General practice IT section covers" %}
+{% set contentTitle = "What the general practice IT section covers" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,9 +34,10 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       {{ backLink({
-        "href": "/submit-your-edec/sections/general-practice-it/new-user/practice-it-task-list-start",
+        "href": "/submit-your-edec/sections/general-practice-it/new-user/general-task-list-start",
         "text": "Back to your task list"
       }) }}
+
 
       <div class="app-card">
         <div class="app-card__wrapper">
@@ -49,7 +50,7 @@
 
             <p>Responses to questions in this section will be shared within other modules of the primary care indicators website GPIT section <a href="https://www.primarycareindicators.nhs.uk">www.primarycareindicators.nhs.uk</a> and will be visible to all other users.</p>
 
-            <form action="/{{PROTOTYPEURL}}/sections/general-practice-it/new-user/instructions-card" method="post">
+            <form action="/{{PROTOTYPEURL}}/sections/general-practice-it/new-user/patient-consultations-3" method="post">
 
               <input type="submit" class="nhsuk-button" value="Continue">
               </input>

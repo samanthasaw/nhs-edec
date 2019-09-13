@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "The practice is enriching the Summary Care Record of patients who have given their consent, including those living with severe frailty?" %}
+{% set contentTitle = "The practice can process directly booked appointments from NHS 111?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,20 +33,20 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-general-details" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/check-your-answers" method="post">
 
         {{ radios({
           "idPrefix": "nhs",
-          "name": "enrichScr",
+          "name": "nhs111",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--l app-heading-l"
+              "classes": "nhsuk-label--xl app-heading-xl"
             }
           },
           "hint": {
-            text: "The response is not limited to those who have severe frailty and aged 65 and over, instead it refers to all the patients in a practice who have consented for their records to be enriched."
+            "text": "No applies for circumstances where the capability has not been enabled or is not in use."
           },
           "items": [
             {
@@ -60,7 +60,7 @@
           ]
         }) }}
 
-        <input type="submit" class="nhsuk-button" value="Continue">
+        <input type="submit" class="nhsuk-button" value="Save and confirm">
         </input>
 
       </form>

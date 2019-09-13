@@ -16,9 +16,9 @@
       {% set electronicDischarge %}
         {% if data['electronicDischarge'] == 'outPatients' %}
           <p> The majority of local acute discharge summaries/letters are received electronically for <strong>out patients</strong> </p>
-        {% elif data['clinicalSystemPurposes'] == 'inPatients' %}
+        {% elif data['electronicDischarge'] == 'inPatients' %}
           <p> The majority of local acute discharge summaries/letters are received electronically for <strong>in patients</strong> </p>
-        {% elif data['clinicalSystemPurposes'] == 'aAndE' %}
+        {% elif data['electronicDischarge'] == 'aande' %}
           <p> The majority of local A&E discharge summaries are received electronically </p>
         {% else %}
           This does not apply to my practice
@@ -35,7 +35,7 @@
             <p> The majority of local acute discharge summaries/letters are received electronically for <strong>out patients</strong> </p>
             {% elif item == 'inPatients' %}
             <p> The majority of local acute discharge summaries/letters are received electronically for <strong>in patients</strong> </p>
-            {% elif item == 'aAndE' %}
+            {% elif item == 'aande' %}
             <p> The majority of local A&E discharge summaries are received electronically </p>
             {% else %}
               This does not apply to my practice

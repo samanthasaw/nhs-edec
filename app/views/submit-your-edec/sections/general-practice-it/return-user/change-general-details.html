@@ -40,9 +40,9 @@ $('div.nhsuk-summary-list__row').each(function() {
       {% set electronicDischarge %}
         {% if data['electronicDischarge'] == 'outPatients' %}
           <p> The majority of local acute discharge summaries/letters are received electronically for <strong>out patients</strong> </p>
-        {% elif data['clinicalSystemPurposes'] == 'inPatients' %}
+        {% elif data['electronicDischarge'] == 'inPatients' %}
           <p> The majority of local acute discharge summaries/letters are received electronically for <strong>in patients</strong> </p>
-        {% elif data['clinicalSystemPurposes'] == 'aAndE' %}
+        {% elif data['electronicDischarge'] == 'aande' %}
           <p> The majority of local A&E discharge summaries are received electronically </p>
         {% else %}
           This does not apply to my practice
@@ -59,7 +59,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             <p> The majority of local acute discharge summaries/letters are received electronically for <strong>out patients</strong> </p>
             {% elif item == 'inPatients' %}
             <p> The majority of local acute discharge summaries/letters are received electronically for <strong>in patients</strong> </p>
-            {% elif item == 'aAndE' %}
+            {% elif item == 'aande' %}
             <p> The majority of local A&E discharge summaries are received electronically </p>
             {% else %}
               This does not apply to my practice
@@ -109,15 +109,15 @@ $('div.nhsuk-summary-list__row').each(function() {
 
       {% set selectPatientConsultations %}
         {% if data['selectPatientConsultations'] == 'email' %}
-          <p> <strong>Patients: </strong>Email </p>
+          <p> Email </p>
         {% elif data['selectPatientConsultations'] == 'video' %}
-          <p> <strong>Patients: </strong>Video </p>
+          <p> Video </p>
         {% elif data['selectPatientConsultations'] == 'telephone' %}
-          <p> <strong>Patients: </strong>Telephone </p>
+          <p> Telephone </p>
           {% elif data['selectPatientConsultations'] == 'onlineConsultation' %}
-            <p> <strong>Patients: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+            <p> Online consultations (for example electronic questionnaires and text messaging systems) </p>
         {% else %}
-          <p><strong>Patients: </strong>Not applicable</p>
+          <p>Not applicable</p>
         {% endif %}
         {% endset %}
 
@@ -126,7 +126,10 @@ $('div.nhsuk-summary-list__row').each(function() {
           {% if cheese == 'stringyCheese' %}
             {{ selectPatientConsultations | safe }}
           {% else %}
+
             {% for item in data['selectPatientConsultations'] %}
+
+
             {% if item == 'email' %}
             <p> Email </p>
             {% elif item == 'video' %}
@@ -146,15 +149,15 @@ $('div.nhsuk-summary-list__row').each(function() {
 
           {% set selectNursingConsultations %}
             {% if data['selectNursingConsultations'] == 'email' %}
-              <p><strong>Nursing homes: </strong>Email </p>
+              <p>Email </p>
             {% elif data['selectNursingConsultations'] == 'video' %}
-              <p><strong>Nursing homes: </strong>Video </p>
+              <p>Video </p>
             {% elif data['selectNursingConsultations'] == 'telephone' %}
-              <p><strong>Nursing homes: </strong>Telephone </p>
+              <p>Telephone </p>
               {% elif data['selectNursingConsultations'] == 'onlineConsultation' %}
-                <p><strong>Nursing homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                <p>Online consultations (for example electronic questionnaires and text messaging systems) </p>
             {% else %}
-              <p><strong>Nursing homes: </strong>Not applicable</p>
+              <p>Not applicable</p>
             {% endif %}
             {% endset %}
 
@@ -163,7 +166,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               {% if cheese == 'stringyCheese' %}
                 {{ selectNursingConsultations | safe }}
               {% else %}
-                {% for item in data['selectNursingConsultations'] %}
+              {% for item in data['selectNursingConsultations'] %}
                 {% if item == 'email' %}
                 <p> Email </p>
                 {% elif item == 'video' %}
@@ -183,15 +186,15 @@ $('div.nhsuk-summary-list__row').each(function() {
 
                   {% set selectResidentialConsultations %}
                     {% if data['selectResidentialConsultations'] == 'email' %}
-                      <p><strong>Residential homes: </strong> Email </p>
+                      <p> Email </p>
                     {% elif data['selectResidentialConsultations'] == 'video' %}
-                      <p><strong>Residential homes: </strong> Video </p>
+                      <p> Video </p>
                     {% elif data['selectResidentialConsultations'] == 'telephone' %}
-                      <p><strong>Residential homes: </strong>Telephone </p>
+                      <p>Telephone </p>
                       {% elif data['selectResidentialConsultations'] == 'onlineConsultation' %}
-                        <p><strong>Residential homes: </strong>Online consultations (for example electronic questionnaires and text messaging systems) </p>
+                        <p>Online consultations (for example electronic questionnaires and text messaging systems) </p>
                     {% else %}
-                      <p><strong>Residential homes: </strong>Not applicable</p>
+                      <p>Not applicable</p>
                     {% endif %}
                     {% endset %}
 
@@ -200,7 +203,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                       {% if cheese == 'stringyCheese' %}
                         {{ selectResidentialConsultations | safe }}
                       {% else %}
-                        {% for item in data['selectResidentialConsultations'] %}
+                      {% for item in data['selectResidentialConsultations'] %}
                         {% if item == 'email' %}
                         <p> Email </p>
                         {% elif item == 'video' %}
@@ -215,6 +218,10 @@ $('div.nhsuk-summary-list__row').each(function() {
                         {% endfor %}
                       {% endif %}
                     {% endset %}
+
+
+
+
 
 
 
