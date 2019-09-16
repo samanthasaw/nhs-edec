@@ -205,8 +205,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['contractType'] == 'apms',
-            if data['configStructure'] == 'yes',
+          } if data['contractType'] == 'apms' or data['configStructure'] == 'yes',
           {
             key: {
               text: "Contract end date"
@@ -223,8 +222,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['contractType'] == 'apms',
-            if data['configStructure'] == 'yes',
+          } if data['contractType'] == 'apms' or data['configStructure'] == 'yes',
           {
             key: {
               text: "Organisation type"
