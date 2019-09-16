@@ -6,7 +6,13 @@
     {% set practice = "The Nye Practice" %}
 
 {% endif %}
-{% set contentTitle = "Contract start date" %}
+{% set contentTitle %}
+  {% if data['contractType'] == 'apms' %}
+    Contract start date
+  {% else %}
+    Contract start date (optional)
+  {% endif %}
+{% endset %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}

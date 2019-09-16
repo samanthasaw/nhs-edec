@@ -1,0 +1,102 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Regular periods practice is closed flow for return user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - Tell us the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Tell us the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+
+    <h3>Note</h3>
+
+    <p><strong>When a user clicks off the input, the autocomplete should close.</strong></p>
+
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/task-list-start">Task list start</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/services-intro">Section intro</a></li>
+      </ul>
+
+
+      <h3>Questions</h3>
+
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-periods">Regular periods closed (4C)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/which-days-regular-periods">Which days are there regular periods during each week that the practice is closed</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-monday">Monday regular periods where practice is closed (4D)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-tuesday">Tuesday regular periods where practice is closed (4D)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-wednesday">Wednesday regular periods where practice is closed (4D)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-thursday">Thursday regular periods where practice is closed (4D)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-friday">Friday regular periods where practice is closed (4D)</a></li>
+      </ul>
+
+      <h3>Check your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/check-regular-periods">Check your answers</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-monday">Change Monday regular periods closed</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-tuesday">Change Tuesday regular periods closed</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-wednesday">Change Wednesday regular periods closed</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-thursday">Change Thursday regular periods closed</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-friday">Change Friday regular periods closed</a></li>
+      </ul>
+
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/regular-details-complete">Regular section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/task-list-regular-section-complete">Task list section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/returns-to-complete-section">User clicks back into completed section</a></li>
+      </ul>
+
+      <h3>Change answers again</h3>
+
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-hours">Check and change your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-monday-2">Change Monday regular periods closed again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-tuesday-2">Change Tuesday regular periods closed again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-wednesday-2">Change Wednesday regular periods closed again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-thursday-2">Change Thursday regular periods closed again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-friday-2">Change Friday regular periods closed again</a></li>
+      </ul>
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

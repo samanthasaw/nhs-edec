@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "You've confirmed your opening hours" %}
+{% set contentTitle = "You've confirmed your intermittent closure period details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,15 +33,15 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice services</span>{{ contentTitle }}</h1>
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Intermittent closure periods</span>{{ contentTitle }}</h1>
 
       <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
 
-      <p>You can <a href="#">check and change your opening hours</a> at any time before submitting your electronic declaration.</p>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours">check and change your intermittent closure period details</a> at any time before submitting your electronic declaration.</p>
 
       {{ button({
         "text": "Continue",
-        "href": "#"
+        "href": "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/task-list-intermittent-section-complete"
       }) }}
 
 
