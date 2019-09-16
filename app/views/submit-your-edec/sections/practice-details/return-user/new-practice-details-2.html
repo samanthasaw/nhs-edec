@@ -6,7 +6,7 @@
     {% set practice = "The Nye Practice (Y00001)" %}
 
 {% endif %}
-{% set contentTitle = "Tell us your new practice details" %}
+{% set contentTitle = "Check the practice details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -33,6 +33,18 @@ $('div.nhsuk-summary-list__row').each(function() {
 </script>
 {% endblock %}
 
+
+{% set configStructure %}
+  {% if data['configStructure'] == 'yes' %}
+    Yes
+  {% elseif data['configStructure'] == 'no' %}
+    No
+  {% else %}
+    {{ data['inputConfigStructure'] | placeholder('Other') }}
+  {% endif %}
+{% endset %}
+
+
 {% set contractType %}
   {% if data['contractType'] == 'gms' %}
     General medical services (GMS)
@@ -55,15 +67,6 @@ $('div.nhsuk-summary-list__row').each(function() {
   {% endif %}
 {% endset %}
 
-{% set configStructure %}
-  {% if data['configStructure'] == 'yes' %}
-    Yes
-  {% elseif data['configStructure'] == 'no' %}
-    No
-  {% else %}
-    {{ data['inputConfigStructure'] | placeholder('Other') }}
-  {% endif %}
-{% endset %}
 
 {% set other %}
   {% if data['other'] == 'yes' %}
@@ -164,7 +167,7 @@ $('div.nhsuk-summary-list__row').each(function() {
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
 
-      <p>Check your practice details and change any incorrect practice details.</p>
+      <p>Check your practice details and change any incorrect details.</p>
 
 
       {{ summaryList({
@@ -203,6 +206,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               ]
             }
           } if data['contractType'] == 'apms',
+            if data['configStructure'] == 'yes',
           {
             key: {
               text: "Contract end date"
@@ -220,6 +224,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               ]
             }
           } if data['contractType'] == 'apms',
+            if data['configStructure'] == 'yes',
           {
             key: {
               text: "Organisation type"
@@ -293,6 +298,8 @@ $('div.nhsuk-summary-list__row').each(function() {
       }) }}
 
       {% if data['contractType'] == 'apms' %}
+      {% elif data['configStructure'] == 'yes' %}
+
       {% else %}
       <h2>Optional information</h2>
 

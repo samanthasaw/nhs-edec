@@ -92,19 +92,6 @@ router.post('/submit-your-edec/sections/practice-details/return-user/contract-ty
 
 
 
-router.post('/submit-your-edec/sections/practice-details/return-user/configuration-structure', function (req, res) {
-  let answer = req.body.configStructure;
-
-  if (answer === 'yes') {
-
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/contract-start-date')
-
-  } else {
-    // res.redirect('error')
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/check-last-year-config-same')
-  }
-});
-
 
 router.post('/submit-your-edec/sections/practice-details/return-user/apms-contract-dates', function (req, res) {
   let answer = req.body.apmscontract;

@@ -3,10 +3,9 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "You’ve completed the practice details section" %}
+{% set contentTitle = "You've completed the practice details section" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,22 +33,20 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
 
 
-     {{ button({
-       "text": "Continue",
-       "href": "/submit-your-edec/task-list/task-list-with-sections"
-     }) }}
+            <p>You can check and change your practice details at any time before submitting your electronic declaration.</p>
 
+            {{ button({
+              "text": "Check and change your details",
+              "href": "/submit-your-edec/sections/practice-details/return-user/change-practice-details"
+            }) }}
 
-
-      {{ backLink({
-        "href": "/submit-your-edec/sections/practice-details/return-user/check-your-answers",
-        "text": "Back"
-      }) }}
-
-
+            {{ backLink({
+              "href": "/submit-your-edec/sections/practice-details/return-user/task-list-practice-details-completed",
+              "text": "Back to your task list"
+            }) }}
 
     </div>
   </div>
