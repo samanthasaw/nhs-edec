@@ -3,7 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
 {% set contentTitle = "Does the practice have any branches?" %}
@@ -34,7 +34,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/new-practice-details-2" method="get">
 
         {{ radios({
           "idPrefix": "example-divider",
@@ -121,7 +121,7 @@
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             <div class="">
               <p class="app-select_remove-row">
-                <a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/remove-branch" onclick="toggle(2);">Remove branch</a>
+                <a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/remove-branch" onclick="toggle(2);">Remove branch</a>
               </p>
             </div>
           </div>

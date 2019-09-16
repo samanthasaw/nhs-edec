@@ -4,13 +4,11 @@
     {% set practice = data['practice'] %}
   {% else %}
     {% set practice = "The Nye Practice" %}
-
 {% endif %}
-{% set contentTitle = "Check your catchment area" %}
+{% set contentTitle = "Select which of the branches we've found are correct" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -35,31 +33,33 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-      </span>{{contentTitle}}</h1>
-
-      <img src="/images/leeds-map-catchment.png" class="catchment-image" alt="Leeds map">
-
-
-
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/catchment-area/check-your-catchment" method="post">
-        {{ radios({
-          "idPrefix": "sections",
-          "name": "checkCatchment",
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/check-your-answers" method="get">
+        {{ checkboxes({
+          "idPrefix": "branch",
+          "name": "yourBranches",
           "fieldset": {
             "legend": {
-              "text": "Is your catchment area correct?",
-              "classes": "nhsuk-fieldset__legend--m"
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select the branches that are correct"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes, it's correct"
+              "value": "park",
+              "text": "Park Surgery"
             },
             {
-              "value": "no",
-              "text": "No, I need to change my catchment area"
+              "value": "hill",
+              "text": "Hill Surgery"
+            },
+            {
+              "value": "meadow",
+              "text": "Meadow Branch"
             }
           ]
         }) }}
@@ -68,6 +68,8 @@
         </input>
 
       </form>
+
+      <p><a href="">I cannot see my branch in this list</a></p>
 
 
     </div>

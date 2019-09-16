@@ -3,7 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
 {% set contentTitle = "Enter the name of the branch that was not found" %}
@@ -50,13 +50,14 @@
           "classes": "nhsuk-input--width-30"
         }) }}
 
-        <p><a href="">Add another branch</a></p>
-
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
+
+      <p><a href="">Add another branch</a></p>
+
 
 
 

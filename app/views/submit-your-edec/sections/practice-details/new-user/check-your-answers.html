@@ -33,6 +33,17 @@ $('div.nhsuk-summary-list__row').each(function() {
 {% endblock %}
 
 
+{% set configStructure %}
+  {% if data['configStructure'] == 'yes' %}
+    Yes
+  {% elseif data['configStructure'] == 'no' %}
+    No
+  {% else %}
+    {{ data['inputConfigStructure'] | placeholder('Other') }}
+  {% endif %}
+{% endset %}
+
+
 {% set contractType %}
   {% if data['contractType'] == 'gms' %}
     General medical services (GMS)
@@ -55,30 +66,20 @@ $('div.nhsuk-summary-list__row').each(function() {
   {% endif %}
 {% endset %}
 
-{% set configStructure %}
-  {% if data['configStructure'] == 'yes' %}
-    Yes
-  {% elseif data['configStructure'] == 'no' %}
-    No
-  {% else %}
-    {{ data['inputConfigStructure'] | placeholder('Other') }}
-  {% endif %}
-{% endset %}
 
-{% set other %}
-  {% if data['other'] == 'yes' %}
+
+
+
+
+{% set otherTelephone %}
+  {% if data['otherTelephone'] == 'yes' %}
     Yes
+    </br>{{ data['otherPhone'] }}
   {% else %}
     No
   {% endif %}
 {% endset %}
 
-{% set otherPhoneNumber %}
-  {% if data['other'] == 'no' %}
-  {% else %}
-   <br> {{ data['otherNumber'] | placeholder('0113 496 0848') }}
-  {% endif %}
-{% endset %}
 
 
 {% set branches %}
@@ -112,33 +113,34 @@ $('div.nhsuk-summary-list__row').each(function() {
   {% endif %}
 {% endset %}
 
-{% set branchesText %}
-  {% if data['branches'] == 'no' %}
-    Does the practice have any branches?
+
+
+{% set yourBranches %}
+  {% if data['yourBranches'] == 'park' %}
+    <p> Park Surgery </p>
+  {% elif data['yourBranches'] == 'hill' %}
+    <p> Hill Surgery </p>
   {% else %}
-    Does the practice have any branches? <br/><br/> Number of branches <br/><br/> Branch names
-{% endif %}
-{% endset %}
-
-
-
-{% set inputBranchesText %}
-  {% if data['inputBranches'] %}
-  <br/><br/><br/><br/> {{ data['inputBranches'] }}
+    <p> Meadow Branch </p>
   {% endif %}
-{% endset %}
+  {% endset %}
 
-
-{% set branchNames %}
-  {% if data['branches'] == 'no' %}
-
-  {% else %}
-    <br/><br/><br/> Park Surgery <br/> Hill Surgery <br/> Meadow Branch
-{% endif %}
-{% endset %}
-
-
-
+  {% if data['yourBranches'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set name %}
+    {% if cheese == 'stringyCheese' %}
+      {{ yourBranches | safe }}
+    {% else %}
+      {% for item in data['yourBranches'] %}
+      {% if item == 'park' %}
+        <p> Park Surgery </p>
+      {% elif item == 'hill' %}
+        <p> Hill Surgery </p>
+      {% else %}
+        <p> Meadow Branch </p>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
 
 
 
@@ -166,29 +168,11 @@ $('div.nhsuk-summary-list__row').each(function() {
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
-
       <p>Check your answers and change any incorrect answers.</p>
 
 
       {{ summaryList({
         rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: data['practicename'] | placeholder('The Nye Practice')
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-practice-name",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
           {
             key: {
               text: "Contract type"
@@ -222,7 +206,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['contractType'] == 'apms',
+          } if data['contractType'] == 'apms' or data['configStructure'] == 'yes',
           {
             key: {
               text: "Contract end date"
@@ -239,7 +223,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['contractType'] == 'apms',
+          } if data['contractType'] == 'apms' or data['configStructure'] == 'yes',
           {
             key: {
               text: "Organisation type"
@@ -277,10 +261,10 @@ $('div.nhsuk-summary-list__row').each(function() {
           },
           {
             key: {
-              text: "Does your practice have another telephone number?"
+              text: "Does the practice have another telephone number?"
             },
             value: {
-              html: data['other'] | capitalize | placeholder('Yes') + otherPhoneNumber
+              html: otherTelephone | placeholder('No')
             },
             actions: {
               items: [
@@ -293,26 +277,45 @@ $('div.nhsuk-summary-list__row').each(function() {
             }
           },
           {
-            key: {
-              html: branchesText
-            },
-            value: {
-              html: branches | placeholder('Yes') + inputBranchesText + branchNames
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-branches-2",
-                  text: "Change",
-                  visuallyHiddenText: "if your GP practice has any branches, how many branches you have and the names of your branches"
-                }
-              ]
-            }
-          }
+  key: {
+    text: "Does the practice have any branches?"
+  },
+  value: {
+    html: branches | placeholder('Yes')
+  },
+  actions: {
+    items: [
+      {
+        href: "/submit-your-edec/sections/practice-details/new-user/change-branches",
+        text: "Change",
+        visuallyHiddenText: "if your GP practice has any branches"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Branch names"
+  },
+  value: {
+    html: name | placeholder('Yes')
+  },
+  actions: {
+    items: [
+      {
+        href: "/submit-your-edec/sections/practice-details/new-user/",
+        text: "Change",
+        visuallyHiddenText: "the names of your branches"
+      }
+    ]
+  }
+} if data['branches'] == 'yes'
         ]
       }) }}
 
       {% if data['contractType'] == 'apms' %}
+      {% elif data['configStructure'] == 'yes' %}
+
       {% else %}
       <h2>Optional information</h2>
 
@@ -356,10 +359,11 @@ $('div.nhsuk-summary-list__row').each(function() {
     }) }}
     {% endif %}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/change-catchment-area/catchment-card" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/practice-details-complete-2" method="get">
 
-          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>
+
 
     </div>
   </div>

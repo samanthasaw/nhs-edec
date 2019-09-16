@@ -3,7 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
 {% set contentTitle = "Does the practice have any branches?" %}
@@ -36,7 +36,7 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
 
-  
+
 
         {% call fieldset({
           "legend": {

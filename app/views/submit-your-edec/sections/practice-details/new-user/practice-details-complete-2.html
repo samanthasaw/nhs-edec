@@ -3,23 +3,12 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
 {% set contentTitle = "You've confirmed your practice details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
-
-{% set branchSame %}
-  {% if data['branchSame'] == 'yes' %}
-
-  {% else %}
-    Your Park Surgery catchment area URL is <a href="#">www.embed-link.com</a>.
-  {% endif %}
-{% endset %}
-
-
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -48,21 +37,11 @@
 
       <p>You have 9 more sections to complete before you can submit your electronic declaration.</p>
 
-      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/change-practice-details">change your practice details</a> at any time before submitting your electronic declaration.</p>
-
-      <h2>How to embed your catchment area on your practice website</h2>
-
-      <p> Your practice catchment area URL is <a href="#">www.embed-link.com</a>.</p>
-
-      <p>{{ branchSame | safe }}</p>
-
-      <p>You can embed your catchment area URL on your practice website using this link.</p>
-
-      <p>You can find your catchment area URL in this section at any time.</p>
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/change-practice-details">check and change your practice details</a> at any time before submitting your electronic declaration.</p>
 
       {{ button({
         "text": "Continue",
-        "href": "/submit-your-edec/sections/practice-details/return-user/task-list-practice-details-completed"
+        "href": "/submit-your-edec/sections/practice-details/new-user/task-list-practice-details-completed"
       }) }}
 
     </div>
