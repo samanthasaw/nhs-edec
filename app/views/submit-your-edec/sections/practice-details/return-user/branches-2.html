@@ -36,43 +36,7 @@
 
       <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
 
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "branches",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
-        }) }}
-
-
-        {{ input({
-          "label": {
-            "text": "How many and what are their names?",
-            "isPageHeading": true,
-            "classes": "nhsuk-label--m app-heading-m"
-          },
-          "hint": {
-            "text": "Number of branches"
-          },
-          "id": "inputbranches",
-          "name": "inputBranches",
-          "classes": "nhsuk-input--width-3"
-        }) }}
-
+  
 
         {% call fieldset({
           "legend": {

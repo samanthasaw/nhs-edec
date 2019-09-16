@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice have any branches?" %}
+{% set contentTitle = "Select which of the branches we've found are correct" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -33,26 +33,33 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branches" method="post">
-
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "branches",
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete-2" method="get">
+        {{ checkboxes({
+          "idPrefix": "branch",
+          "name": "yourBranches",
           "fieldset": {
             "legend": {
               "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
               </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
+              "classes": "nhsuk-fieldset__legend--xl",
+              "isPageHeading": true
             }
           },
+          "hint": {
+          "text": "Select the branches that are correct"
+        },
           "items": [
             {
-              "value": "yes",
-              "text": "Yes"
+              "value": "park",
+              "text": "Park Surgery"
             },
             {
-              "value": "no",
-              "text": "No"
+              "value": "hill",
+              "text": "Hill Surgery"
+            },
+            {
+              "value": "meadow",
+              "text": "Meadow Branch"
             }
           ]
         }) }}
@@ -62,6 +69,7 @@
 
       </form>
 
+      <p><a href="">I cannot see my branch in this list</a></p>
 
 
     </div>

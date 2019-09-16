@@ -3,10 +3,11 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
-{% set contentTitle = "Since your practice last completed this declaration, have you changed configuration or structure?" %}
 {% set title = contentTitle + " - " + serviceName %}
+{% set contentTitle = "Organisation type" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -34,11 +35,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/change-practice-details-2" method="get">
 
-        {{ radios({
+      {{ radios({
         "idPrefix": "example-divider",
-        "name": "configStructure",
+        "name": "orgType",
         "fieldset": {
           "legend": {
             "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
@@ -46,28 +47,26 @@
             "classes": "nhsuk-label--xl app-heading-xl"
           }
         },
-        "hint": {
-          "html": "<p>This means that there has been a change in the contractual entity of the practice.<p>
-                  <p>For example the practice is declaring under the same organisation code as last year's declaration and since this time, the practice has merged or divided from another practice.</p>"
-        },
         "items": [
           {
-            "value": "yes",
-            "text": "Yes"
+            "value": "nhsbody",
+            "text": "NHS body"
           },
           {
-            "value": "no",
-            "text": "No"
+            "value": "nonnhsbody",
+            "text": "Non NHS body"
+          },
+          {
+            "value": "enterprise",
+            "text": "Social enterprise"
           }
         ]
       }) }}
 
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
+      <input type="submit" class="nhsuk-button" value="Continue">
+      </input>
 
-      </form>
-
-
+    </form>
 
     </div>
   </div>

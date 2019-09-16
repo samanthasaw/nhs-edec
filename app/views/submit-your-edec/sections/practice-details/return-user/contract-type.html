@@ -3,11 +3,10 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
+{% set contentTitle = "Practice contract type" %}
 {% set title = contentTitle + " - " + serviceName %}
-{% set contentTitle = "What type of contract does your practice have?" %}
 {% block pageScripts %}
 {% endblock %}
 
@@ -35,7 +34,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/contract-type" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
 
 
       {{ radios({

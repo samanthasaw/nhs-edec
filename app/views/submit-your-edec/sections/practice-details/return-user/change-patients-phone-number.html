@@ -3,12 +3,14 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice" %}
+    {% set practice = "The Nye Practice (Y00001)" %}
+
 {% endif %}
-{% set contentTitle = "Does the practice have any branches?" %}
+{% set contentTitle = "Practice telephone number (for patients)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
+
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
@@ -33,29 +35,21 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branches" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/change-practice-details-2" method="get">
 
-        {{ radios({
-          "idPrefix": "example-divider",
-          "name": "branches",
-          "fieldset": {
-            "legend": {
-              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-              </span>' + contentTitle + '</h1>',
-              "classes": "nhsuk-label--xl app-heading-xl"
-            }
+
+        {{ input({
+          "label": {
+            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--xl app-label-xl"
           },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes"
-            },
-            {
-              "value": "no",
-              "text": "No"
-            }
-          ]
+          "id": "inputpatientphone",
+          "name": "patientphone",
+          "classes": "nhsuk-input--width-10"
         }) }}
+
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

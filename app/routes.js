@@ -77,6 +77,8 @@ router.post('/submit-your-edec/demos/organisation-type/check-last-year', functio
   }
 });
 
+
+
 router.post('/submit-your-edec/sections/practice-details/return-user/contract-type', function (req, res) {
   let answer = req.body.contractType;
 
@@ -105,6 +107,8 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
     res.redirect('/submit-your-edec/sections/practice-details/return-user/contract-start-date-apms')
   }
 });
+
+
 
 router.post('/submit-your-edec/sections/practice-details/return-user/catchment-area/check-your-catchment', function (req, res) {
   let answer = req.body.checkCatchment;
@@ -149,6 +153,34 @@ router.post('/submit-your-edec/sections/practice-details/new-user/catchment-area
   }
 });
 
+
+
+router.post('/submit-your-edec/sections/practice-details/return-user/branches', function (req, res) {
+  let answer = req.body.branches;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/found-branches')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-2')
+  }
+});
+
+
+router.post('/submit-your-edec/sections/practice-details/return-user/change-branches', function (req, res) {
+  let answer = req.body.branches;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/change-tick-branches')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/change-practice-details-2')
+  }
+});
 
 // staff details
 
