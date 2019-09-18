@@ -175,7 +175,7 @@ const times = [
     id: 'ODS2', // To match it to the existing <label>.
     name: 'ODS2WednesdayPhone',
     source: times,
-    defaultValue: '{{ data.mondayTimeFrom1 }}',
+    defaultValue: '{{ data.wednesdayTimeFrom1 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -186,7 +186,7 @@ const times = [
     id: 'ODS', // To match it to the existing <label>.
     name: 'ODSWednesdayPhone',
     source: times,
-    defaultValue: '{{ data.mondayTimeTo1 }}',
+    defaultValue: '{{ data.wednesdayTimeTo1 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -197,7 +197,7 @@ const times = [
     id: 'ODS3', // To match it to the existing <label>.
     name: 'ODS3WednesdayPhone',
     source: times,
-    defaultValue: '{{ data.mondayTimeFrom2 }}',
+    defaultValue: '{{ data.wednesdayTimeFrom2 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -208,7 +208,7 @@ const times = [
     id: 'ODS4', // To match it to the existing <label>.
     name: 'ODS4WednesdayPhone',
     source: times,
-    defaultValue: '{{ data.mondayTimeTo2 }}',
+    defaultValue: '{{ data.wednesdayTimeTo2 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -219,7 +219,7 @@ const times = [
     id: 'ODS5', // To match it to the existing <label>.
     name: 'ODS5WednesdayPhone',
     source: times,
-    defaultValue: '{{ data.mondayTimeFrom3 }}',
+    defaultValue: '{{ data.wednesdayTimeFrom3 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -230,7 +230,7 @@ const times = [
     id: 'ODS6', // To match it to the existing <label>.
     name: 'ODS6WednesdayPhone',
     source: times,
-    defaultValue: '{{ data.mondayTimeTo3 }}',
+    defaultValue: '{{ data.wednesdayTimeTo3 }}',
     showAllValues: false,
     showNoOptionsFound: false,
     displayMenu: 'overlay',
@@ -276,9 +276,9 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Phone opening hours
       </span>{{ contentTitle }}</h1>
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/phone/check-phone-answers" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/phone/change-phone-hours" method="post">
 
-        {% if data['wednesdayReceptionOpen'] === "Closed" %}
+        {% if data['wednesdayPhonesOpen'] === "Closed" %}
           {% set closedTrue = "True" %}
         {% else %}
           {% set openTrue = "True" %}
@@ -286,11 +286,11 @@ const times = [
 
         {{ radios({
           "idPrefix": "gov",
-          "name": "wednesdayReceptionOpen",
+          "name": "wednesdayPhonesOpen",
           "classes": "nhsuk-radios--inline",
           "fieldset": {
             "legend": {
-              "text": "Are your phone lines open on Wednesday?",
+              "text": "Are your phone lines open on wednesday?",
               "isPageHeading": false,
               "classes": ""
             }
@@ -313,7 +313,7 @@ const times = [
 
         {% call fieldset({
           "legend": {
-            "text": "",
+            "text": "Your Wednesday phone opening hours",
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
@@ -358,8 +358,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampmWednesdayPhone" id="ampm">
-                <option {% if data['mondayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['mondayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['wednesdayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['wednesdayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -401,8 +401,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm1WednesdayPhone" id="ampm1">
-                <option {% if data['mondayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['mondayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['wednesdayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['wednesdayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -415,7 +415,7 @@ const times = [
 
 
 
-        <div {% if data['mondayRow2'] %} style='display:block;'{% else %} style='display:none;'{% endif %}  class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
+        <div {% if data['wednesdayRow2'] %} style='display:block;'{% else %} style='display:none;'{% endif %}  class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
               "classes": "nhsuk-u-margin-bottom-2",
@@ -450,8 +450,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm3WednesdayPhone" id="ampm3">
-                <option {% if data['mondayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['mondayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['wednesdayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['wednesdayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -493,8 +493,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm4WednesdayPhone" id="ampm4">
-                <option {% if data['mondayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['mondayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['wednesdayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['wednesdayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -511,7 +511,7 @@ const times = [
           </div>
         </div>
 
-        <div {% if data['mondayRow3'] %} style='display:block;'{% else %} style='display:none;'{% endif %} class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
+        <div {% if data['wednesdayRow3'] %} style='display:block;'{% else %} style='display:none;'{% endif %} class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
 
           <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
             {% call fieldset({
@@ -546,8 +546,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm5WednesdayPhone" id="ampm5">
-                <option {% if data['mondayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['mondayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['wednesdayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['wednesdayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -587,8 +587,8 @@ const times = [
               }) }}
 
               <select class="nhsuk-select" name="ampm6WednesdayPhone" id="ampm6">
-                <option {% if data['mondayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
-                <option {% if data['mondayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+                <option {% if data['wednesdayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['wednesdayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
             </div>
 
@@ -611,10 +611,11 @@ const times = [
         </div>
 
         <p>
-          <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
+          <a id="add" href="#" onclick="add({{ "3" if data['wednesdayRow2'] else "2" }});">Add another opening time</a>
         </p>
 
-              </div>
+
+      </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

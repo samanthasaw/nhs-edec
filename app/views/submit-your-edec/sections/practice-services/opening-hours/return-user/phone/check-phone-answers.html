@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your answers" %}
+{% set contentTitle = "Check the phone opening hours you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -128,9 +128,10 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Phone opening hours
+      </span>{{ contentTitle }}</h1>
 
-      <p>Check your phone opening hours and change any times that need updating.</p>
+      <p>Check your phone opening hours details and change any incorrect details.</p>
 
       {{ summaryList({
         rows: [
@@ -144,7 +145,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-monday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/monday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Monday phone opening hours"
                 }
@@ -161,7 +162,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-tuesday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/tuesday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Tuesday phone opening hours"
                 }
@@ -178,7 +179,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-wednesday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/wednesday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Wednesday phone opening hours"
                 }
@@ -195,7 +196,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-thursday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/thursday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Thursday phone opening hours"
                 }
@@ -212,7 +213,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-friday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/friday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Friday phone opening hours"
                 }
@@ -229,7 +230,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-saturday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/saturday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Saturday phone opening hours"
                 }
@@ -246,7 +247,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/change-sunday-phone",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/phone/sunday-phone",
                   text: "Change",
                   visuallyHiddenText: "your Sunday phone opening hours"
                 }

@@ -16,6 +16,28 @@
   $('dd:contains(".00")').each(function(){
       $(this).html($(this).html().split(".00").join(""));
   });
+
+
+    $( "input[name='regularPeriods']" ).on( "click", function() {
+    if ( $( "input[name='regularPeriods']:checked" ).val() === "no") {
+      console.log( "closed" );
+      $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+      $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+    } else {
+      console.log( "open" );
+      $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+      // Find inputs that are now visible and make them disabled.
+      $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+    }
+  });
+
+  // This kills any row that is empty
+  $('div.nhsuk-summary-list__row').each(function() {
+           if ($(this).text().trim() === "") {
+                     $(this).css('display','none');
+           }
+  });
 </script>
 {% endblock %}
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -36,6 +58,27 @@
 {% endblock %}
 
 {% block content %}
+
+
+{% set regularPeriods %}
+  {% if data['regularPeriods'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% if data['regularPeriods'] %}
+    {% if data['regularPeriods'] == "yes" %}
+      {% set regularPeriodsRow = "show" %}
+    {% else %}
+      {% set regularPeriodsRow = "hide" %}
+    {% endif %}
+{% else %}
+    {% set regularPeriodsRow = "show" %}
+{% endif %}
+
+
 
 
 {% set "mondayReg" %}
@@ -91,10 +134,28 @@
       <p>Check your regular closure period details and change any incorrect details.</p>
 
       {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
         rows: [
+        {
+          key: {
+            text: "Are there any regular periods during each week that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)?"
+          },
+          value: {
+            html: regularPeriods
+          },
+          actions: {
+            items: [
+              {
+                href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/regular-periods",
+                text: "Change",
+                visuallyHiddenText: "there any other intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
+              }
+            ]
+          }
+        },
           {
             key: {
-              text: "Monday"
+              text: "Monday regular periods"
             },
             value: {
               html: mondayReg
@@ -108,10 +169,10 @@
                 }
               ]
             }
-          },
+          }  if regularPeriodsRow == 'show',
           {
             key: {
-              text: "Tuesday"
+              text: "Tuesday regular periods"
             },
             value: {
               html: tuesdayReg
@@ -125,10 +186,10 @@
                 }
               ]
             }
-          },
+          }  if regularPeriodsRow == 'show',
           {
             key: {
-              text: "Wednesday"
+              text: "Wednesday regular periods"
             },
             value: {
               html: wednesdayReg
@@ -142,10 +203,10 @@
                 }
               ]
             }
-          },
+          }  if regularPeriodsRow == 'show',
           {
             key: {
-              text: "Thursday"
+              text: "Thursday regular periods"
             },
             value: {
               html: thursdayReg
@@ -159,10 +220,10 @@
                 }
               ]
             }
-          },
+          }  if regularPeriodsRow == 'show',
           {
             key: {
-              text: "Friday"
+              text: "Friday regular periods"
             },
             value: {
               html: fridayReg
@@ -176,7 +237,7 @@
                 }
               ]
             }
-          }
+          }  if regularPeriodsRow == 'show'
         ]
       }) }}
 

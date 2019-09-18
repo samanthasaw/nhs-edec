@@ -276,7 +276,7 @@ const times = [
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Phone opening hours
       </span>{{ contentTitle }}</h1>
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/phone/check-phone-answers" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/phone/change-phone-hours" method="post">
 
         {% if data['mondayPhonesOpen'] === "Closed" %}
           {% set closedTrue = "True" %}
@@ -313,7 +313,7 @@ const times = [
 
         {% call fieldset({
           "legend": {
-            "text": "",
+            "text": "Your Monday phone opening hours",
             "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
@@ -613,6 +613,8 @@ const times = [
         <p>
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
         </p>
+
+
 
       </div>
 

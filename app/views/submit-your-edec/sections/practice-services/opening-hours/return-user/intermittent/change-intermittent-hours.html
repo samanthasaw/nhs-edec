@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check and change your intermittent closure period details" %}
+{% set contentTitle = "Check and change your intermittent and weekly closure details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -62,13 +62,18 @@
 
 
 
-{% set mondayTime %}
-    {% if data['ODS2monday'] and data["ODSmonday"] %}
-        {{ data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+{% set "mondayTime" %}
+  {% if data['intermittentMondayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2monday'] and data["ODSmonday"] %}
+      {{ data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherMonday %}
@@ -78,7 +83,9 @@
 {% endset %}
 
 {% set mondayFrequency %}
-  {% if data['intermittentEditMonday'] == 'fortnightlyMonday' %}
+  {% if data['intermittentMondayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditMonday'] == 'fortnightlyMonday' %}
     Fortnightly
   {% elseif data['intermittentEditMonday'] == 'threeWeeksMonday' %}
     Once every three weeks
@@ -93,13 +100,21 @@
   {% endif %}
 {% endset %}
 
-{% set tuesdayTime %}
-    {% if data['ODS2tuesday'] and data["ODStuesday"] %}
-        {{ data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+
+{% set "tuesdayTime" %}
+  {% if data['intermittentTuesdayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2tuesday'] and data["ODStuesday"] %}
+      {{ data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherTuesday %}
@@ -109,7 +124,9 @@
 {% endset %}
 
 {% set tuesdayFrequency %}
-  {% if data['intermittentEditTuesday'] == 'fortnightlyTuesday' %}
+  {% if data['intermittentTuesdayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditTuesday'] == 'fortnightlyTuesday' %}
     Fortnightly
   {% elseif data['intermittentEditTuesday'] == 'threeWeeksTuesday' %}
     Once every three weeks
@@ -124,13 +141,23 @@
   {% endif %}
 {% endset %}
 
-{% set wednesdayTime %}
-    {% if data['ODS2wednesday'] and data["ODSwednesday"] %}
-        {{ data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+
+
+
+{% set "wednesdayTime" %}
+  {% if data['intermittentWednesdayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2wednesday'] and data["ODSwednesday"] %}
+      {{ data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherWednesday %}
@@ -140,7 +167,9 @@
 {% endset %}
 
 {% set wednesdayFrequency %}
-  {% if data['intermittentEditWednesday'] == 'fortnightlyWednesday' %}
+  {% if data['intermittentWednesdayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditWednesday'] == 'fortnightlyWednesday' %}
     Fortnightly
   {% elseif data['intermittentEditWednesday'] == 'threeWeeksWednesday' %}
     Once every three weeks
@@ -157,13 +186,20 @@
 
 
 
-{% set thursdayTime %}
-    {% if data['ODS2thursday'] and data["ODSthursday"] %}
-        {{ data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+{% set "thursdayTime" %}
+  {% if data['intermittentThursdayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2thursday'] and data["ODSthursday"] %}
+      {{ data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherThursday %}
@@ -173,7 +209,9 @@
 {% endset %}
 
 {% set thursdayFrequency %}
-  {% if data['intermittentEditThursday'] == 'fortnightlyThursday' %}
+  {% if data['intermittentThursdayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditThursday'] == 'fortnightlyThursday' %}
     Fortnightly
   {% elseif data['intermittentEditThursday'] == 'threeWeeksThursday' %}
     Once every three weeks
@@ -190,13 +228,23 @@
 
 
 
-{% set fridayTime %}
-    {% if data['ODS2friday'] and data["ODSfriday"] %}
-        {{ data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+
+
+{% set "fridayTime" %}
+  {% if data['intermittentFridayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2friday'] and data["ODSfriday"] %}
+      {{ data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
+
 
 {% set otherFriday %}
   {% if data['inputOtherFriday'] %}
@@ -204,9 +252,10 @@
   {% endif %}
 {% endset %}
 
-
 {% set fridayFrequency %}
-  {% if data['intermittentEditFriday'] == 'fortnightlyFriday' %}
+  {% if data['intermittentFridayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditFriday'] == 'fortnightlyFriday' %}
     Fortnightly
   {% elseif data['intermittentEditFriday'] == 'threeWeeksFriday' %}
     Once every three weeks
@@ -220,6 +269,7 @@
 
   {% endif %}
 {% endset %}
+
 
 
 {% set closedWeek %}
@@ -285,121 +335,122 @@
 
 
 
-            <h2 class="nhsuk-label--m app-heading-m">Your intermittent periods</h2>
+      <h2 class="nhsuk-label--m app-heading-m">Your intermittent periods</h2>
 
 
-            {{ summaryList({
-              "classes": "nhsuk-summary-list--long",
-              rows: [
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+        {
+          key: {
+            text: "Are there any other intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
+          },
+          value: {
+            html: intermittentPeriods
+          },
+          actions: {
+            items: [
               {
-                key: {
-                  text: "Are there any other intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
-                },
-                value: {
-                  html: intermittentPeriods
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-periods",
-                      text: "Change",
-                      visuallyHiddenText: "there any other intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
-                    }
-                  ]
+                href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent",
+                text: "Change",
+                visuallyHiddenText: "there any other intermittent periods during each month that the practice is closed to patients between the hours of 8.00am and 6.30pm Monday to Friday (except bank holidays)"
+              }
+            ]
+          }
+        },
+          {
+            key: {
+              text: "Monday intermittent periods"
+            },
+            value: {
+              html: mondayTime + "<br>" + mondayFrequency
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-monday-time",
+                  text: "Change",
+                  visuallyHiddenText: "your Monday opening hours"
                 }
-              },
-                {
-                  key: {
-                    text: "Monday"
-                  },
-                  value: {
-                    html: mondayTime + "<br>" + mondayFrequency
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday",
-                        text: "Change",
-                        visuallyHiddenText: "your Monday opening hours"
-                      }
-                    ]
-                  }
-                }  if intermittentPeriodsRow == 'show',
-                {
-                  key: {
-                    text: "Tuesday"
-                  },
-                  value: {
-                    html: tuesdayTime + "<br>" + tuesdayFrequency
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-tuesday-time",
-                        text: "Change",
-                        visuallyHiddenText: "your Tuesday opening hours"
-                      }
-                    ]
-                  }
-                }  if intermittentPeriodsRow == 'show',
-                {
-                  key: {
-                    text: "Wednesday"
-                  },
-                  value: {
-                    html: wednesdayTime + "<br>" +  wednesdayFrequency
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-wednesday-time",
-                        text: "Change",
-                        visuallyHiddenText: "your Wednesday opening hours"
-                      }
-                    ]
-                  }
-                }  if intermittentPeriodsRow == 'show',
-                {
-                  key: {
-                    text: "Thursday"
-                  },
-                  value: {
-                    html: thursdayTime + "<br>" +  thursdayFrequency
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-time",
-                        text: "Change",
-                        visuallyHiddenText: "your Thursday opening hours"
-                      }
-                    ]
-                  }
-                }  if intermittentPeriodsRow == 'show',
-                {
-                  key: {
-                    text: "Friday"
-                  },
-                  value: {
-                    html: fridayTime + "<br>" + fridayFrequency
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-friday-time",
-                        text: "Change",
-                        visuallyHiddenText: "your Friday opening hours"
-                      }
-                    ]
-                  }
-                }  if intermittentPeriodsRow == 'show'
               ]
-            }) }}
+            }
+          }  if intermittentPeriodsRow == 'show',
+          {
+            key: {
+              text: "Tuesday intermittent periods"
+            },
+            value: {
+              html: tuesdayTime + "<br>" + tuesdayFrequency
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-tuesday-time",
+                  text: "Change",
+                  visuallyHiddenText: "your Tuesday opening hours"
+                }
+              ]
+            }
+          }  if intermittentPeriodsRow == 'show',
+          {
+            key: {
+              text: "Wednesday intermittent periods"
+            },
+            value: {
+              html: wednesdayTime + "<br>" +  wednesdayFrequency
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-wednesday-time",
+                  text: "Change",
+                  visuallyHiddenText: "your Wednesday opening hours"
+                }
+              ]
+            }
+          }  if intermittentPeriodsRow == 'show',
+          {
+            key: {
+              text: "Thursday intermittent periods"
+            },
+            value: {
+              html: thursdayTime + "<br>" +  thursdayFrequency
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-time",
+                  text: "Change",
+                  visuallyHiddenText: "your Thursday opening hours"
+                }
+              ]
+            }
+          }  if intermittentPeriodsRow == 'show',
+          {
+            key: {
+              text: "Friday intermittent periods"
+            },
+            value: {
+              html: fridayTime + "<br>" + fridayFrequency
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-friday-time",
+                  text: "Change",
+                  visuallyHiddenText: "your Friday opening hours"
+                }
+              ]
+            }
+          }  if intermittentPeriodsRow == 'show'
+        ]
+      }) }}
 
 
       <h2 class="nhsuk-label--m app-heading-m">Your weekly closure details</h2>
 
       {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
         rows: [
         {
           key: {
@@ -420,7 +471,6 @@
         }
     ]
   }) }}
-
   <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-details-complete" method="get">
         <input type="submit" class="nhsuk-button" value="Save and confirm">
         </input>

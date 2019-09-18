@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check the closure details you submitted last year" %}
+{% set contentTitle = "Check the intermittent and weekly closure details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -62,20 +62,18 @@
 
 
 
-
-{% set intermittentMondayOpen %}
-  {% if data['intermittentMondayOpen'] == 'closed' %}
+{% set "mondayTime" %}
+  {% if data['intermittentMondayOpen'] === "closed" %}
     No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2monday'] and data["ODSmonday"] %}
+      {{ data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
 
-{% set mondayTime %}
-    {% if data['ODS2monday'] and data["ODSmonday"] %}
-        {{ data['ODS2monday'] + data["ampmmonday"] + " to " + data["ODSmonday"] + data["ampm1monday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-         {{ intermittentMondayOpen }}
-    {% endif %}
-{% endset %}
 
 
 {% set otherMonday %}
@@ -85,7 +83,9 @@
 {% endset %}
 
 {% set mondayFrequency %}
-  {% if data['intermittentEditMonday'] == 'fortnightlyMonday' %}
+  {% if data['intermittentMondayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditMonday'] == 'fortnightlyMonday' %}
     Fortnightly
   {% elseif data['intermittentEditMonday'] == 'threeWeeksMonday' %}
     Once every three weeks
@@ -100,13 +100,21 @@
   {% endif %}
 {% endset %}
 
-{% set tuesdayTime %}
-    {% if data['ODS2tuesday'] and data["ODStuesday"] %}
-        {{ data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+
+{% set "tuesdayTime" %}
+  {% if data['intermittentTuesdayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2tuesday'] and data["ODStuesday"] %}
+      {{ data['ODS2tuesday'] + data["ampmtuesday"] + " to " + data["ODStuesday"] + data["ampm1tuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherTuesday %}
@@ -116,7 +124,9 @@
 {% endset %}
 
 {% set tuesdayFrequency %}
-  {% if data['intermittentEditTuesday'] == 'fortnightlyTuesday' %}
+  {% if data['intermittentTuesdayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditTuesday'] == 'fortnightlyTuesday' %}
     Fortnightly
   {% elseif data['intermittentEditTuesday'] == 'threeWeeksTuesday' %}
     Once every three weeks
@@ -131,13 +141,23 @@
   {% endif %}
 {% endset %}
 
-{% set wednesdayTime %}
-    {% if data['ODS2wednesday'] and data["ODSwednesday"] %}
-        {{ data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+
+
+
+{% set "wednesdayTime" %}
+  {% if data['intermittentWednesdayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2wednesday'] and data["ODSwednesday"] %}
+      {{ data['ODS2wednesday'] + data["ampmwednesday"] + " to " + data["ODSwednesday"] + data["ampm1wednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherWednesday %}
@@ -147,7 +167,9 @@
 {% endset %}
 
 {% set wednesdayFrequency %}
-  {% if data['intermittentEditWednesday'] == 'fortnightlyWednesday' %}
+  {% if data['intermittentWednesdayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditWednesday'] == 'fortnightlyWednesday' %}
     Fortnightly
   {% elseif data['intermittentEditWednesday'] == 'threeWeeksWednesday' %}
     Once every three weeks
@@ -164,13 +186,20 @@
 
 
 
-{% set thursdayTime %}
-    {% if data['ODS2thursday'] and data["ODSthursday"] %}
-        {{ data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+{% set "thursdayTime" %}
+  {% if data['intermittentThursdayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2thursday'] and data["ODSthursday"] %}
+      {{ data['ODS2thursday'] + data["ampmthursday"] + " to " + data["ODSthursday"] + data["ampm1thursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set otherThursday %}
@@ -180,7 +209,9 @@
 {% endset %}
 
 {% set thursdayFrequency %}
-  {% if data['intermittentEditThursday'] == 'fortnightlyThursday' %}
+  {% if data['intermittentThursdayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditThursday'] == 'fortnightlyThursday' %}
     Fortnightly
   {% elseif data['intermittentEditThursday'] == 'threeWeeksThursday' %}
     Once every three weeks
@@ -197,13 +228,23 @@
 
 
 
-{% set fridayTime %}
-    {% if data['ODS2friday'] and data["ODSfriday"] %}
-        {{ data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No intermittent periods that the practice is closed
+
+
+
+
+{% set "fridayTime" %}
+  {% if data['intermittentFridayOpen'] === "closed" %}
+    No intermittent periods that the practice is closed
+  {% else %}
+  {% if data['ODS2friday'] and data["ODSfriday"] %}
+      {{ data['ODS2friday'] + data["ampmfriday"] + " to " + data["ODSfriday"] + data["ampm1friday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+        9am to 12pm<br>2pm to 6pm
     {% endif %}
+  {% endif %}
 {% endset %}
+
+
 
 {% set otherFriday %}
   {% if data['inputOtherFriday'] %}
@@ -211,9 +252,10 @@
   {% endif %}
 {% endset %}
 
-
 {% set fridayFrequency %}
-  {% if data['intermittentEditFriday'] == 'fortnightlyFriday' %}
+  {% if data['intermittentFridayOpen'] === "closed" %}
+
+  {% elseif data['intermittentEditFriday'] == 'fortnightlyFriday' %}
     Fortnightly
   {% elseif data['intermittentEditFriday'] == 'threeWeeksFriday' %}
     Once every three weeks
@@ -227,6 +269,7 @@
 
   {% endif %}
 {% endset %}
+
 
 
 {% set closedWeek %}
@@ -294,7 +337,7 @@
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Intermittent closure periods
       </span>{{ contentTitle }}</h1>
 
-      <p>Check your closure details and change any incorrect details.</p>
+      <p>Check your intermittent and weekly closure details and change any incorrect details.</p>
 
 
 
@@ -323,7 +366,7 @@
         },
           {
             key: {
-              text: "Monday"
+              text: "Monday intermittent periods"
             },
             value: {
               html: mondayTime + "<br>" + mondayFrequency
@@ -340,7 +383,7 @@
           }  if intermittentPeriodsRow == 'show',
           {
             key: {
-              text: "Tuesday"
+              text: "Tuesday intermittent periods"
             },
             value: {
               html: tuesdayTime + "<br>" + tuesdayFrequency
@@ -357,7 +400,7 @@
           }  if intermittentPeriodsRow == 'show',
           {
             key: {
-              text: "Wednesday"
+              text: "Wednesday intermittent periods"
             },
             value: {
               html: wednesdayTime + "<br>" +  wednesdayFrequency
@@ -374,7 +417,7 @@
           }  if intermittentPeriodsRow == 'show',
           {
             key: {
-              text: "Thursday"
+              text: "Thursday intermittent periods"
             },
             value: {
               html: thursdayTime + "<br>" +  thursdayFrequency
@@ -391,7 +434,7 @@
           }  if intermittentPeriodsRow == 'show',
           {
             key: {
-              text: "Friday"
+              text: "Friday intermittent periods"
             },
             value: {
               html: fridayTime + "<br>" + fridayFrequency
@@ -413,6 +456,7 @@
       <h2 class="nhsuk-label--m app-heading-m">Your weekly closure details</h2>
 
       {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
         rows: [
         {
           key: {
