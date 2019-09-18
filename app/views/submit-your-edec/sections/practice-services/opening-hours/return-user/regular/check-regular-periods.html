@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Check your answers" %}
+{% set contentTitle = "Check the regular closure period details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -88,8 +88,7 @@
       <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Regular periods of closure
       </span>{{ contentTitle }}</h1>
 
-      <p>Check your regular periods during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays and change any incorrect answers.</p>
-
+      <p>Check your regular closure period details and change any incorrect details.</p>
 
       {{ summaryList({
         rows: [
@@ -103,7 +102,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-monday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-monday",
                   text: "Change",
                   visuallyHiddenText: "your regular periods on Monday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
@@ -120,7 +119,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-tuesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-tuesday",
                   text: "Change",
                   visuallyHiddenText: "your regular periods on Tuesday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
@@ -137,7 +136,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-wednesday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-wednesday",
                   text: "Change",
                   visuallyHiddenText: "your regular periods on Wednesday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
@@ -154,7 +153,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-thursday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-thursday",
                   text: "Change",
                   visuallyHiddenText: "your regular periods on Thursday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }
@@ -171,7 +170,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/change-regular-periods-closed-friday",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/regular/regular-periods-closed-friday",
                   text: "Change",
                   visuallyHiddenText: "your regular periods on Friday during each week that the practice is closed to patients between 8am and 6:30pm except bank holidays"
                 }

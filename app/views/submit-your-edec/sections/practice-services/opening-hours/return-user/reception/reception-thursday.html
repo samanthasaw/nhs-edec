@@ -273,16 +273,51 @@ const times = [
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="" method="post">
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Reception opening hours
+      </span>{{ contentTitle }}</h1>
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/reception/check-reception-answers" method="post">
+
+        {% if data['thursdayReceptionOpen'] === "closed" %}
+          {% set closedTrue = "True" %}
+        {% else %}
+          {% set openTrue = "True" %}
+        {% endif %}
+
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "thursdayReceptionOpen",
+          "classes": "nhsuk-radios--inline",
+          "fieldset": {
+            "legend": {
+              "text": "Is your practice open on Thursday?",
+              "isPageHeading": false,
+              "classes": ""
+            }
+          },
+          "items": [
+            {
+              "value": "open",
+              "text": "Yes",
+              "checked": openTrue
+            },
+            {
+              "value": "closed",
+              "text": "No",
+              "checked": closedTrue
+            }
+          ]
+        }) }}
+
+        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
+
         {% call fieldset({
           "legend": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Reception opening hours
-            </span>' + contentTitle + '</h1>',
-            "classes": "nhsuk-label--xl nhsuk-u-margin-bottom-4",
+            "text": "Your Thursday reception opening hours",
+            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
         }) %}
-
 
         {{ hint({
           "text": "For example, 8:30am to 1:00pm and 2:00pm to 6:00pm",
@@ -551,7 +586,7 @@ const times = [
                 "id": "ampm6"
               }) }}
 
-              <select class="nhsuk-select" name="ampm6" id="ampm6">
+              <select class="nhsuk-select" name="ampm6ReceptionThursday" id="ampm6">
                 <option {% if data['thursdayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
                 <option {% if data['thursdayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
               </select>
@@ -578,6 +613,8 @@ const times = [
         <p>
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
         </p>
+
+        </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>

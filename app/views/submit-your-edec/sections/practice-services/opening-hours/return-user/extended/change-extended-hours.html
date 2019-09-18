@@ -43,19 +43,19 @@
 
 
 {% set extendHours %}
-  {% if data['extendHours'] == 'yes' %}
-    Yes
-  {% else %}
+  {% if data['extendHours'] == 'no' %}
     No
+  {% else %}
+    Yes
   {% endif %}
 {% endset %}
 
 
 {% if data['extendHours'] %}
-    {% if data['extendHours'] == "yes" %}
-      {% set extendHoursRow = "show" %}
-    {% else %}
+    {% if data['extendHours'] == "no" %}
       {% set extendHoursRow = "hide" %}
+    {% else %}
+      {% set extendHoursRow = "show" %}
     {% endif %}
 {% else %}
     {% set extendHoursRow = "show" %}
@@ -65,6 +65,8 @@
 {% set numberExtended %}
   {% if data['numberExtended'] %}
    {{ data['numberExtended'] }}
+     {% else %}
+       14
   {% endif %}
 {% endset %}
 
@@ -148,7 +150,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-number-of-extended-hours",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-number-of-extended-hours-3",
                   text: "Change",
                   visuallyHiddenText: "your total number of extended opening hours per week not within 8am and 6:30pm"
                 }
@@ -165,7 +167,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours-funding",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours-funding-3",
                   text: "Change",
                   visuallyHiddenText: "your funding mechanism for the practice's extended opening hours"
                 }
@@ -182,7 +184,7 @@
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours-contract",
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours-contract-3",
                   text: "Change",
                   visuallyHiddenText: "your contract/agreement end date for the practice's extended opening hours"
                 }

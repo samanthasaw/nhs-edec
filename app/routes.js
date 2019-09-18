@@ -508,6 +508,33 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 });
 
 
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/extended-hours-per-week', function (req, res) {
+  let answer = req.body.extendHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/number-of-extended-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/check-extended-hours') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours-per-week', function (req, res) {
+  let answer = req.body.extendHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-number-of-extended-hours-2')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours') }
+
+});
+
 // practice services
 
 router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/which-days-reception', function (req, res) {
@@ -927,6 +954,33 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 });
 
 
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday-time', function (req, res) {
+  let answer = req.body.intermittentMondayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday-frequency') }
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-tuesday-time', function (req, res) {
+  let answer = req.body.intermittentTuesdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-tuesday-frequency') }
+
+});
 
 
 
