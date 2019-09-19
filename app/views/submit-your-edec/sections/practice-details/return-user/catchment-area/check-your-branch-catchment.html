@@ -35,39 +35,19 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+      <h1><span class="nhsuk-caption-l nhsuk-caption--top">Catchment area
       </span>{{contentTitle}}</h1>
+
+      <p>Check your your branch catchment area and update it if it is incorrect.</p>
+
 
       <img src="/images/leeds-map-catchment.png" class="catchment-image" alt="Leeds map">
 
+      {{ button({
+        "text": "Save and confirm",
+        "href": "/submit-your-edec/sections/practice-details/return-user/catchment-area/catchment-details-complete"
+      }) }}
 
-
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/catchment-area/check-your-branch-catchment" method="post">
-        {{ radios({
-          "idPrefix": "sections",
-          "name": "checkBranchCatchment",
-          "fieldset": {
-            "legend": {
-              "text": "Is your catchment area for Park Surgery correct?",
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes, it's correct"
-            },
-            {
-              "value": "no",
-              "text": "No, I need to change my catchment area for Park Surgery"
-            }
-          ]
-        }) }}
-
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
-
-      </form>
 
 
     </div>
