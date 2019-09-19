@@ -183,18 +183,22 @@ router.post('/submit-your-edec/sections/practice-details/return-user/change-bran
 });
 
 
+
+
 router.post('/submit-your-edec/sections/practice-details/new-user/branches', function (req, res) {
   let answer = req.body.branches;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-details/new-user/found-branches')
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/branch-names')
 
   } else {
 
     res.redirect('/submit-your-edec/sections/practice-details/new-user/check-your-answers')
   }
 });
+
+
 
 // staff details
 

@@ -141,3 +141,16 @@ li ul {
 .nhsuk-checkboxes__divider {
   @extend .nhsuk-radios__divider;
 }
+
+
+
+.app-remove-row {
+
+  @include mq ($from: desktop) {
+    padding-top: 36px;
+    margin: 0;
+
+  }
+
+
+}

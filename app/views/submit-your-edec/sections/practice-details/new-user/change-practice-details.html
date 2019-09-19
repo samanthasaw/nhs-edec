@@ -115,32 +115,27 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 
 
-{% set yourBranches %}
-  {% if data['yourBranches'] == 'park' %}
-    <p> Park Surgery </p>
-  {% elif data['yourBranches'] == 'hill' %}
-    <p> Hill Surgery </p>
-  {% else %}
-    <p> Meadow Branch </p>
+
+{% set branch1name %}
+  {% if data['branch1name'] %}
+      <p>{{ data['branch1name'] }}</p>
   {% endif %}
   {% endset %}
 
-  {% if data['yourBranches'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
-  {% set name %}
-    {% if cheese == 'stringyCheese' %}
-      {{ yourBranches | safe }}
-    {% else %}
-      {% for item in data['yourBranches'] %}
-      {% if item == 'park' %}
-        <p> Park Surgery </p>
-      {% elif item == 'hill' %}
-        <p> Hill Surgery </p>
-      {% else %}
-        <p> Meadow Branch </p>
-      {% endif %}
-      {% endfor %}
+  {% set branch2name %}
+    {% if data['branch2name'] %}
+      <p>{{ data['branch2name'] }}</p>
     {% endif %}
-  {% endset %}
+    {% endset %}
+
+    {% set branch3name %}
+      {% if data['branch3name'] %}
+        <p>{{ data['branch3name'] }}</p>
+      {% endif %}
+      {% endset %}
+
+
+
 
 
 
@@ -182,7 +177,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-contract-type",
+                  href: "/submit-your-edec/sections/practice-details/new-user/change-contract-type-2",
                   text: "Change",
                   visuallyHiddenText: "contract type"
                 }
@@ -199,7 +194,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-contract-start-date",
+                  href: "/submit-your-edec/sections/practice-details/new-user/change-contract-start-date-2",
                   text: "Change",
                   visuallyHiddenText: "contract start date"
                 }
@@ -216,7 +211,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-contract-end-date",
+                  href: "/submit-your-edec/sections/practice-details/new-user/change-contract-end-date-2",
                   text: "Change",
                   visuallyHiddenText: "contract end date"
                 }
@@ -233,7 +228,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-organisation-type",
+                  href: "/submit-your-edec/sections/practice-details/new-user/change-organisation-type-2",
                   text: "Change",
                   visuallyHiddenText: "organisation type"
                 }
@@ -251,7 +246,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-patients-phone-number",
+                  href: "/submit-your-edec/sections/practice-details/new-user/change-patients-phone-number-2",
                   text: "Change",
                   visuallyHiddenText: "telephone number for patients"
                 }
@@ -268,7 +263,7 @@ $('div.nhsuk-summary-list__row').each(function() {
             actions: {
               items: [
                 {
-                  href: "/submit-your-edec/sections/practice-details/new-user/change-other-phone-number",
+                  href: "/submit-your-edec/sections/practice-details/new-user/change-other-phone-number-2",
                   text: "Change",
                   visuallyHiddenText: "if you have another telephone number"
                 }
@@ -285,7 +280,7 @@ $('div.nhsuk-summary-list__row').each(function() {
   actions: {
     items: [
       {
-        href: "/submit-your-edec/sections/practice-details/new-user/change-branches",
+        href: "/submit-your-edec/sections/practice-details/new-user/change-branches-2",
         text: "Change",
         visuallyHiddenText: "if your GP practice has any branches"
       }
@@ -297,12 +292,12 @@ $('div.nhsuk-summary-list__row').each(function() {
     text: "Branch names"
   },
   value: {
-    html: name | placeholder('Yes')
+    html: branch1name + branch2name + branch3name | placeholder('Park Surgery')
   },
   actions: {
     items: [
       {
-        href: "/submit-your-edec/sections/practice-details/new-user/",
+        href: "/submit-your-edec/sections/practice-details/new-user/change-branch-names-2",
         text: "Change",
         visuallyHiddenText: "if your GP practice has any branches, how many branches you have and the names of your branches"
       }

@@ -115,6 +115,30 @@ $('div.nhsuk-summary-list__row').each(function() {
 
 
 
+
+
+
+{% set branch1name %}
+  {% if data['branch1name'] %}
+      <p>{{ data['branch1name'] }}</p>
+  {% endif %}
+  {% endset %}
+
+  {% set branch2name %}
+    {% if data['branch2name'] %}
+      <p>{{ data['branch2name'] }}</p>
+    {% endif %}
+    {% endset %}
+
+    {% set branch3name %}
+      {% if data['branch3name'] %}
+        <p>{{ data['branch3name'] }}</p>
+      {% endif %}
+      {% endset %}
+
+
+
+
 <!-- Extends the layout from /app/views/layouts/layout.html -->
 {% extends 'layout.html' %}
 
@@ -247,7 +271,41 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          }
+          },
+          {
+  key: {
+    text: "Does the practice have any branches?"
+  },
+  value: {
+    html: branches | placeholder('Yes')
+  },
+  actions: {
+    items: [
+      {
+        href: "/submit-your-edec/sections/practice-details/return-user/branches",
+        text: "Change",
+        visuallyHiddenText: "if your GP practice has any branches"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Branch names"
+  },
+  value: {
+    html: branch1name + branch2name + branch3name | placeholder('Park Surgery')
+  },
+  actions: {
+    items: [
+      {
+        href: "/submit-your-edec/sections/practice-details/return-user/branch-names",
+        text: "Change",
+        visuallyHiddenText: "the names of your branches"
+      }
+    ]
+  }
+} if data['branches'] == 'yes'
         ]
       }) }}
 
@@ -297,7 +355,7 @@ $('div.nhsuk-summary-list__row').each(function() {
     }) }}
     {% endif %}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/branches" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete-2" method="get">
 
           <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>
