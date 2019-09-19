@@ -81,47 +81,81 @@
 
 
 
+
+
+
+
+
+
 {% set "mondayReg" %}
-    {% if data['ODS2MondayReg'] and data["ODSMondayReg"] %}
-        {{ data['ODS2MondayReg'] + data["ampmMondayReg"] + " to " + data["ODSMondayReg"] + data["ampm1MondayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No regular periods that the practice is closed each week
+  {% if data['regularMondayOpen'] === "closed" %}
+      No regular periods that the practice is closed each week
+  {% else %}
+  {% if data['ODS2MondayReg'] and data["ODSMondayReg"] %}
+      {{ data['ODS2MondayReg'] + data["ampmMondayReg"] + " to " + data["ODSMondayReg"] + data["ampm1MondayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+      No regular periods that the practice is closed each week
     {% endif %}
+  {% endif %}
 {% endset %}
 
+
+
 {% set "tuesdayReg" %}
-    {% if data['ODS2TuesdayReg'] and data["ODSTuesdayReg"] %}
-        {{ data['ODS2TuesdayReg'] + data["ampmTuesdayReg"] + " to " + data["ODSTuesdayReg"] + data["ampm1TuesdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No regular periods that the practice is closed each week
+  {% if data['regularTuesdayOpen'] === "closed" %}
+    No regular periods that the practice is closed each week
+  {% else %}
+{% if data['ODS2TuesdayReg'] and data["ODSTuesdayReg"] %}
+      {{ data['ODS2TuesdayReg'] + data["ampmTuesdayReg"] + " to " + data["ODSTuesdayReg"] + data["ampm1TuesdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+      No regular periods that the practice is closed each week
+    {% endif %}
   {% endif %}
 {% endset %}
 
 
 {% set "wednesdayReg" %}
-    {% if data['ODS2WednesdayReg'] and data["ODSWednesdayReg"] %}
-        {{ data['ODS2WednesdayReg'] + data["ampmWednesdayReg"] + " to " + data["ODSWednesdayReg"] + data["ampm1WednesdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No regular periods that the practice is closed each week
+  {% if data['regularWednesdayOpen'] === "closed" %}
+    No regular periods that the practice is closed each week
+  {% else %}
+  {% if data['ODS2WednesdayReg'] and data["ODSWednesdayReg"] %}
+      {{ data['ODS2WednesdayReg'] + data["ampmWednesdayReg"] + " to " + data["ODSWednesdayReg"] + data["ampm1WednesdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+      No regular periods that the practice is closed each week
     {% endif %}
+  {% endif %}
 {% endset %}
+
 
 
 {% set "thursdayReg" %}
-    {% if data['ODS2ThursdayReg'] and data["ODSThursdayReg"] %}
-        {{ data['ODS2ThursdayReg'] + data["ampmThursdayReg"] + " to " + data["ODSThursdayReg"] + data["ampm1ThursdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No regular periods that the practice is closed each week
+  {% if data['regularThursdayOpen'] === "closed" %}
+      No regular periods that the practice is closed each week
+  {% else %}
+  {% if data['ODS2ThursdayReg'] and data["ODSThursdayReg"] %}
+      {{ data['ODS2ThursdayReg'] + data["ampmThursdayReg"] + " to " + data["ODSThursdayReg"] + data["ampm1ThursdayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+      No regular periods that the practice is closed each week
     {% endif %}
+  {% endif %}
 {% endset %}
 
+
+
+
 {% set "fridayReg" %}
+  {% if data['regularFridayOpen'] === "closed" %}
+    No regular periods that the practice is closed each week
+  {% else %}
     {% if data['ODS2FridayReg'] and data["ODSFridayReg"] %}
-        {{ data['ODS2FridayReg'] + data["ampmFridayReg"] + " to " + data["ODSFridayReg"] + data["ampm1FridayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
-      {% else %}
-        No regular periods that the practice is closed each week
+      {{ data['ODS2FridayReg'] + data["ampmFridayReg"] + " to " + data["ODSFridayReg"] + data["ampm1FridayReg"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+    {% else %}
+      No regular periods that the practice is closed each week
     {% endif %}
+  {% endif %}
 {% endset %}
+
+
 
 
 
