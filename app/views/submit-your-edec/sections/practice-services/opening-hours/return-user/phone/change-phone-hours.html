@@ -94,7 +94,7 @@
     Closed
   {% else %}
     {% if data['ODS2FridayPhone'] and data["ODSFridayPhone"] %}
-        {{ data['ODS2FridayPhone'] + data["ampmFridayPhone"] + " to " + data["ODSThursdayPhone"] + data["ampm1FridayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+        {{ data['ODS2FridayPhone'] + data["ampmFridayPhone"] + " to " + data["ODSFridayPhone"] + data["ampm1FridayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
       {% else %}
         9am to 12pm<br>2pm to 6pm
     {% endif %}

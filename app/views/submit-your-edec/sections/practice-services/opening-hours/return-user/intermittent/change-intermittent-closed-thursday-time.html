@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us the intermittent times during each month that the practice is closed to patients on Thursday between 8am and 6:30pm except bank holidays" %}
+{% set contentTitle = "Are there any intermittent times during each month that the practice is closed to patients on Thursday between 8am and 6:30pm except bank holidays?" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
@@ -218,7 +218,21 @@ const times = [
     showNoOptionsFound: false,
     displayMenu: 'overlay',
     })
-</script>
+
+
+        $("input[name='intermittentThursdayOpen']").on("click", function () {
+          if ($("input[name='intermittentThursdayOpen']:checked").val() === "closed") {
+            console.log("closed");
+            $(".app-opening-time__container").addClass("app-u-display--none ");
+            $('.app-opening-time__container').find('input, textarea, button, select').attr('disabled', true);
+          } else {
+            console.log("open");
+            $(".app-opening-time__container").removeClass("app-u-display--none "); // Find inputs that are now visible and make them disabled.
+
+            $('.app-opening-time__container').find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+          }
+        });
+    </script>
 {% endblock %}
 
 
@@ -244,7 +258,7 @@ const times = [
 {% set input %}
 {{ input({
   "label": {
-    "text": "What is the frequency of intermittent closure time on Monday?"
+    "text": "What is the frequency of intermittent closure time on Thursday?"
   },
   "id": "inputnhsnumber",
   "name": "nhsnumber",
@@ -255,14 +269,48 @@ const times = [
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-frequency" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-time" method="post">
 
+
+
+        {% if data['intermittentThursdayOpen'] === "closed" %}
+          {% set closedTrue = "True" %}
+        {% else %}
+          {% set openTrue = "True" %}
+        {% endif %}
+
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "intermittentThursdayOpen",
+          "classes": "nhsuk-radios--inline",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Intermittent closure periods
+              </span>' + contentTitle + '</h1>',
+              "isPageHeading": false,
+              "classes": ""
+            }
+          },
+          "items": [
+            {
+              "value": "open",
+              "text": "Yes",
+              "checked": openTrue
+            },
+            {
+              "value": "closed",
+              "text": "No",
+              "checked": closedTrue
+            }
+          ]
+        }) }}
+
+        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
 
         {% call fieldset({
           "legend": {
-            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Intermittent closure periods
-            </span>' + contentTitle + '</h1>',
-            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
+            "text": "Tell us the intermittent times during each month that the practice is closed to patients on Thursday between 8am and 6:30pm except bank holidays",
+            "classes": "nhsuk-label--m nhsuk-u-margin-bottom-4",
             "isPageHeading": false
           }
         }) %}
@@ -562,6 +610,7 @@ const times = [
           <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another closing time</a>
         </p>
 
+      </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
