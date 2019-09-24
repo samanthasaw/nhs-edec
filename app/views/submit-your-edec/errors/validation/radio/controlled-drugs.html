@@ -1,0 +1,97 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "With regard to dispensing doctors: the practice can demonstrate it has clear procedures, that are followed in practice, monitored and reviewed, for controlled drugs, unless they are taken by the person themselves in their own home" %}
+{% set title = "Error: " + contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Select an option",
+                  "href": "#nhs-error"
+                }
+
+              ]
+            }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/return-user/new-premises-details" method="get">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "controlledDrugs",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information about the practice and its procedures
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--l app-heading-l"
+            }
+          },
+          "hint": {
+            "text": "Including investigations about adverse events, incidents, errors and near misses; sharing concerns about mishandling."
+            },
+
+            "errorMessage": {
+          "text": "Select an option"
+      },
+
+
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

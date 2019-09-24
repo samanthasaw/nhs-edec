@@ -1,0 +1,78 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Total number of extended opening hours per week not within 8am and 6:30pm" %}
+{% set title = "Error: " + contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Enter the total number of extended opening hours",
+                  "href": "#inputnumberExtended"
+                }
+
+              ]
+            }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/extended-hours-funding" method="post">
+
+        {{ input({
+          "label": {
+            "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice staff
+            </span>' + contentTitle + '</h1>',
+            "isPageHeading": true,
+            "classes": "nhsuk-label--l"
+          },
+          "hint": {
+            "text": "Number of hours"
+          },
+
+          "errorMessage": {
+         "text": "Enter the total number of extended opening hours"
+     },
+
+          "id": "inputnumberExtended",
+          "name": "numberExtended",
+          "classes": "nhsuk-input--width-3"
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

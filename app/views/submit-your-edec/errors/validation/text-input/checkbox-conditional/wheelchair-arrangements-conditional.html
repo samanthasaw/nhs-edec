@@ -1,0 +1,103 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "What arrangements are in place to meet the reasonable needs of patients who are wheelchair users?" %}
+{% set title = "Error: " + contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+{% set wheelchairConditional %}
+{{ textarea({
+  "name": "inputWheelchairOther",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other arrangements are in place to meet the reasonable needs of patients who are wheelchair users?"
+  }
+}) }}
+{% endset %}
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ errorSummary({
+              "titleText": "There is a problem",
+              "errorList": [
+                {
+                  "text": "Enter an answer",
+                  "href": "#nhs-error"
+                }
+
+              ]
+            }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/premises-equipment/return-user/new-premises-details" method="get">
+        {{ checkboxes({
+          "idPrefix": "nhs",
+          "name": "wheelchairArrangements",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Practice premises and equipment
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--l app-heading-l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+        
+        "errorMessage": {
+ "text": "Enter an answer"
+},
+          "items": [
+            {
+              "value": "homevisit",
+              "text": "Home visits"
+            },
+            {
+              "value": "other",
+              "text": "Other",
+              "conditional": {
+                html: wheelchairConditional
+              }
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}
