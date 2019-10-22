@@ -1,0 +1,125 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Where there is legitimate access and consent the practice and other local health and social care providers are able to share electronic patient data by view access to records in the following ways: (optional)" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#legitimate-6" ).on( "click", function() {
+  if ( $( "#legitimate-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#legitimate-1" ).attr('disabled', true);
+    $( "#legitimate-2" ).attr('disabled', true);
+    $( "#legitimate-3" ).attr('disabled', true);
+    $( "#legitimate-4" ).attr('disabled', true);
+
+
+  } else {
+    $( "#legitimate-1" ).attr('disabled', false);
+    $( "#legitimate-2" ).attr('disabled', false);
+    $( "#legitimate-3" ).attr('disabled', false);
+    $( "#legitimate-4" ).attr('disabled', false);
+
+  }
+});
+
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+{% set legitimateAccessConditional %}
+{{ textarea({
+  "name": "nhsnumber",
+  "id": "inputnhsnumber",
+  "label": {
+    "text": "What other ways does your practice and other local health and social care providers share electronic patient data by view access to records where there is legitimate access and consent?"
+  }
+}) }}
+{% endset %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-general-details" method="post">
+
+        {{ checkboxesDivider({
+          "idPrefix": "legitimate",
+          "name": "legitimateAccess",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+            </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+            {
+              "value": "localHealth",
+              "text": "Other local health providers can access practice records"
+            },
+            {
+              "value": "practiceRecords",
+              "text": "Local social care providers can access practice records"
+            },
+            {
+              "value": "accessRecords",
+              "text": "Practice can access records from other local health providers"
+            },
+            {
+              "value": "localSocial",
+              "text": "Practice can access records from local social care providers"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to the National Information Board (NIB) framework.</p>
+        "
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

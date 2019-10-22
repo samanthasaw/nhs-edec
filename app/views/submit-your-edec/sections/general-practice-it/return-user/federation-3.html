@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways (optional)" %}
+{% set contentTitle = "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways: (optional)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -55,7 +55,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/federation" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/new-general-details" method="post">
 
 
         {{ checkboxesDivider({

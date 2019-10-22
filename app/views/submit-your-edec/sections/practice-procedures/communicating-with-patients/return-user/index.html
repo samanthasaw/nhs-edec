@@ -1,0 +1,132 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Communicating with patients (Information about the practice and its procedures) flow for a return user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/procedures-task-list-start">Task list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/procedures-intro">Communicating with patients section intro</a></li>
+      </ul>
+
+
+      <h3>Check and change details</h3>
+
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/new-communicating-details">Tell us your new communicating with patients details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/practice-leaflet">Practice leaflet</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/reviews-leaflet">Reviews leaflet</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/available-leaflet">Leaflet made available</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/complaints-policy">Complaints policy</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/refused-application">Refused application</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/removing-patients">Removing patients</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/engage-ppg">PPG engagement</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/representative-ppg">Representative PPG</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/call-recall-2">Call/recall activities V2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/whistleblowing">Whistleblowing</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/whistleblowing-lead">Whistleblowing lead</a></li>
+      </ul>
+
+      <h3>New question</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/new-question-card">New question card</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/advertising-provision">Advertising provision</a></li>
+      </ul>
+
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/procedures-details-complete">Procedures details complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/task-list-procedures-section-complete">Task list procedures section complete</a></li>
+      </ul>
+
+      <h3>Change details again</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-procedures-details">Change communicating with patients details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-practice-leaflet">Practice leaflet</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-reviews-leaflet">Reviews leaflet</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-available-leaflet">Leaflet made available</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-complaints-policy">Complaints policy</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-refused-application">Refused application</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-removing-patients">Removing patients</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-engage-ppg">PPG engagement</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-representative-ppg">Representative PPG</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-call-recall-2">Call/recall activities V2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-whistleblowing">Whistleblowing</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-whistleblowing-lead">Whistleblowing lead</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-advertising-provision">Advertising provision</a></li>
+      </ul>
+
+
+
+      <h2>Exploration</h2>
+
+      <h3>Practice leaflet</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/about-leaflet">Tell us about your practice leaflet</a></li>
+      </ul>
+
+      <h3>PPG</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/work-with-ppg">Tell us about how you work with your patient participation group</a></li>
+      </ul>
+
+      <h3>Controlled drug regulations</h3>
+
+      <ul>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/controlled-drugs-regulations-2">Controlled drugs regulations 2</a></li>
+      </ul>
+
+      <h2>Previous</h2>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/terms-of-service">Terms of service</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/pharmacy-premises">Pharmacy premises</a></li>
+      </li>
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

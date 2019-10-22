@@ -1,0 +1,269 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check and change your phone opening hours details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+ // remove all :00 from times so that 9:00am becomes 9am but the raw data stays the same
+  $('dd:contains(":00")').each(function(){
+      $(this).html($(this).html().split(":00").join(""));
+  });
+  $('dd:contains(".00")').each(function(){
+      $(this).html($(this).html().split(".00").join(""));
+  });
+</script>
+{% endblock %}
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+{% set "mondayPhoneOpening" %}
+  {% if data['mondayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2MondayPhone'] and data["ODSMondayPhone"] %}
+        {{ data['ODS2MondayPhone'] + data["ampmMondayPhone"] + " to " + data["ODSMondayPhone"] + data["ampm1MondayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "tuesdayPhoneOpening" %}
+  {% if data['tuesdayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2TuesdayPhone'] and data["ODSTuesdayPhone"] %}
+        {{ data['ODS2TuesdayPhone'] + data["ampmTuesdayPhone"] + " to " + data["ODSTuesdayPhone"] + data["ampm1TuesdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+{% set "wednesdayPhoneOpening" %}
+  {% if data['wednesdayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2WednesdayPhone'] and data["ODSWednesdayPhone"] %}
+        {{ data['ODS2WednesdayPhone'] + data["ampmWednesdayPhone"] + " to " + data["ODSWednesdayPhone"] + data["ampm1WednesdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+{% set "thursdayPhoneOpening" %}
+  {% if data['thursdayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2ThursdayPhone'] and data["ODSThursdayPhone"] %}
+        {{ data['ODS2ThursdayPhone'] + data["ampmThursdayPhone"] + " to " + data["ODSThursdayPhone"] + data["ampm1ThursdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "fridayPhoneOpening" %}
+  {% if data['fridayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2FridayPhone'] and data["ODSFridayPhone"] %}
+        {{ data['ODS2FridayPhone'] + data["ampmFridayPhone"] + " to " + data["ODSThursdayPhone"] + data["ampm1FridayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "saturdayPhoneOpening" %}
+  {% if data['saturdayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2SaturdayPhone'] and data["ODSSaturdayPhone"] %}
+        {{ data['ODS2SaturdayPhone'] + data["ampmSaturdayPhone"] + " to " + data["ODSSaturdayPhone"] + data["ampm1SaturdayPhone"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "sundayPhoneOpening" %}
+  {% if data['sundayPhonesOpen'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2SundayPhone'] and data["ODSSundayPhone"] %}
+        {{ data['ODS2SundayPhone'] + data["ampmSundayPhone"] + " to " + data["ODSSundayPhone"] + data["ampm1SundayPhone"] | placeholder('Closed') }}
+      {% else %}
+        Closed
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+
+      <p>Check your phone opening hours and change any times that need updating.</p>
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Monday"
+            },
+            value: {
+              html: mondayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-monday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Monday phone opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Tuesday"
+            },
+            value: {
+              html: tuesdayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-tuesday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Tuesday phone opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Wednesday"
+            },
+            value: {
+              html: wednesdayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-wednesday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Wednesday phone opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Thursday"
+            },
+            value: {
+              html: thursdayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-thursday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Thursday phone opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Friday"
+            },
+            value: {
+              html: fridayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-friday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Friday phone opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Saturday"
+            },
+            value: {
+              html: saturdayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-saturday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Saturday phone opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Sunday"
+            },
+            value: {
+              html: sundayPhoneOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/change-sunday-phone-2",
+                  text: "Change",
+                  visuallyHiddenText: "your Sunday phone opening hours"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/phone-details-complete" method="get">
+
+        <input type="submit" class="nhsuk-button" value="Save and confirm">
+
+        </input>
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

@@ -21,12 +21,19 @@
 
 <!-- Breadcrumb goes inside this block -->
 {% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="#" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/services-details-complete" method="get">
 
         {{ input({
           "label": {
@@ -40,7 +47,7 @@
           "classes": "nhsuk-input--width-30"
         }) }}
 
-        <input type="submit" class="nhsuk-button" value="Continue">
+        <input type="submit" class="nhsuk-button" value="Save and confirm">
         </input>
 
       </form>

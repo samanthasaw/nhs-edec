@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does the practice have procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children" %}
+{% set contentTitle = "Does the practice have procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children (Children Act 2004)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -61,7 +61,15 @@
         </input>
 
       </form>
-
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <ul>
+          <li>Royal College of General Practitioners <a href='https://www.rcgp.org.uk/clinical-and-research/resources/toolkits/child-safeguarding-toolkit.aspx'>Child Safeguarding Toolkit (opens in new window)</a></li>
+          <li>Royal College of General Practitioners <a href='https://www.rcgp.org.uk/clinical-and-research/safeguarding/adult-safeguarding-toolkit.aspx'>Adult Safeguarding Toolkit (opens in new window)</a></li>
+        </ul>
+        "
+      }) }}
 
 
     </div>

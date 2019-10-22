@@ -1,0 +1,115 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Local acute trust discharge letters/summaries received by the practice electronically" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#discharge-5" ).on( "click", function() {
+  if ( $( "#discharge-5" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#discharge-1" ).attr('disabled', true);
+    $( "#discharge-2" ).attr('disabled', true);
+    $( "#discharge-3" ).attr('disabled', true);
+
+  } else {
+    $( "#discharge-1" ).attr('disabled', false);
+    $( "#discharge-2" ).attr('disabled', false);
+    $( "#discharge-3" ).attr('disabled', false);
+
+
+  }
+});
+
+</script>
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/diagnostics-tests-3" method="post">
+
+
+        {{ checkboxesDivider({
+          "idPrefix": "discharge",
+          "name": "electronicDischarge",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+            </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+        "items": [
+          {
+            "value": "outPatients",
+            "html": 'The majority of local acute discharge summaries/letters are received electronically for <strong>out patients</strong>'
+          },
+          {
+            "value": "inPatients",
+            "html": 'The majority of local acute discharge summaries/letters are received electronically for <strong>in patients</strong>'
+          },
+          {
+            "value": "aande",
+            "html": "The majority of local A&E discharge summaries are received electronically"
+          },
+          {
+            "divider": "or"
+          },
+          {
+            "value": "notApplicable",
+            "text": "This does not apply to my practice"
+          }
+        ]
+      }) }}
+
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to:</p>
+        <ul>
+          <li>NHS Standard provider contract</li>
+          <li>Everyone Counts: Planning for Patients 2014/15 to 2018/19</li>
+        </ul>
+        "
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Where the practice works within a federation it is able to use its principal clinical system and its IT infrastructure to support shared working between practices in the following ways: (optional)" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#federation-7" ).on( "click", function() {
+  if ( $( "#federation-7" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#federation-1" ).attr('disabled', true);
+    $( "#federation-2" ).attr('disabled', true);
+    $( "#federation-3" ).attr('disabled', true);
+    $( "#federation-4" ).attr('disabled', true);
+    $( "#federation-5" ).attr('disabled', true);
+
+
+  } else {
+    $( "#federation-1" ).attr('disabled', false);
+    $( "#federation-2" ).attr('disabled', false);
+    $( "#federation-3" ).attr('disabled', false);
+    $( "#federation-4" ).attr('disabled', false);
+    $( "#federation-5" ).attr('disabled', false);
+
+  }
+});
+
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/check-your-answers" method="post">
+
+
+        {{ checkboxesDivider({
+            "idPrefix": "federation",
+            "name": "sharedWorking",
+            "fieldset": {
+              "legend": {
+                "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+              </span>' + contentTitle + '</h1>',
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            },
+            "hint": {
+            "text": "Select all that apply"
+          },
+          "items": [
+            {
+              "value": "records",
+              "text": "Clinical system (records)"
+            },
+            {
+              "value": "appointments",
+              "text": "Appointment booking and management"
+            },
+            {
+              "value": "telephony",
+              "text": "Integrated telephony systems across practices"
+            },
+            {
+              "value": "reporting",
+              "text": "Reporting on activity and coded clinical data"
+            },
+            {
+              "value": "morbidity",
+              "text": "Morbidity Registers across aggregated (federation) populations"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

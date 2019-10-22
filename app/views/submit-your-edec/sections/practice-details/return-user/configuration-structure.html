@@ -3,8 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
 {% set contentTitle = "Since your practice last completed this declaration, have you changed configuration or structure?" %}
 {% set title = contentTitle + " - " + serviceName %}
@@ -35,7 +34,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/configuration-structure" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="post">
 
         {{ radios({
         "idPrefix": "example-divider",
@@ -48,10 +47,8 @@
           }
         },
         "hint": {
-          "text": "This means that there has been a change in the contractual entity of the practice."
-        },
-        "hint": {
-          "text": "For example the practice is declaring under the same organisation code as last year's declaration and since this time, the practice has merged or divided from another practice."
+          "html": "<p>This means that there has been a change in the contractual entity of the practice.<p>
+                  <p>For example the practice is declaring under the same organisation code as last year's declaration and since this time, the practice has merged or divided from another practice.</p>"
         },
         "items": [
           {

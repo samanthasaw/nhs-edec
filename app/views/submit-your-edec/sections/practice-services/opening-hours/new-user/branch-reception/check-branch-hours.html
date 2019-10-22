@@ -1,0 +1,270 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check your opening hours for Park Surgery" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+ // remove all :00 from times so that 9:00am becomes 9am but the raw data stays the same
+  $('dd:contains(":00")').each(function(){
+      $(this).html($(this).html().split(":00").join(""));
+  });
+  $('dd:contains(".00")').each(function(){
+      $(this).html($(this).html().split(".00").join(""));
+  });
+</script>
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% set "mondayBranchOpening" %}
+  {% if data['branchMonday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchmonday'] and data["ODSbranchmonday"] %}
+        {{ data['ODS2branchmonday'] + data["ampmbranchmonday"] + " to " + data["ODSbranchmonday"] + data["ampm1branchmonday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "tuesdayBranchOpening" %}
+  {% if data['branchTuesday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchtuesday'] and data["ODSbranchtuesday"] %}
+        {{ data['ODS2branchtuesday'] + data["ampmbranchtuesday"] + " to " + data["ODSbranchtuesday"] + data["ampm1branchtuesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+{% set "wednesdayBranchOpening" %}
+  {% if data['branchWednesday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchwednesday'] and data["ODSbranchwednesday"] %}
+        {{ data['ODS2branchwednesday'] + data["ampmbranchwednesday"] + " to " + data["ODSbranchwednesday"] + data["ampm1branchwednesday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+{% set "thursdayBranchOpening" %}
+  {% if data['branchThursday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchthursday'] and data["ODSbranchthursday"] %}
+        {{ data['ODS2branchthursday'] + data["ampmbranchthursday"] + " to " + data["ODSbranchthursday"] + data["ampm1branchthursday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "fridayBranchOpening" %}
+  {% if data['branchFriday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchfriday'] and data["ODSbranchfriday"] %}
+        {{ data['ODS2branchfriday'] + data["ampmbranchfriday"] + " to " + data["ODSbranchthursday"] + data["ampm1branchfriday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "saturdayBranchOpening" %}
+  {% if data['branchSaturday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchsaturday'] and data["ODSbranchsaturday"] %}
+        {{ data['ODS2branchsaturday'] + data["ampmbranchsaturday"] + " to " + data["ODSbranchsaturday"] + data["ampm1branchsaturday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{% set "sundayBranchOpening" %}
+  {% if data['branchSunday'] === "closed" %}
+    Closed
+  {% else %}
+    {% if data['ODS2branchsunday'] and data["ODSbranchsunday"] %}
+        {{ data['ODS2branchsunday'] + data["ampmbranchsunday"] + " to " + data["ODSbranchsunday"] + data["ampm1branchsunday"] | placeholder('9am to 12pm<br>2pm to 6pm') }}
+      {% else %}
+        9am to 12pm<br>2pm to 6pm
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice services
+      </span>{{ contentTitle }}</h1>
+
+      <p>Check your Park Surgery opening hours and change any times that need updating.</p>
+
+      <h2 class="nhsuk-heading-m">Your Park Surgery opening hours</h2>
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Monday"
+            },
+            value: {
+              html: mondayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-monday",
+                  text: "Change",
+                  visuallyHiddenText: "your Monday Park Surgery opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Tuesday"
+            },
+            value: {
+              html: tuesdayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-tuesday",
+                  text: "Change",
+                  visuallyHiddenText: "your Tuesday Park Surgery opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Wednesday"
+            },
+            value: {
+              html: wednesdayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-wednesday",
+                  text: "Change",
+                  visuallyHiddenText: "your Wednesday Park Surgery opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Thursday"
+            },
+            value: {
+              html: thursdayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-thursday",
+                  text: "Change",
+                  visuallyHiddenText: "your Thursday Park Surgery opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Friday"
+            },
+            value: {
+              html: fridayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-friday",
+                  text: "Change",
+                  visuallyHiddenText: "your Friday Park Surgery opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Saturday"
+            },
+            value: {
+              html: saturdayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-saturday",
+                  text: "Change",
+                  visuallyHiddenText: "your Saturday Park Surgery opening hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Sunday"
+            },
+            value: {
+              html: sundayBranchOpening
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/opening-hours/new-user/change-branch-sunday",
+                  text: "Change",
+                  visuallyHiddenText: "your Sunday Park Surgery opening hours"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/opening-hours-complete" method="post">
+        <input type="submit" class="nhsuk-button" value="Save and confirm">
+        </input>
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

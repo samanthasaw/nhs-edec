@@ -3,7 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
 {% set contentTitle = "Does your practice have another telephone number?" %}
@@ -53,7 +53,7 @@
 
 
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="post">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/new-practice-details" method="post">
 
         {% if data['other'] === "no" %}
           {% set noTrue = "True" %}

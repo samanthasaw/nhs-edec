@@ -1,0 +1,109 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Intermittent closure periods (Practice services) flow for return user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Latest</h2>
+
+
+    <h3>Note</h3>
+
+    <p><strong>When a user clicks off the input, the autocomplete should close.</strong></p>
+
+
+    <h3>Start</h3>
+
+    <ul>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/task-list-start">Task list start</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/services-intro">Section intro</a></li>
+    </ul>
+
+
+    <h3>Check the details</h3>
+
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods">Check the details you submitted last year</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-periods">Do you have intermittent periods</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday-time">Monday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday-frequency">Monday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-tuesday-time">Tuesday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-tuesday-frequency">Tuesday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-wednesday-time">Wednesday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-wednesday-frequency">Wednesday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-thursday-time">Thursday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-thursday-frequency">Thursday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-friday-time">Friday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-friday-frequency">Friday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/closed-each-week">Closed each week (4fb)</a></li>
+      </ul>
+
+
+
+            <h3>Section complete</h3>
+
+            <ul>
+              <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/intermittent-details-complete">intermittent section complete</a></li>
+              <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/task-list-intermittent-section-complete">Task list section complete</a></li>
+              <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/returns-to-complete-section">User clicks back into completed section</a></li>
+            </ul>
+
+
+      <h3>Check and change your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours">Check and change your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-monday-time">Change Monday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-monday-frequency">Change Monday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-tuesday-time">Change Tuesday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-tuesday-frequency">Change Tuesday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-wednesday-time">Change Wednesday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-wednesday-frequency">Change Wednesday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-time">Change Thursday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-frequency">Change Thursday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-friday-time">Change Friday intermittent closure - time (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-friday-frequency">Change Friday intermittent closure - frequency (4F)</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/return-user/intermittent/change-closed-each-week">Change closed each week (4fb)</a></li>
+      </ul>
+
+
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

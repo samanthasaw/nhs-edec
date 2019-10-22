@@ -3,10 +3,9 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Does your practice have another telephone number?" %}
+{% set contentTitle = "Practice telephone number (other, if different)" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -31,61 +30,57 @@
 {% endblock %}
 
 {% block content %}
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
+      {% set otherPhone %}
+      {{ input({
+        "label": {
+          "text": "Enter your other practice telephone number"
+        },
+        "id": "otherPhone",
+        "name": "otherPhone",
+        "classes": "nhsuk-input--width-10"
+      }) }}
+      {% endset %}
 
-
-
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="post">
-
-        {{ radios({
-          "idPrefix": "gov",
-          "name": "other",
-          "classes": "nhsuk-radios--inline",
-          "fieldset": {
-            "legend": {
-              "isPageHeading": false,
-              "classes": ""
-            }
-          },
-          "items": [
-            {
-              "value": "yes",
-              "text": "Yes",
-              "checked": yesTrue
-            },
-            {
-              "value": "no",
-              "text": "No",
-              "checked": noTrue
-            }
-          ]
-        }) }}
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
 
 
-          {{ input({
-            "label": {
-              "text": "What is your other practice telephone number?",
-              "isPageHeading": true,
-              "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4"
-            },
-            "hint": {
-              "text": "Telephone number"
-            },
-            "id": "inputOtherNumber",
-            "name": "otherNumber",
-            "classes": "nhsuk-input--width-10",
-            "value": data['otherNumber'] | placeholder('0113 496 0848')
-          }) }}
+            <h1 class="nhsuk-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+            </span>{{ contentTitle }}</h1>
+
+            <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
+              {{ conditionalRadios({
+                "idPrefix": "gov",
+                "name": "otherTelephone",
+                "fieldset": {
+                  "legend": {
+                    "text": "Does your practice have another telephone number?",
+                    "isPageHeading": true,
+                    "classes": "nhsuk-fieldset__legend--l"
+                  }
+                },
+                "items": [
+                  {
+                    "value": "yes",
+                    "text": "Yes",
+                    "conditional": {
+                      html: otherPhone
+                    }
+                  },
+                  {
+                    "value": "no",
+                    "text": "No"
+                  }
+                ]
+              }) }}
+
+              <input type="submit" class="nhsuk-button" value="Continue">
+              </input>
+
+            </form>
 
 
-
-        <input type="submit" class="nhsuk-button" value="Continue">
-        </input>
-
-      </form>
 
 
 

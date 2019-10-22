@@ -3,10 +3,9 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Tell us your new practice details" %}
+{% set contentTitle = "Check the practice details you submitted last year" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script type="text/javascript">
@@ -33,6 +32,18 @@ $('div.nhsuk-summary-list__row').each(function() {
 </script>
 {% endblock %}
 
+
+{% set configStructure %}
+  {% if data['configStructure'] == 'yes' %}
+    Yes
+  {% elseif data['configStructure'] == 'no' %}
+    No
+  {% else %}
+    {{ data['inputConfigStructure'] | placeholder('Other') }}
+  {% endif %}
+{% endset %}
+
+
 {% set contractType %}
   {% if data['contractType'] == 'gms' %}
     General medical services (GMS)
@@ -55,30 +66,20 @@ $('div.nhsuk-summary-list__row').each(function() {
   {% endif %}
 {% endset %}
 
-{% set configStructure %}
-  {% if data['configStructure'] == 'yes' %}
-    Yes
-  {% elseif data['configStructure'] == 'no' %}
-    No
-  {% else %}
-    {{ data['inputConfigStructure'] | placeholder('Other') }}
-  {% endif %}
-{% endset %}
 
-{% set other %}
-  {% if data['other'] == 'yes' %}
+
+
+
+
+{% set otherTelephone %}
+  {% if data['otherTelephone'] == 'yes' %}
     Yes
+    </br>{{ data['otherPhone'] }}
   {% else %}
     No
   {% endif %}
 {% endset %}
 
-{% set otherPhoneNumber %}
-  {% if data['other'] == 'no' %}
-  {% else %}
-   <br> {{ data['otherNumber'] | placeholder('0113 496 0848') }}
-  {% endif %}
-{% endset %}
 
 
 {% set branches %}
@@ -112,31 +113,30 @@ $('div.nhsuk-summary-list__row').each(function() {
   {% endif %}
 {% endset %}
 
-{% set branchesText %}
-  {% if data['branches'] == 'no' %}
-    Does the practice have any branches?
-  {% else %}
-    Does the practice have any branches? <br/><br/> Number of branches <br/><br/> Branch names
-{% endif %}
-{% endset %}
 
 
 
 
-{% set inputBranchesText %}
-  {% if data['inputBranches'] %}
-  <br/><br/><br/><br/> {{ data['inputBranches'] }}
+
+{% set branch1name %}
+  {% if data['branch1name'] %}
+      <p>{{ data['branch1name'] }}</p>
   {% endif %}
-{% endset %}
+  {% endset %}
+
+  {% set branch2name %}
+    {% if data['branch2name'] %}
+      <p>{{ data['branch2name'] }}</p>
+    {% endif %}
+    {% endset %}
+
+    {% set branch3name %}
+      {% if data['branch3name'] %}
+        <p>{{ data['branch3name'] }}</p>
+      {% endif %}
+      {% endset %}
 
 
-{% set branchNames %}
-  {% if data['branches'] == 'no' %}
-
-  {% else %}
-    <br/><br/><br/> Park Surgery <br/> Hill Surgery <br/> Meadow Branch
-{% endif %}
-{% endset %}
 
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -164,7 +164,7 @@ $('div.nhsuk-summary-list__row').each(function() {
 
       <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
 
-      <p>Check your practice details and change any incorrect practice details.</p>
+      <p>Check your practice details and change any incorrect details.</p>
 
 
       {{ summaryList({
@@ -202,7 +202,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['contractType'] == 'apms',
+          } if data['contractType'] == 'apms' or data['configStructure'] == 'yes',
           {
             key: {
               text: "Contract end date"
@@ -219,7 +219,7 @@ $('div.nhsuk-summary-list__row').each(function() {
                 }
               ]
             }
-          } if data['contractType'] == 'apms',
+          } if data['contractType'] == 'apms' or data['configStructure'] == 'yes',
           {
             key: {
               text: "Organisation type"
@@ -260,7 +260,7 @@ $('div.nhsuk-summary-list__row').each(function() {
               text: "Does the practice have another telephone number?"
             },
             value: {
-              html: data['other'] | capitalize | placeholder('Yes') + otherPhoneNumber
+              html: otherTelephone | placeholder('No')
             },
             actions: {
               items: [
@@ -273,26 +273,45 @@ $('div.nhsuk-summary-list__row').each(function() {
             }
           },
           {
-            key: {
-              html: branchesText
-            },
-            value: {
-              html: branches | placeholder('Yes') + inputBranchesText + branchNames
-            },
-            actions: {
-              items: [
-                {
-                  href: "/submit-your-edec/sections/practice-details/return-user/branches-2",
-                  text: "Change",
-                  visuallyHiddenText: "if your GP practice has any branches, how many branches you have and the names of your branches"
-                }
-              ]
-            }
-          }
+  key: {
+    text: "Does the practice have any branches?"
+  },
+  value: {
+    html: branches | placeholder('Yes')
+  },
+  actions: {
+    items: [
+      {
+        href: "/submit-your-edec/sections/practice-details/return-user/branches",
+        text: "Change",
+        visuallyHiddenText: "if your GP practice has any branches"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Branch names"
+  },
+  value: {
+    html: branch1name + branch2name + branch3name | placeholder('Park Surgery')
+  },
+  actions: {
+    items: [
+      {
+        href: "/submit-your-edec/sections/practice-details/return-user/branch-names",
+        text: "Change",
+        visuallyHiddenText: "the names of your branches"
+      }
+    ]
+  }
+} if data['branches'] == 'yes'
         ]
       }) }}
 
       {% if data['contractType'] == 'apms' %}
+      {% elif data['configStructure'] == 'yes' %}
+
       {% else %}
       <h2>Optional information</h2>
 
@@ -336,9 +355,9 @@ $('div.nhsuk-summary-list__row').each(function() {
     }) }}
     {% endif %}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/catchment-area/catchment-card" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/practice-details-complete-2" method="get">
 
-          <input type="Submit" class="nhsuk-button" id="submit-details" value="Confirm">
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>
 
 

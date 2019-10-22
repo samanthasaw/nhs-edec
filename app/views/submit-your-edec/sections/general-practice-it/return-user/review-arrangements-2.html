@@ -33,7 +33,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/clinical-system" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/new-general-details" method="post">
 
       <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
       </span>{{ contentTitle }}</h1>
@@ -76,7 +76,12 @@
 
       </form>
 
-
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to the National Data Guardian Standards 2017.</p>
+        "
+      }) }}
 
     </div>
   </div>

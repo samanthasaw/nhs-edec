@@ -5,7 +5,7 @@
   {% else %}
     {% set practice = "The Nye Practice" %}
 {% endif %}
-{% set contentTitle = "Change your supporting information details" %}
+{% set contentTitle = "Check and change your supporting information details" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -127,7 +127,7 @@
         ]
       }) }}
 
-      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/return-user/supporting-details-complete" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/supporting-information/new-user/supporting-details-complete" method="post">
 
         <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
         </form>

@@ -33,7 +33,7 @@
 
 {% set otherArrangements %}
 {{ textarea({
-  "name": "inputOtherArrangements",
+  "name": "otherArrangements",
   "id": "inputnhsnumber",
   "label": {
     "text": "What other arrangements are in place?"
@@ -43,7 +43,7 @@
 
 {% set subContractProvider %}
 {{ textarea({
-  "name": "inputSubContractProvider",
+  "name": "subContractProvider",
   "id": "inputnhsnumber",
   "label": {
     "text": "What is the name of your sub contracted provider?"
@@ -94,13 +94,6 @@
               "conditional": {
                 html: otherArrangements
               }
-            },
-            {
-              "divider": "or"
-            },
-            {
-              "value": "noArrangements",
-              "text": "No arrangements are in place"
             }
           ]
         }) }}

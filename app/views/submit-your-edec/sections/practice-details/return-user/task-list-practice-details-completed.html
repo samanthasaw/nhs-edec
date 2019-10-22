@@ -3,8 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
-
+    {% set practice = "The Nye Practice" %}
 {% endif %}
 {% set contentTitle = "Submit your electronic declaration for " + practice %}
 {% set title = contentTitle + " - " + serviceName %}
@@ -38,115 +37,150 @@
     <div class="nhsuk-grid-column-two-thirds">
 
 
-            {{ backLink({
-              "href": "/submit-your-edec/demos/organisation-type/your-gp-surgeries-started",
-              "text": "Back to your GP surgeries"
-            }) }}
+      {{ backLink({
+        "href": "/submit-your-edec/demos/practice-details/a-practice-return",
+        "text": "Back to " + practice
+      }) }}
 
-      <h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
+<h1 class="nhsuk-label--xl app-heading-xl">{{ contentTitle }}</h1>
 
-      <p>Confirm your practice details are correct to submit your electronic declaration.</p>
+<p>Confirm your details are correct to submit your electronic declaration for {{ practice }}.</p>
+
+<h2>Sections to complete</h2>
 
 
-      <ul class="app-task-list">
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span> Your practice details
-          </h2>
-          <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <a href="#" class="app-task-list__task-name" href="#" aria-describedby="eligibility-completed">
-                Practice details
-              </a>
-              <strong class="tag-completed_blue" id="eligibility-completed">Completed</strong>
-            </li>
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
-                Location details
-              </a>
-              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
-            </li>
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
-                Staff details
-              </a>
-              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
-            </li>
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
-                Catchment area
-              </a>
-              <strong class="tag-not-started" id="read-declaration-completed">Not started</strong>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Your services
-          </h2>
-          <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
-                Services details
-              </a>
-              <strong class="tag-not-started" id="company-information-completed">Not started</strong>
-            </li>
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
-                Opening hours
-              </a>
-              <strong class="tag-not-started" id="contact-details-completed">Not started</strong>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span> Your procedures
-          </h2>
-          <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
-                Procedures details
-              </a>
-              <strong class="tag-not-started" id="company-information-completed">Not started</strong>
-            </li>
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
-                Governance details
-              </a>
-              <strong class="tag-not-started" id="contact-details-completed">Not started</strong>
-            </li>
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
-                GPIT details
-              </a>
-              <strong class="tag-not-started" id="contact-details-completed">Not started</strong>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. </span> Supporting information
-          </h2>
-          <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
-                Supporting information
-              </a>
-              <strong class="tag-not-started" id="company-information-completed">Not started</strong>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">5. </span> Submit
-          </h2>
-          <ul class="app-task-list__items">
-            <li>
-              <p>You must complete all the sections before you can submit your electronic declaration</p>
-            </li>
-          </ul>
-        </li>
+<ul class="app-task-list">
+<li>
+<ul class="app-task-list__items--no-padding">
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/returns-to-complete-section" aria-describedby="read-declaration-completed">
+Practice details
+</a>
+<strong class="tag-completed_blue" id="eligibility-completed">Completed</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Staff numbers and suitability (Practice staff)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Training and support (Practice staff)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Practice premises and equipment
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Practice services
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Reception opening hours (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Phone opening hours (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Regular periods of closure (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Intermittent closure periods (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
+Extended opening hours (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Branch reception opening hours (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="read-declaration-completed">
+Branch phone opening hours (Practice services)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
+Communicating with patients (Information about the practice and its procedures)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
+Medication (Information about the practice and its procedures)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
+Consent, including children (Information about the practice and its procedures)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
+Information and clinical governance
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">
+Registration with Care Quality Commission (CQC)
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
+General practice IT
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
+Catchment area
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+<li class="app-task-list__item">
+<a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">
+Supporting information
+</a>
+<strong class="tag-not-started" id="eligibility-completed">Not started</strong>
+</li>
+</ul>
+
+
+
+
+<h2>Submit</h2>
+
+<p>You must complete all the sections before you can submit your electronic declaration.</p>
+
 
     </div>
   </div>

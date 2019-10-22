@@ -1,0 +1,89 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Training and support (Practice staff) flow for a return user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "/submit-your-edec/sections/practice-staff/training-support/index",
+        "text": "Back"
+      }) }}
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+
+
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/staff-task-list-start">Task list - not started</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/staff-intro">Practice staff section intro</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/new-staff-details">Check the answers you submitted last year</a></li>
+      </ul>
+
+
+      <h3>Changing details</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/annual-appraisals">Annual appraisals</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/terms-of-employment">Terms of employment</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/equal-opportunities-2">Equal opportunities</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/prevent-strategy-2">Prevent strategy</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/safeguarding-2">Safeguarding</a></li>
+      </ul>
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/staff-details-complete">Staff details complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/change-staff-details">Change staff details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/change-annual-appraisals">Change annual appraisals</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/change-terms-of-employment">Change terms of employment</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/change-equal-opportunities-2">Change equal opportunities</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/change-prevent-strategy-2">Change Prevent strategy</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/change-safeguarding-2">Change safeguarding</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/task-list-staff-section-complete">Task list - practice staff section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/return-user/returns-to-complete-section">User returns to completed section</a></li>
+      </ul>
+
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

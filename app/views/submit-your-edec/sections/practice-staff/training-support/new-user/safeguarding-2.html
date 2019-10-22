@@ -1,0 +1,109 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice has policies for safeguarding both children and adults" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-staff/training-support/new-user/check-your-answers" method="get">
+
+        <h1 class="nhsuk-label--l app-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">Training and support
+        </span>{{ contentTitle }}</h1>
+
+        <p>This includes policies for:</p>
+
+        <ul>
+          <li>domestic violence</li>
+          <li>mental capacity</li>
+          <li>female genital mutilation (FGM)</li>
+          <li>the requirement for mandatory reporting, information sharing and freedom to speak up information</li>
+        </ul>
+
+          <p>This is a legal requirement to have policies and fits with CQC inspection regulations and Children Act 2004.</p>
+
+        {{ radios({
+          "idPrefix": "example-divider",
+          "name": "safeguardingPolicy",
+          "fieldset": {
+            "legend": {
+              "classes": "nhsuk-label--l app-heading-l"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+      
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p><strong>Children Act 2004:</strong></p>
+        <ul>
+          <li><a href='http://www.legislation.gov.uk/ukpga/2004/31/contents'>Contents (opens in new window)</a></li>
+          <li><a href='http://www.legislation.gov.uk/ukpga/2004/31/part/1'>Part 1 Children’s Commissioner (opens in new window)</a></li>
+          <li><a href='http://www.legislation.gov.uk/ukpga/2004/31/part/2'>Part 2 Children’s services in England (opens in new window)</a></li>
+          <li><a href='http://www.legislation.gov.uk/ukpga/2004/31/section/50'>Miscellaneous section 50 (opens in new window)</a></li>
+          <li><a href='http://www.legislation.gov.uk/ukpga/2004/31/section/52'>Miscellaneous section 52 (opens in new window)</a></li>
+          <li><a href='http://www.legislation.gov.uk/ukpga/2004/31/section/53'>Miscellaneous section 53 (opens in new window)</a></li>
+        </ul>
+        <p>The Children Act 2004 also covers provision relating to:</p>
+        <ul>
+          <li>private fostering</li>
+          <li>child minding and day care</li>
+          <li>adoption review panels</li>
+          <li>grants in respect of children and families</li>
+          <li>Child Safety Orders</li>
+        </ul>
+        <p><strong>Royal College of General Practitioners:</strong></p>
+        <ul>
+          <li><a href='https://www.rcgp.org.uk/clinical-and-research/resources/toolkits/child-safeguarding-toolkit.aspx'>Child Safeguarding Toolkit (opens in new window)</a></li>
+          <li><a href='https://www.rcgp.org.uk/clinical-and-research/safeguarding/adult-safeguarding-toolkit.aspx'>Adult Safeguarding Toolkit (opens in new window)</a></li>
+        </ul>
+        "
+      }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

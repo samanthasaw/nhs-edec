@@ -77,6 +77,8 @@ router.post('/submit-your-edec/demos/organisation-type/check-last-year', functio
   }
 });
 
+
+
 router.post('/submit-your-edec/sections/practice-details/return-user/contract-type', function (req, res) {
   let answer = req.body.contractType;
 
@@ -92,19 +94,6 @@ router.post('/submit-your-edec/sections/practice-details/return-user/contract-ty
 
 
 
-router.post('/submit-your-edec/sections/practice-details/return-user/configuration-structure', function (req, res) {
-  let answer = req.body.configStructure;
-
-  if (answer === 'yes') {
-
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/contract-start-date')
-
-  } else {
-    // res.redirect('error')
-    res.redirect('/submit-your-edec/sections/practice-details/return-user/check-last-year-config-same')
-  }
-});
-
 
 router.post('/submit-your-edec/sections/practice-details/return-user/apms-contract-dates', function (req, res) {
   let answer = req.body.apmscontract;
@@ -118,6 +107,8 @@ router.post('/submit-your-edec/sections/practice-details/return-user/apms-contra
     res.redirect('/submit-your-edec/sections/practice-details/return-user/contract-start-date-apms')
   }
 });
+
+
 
 router.post('/submit-your-edec/sections/practice-details/return-user/catchment-area/check-your-catchment', function (req, res) {
   let answer = req.body.checkCatchment;
@@ -161,6 +152,52 @@ router.post('/submit-your-edec/sections/practice-details/new-user/catchment-area
     res.redirect('/submit-your-edec/sections/practice-details/new-user/catchment-area/submit-your-branch-catchment')
   }
 });
+
+
+
+router.post('/submit-your-edec/sections/practice-details/return-user/branches', function (req, res) {
+  let answer = req.body.branches;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/found-branches')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/practice-details-complete-2')
+  }
+});
+
+
+router.post('/submit-your-edec/sections/practice-details/return-user/change-branches', function (req, res) {
+  let answer = req.body.branches;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/change-tick-branches')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/return-user/change-practice-details-2')
+  }
+});
+
+
+
+
+router.post('/submit-your-edec/sections/practice-details/new-user/branches', function (req, res) {
+  let answer = req.body.branches;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/branch-names')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/practice-details/new-user/check-your-answers')
+  }
+});
+
 
 
 // staff details
@@ -334,16 +371,103 @@ router.post('/submit-your-edec/sections/premises-equipment/new-user/change-wheel
 
 // practice services
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/new-user/provision-care', function (req, res) {
+  let answer = req.body.provision;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/sub-contracts-provision')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/quality-ooh') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/interpreting-2', function (req, res) {
+  let answer = req.body.selectInterpret;
+
+  if (answer === 'noInterpret') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/review-website')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/funds-interpreting') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-provision-care', function (req, res) {
+  let answer = req.body.provision;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-sub-contracts-provision')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-quality-ooh') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-interpreting-2', function (req, res) {
+  let answer = req.body.selectInterpret;
+
+  if (answer === 'noInterpret') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/check-your-answers')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-funds-interpreting') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-provision-care-2', function (req, res) {
+  let answer = req.body.provision;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-sub-contracts-provision-2')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-quality-ooh-2') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/new-user/change-interpreting-2-2', function (req, res) {
+  let answer = req.body.selectInterpret;
+
+  if (answer === 'noInterpret') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/check-your-answers')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/new-user/change-funds-interpreting-2') }
+
+});
+
+
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods', function (req, res) {
   let answer = req.body.regularPeriods;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-regular-periods')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/which-days-regular-periods')
 
   }   else {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent-periods') }
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-periods') }
 
 });
 
@@ -352,136 +476,1080 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-intermittent-closure')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/which-days-intermittent-closure')
 
   }   else {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/closed-each-week') }
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/closed-each-week') }
 
 });
 
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended-hours-per-week', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended/extended-hours-per-week', function (req, res) {
   let answer = req.body.extendHours;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/number-of-extended-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended/number-of-extended-hours')
 
   }   else {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-extended-hours') }
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended/check-extended-hours') }
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/change-extended-hours-per-week', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended/change-extended-hours-per-week', function (req, res) {
   let answer = req.body.extendHours;
 
   if (answer === 'yes') {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/number-of-extended-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended/number-of-extended-hours')
 
   }   else {
 
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-extended-hours') }
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/extended/check-extended-hours') }
 
 });
 
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/extended-hours-per-week', function (req, res) {
+  let answer = req.body.extendHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/number-of-extended-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/check-extended-hours') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours-per-week', function (req, res) {
+  let answer = req.body.extendHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-number-of-extended-hours-2')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/extended/change-extended-hours') }
+
+});
 
 // practice services
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/which-days-regular-periods', function (req, res) {
-  let answer = req.body.regEdit;
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/which-days-reception', function (req, res) {
+  let answer = req.body.receptionEdit;
 
   if (answer.includes('monday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-monday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-monday')
   }
 
   if (answer.includes('tuesday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-tuesday')
   }
 
   if (answer.includes('wednesday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-wednesday')
   }
 
   if (answer.includes('thursday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-thursday')
   }
 
   if (answer.includes('friday')) {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-friday')
+  }
+
+  if (answer.includes('saturday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday')
+  }
+
+  if (answer.includes('sunday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
   }
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-monday', function (req, res) {
-  let answer = req.session.data.regEdit;
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-monday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
 
   if (answer) {
 
     if (answer.includes('tuesday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-tuesday')
     } else if (answer.includes('wednesday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-wednesday')
     } else if (answer.includes('thursday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-thursday')
     } else if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
     } else {
-    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
   }}
 
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-tuesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-tuesday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
+
+  if (answer) {
+
+    if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-wednesday')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-wednesday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
+
+  if (answer) {
+
+    if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
+    }}
+
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-thursday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
+
+  if (answer) {
+
+    if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-friday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
+
+  if (answer) {
+
+    if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
+    }}
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-saturday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
+
+  if (answer) {
+
+    if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/reception-sunday', function (req, res) {
+  let answer = req.session.data.receptionEdit;
+
+
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/reception/check-reception-answers')
+
+
+});
+
+
+
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/which-days-phone', function (req, res) {
+  let answer = req.body.phoneEdit;
+
+  if (answer.includes('monday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/monday-phone')
+  }
+
+  if (answer.includes('tuesday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/tuesday-phone')
+  }
+
+  if (answer.includes('wednesday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/wednesday-phone')
+  }
+
+  if (answer.includes('thursday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/thursday-phone')
+  }
+
+  if (answer.includes('friday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/friday-phone')
+  }
+
+  if (answer.includes('saturday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone')
+  }
+
+  if (answer.includes('sunday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+  }
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/monday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+  if (answer) {
+
+    if (answer.includes('tuesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/tuesday-phone')
+    } else if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/wednesday-phone')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/thursday-phone')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/friday-phone')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+    } else {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+  }}
+
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/tuesday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+  if (answer) {
+
+    if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/wednesday-phone')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/thursday-phone')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/friday-phone')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/wednesday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+  if (answer) {
+
+    if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/thursday-phone')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/friday-phone')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+    }}
+
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/thursday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+  if (answer) {
+
+    if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/friday-phone')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/friday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+  if (answer) {
+
+    if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+    }}
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/saturday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+  if (answer) {
+
+    if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/sunday-phone', function (req, res) {
+  let answer = req.session.data.phoneEdit;
+
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/phone/check-phone-answers')
+
+});
+
+
+
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/which-days-regular-periods', function (req, res) {
+  let answer = req.body.regEdit;
+
+  if (answer.includes('monday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-monday')
+  }
+
+  if (answer.includes('tuesday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-tuesday')
+  }
+
+  if (answer.includes('wednesday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday')
+  }
+
+  if (answer.includes('thursday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
+  }
+
+  if (answer.includes('friday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
+  }
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-monday', function (req, res) {
+  let answer = req.session.data.regEdit;
+
+  if (answer) {
+
+    if (answer.includes('tuesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-tuesday')
+    } else if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
+    } else {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
+  }}
+
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-tuesday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('wednesday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday')
     } else if (answer.includes('thursday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
     } else if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
     }}
 
 });
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-wednesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-wednesday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('thursday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday')
     } else if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
     }}
 
 
 });
 
 
-router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-thursday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-thursday', function (req, res) {
   let answer = req.session.data.regEdit;
 
   if (answer) {
 
     if (answer.includes('friday')) {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular-periods-closed-friday')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday')
     } else {
-      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/check-regular-periods')
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
     }}
 
 });
 
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/regular-periods-closed-friday', function (req, res) {
+  let answer = req.session.data.regEdit;
+
+
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/regular/check-regular-periods')
+
+});
+
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday-time', function (req, res) {
+  let answer = req.body.intermittentMondayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-monday-frequency') }
+
+});
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-tuesday-time', function (req, res) {
+  let answer = req.body.intermittentTuesdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-tuesday-frequency') }
+
+});
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-wednesday-time', function (req, res) {
+  let answer = req.body.intermittentWednesdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-wednesday-frequency') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-thursday-time', function (req, res) {
+  let answer = req.body.intermittentThursdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-thursday-frequency') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-friday-time', function (req, res) {
+  let answer = req.body.intermittentFridayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/check-intermittent-periods')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/intermittent-closed-friday-frequency') }
+
+});
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-monday-time', function (req, res) {
+  let answer = req.body.intermittentMondayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-monday-frequency') }
+
+});
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-tuesday-time', function (req, res) {
+  let answer = req.body.intermittentTuesdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-tuesday-frequency') }
+
+});
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-wednesday-time', function (req, res) {
+  let answer = req.body.intermittentWednesdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-wednesday-frequency') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-time', function (req, res) {
+  let answer = req.body.intermittentThursdayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-thursday-frequency') }
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-friday-time', function (req, res) {
+  let answer = req.body.intermittentFridayOpen;
+
+  if (answer === 'closed') {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-hours')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/intermittent/change-intermittent-closed-friday-frequency') }
+
+});
+
+
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/which-days-intermittent-closure', function (req, res) {
+  let answer = req.body.intermittentEdit;
+
+  if (answer.includes('monday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-monday-time')
+  }
+
+  if (answer.includes('tuesday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-tuesday-time')
+  }
+
+  if (answer.includes('wednesday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-wednesday-time')
+  }
+
+  if (answer.includes('thursday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-thursday-time')
+  }
+
+  if (answer.includes('friday')) {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-friday-time')
+  }
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-monday-frequency', function (req, res) {
+  let answer = req.session.data.intermittentEdit;
+
+  if (answer) {
+
+    if (answer.includes('tuesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-tuesday-time')
+    } else if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-wednesday-time')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-thursday-time')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-friday-time')
+    } else {
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/closed-each-week')
+  }}
+
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-tuesday-frequency', function (req, res) {
+  let answer = req.session.data.intermittentEdit;
+
+  if (answer) {
+
+    if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-wednesday-time')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-thursday-time')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-friday-time')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/closed-each-week')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-wednesday-frequency', function (req, res) {
+  let answer = req.session.data.intermittentEdit;
+
+  if (answer) {
+
+    if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-thursday-time')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-friday-time')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/closed-each-week')
+    }}
+
+
+});
+
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-thursday-frequency', function (req, res) {
+  let answer = req.session.data.intermittentEdit;
+
+  if (answer) {
+
+    if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-friday-time')
+    } else {
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/closed-each-week')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/intermittent-closed-friday-frequency', function (req, res) {
+  let answer = req.session.data.intermittentEdit;
+
+      res.redirect('/submit-your-edec/sections/practice-services/opening-hours/new-user/intermittent/closed-each-week')
+
+});
+
+
+
+
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/is-branch-same', function (req, res) {
+  let answer = req.body.branchHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/is-branch-phone-same')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/which-days-branch') }
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/is-branch-phone-same', function (req, res) {
+  let answer = req.body.branchPhoneHours;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-hours-complete')
+
+  }   else {
+
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/which-days-branch-phone') }
+
+});
+
+
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/which-days-branch', function (req, res) {
+  let answer = req.body.branchDays;
+
+  if (answer.includes('monday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-monday')
+  }
+
+  if (answer.includes('tuesday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-tuesday')
+  }
+
+  if (answer.includes('wednesday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-wednesday')
+  }
+
+  if (answer.includes('thursday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-thursday')
+  }
+
+  if (answer.includes('friday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-friday')
+  }
+
+  if (answer.includes('saturday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday')
+  }
+
+  if (answer.includes('sunday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+  }
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-monday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+  if (answer) {
+
+    if (answer.includes('tuesday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-tuesday')
+    } else if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-wednesday')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+    } else {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+  }}
+
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-tuesday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+  if (answer) {
+
+    if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-wednesday')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-wednesday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+  if (answer) {
+
+    if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+    }}
+
+
+});
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-thursday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+  if (answer) {
+
+    if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-friday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+  if (answer) {
+
+    if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-saturday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+  if (answer) {
+
+    if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+    }}
+
+});
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-reception/branch-sunday', function (req, res) {
+  let answer = req.session.data.branchDays;
+
+
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-reception/check-branch-hours')
+
+});
+
+
+
+
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/which-days-branch-phone', function (req, res) {
+  let answer = req.body.branchDaysPhone;
+
+  if (answer.includes('monday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-monday')
+  }
+
+  if (answer.includes('tuesday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-tuesday')
+  }
+
+  if (answer.includes('wednesday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-wednesday')
+  }
+
+  if (answer.includes('thursday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-thursday')
+  }
+
+  if (answer.includes('friday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-friday')
+  }
+
+  if (answer.includes('saturday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday')
+  }
+
+  if (answer.includes('sunday')) {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+  }
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-monday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+  if (answer) {
+
+    if (answer.includes('tuesday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-tuesday')
+    } else if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-wednesday')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+    } else {
+    res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+  }}
+
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-tuesday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+  if (answer) {
+
+    if (answer.includes('wednesday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-wednesday')
+    } else if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-wednesday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+  if (answer) {
+
+    if (answer.includes('thursday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-thursday')
+    } else if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+    }}
+
+
+});
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-thursday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+  if (answer) {
+
+    if (answer.includes('friday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-friday')
+    } else if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-friday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+  if (answer) {
+
+    if (answer.includes('saturday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday')
+    } else if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+    }}
+
+});
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-saturday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+  if (answer) {
+
+    if (answer.includes('sunday')) {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday')
+    } else {
+      res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+    }}
+
+});
+
+
+router.post('/submit-your-edec/sections/supporting-information/branches/branch-phone/branch-phone-sunday', function (req, res) {
+  let answer = req.session.data.branchDaysPhone;
+
+
+  res.redirect('/submit-your-edec/sections/supporting-information/branches/branch-phone/check-branch-phone-hours')
+
+});
 
 
 // procedures details
@@ -770,6 +1838,58 @@ router.get('/submit-your-edec/sections/practice-details/return-user/redirect', f
 
 });
 
+// General practice IT
+
+
+router.post('/submit-your-edec/sections/general-practice-it/return-user/lloyd-george', function (req, res) {
+  let answer = req.body.lloydGeorge;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/return-user/available-book-online')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/return-user/offsite-storage')
+  }
+});
+
+
+
+router.post('/submit-your-edec/sections/general-practice-it/new-user/lloyd-george', function (req, res) {
+  let answer = req.body.lloydGeorge;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/new-user/available-book-online')
+
+  } else {
+
+    res.redirect('/submit-your-edec/sections/general-practice-it/new-user/offsite-storage')
+  }
+});
+
+
+// Submit
+
+
+router.post('/submit-your-edec/submit/confirm-reopen', function (req, res) {
+  let answer = req.body.confirmReopen;
+
+  if (answer === 'yes') {
+
+    res.redirect('/submit-your-edec/task-list/task-list-reopened')
+
+  } else {
+
+    res.redirect('/submit-your-edec/a-practice/a-practice-nye-complete')
+  }
+});
+
+
+
+
+
 
 
 
@@ -875,12 +1995,12 @@ router.post('/submit-your-edec/sections/practice-services/opening-hours/return-u
 
 
   // Now redirect to check page
-  res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+  res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
 });
 
 // Monday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-monday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -942,19 +2062,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-monday', functio
       req.session.data.mondayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.mondayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Tuesday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-tuesday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1016,19 +2136,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-tuesday', functi
       req.session.data.tuesdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.tuesdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Wednesday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-wednesday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1090,19 +2210,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-wednesday', func
       req.session.data.wednesdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.wednesdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Thursday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-thursday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1164,19 +2284,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-thursday', funct
       req.session.data.thursdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.thursdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Friday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-friday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1238,19 +2358,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-friday', functio
       req.session.data.fridayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.fridayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Saturday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-saturday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1312,19 +2432,19 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-saturday', funct
       req.session.data.saturdayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.saturdayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });
 
 // Sunday
-router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', function (req, res) {
+router.post('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/change-sunday', function (req, res) {
   let answer = req.body.gov;
 
   if (answer == "open") {
@@ -1386,13 +2506,13 @@ router.post('/submit-your-edec/sections/opening-hours/v2/change-sunday', functio
       req.session.data.sundayRow3 = ""
     }
 
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
 
   } else {
     // set data to Closed
     // redirect to v2 check
     req.session.data.sundayOpeningHours = "Closed";
-    res.redirect('/submit-your-edec/sections/opening-hours/v2/new-opening-hours')
+    res.redirect('/submit-your-edec/sections/practice-services/opening-hours/return-user/v2/new-opening-hours')
   }
 
 });

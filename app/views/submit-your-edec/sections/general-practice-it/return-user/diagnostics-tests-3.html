@@ -60,7 +60,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/new-general-details" method="post">
 
         {{ checkboxesDivider({
           "idPrefix": "diagnostic",
@@ -105,7 +105,16 @@
 
       </form>
 
-
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to:</p>
+        <ul>
+          <li>NHS Standard provider contract</li>
+          <li>Everyone Counts: Planning for Patients 2014/15 to 2018/19</li>
+        </ul>
+        "
+      }) }}
 
     </div>
   </div>

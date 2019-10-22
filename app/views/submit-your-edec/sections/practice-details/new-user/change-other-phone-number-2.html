@@ -1,0 +1,120 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+
+{% endif %}
+{% set contentTitle = "Does your practice have another telephone number?" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='other']" ).on( "click", function() {
+  if ( $( "input[name='other']:checked" ).val() === "no") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice details</span>{{ contentTitle }}</h1>
+
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/change-practice-details" method="post">
+
+        {% if data['other'] === "no" %}
+          {% set noTrue = "True" %}
+        {% else %}
+          {% set yesTrue = "True" %}
+        {% endif %}
+
+
+
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "other",
+          "classes": "nhsuk-radios--inline",
+          "fieldset": {
+            "legend": {
+              "isPageHeading": false,
+              "classes": ""
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes",
+              "checked": yesTrue
+            },
+            {
+              "value": "no",
+              "text": "No",
+              "checked": noTrue
+            }
+          ]
+        }) }}
+
+        <div class="app-opening-time__container {%- if noTrue %} app-u-display--none{% endif -%}">
+
+
+          {{ input({
+            "label": {
+              "text": "What is your other practice telephone number?",
+              "isPageHeading": true,
+              "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4"
+            },
+            "hint": {
+              "text": "Telephone number"
+            },
+            "id": "inputOtherNumber",
+            "name": "otherNumber",
+            "classes": "nhsuk-input--width-10",
+            "value": data['otherNumber'] | placeholder('0113 496 0848')
+          }) }}
+
+
+        </div>
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

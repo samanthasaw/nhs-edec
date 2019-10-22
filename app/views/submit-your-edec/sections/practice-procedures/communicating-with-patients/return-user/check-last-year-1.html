@@ -1,0 +1,161 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check the communicating with patients details you submitted last year" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Communicating with patients</span>{{ contentTitle }}</h1>
+
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "The practice produces a leaflet that includes all of the requirements set out in its contract"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "The practice reviews and updates its leaflet at least once every 12 months"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "The practice leaflet is made available for patients/prospective patients"
+            },
+            value: {
+              text: "Yes"
+             }
+           },
+           {
+             key: {
+               text: "The practice has a complaints policy which complies with the NHS complaints procedure and it is advertised to patients"
+             },
+             value: {
+               text: "Yes"
+             }
+           },
+           {
+             key: {
+               text: "The practice can demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them"
+             },
+             value: {
+               text: "Yes"
+             }
+            },
+            {
+              key: {
+                text: "When removing patients from its list the practice can demonstrate that it does so in accordance with contractual requirements and provides the required notice, including providing an explanation of the reasons in writing to the patient"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "The practice can evidence that they have engaged with their Patient Participation Group (PPG) throughout the year and make available such feedback to the practice population including actions and reports, including where they have acted on suggestions for improvement"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "The practice is able to show that the Patient Participation Group (PPG) is properly representative of its practice population or that it has made and continues to make efforts to ensure it is representative of its local population"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?"
+              },
+              value: {
+                text: "This does not apply to my practice"
+              }
+            },
+            {
+              key: {
+                text: "Has the GP practice updated their whistleblowing policy in light of published guidance?"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "Has the practice identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead."
+              },
+              value: {
+                text: "Yes"
+              }
+            }
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/check-last-year-1" method="post">
+        {{ radios({
+          "idPrefix": "sections",
+          "name": "communicatingPatientsDetails",
+          "fieldset": {
+            "legend": {
+              "text": "Are these communicating with patients details correct?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes, they're correct"
+            },
+            {
+              "value": "no",
+              "text": "No, I need to change them"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

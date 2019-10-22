@@ -1,0 +1,121 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice routinely electronically orders or receives the following diagnostics tests with their main acute provider (optional)" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#diagnostic-5" ).on( "click", function() {
+  if ( $( "#diagnostic-5" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#diagnostic-1" ).attr('disabled', true);
+    $( "#diagnostic-2" ).attr('disabled', true);
+    $( "#diagnostic-3" ).attr('disabled', true);
+
+  } else {
+    $( "#diagnostic-1" ).attr('disabled', false);
+    $( "#diagnostic-2" ).attr('disabled', false);
+    $( "#diagnostic-3" ).attr('disabled', false);
+
+  }
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+{% set diagnosticsOther %}
+{{ textarea({
+  "name": "nhs",
+  "id": "more-detail",
+  "label": {
+    "text": "What other diagnostics tests does the practice routinely electronically order or receive with their main acute provider?"
+  }
+}) }}
+{% endset %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/change-general-details" method="post">
+
+        {{ checkboxesDivider({
+          "idPrefix": "diagnostic",
+          "name": "diagnostics",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+            {
+              "value": "laboratory",
+              "text": "Place orders for common laboratory diagnostic tests"
+            },
+            {
+              "value": "orderImaging",
+              "text": "Place orders for common imaging and diagnostic tests"
+            },
+            {
+              "value": "receiveImaging",
+              "text": "Receive diagnostic reports for common imaging and diagnostic tests"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <p>This question refers to:</p>
+        <ul>
+          <li>NHS Standard provider contract</li>
+          <li>Everyone Counts: Planning for Patients 2014/15 to 2018/19</li>
+        </ul>
+        "
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

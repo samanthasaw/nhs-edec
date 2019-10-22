@@ -1,0 +1,230 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice promotes and offers the facility for patients, nursing and residential homes to receive consultations electronically" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#patients-6" ).on( "click", function() {
+  if ( $( "#patients-6" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#patients-1" ).attr('disabled', true);
+    $( "#patients-2" ).attr('disabled', true);
+    $( "#patients-3" ).attr('disabled', true);
+    $( "#patients-4" ).attr('disabled', true);
+
+  } else {
+    $( "#patients-1" ).attr('disabled', false);
+    $( "#patients-2" ).attr('disabled', false);
+    $( "#patients-3" ).attr('disabled', false);
+    $( "#patients-4" ).attr('disabled', false);
+
+
+  }
+});
+
+$( "#nursing-6" ).on( "click", function() {
+if ( $( "#nursing-6" ).is(':checked') ){
+  console.log( "closed" );
+  $( "#nursing-1" ).attr('disabled', true);
+  $( "#nursing-2" ).attr('disabled', true);
+  $( "#nursing-3" ).attr('disabled', true);
+  $( "#nursing-4" ).attr('disabled', true);
+
+} else {
+  $( "#nursing-1" ).attr('disabled', false);
+  $( "#nursing-2" ).attr('disabled', false);
+  $( "#nursing-3" ).attr('disabled', false);
+  $( "#nursing-4" ).attr('disabled', false);
+
+
+}
+});
+
+$( "#residential-6" ).on( "click", function() {
+if ( $( "#residential-6" ).is(':checked') ){
+  console.log( "closed" );
+  $( "#residential-1" ).attr('disabled', true);
+  $( "#residential-2" ).attr('disabled', true);
+  $( "#residential-3" ).attr('disabled', true);
+  $( "#residential-4" ).attr('disabled', true);
+
+} else {
+  $( "#residential-1" ).attr('disabled', false);
+  $( "#residential-2" ).attr('disabled', false);
+  $( "#residential-3" ).attr('disabled', false);
+  $( "#residential-4" ).attr('disabled', false);
+
+
+}
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/new-user/shared-online-system-3" method="post">
+
+        <h1 class="nhsuk-heading-l"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+        </span>{{ contentTitle }}</h1>
+
+
+
+
+        {{ checkboxesDivider({
+          "idPrefix": "patients",
+          "classes": "nhsuk-checkbox--inline nhsuk-checkbox__item",
+          "name": "selectPatientConsultations",
+          "fieldset": {
+            "legend": {
+              "text": "For patients",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply to patients"
+        },
+          "items": [
+            {
+              "value": "email",
+              "text": "Email"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "Not applicable"
+            }
+          ]
+        }) }}
+
+        {{ checkboxesDivider({
+          "idPrefix": "nursing",
+          "name": "selectNursingConsultations",
+          "fieldset": {
+            "legend": {
+              "text": "For nursing homes",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply to nursing homes"
+        },
+          "items": [
+            {
+              "value": "email",
+              "text": "Email"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "Not applicable"
+            }
+          ]
+        }) }}
+
+        {{ checkboxesDivider({
+          "idPrefix": "residential",
+          "name": "selectResidentialConsultations",
+          "fieldset": {
+            "legend": {
+              "text": "For residential homes",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply to residential homes"
+        },
+          "items": [
+            {
+              "value": "email",
+              "text": "Email"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            },
+            {
+              "value": "telephone",
+              "text": "Telephone"
+            },
+            {
+              "value": "onlineConsultation",
+              "text": "Online consultations (for example electronic questionnaires and text messaging systems)"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "Not applicable"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

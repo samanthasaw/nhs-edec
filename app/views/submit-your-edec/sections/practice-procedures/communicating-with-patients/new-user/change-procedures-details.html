@@ -1,0 +1,415 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check and change your communicating with patients details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+{% set practiceLeaflet %}
+  {% if data['practiceLeaflet'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set reviewsLeaflet %}
+  {% if data['reviewsLeaflet'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set availableLeaflet %}
+  {% if data['availableLeaflet'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set complaintsPolicy %}
+  {% if data['complaintsPolicy'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set refusedApplication %}
+  {% if data['refusedApplication'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set removingPatients %}
+  {% if data['removingPatients'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set engagePpg %}
+  {% if data['engagePpg'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set representativePpg %}
+  {% if data['representativePpg'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+{% set callRecall %}
+  {% if data['callRecall'] == 'posterPatient' %}
+    Poster in waiting room
+  {% elif data['callRecall'] == 'notificationWebsite' %}
+    <p> Notification on practice website </p>
+  {% elif data['callRecall'] == 'letterPatient' %}
+    <p> Letter to patient </p>
+  {% elif data['callRecall'] == 'textMessage' %}
+    <p> Text message to patient </p>
+  {% elif data['callRecall'] == 'phoneCall' %}
+    <p> Phone call to patient </p>
+  {% elif data['callRecall'] == 'consultation' %}
+    <p> During consultation or appointment </p>
+  {% elif data['callRecall'] == 'other' %}
+    <p> Other - {{ data['electronicTechSolution'] }} </p>
+  {% elif data['callRecall'] == 'othernonElectronic' %}
+    <p> Other - {{ data['nonElectronicTechSolution'] }} </p>
+  {% else %}
+    This does not apply to my practice
+  {% endif %}
+  {% endset %}
+
+  {% if data['callRecall'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+  {% set totalRecall %}
+    {% if cheese == 'stringyCheese' %}
+      {{ callRecall | safe }}
+    {% else %}
+      {% for item in data['callRecall'] %}
+      {% if item == 'posterPatient' %}
+        <p>Poster in waiting room</p>
+      {% elif item == 'notificationWebsite' %}
+        <p> Notification on practice website </p>
+      {% elif item == 'letterPatient' %}
+        <p> Letter to patient </p>
+      {% elif item == 'textMessage' %}
+        <p> Text message to patient </p>
+      {% elif item == 'phoneCall' %}
+        <p> Phone call to patient </p>
+      {% elif item == 'consultation' %}
+        <p> During consultation or appointment </p>
+      {% elif item == 'other' %}
+        <p> Other - {{ data['electronicTechSolution'] }} </p>
+      {% elif item == 'othernonElectronic' %}
+        <p> Other - {{ data['nonElectronicTechSolution'] }} </p>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endset %}
+
+
+  {% set electronicTechSolution %}
+    {% if data['electronicTechSolution'] %}
+      <br> {{ data['electronicTechSolution'] }}
+    {% endif %}
+  {% endset %}
+
+  {% set nonElectronicTechSolution %}
+    {% if data['nonElectronicTechSolution'] %}
+      <br> {{ data['nonElectronicTechSolution'] }}
+    {% endif %}
+  {% endset %}
+
+
+{% set whistleblowing %}
+  {% if data['whistleblowing'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set whistleLead %}
+  {% if data['whistleLead'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+{% set advertisingProvision %}
+  {% if data['advertisingProvision'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+
+
+
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Communicating with patients</span>{{ contentTitle }}</h1>
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "The practice produces a leaflet that includes all of the requirements set out in its contract"
+            },
+            value: {
+              text: practiceLeaflet | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-practice-leaflet-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice produces a leaflet that includes all of the requirements set out in its contract"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice reviews and updates its leaflet at least once every 12 months"
+            },
+            value: {
+              text: reviewsLeaflet | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-reviews-leaflet-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice reviews and updates its leaflet at least once every 12 months"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice leaflet is made available for patients/prospective patients"
+            },
+            value: {
+              text: availableLeaflet | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-available-leaflet-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice leaflet is made available for patients/prospective patients"
+                }
+              ]
+            }
+           },
+           {
+             key: {
+               text: "The practice has a complaints policy which complies with the NHS complaints procedure and it is advertised to patients"
+             },
+             value: {
+               text: complaintsPolicy | placeholder('Yes')
+             },
+             actions: {
+               items: [
+                 {
+                   href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-complaints-policy-2",
+                   text: "Change",
+                   visuallyHiddenText: "if the practice has a complaints policy which complies with the NHS complaints procedure and if it is advertised to patients"
+                 }
+               ]
+             }
+           },
+           {
+             key: {
+               text: "The practice can demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them"
+             },
+             value: {
+               text: refusedApplication | placeholder('Yes')
+             },
+             actions: {
+               items: [
+                 {
+                   href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-refused-application-2",
+                   text: "Change",
+                   visuallyHiddenText: "if the practice can demonstrate reasonable grounds where it has refused an application to register and keeps a written record of refusals and the reasons for them"
+                 }
+               ]
+             }
+            },
+            {
+              key: {
+                text: "When removing patients from its list the practice can demonstrate that it does so in accordance with contractual requirements and provides the required notice, including providing an explanation of the reasons in writing to the patient"
+              },
+              value: {
+                text: removingPatients | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-removing-patients-2",
+                    text: "Change",
+                    visuallyHiddenText: "if when removing patients from its list the practice can demonstrate that it does so in accordance with contractual requirements and provides the required notice, including providing an explanation of the reasons in writing to the patient"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "The practice can evidence that they have engaged with their Patient Participation Group (PPG) throughout the year and make available such feedback to the practice population including actions and reports, including where they have acted on suggestions for improvement"
+              },
+              value: {
+                text: engagePpg | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-engage-ppg-2",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice can evidence that they have engaged with their Patient Participation Group (PPG) throughout the year and make available such feedback to the practice population including actions and reports, including where they have acted on suggestions for improvement"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "The practice is able to show that the Patient Participation Group (PPG) is properly representative of its practice population or that it has made and continues to make efforts to ensure it is representative of its local population"
+              },
+              value: {
+                text: representativePpg | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-representative-ppg-2",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice is able to show that the Patient Participation Group (PPG) is properly representative of its practice population or that it has made and continues to make efforts to ensure it is representative of its local population"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "When undertaking call/recall activities as part of delivering vaccination programmes please specify when required how the practice’s eligible population are contacted?"
+              },
+              value: {
+                html: totalRecall | placeholder('Letter to patient')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-call-recall-2-2",
+                    text: "Change",
+                    visuallyHiddenText: "how the practice’s eligible population are contacted"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Has the GP practice updated their whistleblowing policy in light of published guidance?"
+              },
+              value: {
+                text: whistleblowing | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-whistleblowing-2",
+                    text: "Change",
+                    visuallyHiddenText: "if the GP practice has updated their whistleblowing policy in light of published guidance"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Has the practice identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead."
+              },
+              value: {
+                text: whistleLead | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-whistleblowing-lead-2",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice has identified someone external to the practice staff can raise concerns with in confidence? For example a freedom to speak up guardian, local whistleblowing lead"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Practice confirms it is not advertising the provision of private GP services either by itself or through any other person?"
+              },
+              value: {
+                text: advertisingProvision | placeholder('Yes')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/submit-your-edec/sections/practice-procedures/communicating-with-patients/new-user/change-advertising-provision-2",
+                    text: "Change",
+                    visuallyHiddenText: "if the practice confirms it is not advertising the provision of private GP services either by itself or through any other person"
+                  }
+                ]
+              }
+            }
+        ]
+      }) }}
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/new-user/procedures-details-complete" method="get">
+
+          <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and confirm">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}

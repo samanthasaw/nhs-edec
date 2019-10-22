@@ -1,0 +1,629 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Change your Sunday phone opening hours" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
+<script src="/js/autocomplete-time-v2.js" type="text/javascript"></script>
+<script type="text/javascript">
+const times = [
+  '0:00',
+  '0:05',
+  '0:10',
+  '0:15',
+  '0:20',
+  '0:25',
+  '0:30',
+  '0:35',
+  '0:40',
+  '0:45',
+  '0:50',
+  '0:55',
+  '1:00',
+  '1:05',
+  '1:10',
+  '1:15',
+  '1:20',
+  '1:25',
+  '1:30',
+  '1:35',
+  '1:40',
+  '1:45',
+  '1:50',
+  '1:55',
+  '2:00',
+  '2:05',
+  '2:10',
+  '2:15',
+  '2:20',
+  '2:25',
+  '2:30',
+  '2:35',
+  '2:40',
+  '2:45',
+  '2:50',
+  '2:55',
+  '3:00',
+  '3:05',
+  '3:10',
+  '3:15',
+  '3:20',
+  '3:25',
+  '3:30',
+  '3:35',
+  '3:40',
+  '3:45',
+  '3:50',
+  '3:55',
+  '4:00',
+  '4:05',
+  '4:10',
+  '4:15',
+  '4:20',
+  '4:25',
+  '4:30',
+  '4:35',
+  '4:40',
+  '4:45',
+  '4:50',
+  '4:55',
+  '5:00',
+  '5:05',
+  '5:10',
+  '5:15',
+  '5:20',
+  '5:25',
+  '5:30',
+  '5:35',
+  '5:40',
+  '5:45',
+  '5:50',
+  '5:55',
+  '6:00',
+  '6:05',
+  '6:10',
+  '6:15',
+  '6:20',
+  '6:25',
+  '6:30',
+  '6:35',
+  '6:40',
+  '6:45',
+  '6:50',
+  '6:55',
+  '7:00',
+  '7:05',
+  '7:10',
+  '7:15',
+  '7:20',
+  '7:25',
+  '7:30',
+  '7:35',
+  '7:40',
+  '7:45',
+  '7:50',
+  '7:55',
+  '8:00',
+  '8:05',
+  '8:10',
+  '8:15',
+  '8:20',
+  '8:25',
+  '8:30',
+  '8:35',
+  '8:40',
+  '8:45',
+  '8:50',
+  '8:55',
+  '9:00',
+  '9:05',
+  '9:10',
+  '9:15',
+  '9:20',
+  '9:25',
+  '9:30',
+  '9:35',
+  '9:40',
+  '9:45',
+  '9:50',
+  '9:55',
+  '10:00',
+  '10:05',
+  '10:10',
+  '10:15',
+  '10:20',
+  '10:25',
+  '10:30',
+  '10:35',
+  '10:40',
+  '10:45',
+  '10:50',
+  '10:55',
+  '11:00',
+  '11:05',
+  '11:10',
+  '11:15',
+  '11:20',
+  '11:25',
+  '11:30',
+  '11:35',
+  '11:40',
+  '11:45',
+  '11:50',
+  '11:55',
+  '12:00',
+  '12:05',
+  '12:10',
+  '12:15',
+  '12:20',
+  '12:25',
+  '12:30',
+  '12:35',
+  '12:40',
+  '12:45',
+  '12:50',
+  '12:55'
+  ]
+
+  accessibleAutocomplete({
+    element: document.querySelector('#ODS2-container'),
+    id: 'ODS2', // To match it to the existing <label>.
+    name: 'ODS2SundayPhone',
+    source: times,
+    defaultValue: '{{ data.mondayTimeFrom1 }}',
+    showAllValues: false,
+    showNoOptionsFound: false,
+    displayMenu: 'overlay',
+  })
+
+  accessibleAutocomplete({
+    element: document.querySelector('#ODS-container'),
+    id: 'ODS', // To match it to the existing <label>.
+    name: 'ODSSundayPhone',
+    source: times,
+    defaultValue: '{{ data.mondayTimeTo1 }}',
+    showAllValues: false,
+    showNoOptionsFound: false,
+    displayMenu: 'overlay',
+  })
+
+  accessibleAutocomplete({
+    element: document.querySelector('#ODS3-container'),
+    id: 'ODS3', // To match it to the existing <label>.
+    name: 'ODS3SundayPhone',
+    source: times,
+    defaultValue: '{{ data.mondayTimeFrom2 }}',
+    showAllValues: false,
+    showNoOptionsFound: false,
+    displayMenu: 'overlay',
+  })
+
+  accessibleAutocomplete({
+    element: document.querySelector('#ODS4-container'),
+    id: 'ODS4', // To match it to the existing <label>.
+    name: 'ODS4SundayPhone',
+    source: times,
+    defaultValue: '{{ data.mondayTimeTo2 }}',
+    showAllValues: false,
+    showNoOptionsFound: false,
+    displayMenu: 'overlay',
+  })
+
+  accessibleAutocomplete({
+    element: document.querySelector('#ODS5-container'),
+    id: 'ODS5', // To match it to the existing <label>.
+    name: 'ODS5SundayPhone',
+    source: times,
+    defaultValue: '{{ data.mondayTimeFrom3 }}',
+    showAllValues: false,
+    showNoOptionsFound: false,
+    displayMenu: 'overlay',
+  })
+
+  accessibleAutocomplete({
+    element: document.querySelector('#ODS6-container'),
+    id: 'ODS6', // To match it to the existing <label>.
+    name: 'ODS6SundayPhone',
+    source: times,
+    defaultValue: '{{ data.mondayTimeTo3 }}',
+    showAllValues: false,
+    showNoOptionsFound: false,
+    displayMenu: 'overlay',
+    })
+
+    $("input[name='sundayPhonesOpen']").on("click", function () {
+      if ($("input[name='sundayPhonesOpen']:checked").val() === "closed") {
+        console.log("closed");
+        $(".app-opening-time__container").addClass("app-u-display--none ");
+        $('.app-opening-time__container').find('input, textarea, button, select').attr('disabled', true);
+      } else {
+        console.log("open");
+        $(".app-opening-time__container").removeClass("app-u-display--none "); // Find inputs that are now visible and make them disabled.
+
+        $('.app-opening-time__container').find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+      }
+    });
+</script>
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Phone opening hours
+      </span>{{ contentTitle }}</h1>
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/opening-hours/new-user/phone/check-phone-answers" method="post">
+
+        {% if data['sundayReceptionOpen'] === "Closed" %}
+          {% set closedTrue = "True" %}
+        {% else %}
+          {% set openTrue = "True" %}
+        {% endif %}
+
+        {{ radios({
+          "idPrefix": "gov",
+          "name": "sundayReceptionOpen",
+          "classes": "nhsuk-radios--inline",
+          "fieldset": {
+            "legend": {
+              "text": "Are your phone lines open on Sunday?",
+              "isPageHeading": false,
+              "classes": ""
+            }
+          },
+          "items": [
+            {
+              "value": "open",
+              "text": "Yes",
+              "checked": openTrue
+            },
+            {
+              "value": "closed",
+              "text": "No",
+              "checked": closedTrue
+            }
+          ]
+        }) }}
+
+        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
+        {% call fieldset({
+          "legend": {
+            "text": "",
+            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-4",
+            "isPageHeading": false
+          }
+        }) %}
+
+        {{ hint({
+          "text": "For example, 8:30am to 1:00pm and 2:00pm to 6:00pm",
+          "classes": "nhsuk-body-l nhsuk-u-margin-bottom-4"
+        }) }}
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "Open from",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+              {{ label({
+                "text": "Time",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ODS2",
+                "id": "ODS2"
+              }) }}
+
+              <div id="ODS2-container">
+              </div>
+            </div>
+
+            <div class="app-select__ampm">
+              {{ label({
+                "text": "am or pm",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ampm",
+                "id": "ampm"
+              }) }}
+
+              <select class="nhsuk-select" name="ampmSundayPhone" id="ampm">
+                <option {% if data['mondayTimeFromAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeFromAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              </select>
+            </div>
+
+            {% endcall %}
+
+          </div>
+
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "To",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+
+              {{ label({
+                "text": "Time",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ODS",
+                "id": "ODS"
+              }) }}
+
+              <div id="ODS-container">
+              </div>
+            </div>
+
+            <div class="app-select__ampm">
+              {{ label({
+                "text": "am or pm",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ampm1",
+                "id": "ampm1"
+              }) }}
+
+              <select class="nhsuk-select" name="ampm1SundayPhone" id="ampm1">
+                <option {% if data['mondayTimeToAMPM1'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeToAMPM1'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              </select>
+            </div>
+
+            {% endcall %}
+
+          </div>
+
+        </div>
+
+
+
+
+        <div {% if data['mondayRow2'] %} style='display:block;'{% else %} style='display:none;'{% endif %}  class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "From",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+
+              {{ label({
+                "text": "Time",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ODS3",
+                "id": "ODS3"
+              }) }}
+
+              <div id="ODS3-container">
+              </div>
+            </div>
+
+            <div class="app-select__ampm">
+              {{ label({
+                "text": "am or pm",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ampm3",
+                "id": "ampm3"
+              }) }}
+
+              <select class="nhsuk-select" name="ampm3SundayPhone" id="ampm3">
+                <option {% if data['mondayTimeFromAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeFromAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              </select>
+            </div>
+
+            {% endcall %}
+
+          </div>
+
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "To",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+
+              {{ label({
+                "text": "Time",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ODS4",
+                "id": "ODS4"
+              }) }}
+
+              <div id="ODS4-container">
+              </div>
+            </div>
+
+            <div class="app-select__ampm">
+              {{ label({
+                "text": "am or pm",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ampm4",
+                "id": "ampm4"
+              }) }}
+
+              <select class="nhsuk-select" name="ampm4SundayPhone" id="ampm4">
+                <option {% if data['mondayTimeToAMPM2'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeToAMPM2'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              </select>
+            </div>
+
+            {% endcall %}
+
+          </div>
+
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            <div class="">
+              <p class="app-select_remove-row">
+                <a href="#" onclick="toggle(2);">Remove row</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div {% if data['mondayRow3'] %} style='display:block;'{% else %} style='display:none;'{% endif %} class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
+
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "From",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+              {{ label({
+                "text": "Time",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ODS5",
+                "id": "ODS5"
+              }) }}
+
+              <div id="ODS5-container">
+              </div>
+            </div>
+
+            <div class="app-select__ampm">
+              {{ label({
+                "text": "am or pm",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ampm5",
+                "id": "ampm5"
+              }) }}
+
+              <select class="nhsuk-select" name="ampm5SundayPhone" id="ampm5">
+                <option {% if data['mondayTimeFromAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeFromAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              </select>
+            </div>
+
+            {% endcall %}
+
+          </div>
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            {% call fieldset({
+              "classes": "nhsuk-u-margin-bottom-2",
+              "legend": {
+                "text": "To",
+                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1 app-u-visually-hidden--show-mobile",
+                "isPageHeading": false
+              }
+            }) %}
+            <div class="app-select__autocomplete">
+
+              {{ label({
+                "text": "Time",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ODS6",
+                "id": "ODS6"
+              }) }}
+
+              <div id="ODS6-container">
+              </div>
+            </div>
+
+            <div class="app-select__ampm">
+              {{ label({
+                "text": "am or pm",
+                "isPageHeading": false,
+                "classes": "nhsuk-u-margin-bottom-2",
+                "for": "ampm6",
+                "id": "ampm6"
+              }) }}
+
+              <select class="nhsuk-select" name="ampm6SundayPhone" id="ampm6">
+                <option {% if data['mondayTimeToAMPM3'] == "am" %}selected{% endif %} id='am'>am</option>
+                <option {% if data['mondayTimeToAMPM3'] == "pm" %}selected{% endif %} id='pm'>pm</option>
+              </select>
+            </div>
+
+            {% endcall %}
+
+          </div>
+
+          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+            <div class="">
+              <p class="app-select_remove-row">
+                <a href="#" onclick="toggle(3);">Remove row</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {% endcall %}
+
+        <div class="auto nhsuk-u-margin-bottom-2">
+        </div>
+
+        <p>
+          <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another opening time</a>
+        </p>
+
+      </div>
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

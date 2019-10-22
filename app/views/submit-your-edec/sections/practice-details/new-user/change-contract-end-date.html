@@ -3,10 +3,16 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
-{% set contentTitle = "What is the last day of your practice contract?" %}
+{% set contentTitle %}
+  {% if data['contractType'] == 'apms' %}
+    Contract end date
+  {% else %}
+    Contract end date (optional)
+  {% endif %}
+{% endset %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}
@@ -34,7 +40,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/check-last-year" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/new-user/check-last-year" method="get">
 
       {{ dateInput({
         "id": "dob",

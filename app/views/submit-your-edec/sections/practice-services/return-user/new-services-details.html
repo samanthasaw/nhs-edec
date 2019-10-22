@@ -1,0 +1,533 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Check the practice services details you submitted last year" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "input[name='provision']" ).on( "click", function() {
+  if ( $( "input[name='provision']:checked" ).val() === "no") {
+    console.log( "closed" );
+    $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+    $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log( "open" );
+    $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+    // Find inputs that are now visible and make them disabled.
+    $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+
+$( "input[name='selectInterpret']" ).on( "click", function() {
+if ( $( "input[name='selectInterpret']:checked" ).val() === "noInterpret") {
+  console.log( "closed" );
+  $( ".app-opening-time__container" ).addClass("app-u-display--none ")
+  $('.app-opening-time__container' ).find('input, textarea, button, select').attr('disabled', true);
+} else {
+  console.log( "open" );
+  $( ".app-opening-time__container" ).removeClass("app-u-display--none ")
+
+  // Find inputs that are now visible and make them disabled.
+  $('.app-opening-time__container' ).find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+}
+});
+
+// This kills any row that is empty
+$('div.nhsuk-summary-list__row').each(function() {
+         if ($(this).text().trim() === "") {
+                   $(this).css('display','none');
+         }
+});
+</script>
+{% endblock %}
+
+
+
+
+
+{% set practiceBoundary %}
+  {% if data['practiceBoundary'] == 'yes' %}
+    Yes
+  {% else %}
+    No
+  {% endif %}
+{% endset %}
+
+
+
+      {% set patientSources %}
+        {% if data['patientSources'] == 'ppg' %}
+          <p>Patient Participation Group</p>
+        {% elif data['patientSources'] == 'patientSurvey' %}
+          <p>GP patient survey</p>
+        {% elif data['patientSources'] == 'localSurvey' %}
+          <p>Local survey</p>
+          {% elif data['patientSources'] == 'other' %}
+          <p>Other - {{ data['inputPatientSourceOther'] }}</p>
+        {% else %}
+          The practice is not able to confirm
+        {% endif %}
+        {% endset %}
+
+        {% if data['patientSources'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+        {% set reasonableNeeds %}
+          {% if cheese == 'stringyCheese' %}
+            {{ patientSources | safe }}
+          {% else %}
+            {% for item in data['patientSources'] %}
+            {% if item == 'ppg' %}
+              <p>Patient Participation Group</p>
+            {% elif item == 'patientSurvey' %}
+              <p>GP patient survey</p>
+            {% elif item == 'localSurvey' %}
+              <p>Local survey</p>
+            {% elif item == 'other' %}
+              <p>Other - {{ data['inputPatientSourceOther'] }}</p>
+            {% else %}
+              The practice is not able to confirm
+            {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endset %}
+
+
+        {% set arrangementsPlace %}
+          {% if data['arrangementsPlace'] == 'yes' %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        {% endset %}
+
+        {% set otherArrangements %}
+          {% if data['otherArrangements'] and data['servicesArrangements'] == 'other'  %}
+              <p>Other arrangements - {{ data['otherArrangements'] }}</p>
+                  {% else %}
+
+                  {% endif %}
+                {% endset %}
+
+
+
+
+        {% set servicesArrangements %}
+          {% if data['servicesArrangements'] == 'OOH' %}
+            <p>Same out of hours provider as that commissioned by CCG</p>
+          {% elif data['servicesArrangements'] == 'sub' %}
+            <p>Sub contracted provider - {{ data['subContractProvider'] }}</p>
+          {% elif data['servicesArrangements'] == 'directProvide' %}
+            <p>Provided directly by the practice</p>
+          {% else %}
+            {{ otherArrangements | safe }}
+          {% endif %}
+        {% endset %}
+
+
+
+
+        {% set provision %}
+          {% if data['provision'] == 'yes' %}
+            Yes
+          {% else %}
+            No, the practice has opted out of this
+          {% endif %}
+        {% endset %}
+
+
+
+        {% if data['provision'] %}
+            {% if data['provision'] == "yes" %}
+              {% set provisionRow = "show" %}
+            {% else %}
+              {% set provisionRow = "hide" %}
+            {% endif %}
+        {% else %}
+            {% set provisionRow = "show" %}
+        {% endif %}
+
+
+        {% set subProvision %}
+          {% if data['subProvision'] == 'yes' %}
+            <p>Yes</p>
+            <p>Name of accredited out of hours provider: {{ data['inputprovision'] }}</p>
+          {% else %}
+            No
+          {% endif %}
+        {% endset %}
+
+        {% set monitorOoh %}
+          {% if data['monitorOoh'] == 'yes' %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        {% endset %}
+
+        {% set qualityOoh %}
+          {% if data['qualityOoh'] == 'yes' %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        {% endset %}
+
+        {% set reviewOoh %}
+          {% if data['reviewOoh'] == 'yes' %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        {% endset %}
+
+
+
+        {% if data['selectInterpret'] %}
+            {% if data['selectInterpret'] == "noInterpret" %}
+              {% set selectInterpretRow = "hide" %}
+            {% else %}
+              {% set selectInterpretRow = "show" %}
+            {% endif %}
+        {% else %}
+            {% set selectInterpretRow = "show" %}
+        {% endif %}
+
+
+
+        {% set selectInterpret %}
+          {% if data['selectInterpret'] == 'telephone' %}
+            <p>Telephone</p>
+          {% elif data['selectInterpret'] == 'face' %}
+            <p>Face to face interpreter (inclusive of British Sign Language)</p>
+          {% elif data['selectInterpret'] == 'video' %}
+            <p>Video interpreting (inclusive of British Sign Language)</p>
+          {% elif data['selectInterpret'] == 'noInterpret' %}
+            <p>The practice does not provide access to interpreting</p>
+          {% else %}
+            <p>Other - {{ data['otherInterpret'] }}</p>
+          {% endif %}
+          {% endset %}
+
+          {% if data['selectInterpret'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+          {% set interpreting %}
+            {% if cheese == 'stringyCheese' %}
+              {{ selectInterpret | safe }}
+            {% else %}
+              {% for item in data['selectInterpret'] %}
+              {% if item == 'telephone' %}
+                <p>Telephone</p>
+              {% elif item == 'face' %}
+                <p>Face to face interpreter (inclusive of British Sign Language)</p>
+              {% elif item == 'video' %}
+                <p>Video interpreting (inclusive of British Sign Language)</p>
+              {% elif item == 'noInterpret' %}
+                <p>The practice does not provide access to interpreting</p>
+              {% else %}
+                <p>Other - {{ data['otherInterpret'] }}</p>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endset %}
+
+
+
+
+
+          {% set fundInterpret %}
+            {% if data['fundInterpret'] == 'practice' %}
+              <p>Practice</p>
+            {% elif data['fundInterpret'] == 'ccq' %}
+              <p>CCG</p>
+            {% elif data['fundInterpret'] == 'nhsEngland' %}
+              <p>NHS England</p>
+            {% else %}
+              <p>Other - {{ data['fundInterpretOther'] }}</p>
+            {% endif %}
+            {% endset %}
+
+            {% if data['fundInterpret'] | stringOrNot %}{% set cheese = "stringyCheese" %}{% else %}{% set cheese = "hardCheese" %}{% endif %}
+            {% set funding %}
+              {% if cheese == 'stringyCheese' %}
+                {{ fundInterpret | safe }}
+              {% else %}
+                {% for item in data['fundInterpret'] %}
+                {% if item == 'practice' %}
+                  <p>Practice</p>
+                {% elif item == 'ccq' %}
+                  <p>CCG</p>
+                {% elif item == 'nhsEngland' %}
+                  <p>NHS England</p>
+                {% else %}
+                  <p>Other - {{ data['fundInterpretOther'] }}</p>
+                {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endset %}
+
+
+
+            {% set reviewWebsite %}
+              {% if data['reviewWebsite'] == 'yes' %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            {% endset %}
+
+
+
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class=""><span class="nhsuk-caption-l nhsuk-caption--top">Practice services</span>{{ contentTitle }}</h1>
+
+      <p>Check your practice services details and change any incorrect details.</p>
+
+
+      {{ summaryList({
+        "classes": "nhsuk-summary-list--long",
+        rows: [
+          {
+            key: {
+              text: "Does the practice offer primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside their usual practice boundary area?"
+            },
+            value: {
+              text: practiceBoundary | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/patients-outside-boundary",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice offers primary medical services (excluding home visits) to new patients who are seeking to register with the practice and reside outside your usual practice boundary area"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: "<p>During the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (8am to 6:30pm Monday to Friday) in case of emergency?</p>
+              The practice can confirm with evidence which has been obtained from patient sources in the preceding 12 months from:"
+            },
+            value: {
+              html: reasonableNeeds | placeholder('Patient Participation Group')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/reasonable-needs-3",
+                  text: "Change",
+                  visuallyHiddenText: "if during the preceding 12 months, the practice can confirm, that it can evidence (if requested), how it is meeting the reasonable needs of its patient population and the practice has arrangements in place for its patients to access such services throughout the core hours (8am to 6:30pm Monday to Friday) in case of emergency"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "The practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours"
+            },
+            value: {
+              text: arrangementsPlace | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/essential-services-4",
+                  text: "Change",
+                  visuallyHiddenText: "if your practice can confirm it has arrangements in place for its patients to access essential services in case of emergency if the practice is not open during core contract hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "If practice services are not available to patients during core contract hours what arrangements are in place?"
+            },
+            value: {
+              html: servicesArrangements | placeholder('Provided directly by the practice') | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/essential-services-arrangements",
+                  text: "Change",
+                  visuallyHiddenText: "what arrangements are in place if practice services are not available to patients during core contract hours"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Is the practice responsible for the provision/commissioning of care in the Out of Hours period?"
+            },
+            value: {
+              text: provision | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/provision-care",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice is responsible for the provision/commissioning of care in the Out of Hours period"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Does the practice sub-contract the provision of Out of Hours care?"
+            },
+            value: {
+              html: subProvision | placeholder('No')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/sub-contracts-provision",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice sub-contracts the provision of Out of Hours care"
+                }
+              ]
+            }
+          } if provisionRow == 'show',
+          {
+            key: {
+              text: "The practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider, including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints"
+            },
+            value: {
+              text: monitorOoh | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/monitor-ooh",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice can evidence that it has in place arrangements to monitor its contract with its Out of Hours provider, including frequency of meetings with the provider, and any action it has taken against its provider through non-compliance or complaints"
+                }
+              ]
+            }
+          } if provisionRow == 'show',
+          {
+            key: {
+              text: "The practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services"
+            },
+            value: {
+              text: qualityOoh | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/quality-ooh",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice can evidence that it has in place arrangements to monitor and report on any patient or practice concerns about the quality of local Out of Hours services"
+                }
+              ]
+            }
+          } if provisionRow == 'hide',
+          {
+            key: {
+              text: "The practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider"
+            },
+            value: {
+              text: reviewOoh | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/review-ooh",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice can evidence that it also has in place arrangements to promptly review the clinical details of Out of Hours consultations made by its patients and for dealing with information requests from the Out of Hours provider"
+                }
+              ]
+            }
+          } if provisionRow == 'hide',
+          {
+            key: {
+              text: "Does the practice provide access to interpreting?"
+            },
+            value: {
+              html: interpreting | placeholder('Telephone')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/interpreting-2",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice provides access to interpreting"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Who funds the interpreting service?"
+            },
+            value: {
+              html: funding | placeholder('Practice')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/funds-interpreting",
+                  text: "Change",
+                  visuallyHiddenText: "who funds the interpreting service"
+                }
+              ]
+            }
+          } if selectInterpretRow == 'show',
+          {
+            key: {
+              text: "Does the practice review and update (where appropriate) the content of the practice website on at least two separate occasions, or more, per year?"
+            },
+            value: {
+              html: reviewWebsite | placeholder('Yes')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/submit-your-edec/sections/practice-services/return-user/review-website",
+                  text: "Change",
+                  visuallyHiddenText: "if the practice reviews and updates (where appropriate) the content of the practice website on at least two separate occasions, or more, per year"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-question-card" method="get">
+
+        <input type="Submit" class="nhsuk-button" id="submit-details" value="Save and continue">
+        </form>
+
+
+    </div>
+  </div>
+{% endblock %}

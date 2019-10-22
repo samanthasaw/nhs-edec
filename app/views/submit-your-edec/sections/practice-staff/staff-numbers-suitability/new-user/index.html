@@ -1,0 +1,100 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Staff numbers and suitability (Practice staff) flow for a new user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "/submit-your-edec/sections/practice-staff/staff-numbers-suitability/index",
+        "text": "Back"
+      }) }}
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+
+
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/staff-task-list-start">Task list - not started</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/staff-intro">Practice staff section intro</a></li>
+      </ul>
+
+
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/needs-analysis">Needs analysis</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/professional-body-check">Professional body check</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/dbs-check">DBS check</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/locum-sessions">Locum sessions</a></li>
+      </ul>
+
+      <h3>Check your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/check-your-answers">Check your answers</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-needs-analysis">Change needs analysis</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-professional-body-check">Change Professional body check</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-dbs-check">Change DBS check</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-locum-sessions">Change locum sessions</a></li>
+      </ul>
+
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/staff-details-complete">Staff details complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/task-list-staff-section-complete">Task list - practice staff section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/returns-to-complete-section">User returns to completed section</a></li>
+      </ul>
+
+      <h3>Change answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-staff-details">Change staff details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-needs-analysis-2">Change needs analysis again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-professional-body-check-2">Change Professional body check again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-dbs-check-2">Change DBS check again</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-staff/staff-numbers-suitability/new-user/change-locum-sessions-2">Change locum sessions again</a></li>
+      </ul>
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

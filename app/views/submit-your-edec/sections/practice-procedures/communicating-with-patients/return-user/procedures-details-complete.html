@@ -1,0 +1,49 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "You've confirmed your communicating with patients details" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-label--xl app-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--top">Communicating with patients</span>{{ contentTitle }}</h1>
+
+      <p>You have 5 more sections to complete before you can submit your electronic declaration.</p>
+
+      <p>You can <a href="/{{ PROTOTYPEURL }}/sections/practice-procedures/communicating-with-patients/return-user/change-procedures-details">change your communicating with patients details</a> at any time before submitting your electronic declaration.</p>
+
+      {{ button({
+        "text": "Continue",
+        "href": "/submit-your-edec/sections/practice-procedures/communicating-with-patients/return-user/task-list-procedures-section-complete"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

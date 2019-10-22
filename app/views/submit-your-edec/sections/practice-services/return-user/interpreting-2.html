@@ -59,7 +59,7 @@
 
 {% set otherInterpret %}
 {{ textarea({
-  "name": "nhsnumber",
+  "name": "otherInterpret",
   "id": "inputnhsnumber",
   "label": {
     "text": "What other ways does the practice provide access to interpreting?"
@@ -70,7 +70,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-services/return-user/new-services-details" method="get">
 
         {{ checkboxesDivider({
           "idPrefix": "interpret",

@@ -1,0 +1,120 @@
+<!-- Use this page as the index for your project -->
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% set contentTitle = "Practice services flow for a new user" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- Change the page title here -->
+      <h1>{{ contentTitle }}</h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+
+      <h2>Latest</h2>
+
+      <h3>Start</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/services-task-list-start">Task list</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/services-intro">Practice services section intro</a></li>
+      </ul>
+
+
+      <h3>Questions</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/patients-outside-boundary">Patients outside boundary</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/reasonable-needs-3">Reasonable needs V3</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/essential-services-4">Access essential services</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/essential-services-arrangements">Essential services arrangements</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/provision-care">Provision of care</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/sub-contracts-provision">Sub contracts provision</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/monitor-ooh">Monitor OOH</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/quality-ooh">Quality OOH</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/review-ooh">Review OOH</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/interpreting-2">Interpreting V2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/funds-interpreting">Funds interepreting</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/review-website">Review website</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/practice-email">Practice email</a></li>
+      </ul>
+
+
+      <h3>Check your answers</h3>
+
+    <ul>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/check-your-answers">Check your answers</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-patients-outside-boundary">Patients outside boundary</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-reasonable-needs-3">Reasonable needs V3</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-essential-services-4">Access essential services</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-essential-services-arrangements">Essential services arrangements</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-provision-care">Provision of care</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-sub-contracts-provision">Sub contracts provision</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-monitor-ooh">Monitor OOH</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-quality-ooh">Quality OOH</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-review-ooh">Review OOH</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-interpreting-2">Interpreting V2</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-funds-interpreting">Funds interepreting</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-review-website">Review website</a></li>
+      <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-practice-email">Practice email</a></li>
+    </ul>
+
+      <h3>Section complete</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/services-details-complete">Practice services section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/task-list-services-section-complete">Task list section complete</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/returns-to-complete-section">User clicks back into completed section</a></li>
+      </ul>
+
+      <h3>Change your answers</h3>
+
+      <ul>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-services-details">Change services details</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-patients-outside-boundary-2">Patients outside boundary</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-reasonable-needs-3-2">Reasonable needs V3</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-essential-services-4-2">Access essential services</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-essential-services-arrangements-2">Essential services arrangements</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-provision-care-2">Provision of care</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-sub-contracts-provision-2">Sub contracts provision</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-monitor-ooh-2">Monitor OOH</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-quality-ooh-2">Quality OOH</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-review-ooh-2">Review OOH</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-interpreting-2-2">Interpreting V2</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-funds-interpreting-2">Funds interepreting</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-review-website-2">Review website</a></li>
+        <li><a href="/{{ PROTOTYPEURL }}/sections/practice-services/new-user/change-practice-email-2">Practice email</a></li>
+      </ul>
+
+
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}

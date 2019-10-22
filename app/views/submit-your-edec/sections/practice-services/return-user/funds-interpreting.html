@@ -31,10 +31,10 @@
 
 {% block content %}
 
-{% set fundInterpretConditional %}
+{% set fundInterpretOther %}
 {{ input({
   "id": "nhs",
-  "name": "fundInterpret",
+  "name": "fundInterpretOther",
   "classes": "nhsuk-input--width-30"
 }) }}
 {% endset %}
@@ -79,7 +79,7 @@
               "value": "other",
               "text": "Other",
               "conditional": {
-                html: fundInterpretConditional
+                html: fundInterpretOther
               }
             }
           ]

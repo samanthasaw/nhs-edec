@@ -3,10 +3,16 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
-{% set contentTitle = "Contract start date" %}
+{% set contentTitle %}
+  {% if data['contractType'] == 'apms' %}
+    Contract start date
+  {% else %}
+    Contract start date (optional)
+  {% endif %}
+{% endset %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 {% endblock %}

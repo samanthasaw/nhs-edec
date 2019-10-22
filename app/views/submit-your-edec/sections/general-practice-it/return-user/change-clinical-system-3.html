@@ -1,0 +1,101 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "The practice principle clinical system is accessible outside the practice for the following purposes:" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+<script type="text/javascript">
+  $( "#nationality-5" ).on( "click", function() {
+  if ( $( "#nationality-5" ).is(':checked') ){
+    console.log( "closed" );
+    $( "#nationality-1" ).attr('disabled', true);
+    $( "#nationality-2" ).attr('disabled', true);
+    $( "#nationality-3" ).attr('disabled', true);
+
+  } else {
+    $( "#nationality-1" ).attr('disabled', false);
+    $( "#nationality-2" ).attr('disabled', false);
+    $( "#nationality-3" ).attr('disabled', false);
+
+  }
+});
+</script>
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/general-practice-it/return-user/change-general-details" method="post">
+
+        {{ checkboxesDivider({
+          "idPrefix": "nationality",
+          "name": "clinicalSystemPurposes",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">General practice IT
+            </span>' + contentTitle + '</h1>',
+            "classes": "nhsuk-label--l app-heading-l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+          "text": "Select all that apply"
+        },
+          "items": [
+            {
+              "value": "routine",
+              "text": "Access at all routine locations for GP service point of care delivery (for example out of surgery locations such as hospitals, nursing homes and community using mobile technologies)"
+            },
+            {
+              "value": "remote",
+              "text": "Access remotely for example home for administrative and maintenance purposes"
+            },
+            {
+              "value": "mobile",
+              "text": "Access from patient homes using mobile technologies (subject to local provider network coverage)"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "notApplicable",
+              "text": "This does not apply to my practice"
+            }
+          ]
+        }) }}
+
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

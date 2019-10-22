@@ -3,7 +3,7 @@
 {% if data['practice'] %}
     {% set practice = data['practice'] %}
   {% else %}
-    {% set practice = "The Nye Practice (Y00001)" %}
+    {% set practice = "The Nye Practice" %}
 
 {% endif %}
 {% if data['branch'] %}
@@ -11,11 +11,25 @@
   {% else %}
     {% set branch = "Branch 1" %}
 {% endif %}
-{% set contentTitle = "What are the names of your branches?" %}
+{% set contentTitle = "Enter your branch names" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% block pageScripts %}
 <script src="/js/accessible-autocomplete.min.js" type="text/javascript"></script>
-<script src="/js/autocomplete-time.js" type="text/javascript"></script>
+<script src="/js/autocomplete-time-v2.js" type="text/javascript"></script>
+<script type="text/javascript">
+$("input[name='mondayReceptionOpen']").on("click", function () {
+  if ($("input[name='mondayReceptionOpen']:checked").val() === "closed") {
+    console.log("closed");
+    $(".app-opening-time__container").addClass("app-u-display--none ");
+    $('.app-opening-time__container').find('input, textarea, button, select').attr('disabled', true);
+  } else {
+    console.log("open");
+    $(".app-opening-time__container").removeClass("app-u-display--none "); // Find inputs that are now visible and make them disabled.
+
+    $('.app-opening-time__container').find('input:visible, textarea:visible, button:visible, select:visible').attr('disabled', false);
+  }
+});
+</script>
 {% endblock %}
 
 <!-- Extends the layout from /app/views/layouts/layout.html -->
@@ -40,77 +54,104 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details" method="get">
+      <form action="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/new-practice-details-2" method="post">
+
+        <div class="app-opening-time__container {%- if closedTrue %} app-u-display--none{% endif -%}">
 
         {% call fieldset({
           "legend": {
-            "html": '<h1><span class="nhsuk-caption-l nhsuk-caption--top">Practice details
-            </span>' + contentTitle + '</h1>',
-            "classes": "nhsuk-label--xl app-heading-xl nhsuk-u-margin-bottom-0",
+            "html": '<span class="nhsuk-caption-l nhsuk-caption--top">Practice details
+          </span> ' + contentTitle,
+            "classes": "nhsuk-label--xl nhsuk-u-margin-bottom-4",
             "isPageHeading": true
           }
         }) %}
 
-        {{ hint({
-          "text": "Search by branch name or organisation (ODS) code",
-          "classes": "nhsuk-body-l nhsuk-u-margin-bottom-4"
-        }) }}
-
         <div class="nhsuk-grid-row">
-          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
-            {% call fieldset({
-              "classes": "nhsuk-u-margin-bottom-2",
-              "legend": {
-                "text": "Branch name",
-                "classes": "nhsuk-label--m nhsuk-u-margin-bottom-1",
-                "isPageHeading": false
-              }
-            }) %}
-            <div class="app-select__autocomplete">
-
-
-
-              <select name="ODS2" id="ODS2">
-                <option value=""></option>
-
-              </select>
-            </div>
-
-
-
-            {% endcall %}
-
-          </div>
+        <div class="nhsuk-grid-column-two-thirds">
+          {{ input({
+            "label": {
+              "text": 'First branch',
+              "isPageHeading": false,
+              "classes": ""
+            },
+            "id": "inputnhsnumber",
+            "name": "branch1name",
+            "classes": "nhsuk-input--width-30"
+          }) }}
 
         </div>
+      </div>
 
-            {% endcall %}
+
+
+        <div {% if data['mondayRow2'] %} style='display:block;'{% else %} style='display:none;'{% endif %}  class="nhsuk-grid-row nhsuk-u-margin-top-4" id="2">
+
+          <div class="nhsuk-grid-column-two-thirds">
+            {{ input({
+              "label": {
+                "text": 'Second branch',
+                "isPageHeading": false,
+                "classes": ""
+              },
+              "id": "inputnhsnumber",
+              "name": "branch2name",
+              "classes": "nhsuk-input--width-30"
+            }) }}
 
           </div>
 
-          <div class="nhsuk-grid-column-one-third app-grid-column-tablet-one-third">
+          <div class="nhsuk-grid-column-one-third">
             <div class="">
-              <p class="app-select_remove-row">
-                <a href="/{{ PROTOTYPEURL }}/sections/practice-details/return-user/remove-branch" onclick="toggle(2);">Remove branch</a>
+              <p class="app-remove-row">
+                <a href="#" onclick="toggle(2);">Remove row</a>
               </p>
             </div>
           </div>
         </div>
 
+        <div {% if data['mondayRow3'] %} style='display:block;'{% else %} style='display:none;'{% endif %} class="nhsuk-grid-row nhsuk-u-margin-top-4" id="3">
 
+          <div class="nhsuk-grid-column-two-thirds">
+            {{ input({
+              "label": {
+                "text": 'Third branch',
+                "isPageHeading": false,
+                "classes": ""
+              },
+              "id": "inputnhsnumber",
+              "name": "branch3name",
+              "classes": "nhsuk-input--width-30"
+            }) }}
 
+          </div>
+
+          <div class="nhsuk-grid-column-one-third">
+            <div class="">
+              <p class="app-remove-row">
+                <a href="#" onclick="toggle(3);">Remove row</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {% endcall %}
 
         <div class="auto nhsuk-u-margin-bottom-2">
         </div>
 
         <p>
-          <a id="add" href="#" onclick="add(2);">Add a new branch</a>
+          <a id="add" href="#" onclick="add({{ "3" if data['mondayRow2'] else "2" }});">Add another branch</a>
         </p>
+
+        </div>
 
         <input type="submit" class="nhsuk-button" value="Continue">
         </input>
 
       </form>
+
+
 
     </div>
   </div>
