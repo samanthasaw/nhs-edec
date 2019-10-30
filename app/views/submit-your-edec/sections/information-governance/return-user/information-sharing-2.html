@@ -1,0 +1,166 @@
+{% set PROTOTYPEURL = "submit-your-edec" %}
+{% set serviceName = "Submit your electronic declaration" %}
+{% if data['practice'] %}
+    {% set practice = data['practice'] %}
+  {% else %}
+    {% set practice = "The Nye Practice" %}
+{% endif %}
+{% set contentTitle = "Does the practice have procedures and information sharing agreements to ensure information sharing with the multiagency teams for safeguarding vulnerable adults and children (Children Act 2004)" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+
+<div class="nhsuk-breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-u-margin-bottom-0	nhsuk-heading-s">{{ practice }} {{ data['gpODSCode'] | placeholder("(Y00001)") }}</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{ PROTOTYPEURL }}/sections/information-governance/return-user/new-governance-details" method="get">
+
+        {{ radios({
+          "idPrefix": "nhs",
+          "name": "informationSharing",
+          "fieldset": {
+            "legend": {
+              "html": '<h1 class="nhsuk-fieldset__heading"><span class="nhsuk-caption-l nhsuk-caption--top">Information and clinical governance
+              </span>' + contentTitle + '</h1>',
+              "classes": "nhsuk-label--l app-heading-l"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        <input type="submit" class="nhsuk-button" value="Continue">
+        </input>
+
+      </form>
+
+      {{ details({
+        "text": "Guidance and regulations for this question",
+        "HTML": "
+        <ul>
+          <li>Royal College of General Practitioners <a href='https://www.rcgp.org.uk/clinical-and-research/resources/toolkits/child-safeguarding-toolkit.aspx'>Child Safeguarding Toolkit (opens in new window)</a></li>
+          <li>Royal College of General Practitioners <a href='https://www.rcgp.org.uk/clinical-and-research/safeguarding/adult-safeguarding-toolkit.aspx'>Adult Safeguarding Toolkit (opens in new window)</a></li>
+        </ul>
+
+        <h2>Children's Act 2004</h2>
+
+<p>The Children Act 2004 (the Act) provides the legislative spine on which the reform of children's services is based. It aims to improve and integrate children's services, promote early intervention, provide strong leadership and bring together different professionals in multi-disciplinary teams in order achieve positive outcomes for children and young people and their families. Local authorities are given a lead role in securing the co-operation of partners in setting up children's trust arrangements and the Act allows some flexibility in how these are structured and organised
+Act aims to improve effective local working to safeguard and promote children's well- being. The Act takes a child-centred approach and includes universal as well as targeted and specialist services. Part of the aim of integration of services, plans and information is to enable young people's needs to be identified early to allow timely and appropriate intervention before needs become more acute. The success of local implementation will be assessed by the achievement of the Every Child Matters outcomes for children and young people:</p>
+<ul>
+<li>be healthy;</li>
+<li>stay safe;</li>
+<li>enjoy and achieve;</li>
+<li>make a positive contribution; and</li>
+<li>achieve economic well-being</li>
+</ul>
+
+
+<h2>The Children Act establishes:</h2>
+
+<ul>
+<li>a basis for better integrated planning, commissioning and delivery of children's services;</li>
+<li>clearer accountability for councils' children's services, by requiring that a Director of Children's Services is appointed and designating a lead councillor for children's services;</li>
+<li>a legislative basis for better sharing of information;</li>
+<li>statutory Local Safeguarding Children Boards to replace non-statutory Area Child Protection Committees; and</li>
+<li>a Children's Commissioner for England</li>
+<li>Main Measures in the Act</li>
+</ul>
+
+<p>
+  <br>
+</p>
+<p>A Children's Commissioner (Sections 1-9)</p>
+<p>the Children's Commissioner for England will be responsible for promoting awareness of the views and interests of children, having regard to the United Nations Convention on the Rights of the Child. As well as those under 18, the term includes those aged 18-20 who have been looked after by an authority from 16 or who have a learning disability. The Commissioner must involve and consult with children and has powers to gain access to where children are accommodated away from home, and may take steps to encourage organisations to take account of the views of children. The Commissioner has powers to investigate individual cases where there is a wider relevance. The Commissioner will report to Parliament through the Secretary of State. The Commissioner may require a response from responsible individuals and organisations where he has made recommendations in an annual report or following an inquiry</p>
+<p>
+  <br>
+</p>
+<p>A new duty on agencies to co-operate to improve the well-being of children and young people (Section 10)</p>
+<p>This duty, which provides the basis for the children's trust approach, provides for integrated planning and commissioning through local partnerships, but allows local partners to decide how their own partnership will be structured and managed, and how it will be named and identified locally. The duty to co-operate commenced 1 April 2005, and most authorities were expected to have implemented trust arrangements by 1 April 2006, and all by 1 April 2008</p>
+<p>Children's services authorities (i.e. those local authorities which currently provide social services and are education authorities) must promote co-operation within the authority and with statutory partners who, in turn, are required to co-operate with the authority to improve children's well-being. Other relevant organisations may be included in the partnership. The concept of well-being covers physical and mental health and emotional well-being, protection from harm and neglect, education training and recreation, contribution to society and social and economic well-being. Arrangements for co-operation must take account of the importance of parents and carers in improving the well-being of children</p>
+<p>Children's services authorities and statutory partners are provided with a number of powers to facilitate co-operation, and can establish pooled funds and provide support in kind. In England, partners will include police, probation, district councils where relevant, Strategic Health Authorities and Primary Care Trusts (PCTs), and the Learning and Skills Council, Youth Offending Team, and the governor of a prison or secure training centre. Guidance is to be issued on the integration of schools and general practitioners, and the voluntary and community sector, in the new arrangements</p>
+<p>
+  <br>
+</p>
+<p>A duty to safeguard and promote the welfare of children (Section 11)</p>
+<p>This duty requires all agencies with responsibilities towards children to discharge their functions with regard to the need to safeguard and promote the welfare of children. They must also ensure that any body providing services on their behalf must do the same. The purpose of this duty is that agencies give appropriate priority to safeguarding children and share concerns at an early stage to encourage preventative action. The organisations are, in England: children's services authorities, district councils, Strategic Health Authorities, PCTs, NHS trusts, police, probation, youth offending teams, governors of prisons or secure training centres. Note that this excludes functions where section 175 of the Education Act 2002 applies - the duty on LEAs, schools and further education establishments to exercise their functions with a view to safeguarding and promoting the welfare of children</p>
+<p>
+  <br>
+</p>
+<p>A power to set up a new database with information about children (Section 12)</p>
+<p>For the purposes of the sections above, the Secretary of State may introduce regulations requiring children's services authorities to set up local databases of information about children or may make regional or national arrangements. There may also be secondary legislation on matters such as security, access and management of information. The purpose is to facilitate information sharing where there are concerns about a child's safety or well- being. The Children Act provides the framework for the establishment of information sharing systems to ensure that practioners are able to provide children and their families with help and support they need at the earliest opportunity. This links directly to the co-operation duties and to the duties to safeguard and promote the welfare of children on local authorities, other bodies and individual service providers</p>
+<p>
+  <br>
+</p>
+<p>Local Safeguarding Children Boards (Sections 13-16)</p>
+<p>Children's services authorities must establish Local Safeguarding Children Boards (LSCB) to replace area child protection committees with statutory membership from 'Board partners'. Partners are those identified above, plus the Children and Family Court Advisory and Support Service and the governors of any secure training centre or prison which ordinarily detains children. There is a duty of co-operation between the children's services authority and Board partners. The purpose of LSCBs is to co-ordinate the work of Board partners for the purpose of safeguarding and promoting the welfare of children and to ensure effectiveness. Two or more children's services authorities may decide to form a joint LSCB. Regulations may require the appointment of other relevant individuals or organisations, and Boards can also make co-options</p>
+<p>
+  <br>
+</p>
+<p>Children and young people's plans (Section 17)</p>
+<p>Children's services authorities must produce a plan setting out the authority's strategy for discharging their functions in relation to children and those young people for whom they will be responsible under the general duty to co-operate</p>
+<p>
+  <br>
+</p>
+<p>Director of Children's Services and Lead Member (Sections 18 and 19)</p>
+<p>Children's services authorities must appoint a director of children's services to be accountable for all local authority children's education and social services and any services for children provided on behalf of the NHS under section 31 of the Health Act 1999 (which provides for local authorities and the NHS to pool budgets, provide integrated services and lead commissioning of services). Children's services authorities must designate a lead member for the arrangements covered by the post of director of children's services</p>
+<p>
+  <br>
+</p>
+<p>A framework for inspection and joint area reviews (Sections 20-24)</p>
+<p>Joint area reviews will take place, to evaluate the extent to which children's services improve the well-being of children in the area. The framework for inspections will be designed in consultation by the Chief Inspector of Schools and include the Commission for Social Care Inspection and the Commission for Healthcare Audit and Inspection. Inspecting bodies have a duty of co-operation for the purposes of inspections and reviews. The process for reviews, whether universal or in a specific area, will be triggered by a request to the relevant inspectorates from the Secretary of State, who may also specify the nature of the review. Reviews will include an evaluation of the quality of services, and how partner organisations are working together. Regulations will apply to the process and arrangements for reviews, and have been expanded to allow for changes in statutory inspection regimes</p>
+<p>
+  <br>
+</p>
+<p>New powers of intervention in failing authorities (Section 50)</p>
+<p>Powers under the Education Act 1996 to secure proper performance of local education authorities' functions will be extended to cover children's social services functions</p>
+<p>
+  <br>
+</p>
+<p>A duty to promote the educational achievement of looked after children (Section 52)</p>
+<p>The duty of authorities as corporate parent has been extended to include a requirement to promote the educational achievement of looked after children, and will apply when, for example, placement decisions are made. This duty will commence on 1 July 2005</p>
+<p>
+  <br>
+</p>
+<p>Ascertaining children's wishes (Section 53)</p>
+<p>Local authorities will be required to ascertain the wishes and feelings of children, through amendments to the Children Act 1989, when making decisions about services for a child in need (s.17), and providing accommodation for children under the Act (s.20). Authorities will also be required to ascertain wishes and feelings when investigating the circumstances of children at risk of harm (s.47)</p>
+<p>
+  <br>
+</p>
+<p>Additional items: the Act also covers provision relating to: private fostering, child minding and day care, adoption review panels, grants in respect of children and families and Child Safety Orders</p>
+<p>
+  <br>
+</p>
+        "
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
